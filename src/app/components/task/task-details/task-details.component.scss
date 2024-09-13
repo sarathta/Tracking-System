@@ -1,0 +1,30 @@
+.taskDetails {
+    body {
+        background: #f2f2f2;
+    }
+    .dl-horizontal {
+        margin: 0;
+        line-height: 20px;
+        dd {
+            margin-bottom: 10px;
+        }
+    }
+
+    .mono {
+        font-family: monospace;
+    }
+
+    .div_rev {
+        .ibtn_Delete {
+            width: 30px;
+        }
+
+        &:hover {
+            .ibtn_Delete {
+                font-size: 20px;
+                transition: 0.2s ease-out;
+                cursor: pointer;
+            }
+        }
+    }
+}

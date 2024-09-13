@@ -1,0 +1,79 @@
+.overviewCard{
+    height: calc(100vh - 11rem);
+}
+
+.bof1{
+    width: 20vh;
+    height: 21vh;
+}
+.bof2{
+    width: 20vh;
+    height: 20vh;
+}
+.lf{
+    width: 20vh;
+    height: 21vh;
+}
+.vd{
+    width: 20vh;
+    height: 21vh;
+}
+.cc{
+    width: 20vh;
+    height: 21vh;
+}
+.billetyard{
+    width: 15vh;
+    height: 14vh;
+    border: 1px solid rgb(104, 103, 103);
+    .billet{
+        height: 1vh;
+        margin: 4px;
+        background-color: gray;
+    }
+}
+.rf{
+    width: 20vh;
+    height: 21vh;
+}
+.rm{
+    width: 20vh;
+    height: 20vh;
+}
+
+.coolingBed{
+    width: 15vh;
+    height: 14vh;
+    // margin-right: 4vh;
+    border: 1px solid rgb(104, 103, 103);
+    .bars{
+        height: 1vh;
+        margin: 4px;
+        background-color: rgb(255, 191, 0);
+    }
+}
+.cs{
+    width: 14vh;
+    height: 18vh;
+    margin-right: 15vh;
+}
+
+.il{
+    width: 17vh;
+    height: 18vh;
+}
+
+.bundlingArea{
+    width: 15vh;
+    height: 14vh;
+    margin-left: 72vh;
+    margin-top: 2vh;
+    border: 1px solid rgb(104, 103, 103);
+    .bundle{
+        height: 2vh;
+        margin: 4px;
+        background-color: gray;
+    }
+}
+
+

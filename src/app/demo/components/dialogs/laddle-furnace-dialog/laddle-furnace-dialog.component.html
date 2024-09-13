@@ -1,0 +1,231 @@
+<div class="LaddleFurnace">
+    <p-dialog header="Laddle Furnace" [(visible)]="dialogLF" [modal]="true" showEffect="fade" [style]="{width: '27vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+        <p-header>
+            <div>
+                <span>Ladle Furnace</span>
+            </div>
+        </p-header>
+        <ng-template pTemplate="content">
+            <div class="flex">
+                <div class="container-1">
+                    <div >
+                        <p-table [value]="[{}]" dataKey="id"  selectionMode="single" [paginator]="false" [rows]="11" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="min-width: 10rem" colspan="2">
+                                        <div class="flex justify-content-between align-items-center">
+                                            Ferro-alloys
+                                        </div>
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData>
+                                <tr>
+                                    <td>AlCr</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">110</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>SiMn</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">100</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>FeSi65</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">113</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>FeMn78</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">166</label>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                                <tr>
+                                    <td colspan="2">No Data found.</td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="loadingbody">
+                                <tr>
+                                    <td colspan="2">Loading LF data. Please wait.</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                    <div class="mt-2">
+                        <p-table [value]="[{}]" dataKey="id"  selectionMode="single" [paginator]="false" [rows]="11" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="min-width: 10rem" colspan="2">
+                                        <div class="flex justify-content-between align-items-center">
+                                            Process Stats
+                                        </div>
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData>
+                                <tr>
+                                    <td>Heat No</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">232141</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Ladle No</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">30</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Start Time</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">11/09/24 08:04</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Finish Time</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">11/09/24 08:10</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Slag Height</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">100</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Events</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold"></label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>In Process</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">True</label>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                                <tr>
+                                    <td colspan="4">No Data found.</td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="loadingbody">
+                                <tr>
+                                    <td colspan="4">Loading LF data. Please wait.</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+                <div class="container-2 ml-2">
+                    <div>
+                        <p-table [value]="[{}]" dataKey="id"  selectionMode="single" [paginator]="false" [rows]="11" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="min-width: 10rem" rowspan="2">
+                                        232141
+                                    </th>
+                                    <th style="min-width: 10rem" colspan="2">
+                                           Steel Analysis                                    
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Act
+                                    </th>
+                                    <th>
+                                        Target
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData>
+                                <tr>
+                                    <td>C</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.156</label>
+                                    </td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.178</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mn</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.64</label>
+                                    </td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.752</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Si</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.119</label>
+                                    </td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.169</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>S</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.016</label>
+                                    </td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.019</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>P</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.015</label>
+                                    </td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.016</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Ai</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.0012</label>
+                                    </td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.0023</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>O2 ppm</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.21</label>
+                                    </td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">0.22</label>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                                <tr>
+                                    <td colspan="4">No Data found.</td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="loadingbody">
+                                <tr>
+                                    <td colspan="4">Loading LF data. Please wait.</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+            
+        </ng-template>
+    </p-dialog>
+</div>

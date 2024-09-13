@@ -1,0 +1,74 @@
+<div class="grid">
+	<div class="col-12">
+		<div class="card">
+			<p-table [value]="customersList" dataKey="id" [(selection)]="selectedData" selectionMode="single" [rows]="10" [loading]="loading" 
+                [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+				<ng-template pTemplate="caption">
+					<div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+						<div class="font-semibold text-xl">Customers</div>
+						<span class="p-buttonset ml-3">
+                            <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" (click)="showAddDialog()" ></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button" (click)="showEditDialog()" ></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button" (click)="delateCustomer_Submit()"></button>
+                        </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="min-width: 10rem">
+                            Name
+                            <p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
+						</th>
+						<th style="min-width: 10rem">
+                            Description
+						</th>
+				</ng-template>
+				<ng-template pTemplate="body" let-rowData>
+					<tr [pSelectableRow]="rowData">
+						<td> {{rowData.name}} </td>
+						<td> {{rowData.description}} </td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr>
+						<td colspan="2">No Data found.</td>
+					</tr>
+				</ng-template>
+    		</p-table>
+		</div>
+	</div>
+</div>
+
+<p-dialog [(visible)]="showDialog" header="Customer" [modal]="true" showEffect="fade" [style]="{width: '25vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-header>
+        <div>
+            <span>Customer</span>
+        </div>
+    </p-header>
+    <ng-template pTemplate="content">
+        <div>
+            <div class="field">
+                <label>Name <span class="span_req">*</span></label>
+                <input type="text"  pInputText [(ngModel)]="dialogData.name" required maxlength="50" [autofocus]="true" />
+                <small class="p-error" *ngIf="submitted && !dialogData.name"> Name is required</small>
+            </div>
+
+            <div class="field">
+                <label>Description </label>
+                <textarea pInputTextarea [(ngModel)]="dialogData.description" required rows="3" cols="20"></textarea>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton icon="pi pi-times" (click)="hideDialog()" label="Cancel" class="p-button-outlined"></button>
+            <button pButton icon="pi pi-check" *ngIf="!isEdit"(click)="addCustomer_Submit()" label="Add" class="p-button-outlined"></button>
+            <button pButton icon="pi pi-check" *ngIf="isEdit" (click)="updateCustomer_Submit()" label="Update" class="p-button-outlined"></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}" #cd>
+    <p-footer>
+        <button class="p-confirm-dialog-reject" type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+        <button class="p-confirm-dialog-accept" type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+</p-confirmDialog>

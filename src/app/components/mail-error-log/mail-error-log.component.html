@@ -1,0 +1,84 @@
+<p-toast></p-toast>
+<div class="mailError grid">
+	<div class="col-12">
+		<div class="card">
+			<p-table [value]="errorLogList" dataKey="id" [(selection)]="selectedRow" selectionMode="single" [rows]="10" [loading]="loading" [rowHover]="true" styleClass="p-datatable p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+				<ng-template pTemplate="caption">
+					<div class="flex justify-content-between flex-column sm:flex-row">
+						<h5>Mail Error Log</h5>
+						<span>
+                            <!-- <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" (click)="addDialog()" ></button>
+                            <button pButton pRipple [disabled]="!selectedTask" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button" (click)="editDialog()" ></button> -->
+                            <button pButton pRipple [disabled]="!selectedRow" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button" (click)="deleteSeledtedData()"></button>
+                        </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="min-width: 15rem">
+                            User
+						</th>
+						<th style="min-width: 15rem">
+                            Mail
+						</th>
+						<th style="min-width: 15rem">
+                            Subject
+						</th>
+						<th style="min-width: 15rem">
+                            Log Time
+						</th>
+						<th style="min-width: 15rem">
+                            Error
+						</th>
+						<th style="min-width: 5rem">
+						</th>
+						<th style="min-width: 5rem">
+						</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-rowData>
+					<tr [pSelectableRow]="rowData">
+						<td> {{rowData.toUser}} </td>
+						<td> {{rowData.toEmail}} </td>
+						<td> {{rowData.subject}} </td>
+						<td> {{rowData.logTime | date:"dd-MM-yyyy"}} </td>
+						<td> {{rowData.errorMessage}} </td>
+						<td> 
+                            <button pButton pRipple [disabled]="!selectedRow" pTooltip="View" tooltipPosition="top" icon="pi pi-eye" class="p-button-warning p-button" (click)="viewDetails()"></button>
+                        </td>
+						<td> 
+                            <button pButton pRipple [disabled]="!selectedRow" pTooltip="ReSend" tooltipPosition="top" label="ReSend" class="p-button-info p-button" (click)="resendEmail()"></button>
+                        </td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr>
+						<td colspan="9">No Data found.</td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="loadingbody">
+					<tr>
+						<td colspan="9">Loading data. Please wait.</td>
+					</tr>
+				</ng-template>
+    		</p-table>
+		</div>
+		<p-dialog header="Add Task" [(visible)]="showDailog" [modal]="true" showEffect="fade" [style]="{width: '80vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+			<p-header>
+				<div>
+					<span>Details</span>
+				</div>
+			</p-header>
+			<ng-template pTemplate="content">
+				<div class="dynamic_Table" [innerHtml]=dialogData></div>
+			</ng-template>
+		</p-dialog>
+
+		<p-confirmDialog [style]="{width: '450px'}" #cd>
+			<p-footer>
+				<button class="p-confirm-dialog-reject" type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+				<button class="p-confirm-dialog-accept" type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+			</p-footer>
+		</p-confirmDialog>
+	</div>
+</div>

@@ -1,0 +1,191 @@
+<div class="overview">
+    <div class="overviewCard card">
+        <div class="flex justify-content-between align-items-center">
+            <div class="rf">
+                <img src="../../../../assets/Images/Dashboard/rf.png" alt="" style="width: 8vh;height: 12vh;margin-left: 4vh;">
+                <div>
+                    <span class=" font-medium">Reheating Furnace</span>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Billet Charging Seq : </span><span class=" font-medium"> 32</span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Billet Id : </span><span class=" font-medium"> 23202924 </span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Steel Grade : </span><span class=" font-medium"> C45</span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Exit Temperature : </span><span class=" font-medium"> 1000 °C</span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Billet Weight : </span><span class=" font-medium"> 80</span>
+                </div>
+            </div>  
+            <div class="billetyard mt-5">
+                <div class="text-center">
+                    <span class="font-medium">Billet Yard</span>
+                </div>
+               <div class="billet" *ngFor="let item of billets" pTooltip="11{{item.id}}0">
+                    <span style="color: blue;font-size: x-small;font-weight: bold;">11{{item.id}}0</span>
+               </div>
+            </div>
+            <div class="cc">
+                <img src="../../../../assets/Images/Dashboard/cc.png" alt="" style="width: 8vh;height: 12vh;margin-left: 4vh;">
+                <div>
+                    <span class=" font-medium">Continous Caster</span>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="CC()"></button>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Heat Id : </span><span class=" font-medium"> 232141 </span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Speed : </span><span class=" font-medium"> 100 m/min </span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Finish Time : </span><span class=" font-medium"> 11/09/24 09:00 </span>
+                </div>
+            </div>
+            <div class="vd">
+                <img src="../../../../assets/Images/Dashboard/vaccumDegasser.png" alt="" style="width: 8vh;height: 12vh;margin-left: 4vh;">
+                <div>
+                    <span class=" font-medium">Vaccum Degassing</span>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="VD()"></button>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Heat Id : </span><span class=" font-medium"> 232141 </span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Start Time : </span><span class=" font-medium"> 11/09/24 08:30 </span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Finish Time : </span><span class=" font-medium"> 11/09/24 08:45</span>
+                </div>
+            </div>
+            <div class="lf">
+                <img src="../../../../assets/Images/Dashboard/laddleFurnace.png" alt="" style="width: 8vh;height: 12vh;margin-left: 4vh;">
+                <div>
+                    <span class=" font-medium">Ladle Furnace</span>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="LF()"></button>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Heat Id : </span><span class=" font-medium"> 232141 </span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Start Time : </span><span class=" font-medium"> 11/09/24 08:04 </span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Finish Time : </span><span class=" font-medium"> 11/09/24 08:10</span>
+                </div>
+            </div>  
+            <div class="bof">
+                <div class="bof1">
+                    <img src="../../../../assets/Images/Dashboard/bof.png" alt="" style="width: 8vh;height: 12vh;">
+                    <div>
+                        <span class=" font-medium">BOF-1</span>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="Bof1()"></button>
+                    </div>
+                    <div class="mt-1 text-sm">
+                        <span>Heat Id : </span><span class=" font-medium"> 232141 </span>
+                    </div>
+                    <div class="mt-1 text-sm">
+                        <span>Start Time : </span><span class=" font-medium"> 11/09/24 08:01</span>
+                    </div>
+                    <div class="mt-1 text-sm">
+                        <span>Finish Time : </span><span class=" font-medium"> 11/09/24 08:02</span>
+                    </div>
+                </div> 
+                <div class="bof2 mt-2">
+                    <img src="../../../../assets/Images/Dashboard/bof.png" alt="" style="width: 8vh;height: 12vh;">
+                    <div>
+                        <span class="font-medium">BOF-2</span>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="Bof2()"></button>
+                    </div>
+                    <div class="mt-1 text-sm">
+                        <span>Heat Id : </span><span class=" font-medium"> 232141 </span>
+                    </div>
+                    <div class="mt-1 text-sm">
+                        <span>Start Time : </span><span class=" font-medium"> 11/09/24 08:01 </span>
+                    </div>
+                    <div class="mt-1 text-sm">
+                        <span>Finish Time : </span><span class=" font-medium"> 11/09/24 08:02</span>
+                    </div>
+                </div>
+            </div>                   
+        </div>
+        <div class="flex justify-content-between mt-2">
+           <div>
+            <app-rolling-mill></app-rolling-mill>
+           </div>
+            <!-- <div class="rm">
+                <img src="../../../../assets/Images/Dashboard/rm.png" alt="" style="width: 13vh;height: 6vh;margin-top: 6vh;">
+                <div>
+                    <span class=" font-medium">Rolling Mill</span>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Billet sequence: </span><span class=" font-medium"> 224 </span>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>Billet Planned: </span><span class=" font-medium"> 1000 </span>
+                </div>
+            </div> -->
+            <div class="coolingBed" style="margin-right: 20px;">
+                <div class="text-center">
+                    <span class="font-medium">Cooling Bed</span>
+                </div>
+               <div class="bars" *ngFor="let item of bars" pTooltip="00{{item.id}}1"><span class="text-sm">00{{item.id}}1</span></div>
+            </div>   
+            <div class="cs">
+                <img src="../../../../assets/Images/Dashboard/cs.png" alt="" style="width: 8vh;height: 7vh;">
+                <div>
+                    <span class=" font-medium">Cold Shear</span>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
+                </div>
+                <div class="mt-1 text-sm">
+                    <span>ID : </span><span class=" font-medium"> 0023214 </span>
+                </div>
+            </div>
+            <div></div>       
+        </div>
+        <!-- <div class="flex justify-content-between mt-5">
+           <div></div>
+           
+        </div> -->
+        <div class="flex justify-content-between mt-2">
+           <div></div>
+           <div class="bundlingArea">
+                <div class="text-center">
+                    <span class="font-medium">Bundling</span>
+                </div>
+                <div class="bundle" *ngFor="let item of bundles" pTooltip="{{item.id}}">
+                        <span style="color: blue;font-size: x-small;font-weight: bold;margin-left: 3px;">{{item.id}}</span>
+                </div>
+            </div>
+           <div class="il">
+                <div>
+                    <img src="../../../../assets/Images/Dashboard/il.png" alt="" style="width: 14vh;height: 6vh;">
+                    <div class="text-center">
+                        <span class=" font-medium">Inspection Line-2</span>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
+                    </div>
+                </div>
+                <div class="mt-1">
+                    <img src="../../../../assets/Images/Dashboard/il.png" alt="" style="width: 14vh;height: 6vh;">
+                    <div class="text-center">
+                        <span class=" font-medium">Inspection Line-1</span>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
+                    </div>
+                </div>
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <app-bof1-dialog [inpBof1Dialog]="showbof1"></app-bof1-dialog>
+    <app-bof2-dialog [inpBof2Dialog]="showbof2"></app-bof2-dialog>
+    <app-laddle-furnace-dialog [inpLFDialog]="showLF"></app-laddle-furnace-dialog>
+    <app-vaccum-degassing-dialog [inpVDDialog]="showVD"></app-vaccum-degassing-dialog>
+    <app-continous-caster-dialog [inpCCDialog]="showCC"></app-continous-caster-dialog>
+</div>

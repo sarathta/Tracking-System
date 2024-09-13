@@ -1,0 +1,116 @@
+<div class="users">
+    <div class="grid">
+        <div class="col-12">
+            <div class="card">
+                <p-table [value]="usersList" dataKey="id" [(selection)]="selectedUser" selectionMode="single" [rows]="10" [loading]="loading" 
+                    [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+                    <ng-template pTemplate="caption">
+                        <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                            <div class="font-semibold text-xl">Users</div>
+                            <span class="p-buttonset ml-3">
+                                <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" (click)="showAddDialog()" ></button>
+                                <button pButton pRipple [disabled]="!selectedUser" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button" (click)="showEditDialog()" ></button>
+                                <button pButton pRipple [disabled]="!selectedUser" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button" (click)="delateUser_Submit()"></button>
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="min-width: 10rem">
+                                Code
+                                <p-columnFilter type="text" field="code" display="menu" placeholder="Search by code"></p-columnFilter>
+                            </th>
+                            <th style="min-width: 10rem">
+                                User Name
+                            </th>
+                            <th style="min-width: 10rem">
+                                Email
+                            </th>
+                            <th style="min-width: 10rem">
+                                Admin
+                            </th>
+                            <th style="min-width: 10rem">
+                                Active
+                            </th>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr [pSelectableRow]="rowData">
+                            <td> {{rowData.code}} </td>
+                            <td> {{rowData.userName}} </td>
+                            <td> {{rowData.email}} </td>
+                            <td> 
+                                <input type="checkbox" [disabled]="true" [(ngModel)]="rowData.isAdmin" class="p-checkbox">
+                            </td>
+                            <td>
+                                <input type="checkbox" [disabled]="true" [(ngModel)]="rowData.isActive" class="p-checkbox">
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="9">No Data found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+
+    <p-dialog [(visible)]="showDialog" header="Users" [modal]="true" showEffect="fade" [style]="{width: '25vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+        <p-header>
+            <div>
+                <span>User</span>
+            </div>
+        </p-header>
+        <ng-template pTemplate="content">
+            <div>
+                <div class="field">
+                    <label>Code <span class="span_req">*</span></label>
+                    <input type="text"  pInputText [(ngModel)]="dialogData.code" required maxlength="50" [autofocus]="true" />
+                    <small class="p-error" *ngIf="submitted && !dialogData.code"> Code is required</small>
+                </div>
+    
+                <div class="field">
+                    <label>User Name <span class="span_req">*</span></label>
+                    <input type="text"  pInputText [(ngModel)]="dialogData.userName" required maxlength="50" />
+                    <small class="p-error" *ngIf="submitted && !dialogData.userName"> User Name is required</small>
+                </div>
+                
+                <div class="field">
+                    <label>Password <span class="span_req">*</span></label>
+                    <input type="password"  pInputText [(ngModel)]="dialogData.password" required maxlength="50" />
+                    <small class="p-error" *ngIf="submitted && !dialogData.password"> Password is required</small>
+                </div>
+    
+                <div class="field">
+                    <label>Email <span class="span_req">*</span></label>
+                    <input type="email"  pInputText [(ngModel)]="dialogData.email" required maxlength="50" [email]="true"/>
+                    <small class="p-error" *ngIf="submitted && !dialogData.email"> Email is required</small>
+                    <small class="p-error" *ngIf="submitted && emailError"> Email is not Valid</small>
+                </div>
+
+                <div class="field">
+                    <input type="checkbox" [(ngModel)]="dialogData.isAdmin" class="p-checkbox">
+                    <label class="mb-1">&nbsp; Admin </label>	
+                </div>
+
+                <div class="field">
+                    <input type="checkbox" [(ngModel)]="dialogData.isActive" class="p-checkbox">
+                    <label class="mb-1">&nbsp; Active </label>	
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <button pButton icon="pi pi-times" (click)="hideDialog()" label="Cancel" class="p-button-outlined"></button>
+            <button pButton icon="pi pi-check" *ngIf="!isEdit"(click)="addUser_Submit()" label="Add" class="p-button-outlined"></button>
+            <button pButton icon="pi pi-check" *ngIf="isEdit" (click)="updateUser_Submit()" label="Update" class="p-button-outlined"></button>
+        </ng-template>
+    </p-dialog>
+    
+    <p-confirmDialog [style]="{width: '450px'}" #cd>
+        <p-footer>
+            <button class="p-confirm-dialog-reject" type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+            <button class="p-confirm-dialog-accept" type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+        </p-footer>
+    </p-confirmDialog>
+</div>

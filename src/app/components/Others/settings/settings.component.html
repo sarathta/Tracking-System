@@ -1,0 +1,20 @@
+<div class="settings">
+    <div class="grid">
+        <div class="col-12">
+            <div class="card mb-2">
+                <button pButton icon="pi pi-check" label="Schedule Start" class="p-button-success" (click)="scheduleStart()"></button>
+                <button pButton icon="pi pi-times" label="Schedule Stop" class="p-button-secondary p-button ml-3" (click)="scheduleStop()"></button>
+            </div>
+            <div class="card" style="height: 70vh;">
+                <iframe scrolling="yes" width="100%" height="100%" [src]="urlSafe" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <p-confirmDialog [style]="{width: '450px'}" #cd>
+        <p-footer>
+            <button class="p-confirm-dialog-reject" type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+            <button class="p-confirm-dialog-accept" type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+        </p-footer>
+    </p-confirmDialog>
+</div>

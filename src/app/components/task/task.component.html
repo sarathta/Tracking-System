@@ -1,0 +1,239 @@
+<p-toast></p-toast>
+<div class="grid">
+	<div class="col-12">
+		<div class="card mb-0">
+			<p-table [value]="tasksList" dataKey="id" [(selection)]="selectedTask" selectionMode="single" [paginator]="true" [rows]="11" [loading]="loading" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
+				<ng-template pTemplate="caption">
+					<div class="flex justify-content-between flex-column sm:flex-row">
+						<h5>Task Management</h5>
+						<span class="p-buttonset ml-3">
+                            <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" (click)="addDialog()" ></button>
+                            <button pButton pRipple [disabled]="!selectedTask || (selectedTask?.status == taskStatus.Closed)" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button" (click)="editDialog()" ></button>
+                            <button pButton pRipple [disabled]="!selectedTask" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button" (click)="deleteTask()"></button>
+                        </span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="min-width: 15rem">
+							<div class="flex justify-content-between align-items-center">
+								Task Name
+								<p-columnFilter type="text" field="name" display="menu" matchMode="contains" [showMatchModes]="false" [showAddButton]="false"></p-columnFilter>
+							</div>
+						</th>
+                        <th style="min-width: 25rem">
+							<div class="flex justify-content-between align-items-center">
+								Description
+								<p-columnFilter type="text" field="description" display="menu" matchMode="contains" [showMatchModes]="false" [showAddButton]="false"></p-columnFilter>
+							</div>
+						</th>
+						<th style="min-width: 7rem">
+							<div class="flex justify-content-between align-items-center">
+								Type
+								<p-columnFilter field="typeName" matchMode="equals" display="menu">
+									<ng-template pTemplate="filter" let-value let-filter="filterCallback">
+										<p-dropdown [ngModel]="value" [options]="types" (onChange)="filter($event.value)" placeholder="Any" [style]="{'min-width': '12rem'}" >
+											<ng-template let-option pTemplate="item">
+												<span>{{option.code}}</span>
+											</ng-template>
+										</p-dropdown>
+									</ng-template>
+								</p-columnFilter>
+							</div>
+						</th>
+						<th style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+								Category
+								<p-columnFilter type="text" field="categoryName" display="menu" placeholder="Search by name"></p-columnFilter>
+							</div>
+						</th>
+						<th style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+								Responsibility
+								<p-columnFilter type="text" field="responsibilityUser" display="menu" placeholder="Search by name"></p-columnFilter>
+							</div>
+						</th>
+						<th style="min-width: 10rem">
+							Customer
+						</th>
+						<th style="min-width: 7rem">
+							<div class="flex justify-content-between align-items-center">
+								Due Date
+								<!-- <p-columnFilter type="date" field="dueDate" display="menu" placeholder="dd/MM/yyyy"></p-columnFilter> -->
+							</div>
+						</th>
+						<th style="min-width: 7rem">
+								Created On
+						</th>
+						<th style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+								Status
+								<p-columnFilter field="status" matchMode="equals" display="menu">
+									<ng-template pTemplate="filter" let-value let-filter="filterCallback">
+										<p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)" placeholder="Any" [style]="{'min-width': '12rem'}" optionLabel="name" optionValue="id" >
+											<ng-template let-option pTemplate="item">
+												<span [class]="'task-badge status-' + option.name">{{option.name}}</span>
+											</ng-template>
+										</p-dropdown>
+									</ng-template>
+								</p-columnFilter>
+							</div>
+						</th>
+						<th style="min-width: 5rem">
+							View
+						</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-rowData>
+					<tr [pSelectableRow]="rowData">
+						<td>
+							{{rowData.name}}
+						</td>
+                        <td>
+                            {{rowData.description}}
+                        </td>
+						<td>
+						    {{rowData.typeName}}
+						</td>
+						<td>
+							{{rowData.categoryName}}
+						</td>
+						<td>
+							{{rowData.responsibilityUser}}
+						</td>
+						<td>
+							{{rowData.customerName}}
+						</td>
+						<td [ngClass]="{'text-red-500':rowData?.dueDate == formatedDate}" class="font-semibold">
+							{{rowData.dueDate | date:'dd-MM-YYYY'}}
+						</td>
+						<td>
+							{{rowData.createdOn | date:'dd-MM-YYYY'}}
+						</td>
+						<td>
+							<span [class]="'task-badge status-' + (rowData.statusName | lowercase)">{{rowData.statusName}}</span>
+						</td>
+						<td>
+							<button pButton pRipple type="button" icon="pi pi-eye" class="p-button p-component p-button-text p-button-icon-only" (click)="showDialog(rowData.id)"></button>
+						</td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr>
+						<td colspan="10">No tasks found.</td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="loadingbody">
+					<tr>
+						<td colspan="10">Loading tasks data. Please wait.</td>
+					</tr>
+				</ng-template>
+    		</p-table>
+		</div>
+		<p-dialog header="Add Task" [(visible)]="dialogDisplay" [modal]="true" showEffect="fade" [style]="{width: '25vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+			<p-header>
+				<div>
+					<span *ngIf="isAdd">Add Task</span>
+					<span *ngIf="isEdit">Edit Task</span>
+				</div>
+			</p-header>
+			<ng-template pTemplate="content">
+				<div>
+					<div class="field">
+						<label>Name <span class="span_req">*</span></label>
+						<input type="text"  pInputText [(ngModel)]="taskDialogData.name" required maxlength="50" [autofocus]="true" />
+						<small class="p-error" *ngIf="submitted && !taskDialogData.name"> Task name is required</small>
+					</div>
+	
+					<div class="field">
+						<label>Description </label>
+						<textarea rows="3" cols="30" pInputTextarea [(ngModel)]="taskDialogData.description"></textarea>
+					</div>
+	
+					<div class="field">
+						<div class="flex justify-content-between align-items-center pb-1">
+							<label>Type</label>
+						</div>
+						<p-dropdown appendTo="body" [(ngModel)]="taskDialogData.typeId" placeholder="select" (onChange)="onTypeChange(taskDialogData.typeId)" [filter]="true" filterBy="code"  [showClear]="true" [options]="typesList"  [style]="{'width':'100%'}"
+							optionLabel="name" optionValue="id"></p-dropdown>
+					</div>
+					<div class="field">
+						<div class="flex justify-content-between align-items-center pb-1">
+							<label>Category</label>
+						</div>
+						<p-dropdown appendTo="body" [(ngModel)]="taskDialogData.categoryId" [disabled]="!taskDialogData.typeId" [filter]="false" filterBy="name"  [showClear]="true" [options]="typesCategoryList"  [style]="{'width':'100%'}"
+							optionLabel="name" optionValue="id"></p-dropdown>
+					</div>
+	
+					<div class="field">
+						<div class="flex justify-content-between align-items-center pb-1">
+							<label>Responsibility <span class="span_req">*</span></label>
+						</div>
+						<p-dropdown appendTo="body" [(ngModel)]="taskDialogData.responsibility" (onChange)="onChange($event)"  placeholder="Select" [filter]="true" filterBy="userName" [showClear]="true" [options]="usersList"  [style]="{'width':'100%'}" optionLabel="userName" optionValue="id"></p-dropdown>
+						<small class="p-error" *ngIf="submitted && !taskDialogData.responsibility"> select a responsibility user</small>
+					</div>
+	
+					<div class="field">
+						<div class="flex justify-content-between align-items-center pb-1">
+							<label>Other Users</label>
+						</div>
+						<p-multiSelect [options]="userDataList" [(ngModel)]="selectedMulti"  optionLabel="userName"  class="multiselect-custom" display="chip">
+							<ng-template let-users pTemplate="item">
+								<div class="flex align-items-center">
+									<span class="ml-2">{{users.userName}}</span>
+								</div>
+							</ng-template>
+						</p-multiSelect>
+					</div>
+					<div class="field">
+						<div class="flex justify-content-between align-items-center pb-1">
+							<label>Customer</label>
+						</div>
+						<p-dropdown appendTo="body" [(ngModel)]="taskDialogData.customerId" placeholder="Select" [filter]="true" filterBy="userName" [showClear]="true" [options]="customerList"  [style]="{'width':'100%'}" optionLabel="name" optionValue="id"></p-dropdown>
+					</div>
+					<div class="field">
+						<div class="flex justify-content-between align-items-center pb-1">
+							<label>Scope</label>
+						</div>
+						<p-dropdown appendTo="body" [(ngModel)]="taskDialogData.scopeId" placeholder="Select" [filter]="true" filterBy="name" [showClear]="true" [options]="scopeList"  [style]="{'width':'100%'}" optionLabel="name" optionValue="id"></p-dropdown>
+					</div>
+					<div class="field">
+						<div class="flex justify-content-between align-items-center pb-1">
+							<label>Due Date<span class="span_req">*</span></label>
+						</div>
+						<p-calendar [(ngModel)]="taskDialogData.dueDate" [showIcon]="true" [minDate]="tommorrow" appendTo="body" dateFormat="dd/mm/yy"></p-calendar>
+						<small class="p-error" *ngIf="submitted && !taskDialogData.dueDate">Due date is required</small>
+					</div>
+					<div class="field">
+						<label>Alert Before (Days)</label>
+						<p-inputNumber [(ngModel)]="taskDialogData.alertBefore"  mode="decimal" [showButtons]="true" [min]="0" [max]="3"> </p-inputNumber>
+					</div>
+					<div class="field">
+						<input type="checkbox" [disabled]="taskDialogData.alertBefore==0" [(ngModel)]="taskDialogData.isAlertDaily" class="p-checkbox">
+						<label class="mb-1">&nbsp;Daily Alert </label>	
+					</div>
+
+				</div>
+			</ng-template>
+			<ng-template pTemplate="footer">
+				<button pButton icon="pi pi-times" (click)="hideDialog()" label="Cancel" class="p-button-outlined"></button>
+				<button pButton icon="pi pi-check" *ngIf="isAdd" (click)="addTask()" label="Add" class="p-button-outlined"></button>
+				<button pButton icon="pi pi-check" *ngIf="isEdit" (click)="updateTask()" label="Update" class="p-button-outlined"></button>
+			</ng-template>
+		</p-dialog>
+
+		<p-dialog header="" [(visible)]="viewDialog" [modal]="true" showEffect="fade" (onHide)="hideDialog()" [style]="{width: '90vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" >
+			<ng-template pTemplate="content">
+				<app-task-details [inpTaskId]="taskId" (isAnyUpdation)="isDetailUpdation($event)"></app-task-details>
+			</ng-template>
+		</p-dialog>
+
+		<p-confirmDialog [style]="{width: '450px'}" #cd>
+			<p-footer>
+				<button class="p-confirm-dialog-reject" type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+				<button class="p-confirm-dialog-accept" type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+			</p-footer>
+		</p-confirmDialog>
+
+	</div>
+</div>

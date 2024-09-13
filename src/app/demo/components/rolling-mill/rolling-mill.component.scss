@@ -1,0 +1,353 @@
+.rollingMill {
+  .stands {
+    width: 72vh;
+  }
+
+  #container {
+    position: relative;
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    background: #646764;
+    display: inline-block;
+    top: -21px;
+    left: -16px;
+  }
+
+  #container1 {
+    position: relative;
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    background: #646764;
+    display: inline-block;
+    top: -20px;
+    left: -16px;
+  }
+
+  .circle1 {
+    position: relative;
+    top: 0px;
+    width: 0px;
+    height: 0px;
+    border-right: 24px solid transparent;
+    border-top: 22px solid #6b6e6e;
+    border-left: 20px solid transparent;
+    border-bottom: 21px solid transparent;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    -moz-transform: rotate(320deg);
+    -webkit-transform: rotate(320deg);
+    -o-transform: rotate(320deg);
+    -ms-transform: rotate(320deg);
+    animation: spin1 0.5s infinite linear;
+    -webkit-animation: spin1 0.5s infinite linear;
+  }
+
+  .circle2 {
+    position: absolute;
+    top: 0px;
+    width: 0px;
+    height: 0px;
+    border-right: 25px solid transparent;
+    border-top: 25px solid #228b22;
+    border-left: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    -moz-transform: rotate(80deg);
+    -webkit-transform: rotate(80deg);
+    -o-transform: rotate(80deg);
+    -ms-transform: rotate(80deg);
+    animation: spin2 0.5s infinite linear;
+    -webkit-animation: spin2 0.5s infinite linear;
+  }
+
+  .circle3 {
+    position: absolute;
+    top: 0px;
+    width: 0px;
+    height: 0px;
+    border-right: 25px solid transparent;
+    border-top: 25px solid #228b22;
+    border-left: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    -moz-transform: rotate(200deg);
+    -webkit-transform: rotate(200deg);
+    -o-transform: rotate(200deg);
+    -ms-transform: rotate(200deg);
+    animation: spin3 0.5s infinite linear;
+    -webkit-animation: spin3 0.5s infinite linear;
+  }
+
+  /* animations */
+
+  @keyframes spin1 {
+    0% {
+      -moz-transform: rotate(320deg);
+      -webkit-transform: rotate(320deg);
+      -o-transform: rotate(320deg);
+      -ms-transform: rotate(320deg);
+    }
+
+    100% {
+      -moz-transform: rotate(680deg);
+      -webkit-transform: rotate(680deg);
+      -o-transform: rotate(680deg);
+      -ms-transform: rotate(680deg);
+    }
+  }
+
+  @-webkit-keyframes spin1 {
+    0% {
+      -moz-transform: rotate(320deg);
+      -webkit-transform: rotate(320deg);
+      -o-transform: rotate(320deg);
+      -ms-transform: rotate(320deg);
+    }
+
+    100% {
+      -moz-transform: rotate(680deg);
+      -webkit-transform: rotate(680deg);
+      -o-transform: rotate(680deg);
+      -ms-transform: rotate(680deg);
+    }
+  }
+
+  @keyframes spin2 {
+    0% {
+      -moz-transform: rotate(80deg);
+      -webkit-transform: rotate(80deg);
+      -o-transform: rotate(80deg);
+      -ms-transform: rotate(80deg);
+    }
+
+    100% {
+      -moz-transform: rotate(440deg);
+      -webkit-transform: rotate(440deg);
+      -o-transform: rotate(440deg);
+      -ms-transform: rotate(440deg);
+    }
+  }
+
+  @-webkit-keyframes spin2 {
+    0% {
+      -moz-transform: rotate(80deg);
+      -webkit-transform: rotate(80deg);
+      -o-transform: rotate(80deg);
+      -ms-transform: rotate(80deg);
+    }
+
+    100% {
+      -moz-transform: rotate(440deg);
+      -webkit-transform: rotate(440deg);
+      -o-transform: rotate(440deg);
+      -ms-transform: rotate(440deg);
+    }
+  }
+
+  @keyframes spin3 {
+    0% {
+      -moz-transform: rotate(200deg);
+      -webkit-transform: rotate(200deg);
+      -o-transform: rotate(200deg);
+      -ms-transform: rotate(200deg);
+    }
+
+    100% {
+      -moz-transform: rotate(560deg);
+      -webkit-transform: rotate(560deg);
+      -o-transform: rotate(560deg);
+      -ms-transform: rotate(560deg);
+    }
+  }
+
+  @-webkit-keyframes spin3 {
+    0% {
+      -moz-transform: rotate(200deg);
+      -webkit-transform: rotate(200deg);
+      -o-transform: rotate(200deg);
+      -ms-transform: rotate(200deg);
+    }
+
+    100% {
+      -moz-transform: rotate(560deg);
+      -webkit-transform: rotate(560deg);
+      -o-transform: rotate(560deg);
+      -ms-transform: rotate(560deg);
+    }
+  }
+
+  .card {
+    // margin-right: 20px;
+    height: 115px;
+    width: 69px;
+    text-align: center;
+    align-content: center;
+    margin-top: 15px;
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+  }
+
+  .cardLabel {
+
+    .p-disabled,
+    .p-component:disabled {
+      opacity: 1 !important;
+    }
+
+    margin-right: 20px;
+    height: 210px;
+    width: 75px;
+    text-align: center;
+    align-content: center;
+
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+  }
+
+  .cardLabelName {
+
+    .p-disabled,
+    .p-component:disabled {
+      opacity: 1 !important;
+    }
+
+    margin-right: 10px;
+    height: 210px;
+    margin-top: 143px;
+    width: 85px;
+    text-align: center;
+    align-content: center;
+
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+  }
+
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  /* Add some padding inside the card container */
+  .container {
+    padding: 2px 16px;
+  }
+
+  .dot {
+    height: 40px;
+    width: 40px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .line {
+    display: block;
+    height: 1px;
+    border: 0;
+    /* border-top: 12px solid #ccc; */
+    margin-top: -3px;
+    /* margin-bottom: 5px; */
+    /* padding: 0; */
+    width: 120px;
+    position: relative;
+    top: -21px;
+    left: -16px;
+    animation: _ngcontent-hir-c106_fadeAnim 3s 100;
+    animation-direction: alternate;
+  }
+
+  .offlineBG {
+    background: grey !important;
+  }
+
+  .onlineBilletBG {
+    border-top: 12px solid #f7be0c;
+  }
+
+  .onlineBilletTBG {
+    border-top: 12px solid transparent;
+  }
+
+  @keyframes fadeAnim {
+    0% {
+      background: red;
+      left: -100px;
+      top: 0px;
+    }
+
+    25% {
+      background: yellow;
+      left: 0px;
+      top: 0px;
+    }
+
+    0% {
+      background: blue;
+      left: -100px;
+      top: 0px;
+    }
+
+    25% {
+      background: green;
+      left: 0px;
+      top: 0px;
+    }
+
+    0% {
+      background: red;
+      left: -100px;
+      top: 0px;
+    }
+
+    25% {
+      background: yellow;
+      left: 0px;
+      top: 0px;
+    }
+
+    0% {
+      background: red;
+      left: -100px;
+      top: 0px;
+    }
+
+    25% {
+      background: yellow;
+      left: 0px;
+      top: 0px;
+    }
+
+    0% {
+      background: red;
+      left: -100px;
+      top: 0px;
+    }
+
+    25% {
+      background: yellow;
+      left: 0px;
+      top: 0px;
+    }
+
+    0% {
+      background: red;
+      left: -100px;
+      top: 0px;
+    }
+
+    25% {
+      background: yellow;
+      left: 0px;
+      top: 0px;
+    }
+
+    // 100% {background: red; left: 0px; top: 0px;}
+  }
+}

@@ -1,0 +1,200 @@
+<div class="BOF1">
+    <p-dialog header="BOF1" [(visible)]="dialogBof1" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+        <p-header>
+            <div>
+                <span>BOF-1</span>
+            </div>
+        </p-header>
+        <ng-template pTemplate="content">
+            <div >
+                <p-table [value]="[{}]" dataKey="id"  selectionMode="single" [paginator]="false" [rows]="11" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
+                    <!-- <ng-template pTemplate="caption">
+                        <div class="flex justify-content-between flex-column sm:flex-row">
+                            <h5>Flux Additions</h5>
+                            <span class="p-buttonset ml-3">
+                                <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" (click)="addDialog()" ></button>
+                                <button pButton pRipple [disabled]="!selectedTask || (selectedTask?.status == taskStatus.Closed)" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button" (click)="editDialog()" ></button>
+                                <button pButton pRipple [disabled]="!selectedTask" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button" (click)="deleteTask()"></button>
+                            </span>
+                        </div>
+                    </ng-template> -->
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="min-width: 10rem" colspan="2">
+                                <div class="flex justify-content-between align-items-center">
+                                    Flux Additions
+                                </div>
+                            </th>
+                            <th style="min-width: 10rem" colspan="2">
+                                <div class="flex justify-content-between align-items-center">
+                                    Ferro-alloys
+                                </div>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr>
+                            <td>Lime Stone</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">5.0</label>
+                            </td>
+                            <td>AlCr</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">0.8</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Dolomite</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">2.5</label>
+                            </td>
+                            <td>SiMn</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">0.5</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Coal</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">0.3</label>
+                            </td>
+                            <td>FeSi65</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">3</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Coke</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">0.1</label>
+                            </td>
+                            <td>FeMn78</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">7</label>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="4">No Data found.</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="loadingbody">
+                        <tr>
+                            <td colspan="4">Loading Bof-1 data. Please wait.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+            <div class="mt-2">
+                <p-table [value]="[{}]" dataKey="id"  selectionMode="single" [paginator]="false" [rows]="11" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="min-width: 10rem" colspan="2">
+                                <div class="flex justify-content-between align-items-center">
+                                    Process Stats
+                                </div>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr>
+                            <td>Heat No</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">232141</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Steel Grade</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">C45</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Start Time</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">11/09/24 08:01</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Finish Time</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">11/09/24 08:02</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ladle No</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">30</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ladle Weight</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">149</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Oxygen Flow</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">800</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Refactory endurance</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">0</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Steel analysis</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Oxydation</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">77.6</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Step</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Events</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>In Process</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Reason of idle</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold"></label>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="4">No Data found.</td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="loadingbody">
+                        <tr>
+                            <td colspan="4">Loading Bof-1 data. Please wait.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </ng-template>
+    </p-dialog>
+</div>

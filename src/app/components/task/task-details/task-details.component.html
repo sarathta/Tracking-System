@@ -1,0 +1,210 @@
+<div class="taskDetails">
+    <div class="grid">
+        <div class="col-12">
+            <div class="card">
+                <div class="invoice-body">
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="panel-heading flex justify-content-between">
+                                <h3 class="panel-title">Task Details </h3>
+                                <div>
+                                    <button pButton pRipple [disabled]="isEdit || !isEditShow" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button" (click)="editForm()"></button>
+                                </div>
+                            </div>
+                            <hr style="margin:3px 0 5px" />
+                            <div class="panel-body md:flex">
+                                <div class="md:col-4 sm:col-12">
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-4 md:mb-0">Name :</label>
+                                        <div class="col-12 md:col-8">
+                                            <b> {{taskDetails?.name}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-4 md:mb-0">Description :</label>
+                                        <div class="col-12 md:col-8">
+                                            <b> {{taskDetails?.description}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-4 md:mb-0">Type :</label>
+                                        <div class="col-12 md:col-8">
+                                            <b> {{taskDetails?.typeName}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-4 md:mb-0">Category :</label>
+                                        <div class="col-12 md:col-8">
+                                            <b> {{taskDetails?.categoryName}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-4 md:mb-0">Scope :</label>
+                                        <div class="col-12 md:col-8">
+                                            <b> {{taskDetails?.scopeName}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-4 md:mb-0">Due Date :</label>
+                                        <div class="col-12 md:col-8">
+                                            <b> {{taskDetails?.dueDate | date:"dd-MM-yyyy"}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-4 md:mb-0">Responsibility :</label>
+                                        <div class="col-12 md:col-8">
+                                            <b> {{taskDetails?.responsibilityUser}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-4 md:mb-0">Status :</label>
+                                        <div class="col-12 md:col-8">
+                                            <b> <span [class]="'task-badge status-' + (taskDetails?.statusName | lowercase)">{{taskDetails?.statusName}}</span></b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="md:col-4 sm:col-12">
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-6 md:mb-0">Customer :</label>
+                                        <div class="col-12 md:col-6">
+                                            <b> {{taskDetails?.customerName}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-6 md:mb-0">Created By :</label>
+                                        <div class="col-12 md:col-6">
+                                            <b> {{taskDetails?.createdUser}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-6 md:mb-0">Alert Scheduled Before :</label>
+                                        <div class="col-12 md:col-6">
+                                            <b> {{taskDetails?.alertBefore ?? 0 }} Days</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-6 md:mb-0">Daily Alert :</label>
+                                        <div class="col-12 md:col-6">
+                                            <b> {{taskDetails?.isAlertDaily ? 'Yes' : 'No'}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-6 md:mb-0">Other Responsible Users :</label>
+                                        <div class="col-12 md:col-6">
+                                            <b> {{taskDetails?.taskUsersName}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-6 md:mb-0">Total Reminded :</label>
+                                        <div class="col-12 md:col-6">
+                                            <b> {{taskDetails?.reminderCount}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-6 md:mb-0">Last Remind Count :</label>
+                                        <div class="col-12 md:col-6">
+                                            <b> {{taskDetails?.lastReminderDate | date:"dd-MM-yyyy HH:mm"}}</b>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-6 md:mb-0">Last Updated On :</label>
+                                        <div class="col-12 md:col-6">
+                                            <b> {{taskDetails?.lastUpdatedOn | date:"dd-MM-yyyy HH:mm"}}</b>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="md:col-4 sm:col-12">
+                                    <div class="field grid" *ngFor="let item of taskRevisionList; index as i">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-4 md:mb-0">Revision {{i+1}} :</label>
+                                        <div class="col-12 md:col-8 div_rev">
+                                            <b class="mr-3"> {{item?.revisionDate | date:"dd-MM-yyyy"}}</b>
+                                            <i *ngIf="isEdit" class="pi pi-times text-red-500 ibtn_Delete" pTooltip="Delete" tooltipPosition="right" (click)="removeRevisionDate(item.id)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 pt-0">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <span>Remarks</span>
+                                        <hr style="margin:3px 0 5px" /> 
+                                        <strong>{{taskDetails?.remarks}}</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-content-center">
+                                <div *ngIf="isEdit" class="card md:w-5 sm:w-12 pb-1">
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-3 md:mb-0"></label>
+                                        <div class="col-12 md:col-9">
+                                            <input type="checkbox" class="p-checkbox" [(ngModel)]="updateData.isCompleted">
+                                            <label class="pl-3 mb-1"> Mark As Completed </label>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="name3" class="col-12 mb-2 md:col-3 md:mb-0">Due Date</label>
+                                        <div class="col-12 md:col-9">
+                                            <p-calendar [(ngModel)]="updateData.dueDate" [showIcon]="true" [minDate]="today" appendTo="body" dateFormat="dd/mm/yy"></p-calendar>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="email3" class="col-12 mb-2 md:col-3 md:mb-0">Revision Date</label>
+                                        <div class="col-12 md:col-9">
+                                            <p-calendar [(ngModel)]="updateData.revisionDate" [showIcon]="true" [maxDate]="today" appendTo="body" dateFormat="dd/mm/yy"></p-calendar>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <label htmlFor="email3" class="col-12 mb-2 md:col-3 md:mb-0">Remarks</label>
+                                        <div class="col-12 md:col-9">
+                                            <textarea rows="3" cols="40" placeholder="Remarks *" [(ngModel)]="updateData.remarks" pInputTextarea></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="field grid">
+                                        <div class="flex col-12 md:col-12 justify-content-center">
+                                            <button pButton icon="pi pi-times" label="Cancel" class="p-button-secondary p-button" (click)="cancelEdit()"></button>
+                                            <button pButton icon="pi pi-check" label="Update" class="p-button-success ml-3" (click)="updateSubmit()"></button>
+                                        </div>
+                                    </div>
+    
+                                    <!-- <div class="formgroup-inline align-items-center justify-content-center">
+                                        <div class="field">
+                                            <p-calendar [(ngModel)]="updateData.revisionDate" [showIcon]="true" appendTo="body" dateFormat="dd/mm/yy"></p-calendar>
+                                        </div>
+                                        <div class="field">
+                                            <input type="checkbox" class="p-checkbox" [(ngModel)]="updateData.isCompleted">
+                                            <label class="pl-3 mb-1"> Mark As Completed </label>
+                                            <br>
+                                            <p-calendar [(ngModel)]="updateData.dueDate" [showIcon]="true" [minDate]="today" appendTo="body" dateFormat="dd/mm/yy"></p-calendar>
+                                            <br>
+                                            <p-calendar [(ngModel)]="updateData.revisionDate" [showIcon]="true" appendTo="body" dateFormat="dd/mm/yy"></p-calendar>
+                                            <br>
+                                            <textarea rows="3" cols="40" placeholder="Remarks *" [(ngModel)]="updateData.remarks" pInputTextarea></textarea>
+                                            <br>
+                                            <small class="p-error" *ngIf="submitted && !updateData.remarks">* Remarks is Required</small>
+                                            <br>
+                                            <div class="flex">
+                                                <button pButton icon="pi pi-times" label="Cancel" class="p-button-secondary p-button" (click)="cancelEdit()"></button>
+                                                <button pButton icon="pi pi-check" label="Update" class="p-button-success ml-3" (click)="updateSubmit()"></button>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <p-confirmDialog [style]="{width: '450px'}" #cd>
+        <p-footer>
+            <button class="p-confirm-dialog-reject" type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+            <button class="p-confirm-dialog-accept" type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+        </p-footer>
+    </p-confirmDialog>
+</div>

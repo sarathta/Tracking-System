@@ -1,0 +1,46 @@
+$body_bg_color: #ffffff;
+$table_headerColor: #e9eff5;
+
+.span_req {
+    color: red;
+}
+
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+    background: #bde3ff !important;
+    color: #000000;
+}
+
+.p-datatable .p-datatable-header {
+    color: black !important;
+    background: $body_bg_color !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    color: black !important;
+    background: $table_headerColor !important;
+}
+
+.mailError{
+    .dynamic_Table{
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            font-size: 14px;
+            width: 100%;
+        }
+    
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    
+        .status-escalated {
+            background: #ECCFFF;
+            color: #694382;
+            padding: 3px;
+            border-radius: 3px;
+        }
+    }
+}
