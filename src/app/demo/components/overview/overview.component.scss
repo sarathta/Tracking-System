@@ -55,18 +55,16 @@
 .cs{
     width: 14vh;
     height: 18vh;
-    margin-right: 15vh;
 }
 
 .il{
     width: 17vh;
-    height: 18vh;
+    height: 9vh;
 }
 
 .bundlingArea{
     width: 15vh;
     height: 14vh;
-    margin-left: 72vh;
     margin-top: 2vh;
     border: 1px solid rgb(104, 103, 103);
     .bundle{
@@ -74,6 +72,13 @@
         margin: 4px;
         background-color: gray;
     }
+}
+
+.row2{
+    margin-top: 8vh;
+}
+.row3{
+    margin-top: 8vh;
 }
 
 

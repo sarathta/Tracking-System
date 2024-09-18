@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
@@ -8,6 +9,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 export class RollingMillComponent implements OnInit,OnDestroy{
   standDialog: boolean = false;
   dialogData:any
+  standData: any;
   stands: any[]=[
     {
       id:1,
@@ -103,11 +105,25 @@ export class RollingMillComponent implements OnInit,OnDestroy{
   ];
   timeInterval: any;
 
-
+ constructor(
+  private http : HttpClient
+ ){}
   ngOnInit(): void {
     //  this.startInterval();
+    this.getCurrent();
   }
 
+  getCurrent(){
+    this.timeInterval = setInterval(() => {
+      this.http.get('http://127.0.0.1:8000/get-status').subscribe((res=>{
+        this.standData= res;
+        console.log(this.standData);
+        
+      }));
+
+         
+    }, 2000);
+  }
   // startInterval() {
   //   if (this.timeInterval) {
   //     clearInterval(this.timeInterval);

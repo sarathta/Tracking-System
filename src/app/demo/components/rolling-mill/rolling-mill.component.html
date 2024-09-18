@@ -1,7 +1,7 @@
 <div class="rollingMill">
     <div class="stands flex justify-content-between" >
-        <div  *ngFor="let item of stands">
-            <div class="card" (click)="showStandData(item)" pTooltip="{{item.name}}">
+        <div  *ngFor="let item of standData">
+            <div class="card" (click)="showStandData(item)" pTooltip="{{item.name}}" (click)="showStandData(item)">
                 <div id="container1">
                     <div class="circle1"  ></div>
                     <!--<div *ngIf="stand.status && !stand.idle" class="circle2">
@@ -9,7 +9,7 @@
                     <div *ngIf="stand.status && !stand.idle" class="circle3">
                     </div> -->
                 </div> 
-                <div class="line" [ngClass]="item?.billetStatus ? 'onlineBilletBG':'onlineBilletTBG'"></div>
+                <div class="line" [ngClass]="item.billetStatus ? 'onlineBilletBG':'onlineBilletTBG'" pTooltip="'{{item.billetId}} '"><span class="text-sm">{{item.billetId}}</span></div>
          
                 <div id="container">
                     <div class="circle1"></div>
@@ -18,6 +18,21 @@
                     <div *ngIf="stand.status && !stand.idle" class="circle3">
                     </div> -->
                 </div>
+            </div>
+            <!-- <div class="mt-1 text-sm">
+                <span>Id : </span><span class=" font-medium"> {{item.billetId}}  </span>
+            </div> -->
+            <div class="mt-1 text-sm">
+                <span>Current : </span><span class=" font-medium"> {{item.current}}  </span>
+            </div>
+            <div class="mt-1 text-sm">
+                <span>Tension : </span><span class=" font-medium"> {{item.tension}} </span>
+            </div>
+            <div class="mt-1 text-sm">
+                <span>Rfactor : </span><span class=" font-medium"> {{item.rfactor}} </span>
+            </div>
+            <div class="mt-1 text-sm">
+                <span>Speed : </span><span class=" font-medium"> {{item.speedmps}} </span>
             </div>
         </div>       
     </div>
@@ -50,43 +65,43 @@
                     <tr>
                         <td>Billet Id</td>
                         <td class="px-2 py-1">
-                            <label class="font-semibold">13234</label>
+                            <label class="font-semibold">{{dialogData?.billetId}}</label>
                         </td>
                     </tr>
                     <tr>
-                        <td>RollDia</td>
+                        <td>Tension</td>
                         <td class="px-2 py-1">
-                            <label class="font-semibold">{{dialogData?.dia}}</label>
+                            <label class="font-semibold">{{dialogData?.tension}}</label>
                         </td>
                     </tr>
                     <tr>
                         <td>Start Time</td>
                         <td class="px-2 py-1">
-                            <label class="font-semibold">11/09/24 08:30</label>
+                            <label class="font-semibold">{{dialogData?.time | date: 'dd/MM/YY HH:MM'}}</label>
                         </td>
                     </tr>
                     <tr>
                         <td>Finish Time</td>
                         <td class="px-2 py-1">
-                            <label class="font-semibold">11/09/24 08:45</label>
+                            <label class="font-semibold">{{dialogData?.time | date: 'dd/MM/YY HH:MM'}}</label>
                         </td>
                     </tr>
                     <tr>
                         <td>R-factor</td>
                         <td class="px-2 py-1">
-                            <label class="font-semibold">{{dialogData?.rFactor}}</label>
+                            <label class="font-semibold">{{dialogData?.rfactor}}</label>
                         </td>
                     </tr>
                     <tr>
                         <td>Speed</td>
                         <td class="px-2 py-1">
-                            <label class="font-semibold">{{dialogData?.speed}}</label>
+                            <label class="font-semibold">{{dialogData?.speedmps}}</label>
                         </td>
                     </tr>
                     <tr>
-                        <td>RPM</td>
+                        <td>Current</td>
                         <td class="px-2 py-1">
-                            <label class="font-semibold">{{dialogData?.dia}}</label>
+                            <label class="font-semibold">{{dialogData?.current}}</label>
                         </td>
                     </tr>
                 </ng-template>
