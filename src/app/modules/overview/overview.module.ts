@@ -12,6 +12,7 @@ import { OverviewComponent } from 'src/app/demo/components/overview/overview.com
 import { OverviewRoutingModule } from './overview-routing.module';
 import { OverviewdialogModule } from '../overviewdialog/overviewdialog.module';
 import { RollingMillComponent } from 'src/app/demo/components/rolling-mill/rolling-mill.component';
+import { ApplicationPipesModule } from '../shared/application-pipes.module';
 
 
 
@@ -31,7 +32,8 @@ import { RollingMillComponent } from 'src/app/demo/components/rolling-mill/rolli
     StyleClassModule,
     PanelMenuModule,
     OverviewRoutingModule,
-    OverviewdialogModule
+    OverviewdialogModule,
+    ApplicationPipesModule
   ]
 })
 export class OverviewModule { }

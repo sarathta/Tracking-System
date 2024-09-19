@@ -21,43 +21,43 @@
                         <tr>
                             <td>Heat No Seq</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">34</label>
+                                <label class="font-semibold">{{ccmData.sequenceNo}}</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Heat No</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">232141</label>
+                                <label class="font-semibold">{{ccmData.HeatId}}</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Steel Grade</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">C45</label>
+                                <label class="font-semibold">{{ccmData.sequenceNo}}</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Process Start</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold"> 11/09/24 08:50 </label>
+                                <label class="font-semibold">{{ccmData.Ladle_Opening_Time | date: 'dd/MM/YY HH:MM'}}</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Finish Time</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold"> 11/09/24 09:00 </label>
+                                <label class="font-semibold">{{ccmData.Ladle_Close_Time | date: 'dd/MM/YY HH:MM'}}</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Strands opr</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">2</label>
+                                <label class="font-semibold">{{ccmData.StrandSpeed  | numberFormat: 2}}</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Steel Weight in Tundish</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">22.8</label>
+                                <label class="font-semibold">{{ccmData.TD_AT_LADLE_OPEN_WGT  | numberFormat: 2}}</label>
                             </td>
                         </tr>
                     </ng-template>

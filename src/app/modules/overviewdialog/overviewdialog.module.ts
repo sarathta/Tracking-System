@@ -10,6 +10,7 @@ import { Bof2DialogComponent } from 'src/app/demo/components/dialogs/bof2-dialog
 import { LaddleFurnaceDialogComponent } from 'src/app/demo/components/dialogs/laddle-furnace-dialog/laddle-furnace-dialog.component';
 import { VaccumDegassingDialogComponent } from 'src/app/demo/components/dialogs/vaccum-degassing-dialog/vaccum-degassing-dialog.component';
 import { ContinousCasterDialogComponent } from 'src/app/demo/components/dialogs/continous-caster-dialog/continous-caster-dialog.component';
+import { ApplicationPipesModule } from '../shared/application-pipes.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ContinousCasterDialogComponent } from 'src/app/demo/components/dialogs/
     FormsModule,
     TableModule,
     ButtonModule,
-    StyleClassModule
+    StyleClassModule,
+    ApplicationPipesModule
   ],
   exports: [
     Bof1DialogComponent,

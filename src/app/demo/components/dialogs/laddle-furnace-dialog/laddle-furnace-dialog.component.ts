@@ -15,6 +15,13 @@ export class LaddleFurnaceDialogComponent {
     }
   }
 
+  @Input() set inpLFData(data: number) {
+    if (data) {
+      this.lfData = data;
+    }
+  }
+
+  lfData: any;
   dialogLF: boolean= false;
 
   constructor(){}

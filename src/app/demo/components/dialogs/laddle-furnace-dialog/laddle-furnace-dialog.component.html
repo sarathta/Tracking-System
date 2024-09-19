@@ -23,25 +23,25 @@
                                 <tr>
                                     <td>AlCr</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">110</label>
+                                        <label class="font-semibold">{{lfData?.Al_WireAddition}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>SiMn</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">100</label>
+                                        <label class="font-semibold">{{lfData?.FeSiMn_Addition}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>FeSi65</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">113</label>
+                                        <label class="font-semibold">{{lfData?.FeSi_Addition}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>FeMn78</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">166</label>
+                                        <label class="font-semibold">{{lfData?.FeMn_Total}}</label>
                                     </td>
                                 </tr>
                             </ng-template>
@@ -72,43 +72,43 @@
                                 <tr>
                                     <td>Heat No</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">232141</label>
+                                        <label class="font-semibold">{{lfData.HeatId}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Ladle No</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">30</label>
+                                        <label class="font-semibold">{{lfData.HeatIdq}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Start Time</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">11/09/24 08:04</label>
+                                        <label class="font-semibold">{{lfData.HeatStartTime | date: 'dd/MM/YY HH:MM'}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Finish Time</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">11/09/24 08:10</label>
+                                        <label class="font-semibold">{{lfData.HeatEndTime | date: 'dd/MM/YY HH:MM'}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Slag Height</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">100</label>
+                                        <label class="font-semibold">{{lfData.FinalSlagThickness | numberFormat: 3}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Events</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold"></label>
+                                        <label class="font-semibold">{{lfData.HeatIdq}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>In Process</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">True</label>
+                                        <label class="font-semibold">{{lfData.HeatIdq}}</label>
                                     </td>
                                 </tr>
                             </ng-template>
@@ -131,7 +131,7 @@
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th style="min-width: 10rem" rowspan="2">
-                                        232141
+                                        {{lfData.HeatId}}
                                     </th>
                                     <th style="min-width: 10rem" colspan="2">
                                            Steel Analysis                                    
@@ -150,64 +150,64 @@
                                 <tr>
                                     <td>C</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.156</label>
+                                        <label class="font-semibold">{{lfData.C_Addition}}</label>
                                     </td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.178</label>
+                                        <label class="font-semibold">{{lfData.C_WireAddition}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Mn</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.64</label>
+                                        <label class="font-semibold">{{lfData.HeatId1}}</label>
                                     </td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.752</label>
+                                        <label class="font-semibold">{{lfData.HeatId1}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Si</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.119</label>
+                                        <label class="font-semibold">0.119 {{lfData.HeatIdq}}</label>
                                     </td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.169</label>
+                                        <label class="font-semibold">0.169 {{lfData.HeatIdw}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>S</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.016</label>
+                                        <label class="font-semibold">0.016 {{lfData.HeatIde}}</label>
                                     </td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.019</label>
+                                        <label class="font-semibold">0.019 {{lfData.HeatIde}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>P</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.015</label>
+                                        <label class="font-semibold">0.015 {{lfData.HeatIde}}</label>
                                     </td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.016</label>
+                                        <label class="font-semibold">0.016 {{lfData.HeatIde}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Ai</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.0012</label>
+                                        <label class="font-semibold">0.0012 {{lfData.HeatIde}}</label>
                                     </td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.0023</label>
+                                        <label class="font-semibold">0.0023 {{lfData.HeatIde}}</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>O2 ppm</td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.21</label>
+                                        <label class="font-semibold">0.21 {{lfData.HeatIde}}</label>
                                     </td>
                                     <td class="px-2 py-1">
-                                        <label class="font-semibold">0.22</label>
+                                        <label class="font-semibold">0.22 {{lfData.HeatIde}}</label>
                                     </td>
                                 </tr>
                             </ng-template>

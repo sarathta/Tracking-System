@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
@@ -15,7 +16,13 @@ showbof2: number = 0;
 showLF: number = 0;
 showVD: number = 0;
 showCC: number = 0;
-constructor(){}
+rfData: any;
+lfData: any;
+ccmData: any;
+
+constructor(
+  private http : HttpClient
+ ){}
 
 ngOnInit(): void {
    this.startInterval();
@@ -29,6 +36,9 @@ startInterval() {
   }
   let i=0,j=1,c=1;
   this.timeInterval = setInterval(() => {
+    this.getLfData();
+    this.getCcmata();
+    this.getReheatingFurnaceData();
     this.billets.push({id: i});
     this.bundles.push({id: c});
     c++;
@@ -49,8 +59,29 @@ startInterval() {
       this.bars=[];
       j=1;
     } 
-  }, 1000);
+  }, 2000);
 }
+
+  getReheatingFurnaceData(){
+    this.http.get('http://127.0.0.1:8000/po').subscribe((res=>{
+      this.rfData= res;
+      console.log(this.rfData);      
+    }));
+  }
+
+  getLfData(){
+    this.http.get('http://127.0.0.1:8000/lf').subscribe((res=>{
+      this.lfData= res;
+      console.log(this.lfData);      
+    }));
+  }
+  
+  getCcmata(){
+    this.http.get('http://127.0.0.1:8000/ccm').subscribe((res=>{
+      this.ccmData= res;
+      console.log(this.ccmData);      
+    }));
+  }
 
 
   ngOnDestroy() {

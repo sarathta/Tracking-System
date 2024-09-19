@@ -40,13 +40,13 @@
                     <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="LF()"></button>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Heat Id : </span><span class=" font-medium"> 232141 </span>
+                    <span>Heat Id : </span><span class=" font-medium"> {{lfData?.HeatId}} </span>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Start Time : </span><span class=" font-medium"> 11/09/24 08:04 </span>
+                    <span>Start Time : </span><span class=" font-medium"> {{lfData?.HeatStartTime  | date: 'dd/MM/YY HH:MM'}} </span>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Finish Time : </span><span class=" font-medium"> 11/09/24 08:10</span>
+                    <span>Finish Time : </span><span class=" font-medium"> {{lfData?.HeatEndTime  | date: 'dd/MM/YY HH:MM'}}</span>
                 </div>
             </div>   
             <div class="vd">
@@ -72,13 +72,13 @@
                     <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="CC()"></button>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Heat Id : </span><span class=" font-medium"> 232141 </span>
+                    <span>Heat Id : </span><span class=" font-medium"> {{ccmData?.HeatId}} </span>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Speed : </span><span class=" font-medium"> 100 m/min </span>
+                    <span>Speed : </span><span class=" font-medium"> {{ccmData?.StrandSpeed | numberFormat: 1}} m/min </span>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Finish Time : </span><span class=" font-medium"> 11/09/24 09:00 </span>
+                    <span>Finish Time : </span><span class=" font-medium"> {{ccmData?.Ladle_Close_Time | date: 'dd/MM/YY HH:MM'}}</span>
                 </div>
             </div>     
             <div class="billetyard mt-5">
@@ -98,19 +98,22 @@
                     <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Billet Charging Seq : </span><span class=" font-medium"> 32</span>
+                    <span>Billet Charging Seq : </span><span class=" font-medium">{{rfData?.SequenceNumber}}</span>
+                </div>
+                <!-- <div class="mt-1 text-sm">
+                    <span>Billet Id : </span><span class=" font-medium"> {{rfData?.SequenceNumber}} </span>
+                </div> -->
+                <div class="mt-1 text-sm">
+                    <span>Heat No : </span><span class=" font-medium"> {{rfData?.HeatNo}}</span>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Billet Id : </span><span class=" font-medium"> 23202924 </span>
+                    <span>Steel Grade : </span><span class=" font-medium"> {{rfData?.SteelGradeId}}</span>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Steel Grade : </span><span class=" font-medium"> C45</span>
+                    <span>Exit Temperature : </span><span class=" font-medium"> {{rfData?.TempBFRColdShear | numberFormat: 1}}</span>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Exit Temperature : </span><span class=" font-medium"> 1000 °C</span>
-                </div>
-                <div class="mt-1 text-sm">
-                    <span>Billet Weight : </span><span class=" font-medium"> 80</span>
+                    <span>Billet Weight : </span><span class=" font-medium"> {{rfData?.Tonnage | numberFormat: 1}}</span>
                 </div>
             </div> 
            <div>
@@ -180,7 +183,7 @@
     </div>
     <app-bof1-dialog [inpBof1Dialog]="showbof1"></app-bof1-dialog>
     <app-bof2-dialog [inpBof2Dialog]="showbof2"></app-bof2-dialog>
-    <app-laddle-furnace-dialog [inpLFDialog]="showLF"></app-laddle-furnace-dialog>
+    <app-laddle-furnace-dialog [inpLFDialog]="showLF" [inpLFData]="lfData"></app-laddle-furnace-dialog>
     <app-vaccum-degassing-dialog [inpVDDialog]="showVD"></app-vaccum-degassing-dialog>
-    <app-continous-caster-dialog [inpCCDialog]="showCC"></app-continous-caster-dialog>
+    <app-continous-caster-dialog [inpCCDialog]="showCC" [inpCCMData]="ccmData"></app-continous-caster-dialog>
 </div>

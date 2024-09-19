@@ -15,6 +15,13 @@ export class ContinousCasterDialogComponent {
     }
   }
 
+  @Input() set inpCCMData(data: number) {
+    if (data) {
+     this.ccmData = data;
+    }
+  }
+
+  ccmData: any;
   dialogCC: boolean= false;
 
   constructor(){}
