@@ -95,7 +95,7 @@
                 <img src="../../../../assets/Images/Dashboard/rf.png" alt="" style="width: 8vh;height: 12vh;margin-left: 4vh;">
                 <div>
                     <span class=" font-medium">Reheating Furnace</span>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="showrfDialog()"></button>
                 </div>
                 <div class="mt-1 text-sm">
                     <span>Billet Charging Seq : </span><span class=" font-medium">{{rfData?.SequenceNumber}}</span>
@@ -110,10 +110,10 @@
                     <span>Steel Grade : </span><span class=" font-medium"> {{rfData?.SteelGradeId}}</span>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Exit Temperature : </span><span class=" font-medium"> {{rfData?.TempBFRColdShear | numberFormat: 1}}</span>
+                    <span>Exit Diameter : </span><span class=" font-medium"> {{rfData?.ExitDiameter | numberFormat: 1}}</span>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>Billet Weight : </span><span class=" font-medium"> {{rfData?.Tonnage | numberFormat: 1}}</span>
+                    <span>PO : </span><span class=" font-medium"> {{rfData?.WorkOrder}}</span>
                 </div>
             </div> 
            <div>
@@ -136,49 +136,140 @@
                 <div class="text-center">
                     <span class="font-medium">Cooling Bed</span>
                 </div>
-               <div class="bars" *ngFor="let item of bars" pTooltip="00{{item.id}}1"><span class="text-sm">00{{item.id}}1</span></div>
+               <div class="bars text-sm p-0" *ngFor="let item of coolingBedData" pTooltip="{{item.BilletId}}"><span>{{item.BilletId}}</span></div>
             </div>   
             <div class="cs">
                 <img src="../../../../assets/Images/Dashboard/cs.png" alt="" style="width: 8vh;height: 7vh;">
                 <div>
                     <span class=" font-medium">Cold Shear</span>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="showColdShearDialog()"></button>
                 </div>
                 <div class="mt-1 text-sm">
-                    <span>ID : </span><span class=" font-medium"> 0023214 </span>
+                    <span>ID : </span><span class=" font-medium"> {{coldShearPO}}</span>
                 </div>
             </div>
         </div>
         <div class="row3 flex justify-content-between align-items-center">
-            <div class="il">
-                <div>
-                    <img src="../../../../assets/Images/Dashboard/il.png" alt="" style="width: 14vh;height: 7vh;">
-                    <div class="text-center">
-                        <span class=" font-medium">Inspection Line-1</span>
-                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="il">
-                <div>
-                    <img src="../../../../assets/Images/Dashboard/il.png" alt="" style="width: 14vh;height: 7vh;">
-                    <div class="text-center">
-                        <span class=" font-medium">Inspection Line-2</span>
-                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
-                    </div>
-                </div>
-            </div>
-           <div class="bundlingArea">
+            <div class="bundlingArea">
                 <div class="text-center">
-                    <span class="font-medium">Bundling</span>
+                    <span class="font-medium">Rack</span>
                 </div>
-                <div class="bundle" *ngFor="let item of bundles" pTooltip="{{item.id}}">
+                <!-- <div class="bundle" *ngFor="let item of bundles" pTooltip="{{item.id}}">
                         <span style="color: blue;font-size: x-small;font-weight: bold;margin-left: 3px;">{{item.id}}</span>
+                </div> -->
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionA}"  (click)="showRackDialog('Rack A')" pTooltip="Rack A"><span class="font-semibold"> A </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionB}" (click)="showRackDialog('Rack B')" pTooltip="Rack B"><span class="font-semibold"> B </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionC}" (click)="showRackDialog('Rack C')" pTooltip="Rack C"><span class="font-semibold"> C </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionD}" (click)="showRackDialog('Rack D')" pTooltip="Rack D"><span class="font-semibold"> D </span></div>
+            </div>
+            <div class="il">
+                <div class="flex justify-content-between" style="height: 15vh;">
+                    <div class="Straightener" (click)="showstraightenerDialog()">
+                        <span class="font-medium header">Straightener</span>
+                    </div>
+                    <div class="ml-2">
+                        <div class="udt" (click)="showudtDialog()">
+                            <span class="font-medium header">UDT</span>
+                        </div>  
+                        <div class="udtbar" *ngIf="udtbarStatus"></div>
+                        <div class="okbar" *ngIf="okbarStatus"></div>
+                        <div class="mpi1bar" *ngIf="mpi1barStatus"></div>
+                        <div class="mpi2bar" *ngIf="mpi2barStatus"></div>
+                        <div class="mt-1 text-sm">
+                            <span>PO :</span><span class="font-medium">{{udtPO}}</span>
+                        </div>
+                    </div>
+                                  
+                    <div class="ml-2">
+                        <div class="mpi mt-1">
+                            <span class="text-sm font-medium">MPI</span>
+                        </div>
+                        <div class="mpi mt-3">
+                            <span class="text-sm font-medium">MPI</span>
+                        </div>
+                    </div> 
+                    <div>
+                        <div class="rejected text-sm" pTooltip="Rejected bar count">
+                            <span class="font-medium">{{mpi1TrashDataCount}}</span>
+                        </div>
+                        <div class="rejected text-sm" pTooltip="Rejected bar count" style="margin-top: 4vh;">
+                            <span class="font-medium">{{mpi2TrashDataCount}}</span>
+                        </div>
+                    </div>
+                   <div class="ml-3">
+                        <div class="il1BundleArea">
+                            <div class="text-center">
+                                <span class="font-medium">Bundling</span>
+                            </div>
+                            <div class="text-center mt-2">{{barsInBundle1}}</div>
+                        </div>
+                        <div class="il1BundleArea mt-3">
+                            <div class="text-center">
+                                <span class="font-medium">Bundling</span>
+                                <div class="text-center mt-2">{{barsInBundle2}}</div>
+                            </div>
+                        </div>
+                        <!-- <div class="okbar"></div> -->
+                   </div>
+                </div>
+                <div class="text-center">
+                    <span class=" font-medium">Inspection Line-1</span>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="showILDialog('Inspection Line-1')"></button>
                 </div>
             </div>
             <div></div>
-            <div></div>
-            <div></div>
+            <div class="bundlingArea">
+                <div class="text-center">
+                    <span class="font-medium">Rack</span>
+                </div>
+                <!-- <div class="bundle" *ngFor="let item of bundles" pTooltip="{{item.id}}">
+                        <span style="color: blue;font-size: x-small;font-weight: bold;margin-left: 3px;">{{item.id}}</span>
+                </div> -->
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionA}"  (click)="showRackDialog('Rack A')" pTooltip="Rack A"><span class="font-semibold"> A </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionB}" (click)="showRackDialog('Rack B')" pTooltip="Rack B"><span class="font-semibold"> B </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionC}" (click)="showRackDialog('Rack C')" pTooltip="Rack C"><span class="font-semibold"> C </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionD}" (click)="showRackDialog('Rack D')" pTooltip="Rack D"><span class="font-semibold"> D </span></div>
+            </div>
+            <div class="il">
+                <div class="flex justify-content-between" style="height: 15vh;">
+                    <div class="Straightener" (click)="showstraightenerDialog()">
+                        <span class="font-medium header">Straightener</span>
+                    </div>
+                    <div>
+                        <div class="udt" (click)="showudtDialog()">
+                            <span class="font-medium header">UDT</span>
+                        </div> 
+                        <div class="mt-1 text-sm">
+                            <span>PO :</span><span class="font-medium">11186106</span>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <div class="mpi mt-2">
+                            <span class="text-sm font-medium">MPI</span>
+                        </div>
+                        <div class="mpi " style="margin-top: 5vh;">
+                            <span class="text-sm font-medium">MPI</span>
+                        </div>
+                    </div> 
+                    <div class="mt-5">
+                        <div class="rejected text-sm" pTooltip="Rejected bar count">
+                            <span class="font-medium">0</span>
+                        </div>
+                        <div class="rejected text-sm" pTooltip="Rejected bar count" style="margin-top: 7vh;">
+                            <span class="font-medium">0</span>
+                        </div>
+                    </div>
+                    <div class="il2BundleArea ml-3" style="margin-top: 6vh;">
+                        <div class="text-center">
+                            <span class="font-medium">Bundling</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <span class=" font-medium">Inspection Line-2</span>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="showILDialog('Inspection Line-2')"></button>
+                </div>
+            </div>
         </div>
     </div>
     <app-bof1-dialog [inpBof1Dialog]="showbof1"></app-bof1-dialog>
@@ -187,3 +278,145 @@
     <app-vaccum-degassing-dialog [inpVDDialog]="showVD"></app-vaccum-degassing-dialog>
     <app-continous-caster-dialog [inpCCDialog]="showCC" [inpCCMData]="ccmData"></app-continous-caster-dialog>
 </div>
+
+<p-dialog header="Rack" [(visible)]="dialogRack" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-header>
+        <div>
+            <span>{{dialogRackHeader}}</span>
+        </div>
+    </p-header>
+    <ng-template pTemplate="content">
+        <div >
+            <div class="rack1">
+                <div class="text-center">
+                    <span class="font-medium">Bundles</span>
+                </div>
+                <div class="flex justify-content-between">
+                    <div class="bundles" (click)="showBundleDialog('b01')" pTooltip="po : {{b1PO}}"><span class="font-semibold" > b01 </span><span  class="font-semibold">{{b1Barcount}}</span></div>
+                    <div class="bundles" (click)="showBundleDialog('b02')" pTooltip="po : {{b2PO}}"><span class="font-semibold" > b02 </span><span  class="font-semibold">{{b2Barcount}}</span></div>
+                    <div class="bundles" (click)="showBundleDialog('b03')" pTooltip="po : {{b3PO}}"><span class="font-semibold" > b03 </span><span  class="font-semibold">{{b3Barcount}}</span></div>
+                    <div class="bundles" (click)="showBundleDialog('b04')" pTooltip="po : {{b4PO}}"><span class="font-semibold" > b04 </span><span  class="font-semibold">{{b4Barcount}}</span></div>     
+                </div>
+                <div class="flex justify-content-between">
+                    <div class="bundles" (click)="showBundleDialog('b05')" pTooltip="po : {{b5PO}}"><span class="font-semibold" > b05 </span><span  class="font-semibold">{{b5Barcount}}</span></div>
+                    <div class="bundles" (click)="showBundleDialog('b06')" pTooltip="po : {{b6PO}}"><span class="font-semibold" > b06 </span><span  class="font-semibold">{{b6Barcount}}</span></div>
+                    <div class="bundles" (click)="showBundleDialog('b07')" pTooltip="po : {{b7PO}}"><span class="font-semibold" > b07 </span><span  class="font-semibold">{{b7Barcount}}</span></div>
+                    <div class="bundles" (click)="showBundleDialog('b08')" pTooltip="po : {{b8PO}}"><span class="font-semibold" > b08 </span><span  class="font-semibold">{{b8Barcount}}</span></div>     
+                </div>
+            </div> 
+        </div>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="bundles" [(visible)]="dialogbundles" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-header>
+        <div>
+            <span>{{dialogHeader}}</span>
+        </div>
+    </p-header>
+    <ng-template pTemplate="content">
+        <div class="text-center">
+            <span>Bundle Details</span>
+        </div>
+        <div>
+            PO : <span class="font-medium">{{bundlePO}}</span> 
+        </div>
+        <div class="mt-2">
+            No. of bars : <span class="font-medium">{{bundleBarCount}}</span> 
+        </div>
+        <div class="mt-2">
+            SteelGrade : <span class="font-medium"></span> 
+        </div>
+        <div class="mt-2">
+            Heat No : <span class="font-medium"></span> 
+        </div>
+        <div class="mt-2">
+            Sequence : <span class="font-medium"></span> 
+        </div>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="IL" [(visible)]="dialogIL" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-header>
+        <div>
+            <span>{{dialogILHeader}}</span>
+        </div>
+    </p-header>
+    <ng-template pTemplate="content">
+        <div class="text-center">
+            <span>IL Details</span>
+        </div>
+        <!-- <div>
+            PO : <span class="font-medium">11186106</span> 
+        </div>
+        <div class="mt-2">
+            No. of bars : <span class="font-medium">10</span> 
+        </div>
+        <div class="mt-2">
+            SteelGrade : <span class="font-medium"></span> 
+        </div>
+        <div class="mt-2">
+            Heat No : <span class="font-medium"></span> 
+        </div>
+        <div class="mt-2">
+            Sequence : <span class="font-medium"></span> 
+        </div> -->
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="barDetails" [(visible)]="dialogbars" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-header>
+        <div>
+            <span>Bar Details</span>
+        </div>
+    </p-header>
+    <ng-template pTemplate="content">
+       
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="straightenerDetails" [(visible)]="dialogstraightener" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-header>
+        <div>
+            <span>Straightener Details</span>
+        </div>
+    </p-header>
+    <ng-template pTemplate="content">
+       
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="udtDetails" [(visible)]="dialogudt" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-header>
+        <div>
+            <span>MFL & UT Details</span>
+        </div>
+    </p-header>
+    <ng-template pTemplate="content">
+       
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="coldShearDetails" [(visible)]="dialogColdShear" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-header>
+        <div>
+            <span>Cold Shear</span>
+        </div>
+    </p-header>
+    <ng-template pTemplate="content">
+        <div><span>Po :</span><span class="font-medium ml2">{{coldShearPO}}</span></div>
+       <div><span>Bars :</span> <div *ngFor="let item of coldShearData"><span class="font-medium ml-2">{{item.BarId}}</span></div></div>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="rfDetails" [(visible)]="dialogRF" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-header>
+        <div>
+            <span>Reheating Furnace</span>
+        </div>
+    </p-header>
+    <ng-template pTemplate="content">
+        <div><span>Po :</span><span class="font-medium ml2">{{rfData?.WorkOrder}}</span></div>
+       <div><span>Billets :</span> <div *ngFor="let item of rfBillets"><span class="font-medium ml-2">{{item.BilletId}}</span></div></div>
+    </ng-template>
+</p-dialog>
