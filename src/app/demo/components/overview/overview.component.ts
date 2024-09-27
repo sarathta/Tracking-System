@@ -11,9 +11,12 @@ billets: any[]=[];
 bars: any[]=[];
 bundles: any[]=[];
 udtbarStatus:boolean = false;
+barstatus: any= "good bar"
 okbarStatus:boolean = false;
 mpi1barStatus:boolean = false;
 mpi2barStatus:boolean = false;
+mpi1GoodBar:boolean = false;
+mpi2GoodBar:boolean = false;
 timeInterval: any;
 showbof1: number = 0;
 showbof2: number = 0;
@@ -29,7 +32,9 @@ coldShearData: any;
 mpi1Data: any;
 mpi2Data: any;
 okbarData: any;
+okbarId: any;
 rackAreaData: any;
+dialogRackData: any;
 bundling1Data: any;
 bundling2Dat: any;
 bundling2Data: any;
@@ -39,6 +44,8 @@ mpi2TrashData: any;
 mpi2TrashDataCount: number=0;
 udtData: any;
 udtPO: any;
+udtBarId: any;
+udtGoodBar: boolean= false;
 coldShearPO: any;
 rack1: any;
 rack2: any;
@@ -191,10 +198,10 @@ startInterval() {
   getRackAreaData(){
     this.http.get('http://127.0.0.1:8000/rack_area').subscribe((res=>{
       this.rackAreaData= res;
-      this.rack1 = this.rackAreaData.filter((item: any)=> item.rack == 0);
-      this.rack2 = this.rackAreaData.filter((item: any)=> item.rack == 1);
-      this.rack3 = this.rackAreaData.filter((item: any)=> item.rack == 2);
-      this.rack4 = this.rackAreaData.filter((item: any)=> item.rack == 3);
+      this.rack1 = this.rackAreaData.rack_0;
+      this.rack2 = this.rackAreaData.rack_1;
+      this.rack3 = this.rackAreaData.rack_2;
+      this.rack4 = this.rackAreaData.rack_3;
       console.log(this.rack1);
     }));
   }
@@ -203,11 +210,14 @@ startInterval() {
     this.http.get('http://127.0.0.1:8000/udt').subscribe((res=>{
       this.udtData= res;
       this.udtPO = this.udtData[0].po;
+      this.udtBarId = this.udtData[0].BarId
       if(this.udtData.length !=0){
         this.udtbarStatus= true
+        this.udtGoodBar = this.udtData[0].goodBar;
       }
       else{
         this.udtbarStatus = false;
+        this.udtGoodBar = false;
       }
       if(this.udtData.length > 1){
         console.log("more than one item in udt");        
@@ -220,9 +230,11 @@ startInterval() {
       this.mpi1Data= res;
       if(this.mpi1Data.length > 0){
         this.mpi1barStatus = true;
+        this.mpi1GoodBar = this.mpi1Data[0].goodBar
       }
       else{
         this.mpi1barStatus = false;
+        this.mpi1GoodBar = false;
       }
       // this.coldShearPO = this.mpi1Data[0].po;
     }));
@@ -232,9 +244,11 @@ startInterval() {
       this.mpi2Data= res;
       if(this.mpi2Data.length > 0){
         this.mpi2barStatus = true;
+        this.mpi2GoodBar = this.mpi2Data[0].goodBar
       }
       else{
         this.mpi2barStatus = false;
+        this.mpi2GoodBar = false;
       }
       // this.coldShearPO = this.mpi1Data[0].po;
     }));
@@ -243,6 +257,7 @@ startInterval() {
   getokbarData(){
     this.http.get('http://127.0.0.1:8000/good_bar').subscribe((res=>{
       this.okbarData= res;
+      this.okbarId = this.okbarData[0];
       if(this.okbarData.length > 0){
         this.okbarStatus = true;
       }
@@ -301,206 +316,27 @@ startInterval() {
   }
 
   showBundleDialog(data: any){
-    if(data == 'b01'){
-      this.bundlePO = this.b1PO;
-      this.bundleBarCount = this.b1Barcount;
-    }
-    else  if(data == 'b02'){
-      this.bundlePO = this.b2PO;
-      this.bundleBarCount = this.b2Barcount;
-    }
-    else  if(data == 'b03'){
-      this.bundlePO = this.b3PO;
-      this.bundleBarCount = this.b3Barcount;
-    }
-    else  if(data == 'b04'){
-      this.bundlePO = this.b4PO;
-      this.bundleBarCount = this.b4Barcount;
-    }
-    else  if(data == 'b05'){
-      this.bundlePO = this.b5PO;
-      this.bundleBarCount = this.b5Barcount;
-    }
-    else  if(data == 'b06'){
-      this.bundlePO = this.b6PO;
-      this.bundleBarCount = this.b6Barcount;
-    }
-    else  if(data == 'b07'){
-      this.bundlePO = this.b7PO;
-      this.bundleBarCount = this.b7Barcount;
-    }
-    else  if(data == 'b08'){
-      this.bundlePO = this.b8PO;
-      this.bundleBarCount = this.b8Barcount;
-    }
-    
+    this.dialogHeader = "b0"+ data.BundelId;
+    this.bundlePO = data.po;
+    this.bundleBarCount = data.NoOfBars;    
     this.dialogbundles = true;
-    this.dialogHeader = data;
-
   }
 
   showRackDialog(data: any){
+    this.dialogRackData =[];
+    if(data == 'Rack_A'){
+      this.dialogRackData = this.rack1;
+    }
+    else if(data == 'Rack_B'){
+      this.dialogRackData = this.rack2
+    }
+    else if(data == 'Rack_C'){
+      this.dialogRackData = this.rack3
+    }
+    else if(data == 'Rack_D'){
+      this.dialogRackData = this.rack4
+    }
     this.dialogRack = true;
-    if(data == 'Rack A'){
-      this.rack1.forEach((element: any) => {
-        if(element.bundle == 0){
-          this.b1Barcount = this.b1Barcount + 1;
-          this.b1PO = element.po;
-        }
-        else if(element.bundle == 1){
-          this.b2Barcount = this.b2Barcount + 1;
-          this.b2PO = element.po;
-        }
-        else if(element.bundle == 2){
-          this.b3Barcount = this.b3Barcount + 1;
-          this.b3PO = element.po;
-        }
-        else if(element.bundle == 3){
-          this.b4Barcount = this.b4Barcount + 1;
-          this.b4PO = element.po;
-        }
-        else if(element.bundle == 4){
-          this.b5Barcount = this.b5Barcount + 1;
-          this.b5PO = element.po
-        }
-        else if(element.bundle == 5){
-          this.b6Barcount = this.b6Barcount + 1;
-          this.b6PO = element.po
-        }
-        else if(element.bundle == 6){
-          this.b7Barcount = this.b7Barcount + 1;
-          this.b7PO = element.po
-        }
-        else if(element.bundle == 7){
-          this.b8Barcount = this.b8Barcount + 1;
-          this.b8PO = element.po
-        }
-        else if(element.bundle == 8){
-          this.b8Barcount = this.b8Barcount + 1;
-          this.b8PO = element.po
-        }
-      });
-    }
-    else if(data == 'Rack B'){
-      this.rack2.forEach((element: any) => {
-        if(element.bundle == 0){
-          this.b1Barcount = this.b1Barcount + 1;
-          this.b1PO = element.po;
-        }
-        else if(element.bundle == 1){
-          this.b2Barcount = this.b2Barcount + 1;
-          this.b2PO = element.po;
-        }
-        else if(element.bundle == 2){
-          this.b3Barcount = this.b3Barcount + 1;
-          this.b3PO = element.po;
-        }
-        else if(element.bundle == 3){
-          this.b4Barcount = this.b4Barcount + 1;
-          this.b4PO = element.po;
-        }
-        else if(element.bundle == 4){
-          this.b5Barcount = this.b5Barcount + 1;
-          this.b5PO = element.Po;
-        }
-        else if(element.bundle == 5){
-          this.b6Barcount = this.b6Barcount + 1;
-          this.b6PO = element.po;
-        }
-        else if(element.bundle == 6){
-          this.b7Barcount = this.b7Barcount + 1;
-          this.b7PO = element.po;
-        }
-        else if(element.bundle == 7){
-          this.b8Barcount = this.b8Barcount + 1;
-          this.b8PO = element.po;
-        }
-        else if(element.bundle == 8){
-          this.b8Barcount = this.b8Barcount + 1;
-          this.b8PO = element.po;
-        }
-      });
-    }
-    else if(data == 'Rack C'){
-      this.rack3.forEach((element: any) => {
-        if(element.bundle == 0){
-          this.b1Barcount = this.b1Barcount + 1;
-          this.b1PO = element.po;
-        }
-        else if(element.bundle == 1){
-          this.b2Barcount = this.b2Barcount + 1;
-          this.b2PO = element.po;
-        }
-        else if(element.bundle == 2){
-          this.b3Barcount = this.b3Barcount + 1;
-          this.b3PO = element.po;
-        }
-        else if(element.bundle == 3){
-          this.b4Barcount = this.b4Barcount + 1;
-          this.b4PO = element.po;
-        }
-        else if(element.bundle == 4){
-          this.b5Barcount = this.b5Barcount + 1;
-          this.b5PO = element.po;
-        }
-        else if(element.bundle == 5){
-          this.b6Barcount = this.b6Barcount + 1;
-          this.b6PO = element.po;
-        }
-        else if(element.bundle == 6){
-          this.b7Barcount = this.b7Barcount + 1;
-          this.b7PO = element.po;
-        }
-        else if(element.bundle == 7){
-          this.b8Barcount = this.b8Barcount + 1;
-          this.b8PO = element.po;
-        }
-        else if(element.bundle == 8){
-          this.b8Barcount = this.b8Barcount + 1;
-          this.b8PO = element.po;
-        }
-      });
-    }
-    else if(data == 'Rack D'){
-      this.rack4.forEach((element: any) => {
-        if(element.bundle == 0){
-          this.b1Barcount = this.b1Barcount + 1;
-          this.b1PO = element.po;
-        }
-        else if(element.bundle == 1){
-          this.b2Barcount = this.b2Barcount + 1;
-          this.b2PO = element.po;
-        }
-        else if(element.bundle == 2){
-          this.b3Barcount = this.b3Barcount + 1;
-          this.b3PO = element.po;
-        }
-        else if(element.bundle == 3){
-          this.b4Barcount = this.b4Barcount + 1;
-          this.b4PO = element.Po;
-        }
-        else if(element.bundle == 4){
-          this.b5Barcount = this.b5Barcount + 1;
-          this.b5PO = element.po;
-        }
-        else if(element.bundle == 5){
-          this.b6Barcount = this.b6Barcount + 1;
-          this.b6PO = element.po;
-        }
-        else if(element.bundle == 6){
-          this.b7Barcount = this.b7Barcount + 1;
-          this.b7PO = element.po;
-        }
-        else if(element.bundle == 7){
-          this.b8Barcount = this.b8Barcount + 1;
-          this.b8PO = element.po;
-        }
-        else if(element.bundle == 8){
-          this.b8Barcount = this.b8Barcount + 1;
-          this.b8PO = element.po;
-        }
-      });
-    }
     this.dialogRackHeader = data;
   }
   

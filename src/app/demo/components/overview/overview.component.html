@@ -157,10 +157,10 @@
                 <!-- <div class="bundle" *ngFor="let item of bundles" pTooltip="{{item.id}}">
                         <span style="color: blue;font-size: x-small;font-weight: bold;margin-left: 3px;">{{item.id}}</span>
                 </div> -->
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionA}"  (click)="showRackDialog('Rack A')" pTooltip="Rack A"><span class="font-semibold"> A </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionB}" (click)="showRackDialog('Rack B')" pTooltip="Rack B"><span class="font-semibold"> B </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionC}" (click)="showRackDialog('Rack C')" pTooltip="Rack C"><span class="font-semibold"> C </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionD}" (click)="showRackDialog('Rack D')" pTooltip="Rack D"><span class="font-semibold"> D </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionA}"  (click)="showRackDialog('Rack_A')" pTooltip="Rack A"><span class="font-semibold"> A </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionB}" (click)="showRackDialog('Rack_B')" pTooltip="Rack B"><span class="font-semibold"> B </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionC}" (click)="showRackDialog('Rack_C')" pTooltip="Rack C"><span class="font-semibold"> C </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionD}" (click)="showRackDialog('Rack_D')" pTooltip="Rack D"><span class="font-semibold"> D </span></div>
             </div>
             <div class="il">
                 <div class="flex justify-content-between" style="height: 15vh;">
@@ -171,10 +171,19 @@
                         <div class="udt" (click)="showudtDialog()">
                             <span class="font-medium header">UDT</span>
                         </div>  
-                        <div class="udtbar" *ngIf="udtbarStatus"></div>
-                        <div class="okbar" *ngIf="okbarStatus"></div>
-                        <div class="mpi1bar" *ngIf="mpi1barStatus"></div>
-                        <div class="mpi2bar" *ngIf="mpi2barStatus"></div>
+                        <div class="udtbar" *ngIf="udtbarStatus" pTooltip="{{udtBarId}}">
+                            <span class="text-sm" style="color: green; margin-left: 6vh;" *ngIf="udtGoodBar" >ok bar</span>
+                            <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!udtGoodBar">not ok</span>
+                        </div>
+                        <div class="okbar"  pTooltip="{{okbarId}}" *ngIf="okbarStatus"><span class="text-sm" style="color: green;">{{barstatus}}</span></div>
+                        <div class="mpi1bar" *ngIf="mpi1barStatus">
+                            <span class="text-sm" style="color: green; margin-left: 6vh;"  *ngIf="mpi1GoodBar">ok bar</span>
+                            <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!mpi1GoodBar">not ok</span>            
+                        </div>
+                        <div class="mpi2bar" *ngIf="mpi2barStatus">
+                            <span class="text-sm" style="color: green; margin-left: 6vh;"  *ngIf="mpi2GoodBar">ok bar</span>
+                            <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!mpi2GoodBar">not ok</span> 
+                        </div>
                         <div class="mt-1 text-sm">
                             <span>PO :</span><span class="font-medium">{{udtPO}}</span>
                         </div>
@@ -192,7 +201,7 @@
                         <div class="rejected text-sm" pTooltip="Rejected bar count">
                             <span class="font-medium">{{mpi1TrashDataCount}}</span>
                         </div>
-                        <div class="rejected text-sm" pTooltip="Rejected bar count" style="margin-top: 4vh;">
+                        <div class="rejected text-sm" pTooltip="Rejected bar count" style="margin-top: 5vh;">
                             <span class="font-medium">{{mpi2TrashDataCount}}</span>
                         </div>
                     </div>
@@ -225,10 +234,10 @@
                 <!-- <div class="bundle" *ngFor="let item of bundles" pTooltip="{{item.id}}">
                         <span style="color: blue;font-size: x-small;font-weight: bold;margin-left: 3px;">{{item.id}}</span>
                 </div> -->
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionA}"  (click)="showRackDialog('Rack A')" pTooltip="Rack A"><span class="font-semibold"> A </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionB}" (click)="showRackDialog('Rack B')" pTooltip="Rack B"><span class="font-semibold"> B </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionC}" (click)="showRackDialog('Rack C')" pTooltip="Rack C"><span class="font-semibold"> C </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionD}" (click)="showRackDialog('Rack D')" pTooltip="Rack D"><span class="font-semibold"> D </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionA}"  (click)="showRackDialog('Rack_A')" pTooltip="Rack A"><span class="font-semibold"> A </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionB}" (click)="showRackDialog('Rack_B')" pTooltip="Rack B"><span class="font-semibold"> B </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionC}" (click)="showRackDialog('Rack_C')" pTooltip="Rack C"><span class="font-semibold"> C </span></div>
+                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionD}" (click)="showRackDialog('Rack_D')" pTooltip="Rack D"><span class="font-semibold"> D </span></div>
             </div>
             <div class="il">
                 <div class="flex justify-content-between" style="height: 15vh;">
@@ -292,17 +301,17 @@
                     <span class="font-medium">Bundles</span>
                 </div>
                 <div class="flex justify-content-between">
-                    <div class="bundles" (click)="showBundleDialog('b01')" pTooltip="po : {{b1PO}}"><span class="font-semibold" > b01 </span><span  class="font-semibold">{{b1Barcount}}</span></div>
-                    <div class="bundles" (click)="showBundleDialog('b02')" pTooltip="po : {{b2PO}}"><span class="font-semibold" > b02 </span><span  class="font-semibold">{{b2Barcount}}</span></div>
+                    <div class="bundles" *ngFor="let item of dialogRackData" (click)="showBundleDialog(item)" pTooltip="po : {{item.po}}"><span class="font-semibold" > b0{{item.BundelId}} </span><span  class="font-semibold">{{item.NoOfBars}}</span></div>
+                    <!-- <div class="bundles" (click)="showBundleDialog('b02')" pTooltip="po : {{b2PO}}"><span class="font-semibold" > b02 </span><span  class="font-semibold">{{b2Barcount}}</span></div>
                     <div class="bundles" (click)="showBundleDialog('b03')" pTooltip="po : {{b3PO}}"><span class="font-semibold" > b03 </span><span  class="font-semibold">{{b3Barcount}}</span></div>
-                    <div class="bundles" (click)="showBundleDialog('b04')" pTooltip="po : {{b4PO}}"><span class="font-semibold" > b04 </span><span  class="font-semibold">{{b4Barcount}}</span></div>     
+                    <div class="bundles" (click)="showBundleDialog('b04')" pTooltip="po : {{b4PO}}"><span class="font-semibold" > b04 </span><span  class="font-semibold">{{b4Barcount}}</span></div>      -->
                 </div>
-                <div class="flex justify-content-between">
+                <!-- <div class="flex justify-content-between">
                     <div class="bundles" (click)="showBundleDialog('b05')" pTooltip="po : {{b5PO}}"><span class="font-semibold" > b05 </span><span  class="font-semibold">{{b5Barcount}}</span></div>
                     <div class="bundles" (click)="showBundleDialog('b06')" pTooltip="po : {{b6PO}}"><span class="font-semibold" > b06 </span><span  class="font-semibold">{{b6Barcount}}</span></div>
                     <div class="bundles" (click)="showBundleDialog('b07')" pTooltip="po : {{b7PO}}"><span class="font-semibold" > b07 </span><span  class="font-semibold">{{b7Barcount}}</span></div>
                     <div class="bundles" (click)="showBundleDialog('b08')" pTooltip="po : {{b8PO}}"><span class="font-semibold" > b08 </span><span  class="font-semibold">{{b8Barcount}}</span></div>     
-                </div>
+                </div> -->
             </div> 
         </div>
     </ng-template>
