@@ -116,9 +116,7 @@ export class RollingMillComponent implements OnInit,OnDestroy{
   getCurrent(){
     this.timeInterval = setInterval(() => {
       this.http.get('http://127.0.0.1:8000/get-status').subscribe((res=>{
-        this.standData= res;
-        console.log(this.standData);
-        
+        this.standData= res;        
       }));
 
          

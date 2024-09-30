@@ -29,6 +29,11 @@ lfData: any;
 ccmData: any;
 coolingBedData: any;
 coldShearData: any;
+strData: any;
+strBar: any;
+strBedData: any;
+strBedBars: any;
+strBedPo: any;
 mpi1Data: any;
 mpi2Data: any;
 okbarData: any;
@@ -86,6 +91,21 @@ dialogRF: boolean=false;
 dialogIL: boolean=false;
 barsInBundle1: number =0;
 barsInBundle2: number =0;
+cb1: any;
+cb2: any;
+cb3: any;
+cb4: any;
+cb5: any;
+cb6: any;
+cb7: any;
+cb8: any;
+cb9: any;
+cb10: any;
+cb11: any;
+cb12: any;
+cb13: any;
+cb14: any;
+cb15: any;
 
 constructor(
   private http : HttpClient
@@ -109,6 +129,8 @@ startInterval() {
     this.getCoolingBedData();
     this.getColdShearData();
     this.getRackAreaData();
+    this.getStrBedData();
+    this.getStraightenerData();
     this.getUdtData();
     this.getMpi1Data();
     this.getMpi2Data();
@@ -155,7 +177,7 @@ startInterval() {
       this.bars=[];
       j=1;
     } 
-  }, 2000);
+  }, 1000);
 }
 
   getReheatingFurnaceData(){
@@ -185,13 +207,31 @@ startInterval() {
   getCoolingBedData(){
     this.http.get('http://127.0.0.1:8000/cooling_bed').subscribe((res=>{
       this.coolingBedData= res;
+      if(this.coolingBedData.length >0){
+        this.cb1 = this.coolingBedData[0]?.BilletId ? this.coolingBedData[0]?.BilletId : null;
+        this.cb2 = this.coolingBedData[1]?.BilletId ? this.coolingBedData[1]?.BilletId : null;
+        this.cb3 = this.coolingBedData[2]?.BilletId ? this.coolingBedData[2]?.BilletId : null;
+        this.cb4 = this.coolingBedData[3]?.BilletId ? this.coolingBedData[3]?.BilletId : null;
+        this.cb5 = this.coolingBedData[4]?.BilletId ? this.coolingBedData[4]?.BilletId : null;
+        this.cb6 = this.coolingBedData[5]?.BilletId ? this.coolingBedData[5]?.BilletId : null;
+        this.cb7 = this.coolingBedData[6]?.BilletId ? this.coolingBedData[6]?.BilletId : null;
+        this.cb8 = this.coolingBedData[7]?.BilletId ? this.coolingBedData[7]?.BilletId : null;
+        this.cb9 = this.coolingBedData[8]?.BilletId ? this.coolingBedData[8]?.BilletId : null;
+        this.cb10 = this.coolingBedData[9]?.BilletId ? this.coolingBedData[9]?.BilletId : null;
+        this.cb11 = this.coolingBedData[10]?.BilletId ? this.coolingBedData[10]?.BilletId : null;
+        this.cb12 = this.coolingBedData[11]?.BilletId ? this.coolingBedData[11]?.BilletId : null;
+        this.cb12 = this.coolingBedData[12]?.BilletId ? this.coolingBedData[12]?.BilletId : null;
+        this.cb13 = this.coolingBedData[13]?.BilletId ? this.coolingBedData[13]?.BilletId : null;
+        this.cb14 = this.coolingBedData[14]?.BilletId ? this.coolingBedData[14]?.BilletId : null;
+        this.cb15 = this.coolingBedData[15]?.BilletId ? this.coolingBedData[15]?.BilletId : null;
+      }
     }));
   }
 
   getColdShearData(){
     this.http.get('http://127.0.0.1:8000/cold_shear').subscribe((res=>{
       this.coldShearData= res;
-      this.coldShearPO = this.coldShearData[0].po;
+      this.coldShearPO = this.coldShearData[0]?.po;
     }));
   }
 
@@ -202,7 +242,23 @@ startInterval() {
       this.rack2 = this.rackAreaData.rack_1;
       this.rack3 = this.rackAreaData.rack_2;
       this.rack4 = this.rackAreaData.rack_3;
-      console.log(this.rack1);
+    }));
+  }
+
+  getStraightenerData(){
+    this.http.get('http://127.0.0.1:8000/str').subscribe((res=>{
+      this.strData= res;
+      if(this.strData.length > 0){
+        this.strBar = this.strData[0];      
+      }
+    }));
+  }
+
+  getStrBedData(){
+    this.http.get('http://127.0.0.1:8000/str_bed').subscribe((res=>{
+      this.strBedData= res;
+      this.strBedPo = this.strBedData.po;
+      this.strBedBars = this.strBedData.NoOfBars;      
     }));
   }
 
@@ -218,9 +274,6 @@ startInterval() {
       else{
         this.udtbarStatus = false;
         this.udtGoodBar = false;
-      }
-      if(this.udtData.length > 1){
-        console.log("more than one item in udt");        
       }
     }));
   }
