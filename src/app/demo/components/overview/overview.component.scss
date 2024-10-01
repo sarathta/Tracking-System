@@ -279,3 +279,27 @@
     color: white;
     padding: 1px;
 }
+
+.billetYard{
+    width: 15vh;
+    height: 13vh;
+    // margin-right: 4vh;
+    border: 1px solid rgb(104, 103, 103);
+    .bundleInYard{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        padding: 0px;
+        text-align: center;
+        margin: 4px;
+        // background-color: rgb(255, 191, 0);
+    }
+}
+
+.bundleColorInYard{
+    background-color: rgb(255, 191, 0) !important;
+    &:hover {
+        background-color: rgb(93, 92, 92) !important;
+        color: white;
+    }
+}

@@ -203,12 +203,16 @@
             <div class="il">
                 <div class="flex justify-content-between" style="height: 15vh;">
                     <div>
-                        <div class="Straightener" (click)="showstraightenerDialog()">
+                        <!-- <div class="mb-1"><span class="text-sm ">Incoming PO :</span><span class="text-sm font-semibold">{{strIncomingPo}}</span></div> -->
+                        <div class="Straightener" (click)="showstraightenerDialog()" pTooltip="Incoming PO : {{strIncomingPo}}" tooltipPosition="top">
                             <span class="font-medium header">Straightener</span>
                         </div>
                         <div class="mt-1 text-sm">
                            <span class="font-medium">{{strBar}}</span>
                         </div>
+                        <div class="mt-1 text-sm">
+                            <span>PO : </span><span class="font-medium">{{strPo}}</span>
+                         </div>
                     </div>
                     <div class="ml-2">
                         <div class="udt" (click)="showudtDialog()">
@@ -269,7 +273,21 @@
                     <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="showILDialog('Inspection Line-1')"></button>
                 </div>
             </div>
-            <div></div>
+            <div class="billetYard">
+                <div class="text-center">
+                    <span class="font-medium">Yard</span>
+                </div>
+               <div class="flex">
+                    <div class="bundleInYard" pTooltip="PO :{{by1?.po}}" [ngClass]="{'bundleColorInYard': by1 !== null}" (click)="showBundleInYardDialog(by1)"><span class="text-sm">{{by1?.po}}</span><br><span class="font-semibold">{{by1?.NoOfBars}}</span></div>
+                    <div class="bundleInYard" pTooltip="PO :{{by2?.po}}" [ngClass]="{'bundleColorInYard': by2 !== null}" (click)="showBundleInYardDialog(by2)"><span class="text-sm">{{by2?.po}}</span><br><span class="font-semibold">{{by2?.NoOfBars}}</span></div>
+                    <div class="bundleInYard" pTooltip="PO :{{by3?.po}}" [ngClass]="{'bundleColorInYard': by3 !== null}" (click)="showBundleInYardDialog(by3)"><span class="text-sm">{{by3?.po}}</span><br><span class="font-semibold">{{by3?.NoOfBars}}</span></div>
+               </div>
+               <div class="flex">
+                    <div class="bundleInYard" pTooltip="PO :{{by4?.po}}" [ngClass]="{'bundleColorInYard': by4 !== null}" (click)="showBundleInYardDialog(by4)"><span class="text-sm">{{by4?.po}}</span><br><span class="font-semibold">{{by4?.NoOfBars}}</span></div>
+                    <div class="bundleInYard" pTooltip="PO :{{by5?.po}}" [ngClass]="{'bundleColorInYard': by5 !== null}" (click)="showBundleInYardDialog(by5)"><span class="text-sm">{{by5?.po}}</span><br><span class="font-semibold">{{by5?.NoOfBars}}</span></div>
+                    <div class="bundleInYard" pTooltip="PO :{{by6?.po}}" [ngClass]="{'bundleColorInYard': by6 !== null}" (click)="showBundleInYardDialog(by6)"><span class="text-sm">{{by6?.po}}</span><br><span class="font-semibold">{{by6?.NoOfBars}}</span></div>
+                </div>
+            </div>
             <div></div>
             <div></div>
             <div></div>
@@ -473,5 +491,18 @@
     <ng-template pTemplate="content">
         <div><span>Po :</span><span class="font-medium ml2">{{rfData?.WorkOrder}}</span></div>
        <div><span>Billets :</span> <div *ngFor="let item of rfBillets"><span class="font-medium ml-2">{{item.BilletId}}</span></div></div>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="yardBundleDetails" [(visible)]="dialogbundleYard" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-header>
+        <div>
+            <span>Bundle Details</span>
+        </div>
+    </p-header>
+    <ng-template pTemplate="content">
+        <div><span>Po :</span><span class="font-medium ml-2">{{dialogBundleInYardPO}}</span></div> 
+        <div><span>No Of Bars :</span><span class="font-medium ml-2">{{dialogBundleInYardBarsCount}}</span></div>
+       <div><span>Bars :</span> <div *ngFor="let item of bundleinYardBars"><span class="font-medium ml-2">{{item.BarId}}</span></div></div>
     </ng-template>
 </p-dialog>

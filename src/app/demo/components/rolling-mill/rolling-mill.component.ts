@@ -12,95 +12,81 @@ export class RollingMillComponent implements OnInit,OnDestroy{
   standData: any;
   stands: any[]=[
     {
-      id:1,
-      name: "Stand1",
-      description: "Level1 Interface",
-      status: true,
-      billetStatus: true,
-      enabled: true,
-      idle: false,
-      rpm: 850,
-      rFactor: 1.273,
-      speed: 2.589,
-      dia: 580
+        billetId: null,
+        status: true,
+        billetStatus: false,
+        current: null,
+        tension: null,
+        rfactor: null,
+        speedmps: null,
+        time: "",
+        name: "STAND1"
     },
     {
-      id:2,
-      name: "Stand2",
-      description: "Level1 Interface",
-      status: true,
-      billetStatus: true,
-      enabled: true,
-      idle: false,
-      rpm: 1100,
-      rFactor: 1.236,
-      speed: 2.589,
-      dia: 570
+        billetId: null,
+        status: true,
+        billetStatus: false,
+        current: null,
+        tension: null,
+        rfactor: null,
+        speedmps: null,
+        time: "",
+        name: "STAND2"
     },
     {
-      id:3,
-      name: "Stand3",
-      description: "Level1 Interface",
-      status: false,
-      billetStatus: true,
-      enabled: false,
-      idle: true,
-      rpm: 850,
-      rFactor: 1.294,
-      speed: 2.589,
-      dia: 565
+        billetId: null,
+        status: true,
+        billetStatus: false,
+        current: null,
+        tension: null,
+        rfactor: null,
+        speedmps: null,
+        time: "",
+        name: "STAND3"
     },
     {
-      id:4,
-      name: "Stand4",
-      description: "Level1 Interface",
-      status: true,
-      billetStatus: true,
-      enabled: true,
-      idle: false,
-      rpm: 850,
-      rFactor: 1.307,
-      speed: 2.589,
-      dia: 540
+        billetId: null,
+        status: true,
+        billetStatus: false,
+        current: null,
+        tension: null,
+        rfactor: null,
+        speedmps: null,
+        time: "",
+        name: "STAND4"
     },
     {
-      id:5,
-      name: "Stand5",
-      description: "Level1 Interface",
-      status: true,
-      billetStatus: true,
-      enabled: true,
-      idle: false,
-      rpm: 850,
-      rFactor: 0.568,
-      speed: 2.589,
-      dia: 515
+        billetId: null,
+        status: true,
+        billetStatus: false,
+        current: null,
+        tension: null,
+        rfactor: null,
+        speedmps: null,
+        time: "",
+        name: "STAND5"
     },
     {
-      id:6,
-      name: "Stand6",
-      description: "Level1 Interface",
-      status: true,
-      billetStatus: true,
-      enabled: true,
-      idle: false,
-      rpm: 850,
-      rFactor: 1.345,
-      speed: 2.589,
-      dia: 495
+        billetId: null,
+        status: true,
+        billetStatus: false,
+        current: null,
+        tension: null,
+        rfactor: null,
+        speedmps: null,
+        time: "",
+        name: "STAND6"
     },
     {
-      id:7,
-      name: "Stand7",
-      description: "Level1 Interface",
-      status: true,
-      billetStatus: true,
-      enabled: true,
-      idle: false,
-      rpm: 850,
-      rFactor: 1.212,
-      speed: 2.589,
-      dia: 480
+        billetId: null,
+        status: true,
+        billetStatus: false,
+        current: null,
+        tension: null,
+        rfactor: null,
+        speedmps: null,
+        time: "",
+        name: "STAND7"
     }
   ];
   timeInterval: any;
@@ -110,12 +96,13 @@ export class RollingMillComponent implements OnInit,OnDestroy{
  ){}
   ngOnInit(): void {
     //  this.startInterval();
+    this.standData = this.stands;
     this.getCurrent();
   }
 
   getCurrent(){
     this.timeInterval = setInterval(() => {
-      this.http.get('http://127.0.0.1:8000/get-status').subscribe((res=>{
+      this.http.get('http://127.0.0.1:8000/get-status').subscribe((res =>{
         this.standData= res;        
       }));
 

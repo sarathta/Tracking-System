@@ -31,6 +31,8 @@ coolingBedData: any;
 coldShearData: any;
 strData: any;
 strBar: any;
+strPo: any;
+strIncomingPo: any;
 strBedData: any;
 strBedBars: any;
 strBedPo: any;
@@ -43,6 +45,7 @@ dialogRackData: any;
 bundling1Data: any;
 bundling2Dat: any;
 bundling2Data: any;
+bundleYardData: any;
 mpi1TrashData: any;
 mpi1TrashDataCount: number=0;
 mpi2TrashData: any;
@@ -89,6 +92,11 @@ dialogudt: boolean=false;
 dialogColdShear: boolean=false;
 dialogRF: boolean=false;
 dialogIL: boolean=false;
+dialogbundleYard: boolean=false;
+bundleinYardData: any;
+dialogBundleInYardPO: any;
+dialogBundleInYardBarsCount: any;
+bundleinYardBars: any;
 barsInBundle1: number =0;
 barsInBundle2: number =0;
 cb1: any;
@@ -106,6 +114,12 @@ cb12: any;
 cb13: any;
 cb14: any;
 cb15: any;
+by1: any;
+by2: any;
+by3: any;
+by4: any;
+by5: any;
+by6: any;
 
 constructor(
   private http : HttpClient
@@ -138,6 +152,7 @@ startInterval() {
     this.getmp2RejectedbarsData();
     this.getokbarData();
     this.getbundling1Data();
+    this.getbundleYardData();
     this.getbundling2Data();
     this.billets.push({id: i});
     this.bundles.push({id: c, loaded: true});
@@ -248,17 +263,18 @@ startInterval() {
   getStraightenerData(){
     this.http.get('http://127.0.0.1:8000/str').subscribe((res=>{
       this.strData= res;
-      if(this.strData.length > 0){
-        this.strBar = this.strData[0];      
-      }
+      this.strBar = this.strData?.barId[0];  
+      this.strPo = this.strData?.currentPo;
+      this.strIncomingPo =this.strData?.incomingPo  
+
     }));
   }
 
   getStrBedData(){
     this.http.get('http://127.0.0.1:8000/str_bed').subscribe((res=>{
       this.strBedData= res;
-      this.strBedPo = this.strBedData.po;
-      this.strBedBars = this.strBedData.NoOfBars;      
+      this.strBedPo = this.strBedData?.po;
+      this.strBedBars = this.strBedData?.NoOfBars;      
     }));
   }
 
@@ -331,6 +347,29 @@ startInterval() {
     this.http.get('http://127.0.0.1:8000/bundle2').subscribe((res=>{
       this.bundling2Data= res;
       this.barsInBundle2 = this.bundling2Data.length;
+    }));
+  }
+
+  getbundleYardData(){
+    this.http.get('http://127.0.0.1:8000/billet_yard').subscribe((res=>{
+      this.bundleYardData= res;
+      if(this.bundleYardData.length >0){
+        this.by1 = this.bundleYardData[0] ? this.bundleYardData[0] : null;
+        this.by2 = this.bundleYardData[1] ? this.bundleYardData[1] : null;
+        this.by3 = this.bundleYardData[2] ? this.bundleYardData[2] : null;
+        this.by4 = this.bundleYardData[3] ? this.bundleYardData[3] : null;
+        this.by5 = this.bundleYardData[4] ? this.bundleYardData[4] : null;
+        this.by6 = this.bundleYardData[5] ? this.bundleYardData[5] : null;
+      }
+      else{
+        this.bundleYardData=[];
+        this.by1 = null;
+        this.by2 = null;
+        this.by3 = null;
+        this.by4 = null;
+        this.by5 = null;
+        this.by6 = null;
+      }
     }));
   }
  
@@ -414,6 +453,15 @@ startInterval() {
   showILDialog(data :any){
     this.dialogIL = true;
     this.dialogILHeader = data;
+
+  }
+
+  showBundleInYardDialog(data: any){
+    this.bundleYardData = {...data};
+    this.dialogBundleInYardPO = this.bundleYardData.po
+    this.dialogBundleInYardBarsCount = this.bundleYardData.NoOfBars
+    this.bundleinYardBars = this.bundleYardData.BarIds
+    this.dialogbundleYard = true;
 
   }
 
