@@ -120,19 +120,6 @@
            <div>
             <app-rolling-mill></app-rolling-mill>
            </div>
-            <!-- <div class="rm">
-                <img src="../../../../assets/Images/Dashboard/rm.png" alt="" style="width: 13vh;height: 6vh;margin-top: 6vh;">
-                <div>
-                    <span class=" font-medium">Rolling Mill</span>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;"></button>
-                </div>
-                <div class="mt-1 text-sm">
-                    <span>Billet sequence: </span><span class=" font-medium"> 224 </span>
-                </div>
-                <div class="mt-1 text-sm">
-                    <span>Billet Planned: </span><span class=" font-medium"> 1000 </span>
-                </div>
-            </div> -->
             <div class="coolingBed">
                 <div class="text-center">
                     <span class="font-medium">Cooling Bed</span>
@@ -178,171 +165,230 @@
             </div>
         </div>
         <hr>
-        <div class="row3 flex justify-content-between align-items-center">
-            <div class="bundlingArea">
-                <div class="text-center">
-                    <span class="font-medium">Rack</span>
-                </div>
-                <!-- <div class="bundle" *ngFor="let item of bundles" pTooltip="{{item.id}}">
-                        <span style="color: blue;font-size: x-small;font-weight: bold;margin-left: 3px;">{{item.id}}</span>
-                </div> -->
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionA}"  (click)="showRackDialog('Rack_A')" pTooltip="Rack A"><span class="font-semibold"> A </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionB}" (click)="showRackDialog('Rack_B')" pTooltip="Rack B"><span class="font-semibold"> B </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionC}" (click)="showRackDialog('Rack_C')" pTooltip="Rack C"><span class="font-semibold"> C </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionD}" (click)="showRackDialog('Rack_D')" pTooltip="Rack D"><span class="font-semibold"> D </span></div>
-            </div>
-            <div>
-                <div class="strBed">
-                    <div class="strBundle"><span class="font-semibold" > b0{{strBedData?.BundelId}} </span><br><span  class="font-semibold">{{strBedBars}}</span></div>
-                </div>
-                <div class="mt-1 text-sm">
-                    <span>PO :  </span><span class="font-medium">{{strBedPo}}</span>
-                </div>
-            </div>         
-
-            <div class="il">
-                <div class="flex justify-content-between" style="height: 15vh;">
-                    <div>
-                        <!-- <div class="mb-1"><span class="text-sm ">Incoming PO :</span><span class="text-sm font-semibold">{{strIncomingPo}}</span></div> -->
-                        <div class="Straightener" (click)="showstraightenerDialog()" pTooltip="Incoming PO : {{strIncomingPo}}" tooltipPosition="top">
-                            <span class="font-medium header">Straightener</span>
-                        </div>
-                        <div class="mt-1 text-sm">
-                           <span class="font-medium">{{strBar}}</span>
-                        </div>
-                        <div class="mt-1 text-sm">
-                            <span>PO : </span><span class="font-medium">{{strPo}}</span>
-                         </div>
+        <div class="row3 flex">
+            <div class="col-6 flex justify-content-between align-items-center" style="border-right: 1px solid #dbdbdb;">
+                <div class="bundlingArea">
+                    <div class="text-center">
+                        <span class="font-medium">Rack</span>
                     </div>
-                    <div class="ml-2">
-                        <div class="udt" (click)="showudtDialog()">
-                            <span class="font-medium header">UDT</span>
-                        </div>  
-                        <div class="udtbar" *ngIf="udtbarStatus" pTooltip="{{udtBarId}}">
-                            <span class="text-sm" style="color: green; margin-left: 6vh;" *ngIf="udtGoodBar" >ok bar</span>
-                            <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!udtGoodBar">not ok</span>
-                        </div>
-                        <div class="okbar"  pTooltip="{{okbarId}}" *ngIf="okbarStatus"><span class="text-sm" style="color: green;">{{barstatus}}</span></div>
-                        <div class="mpi1bar" *ngIf="mpi1barStatus">
-                            <span class="text-sm" style="color: green; margin-left: 6vh;"  *ngIf="mpi1GoodBar">ok bar</span>
-                            <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!mpi1GoodBar">not ok</span>            
-                        </div>
-                        <div class="mpi2bar" *ngIf="mpi2barStatus">
-                            <span class="text-sm" style="color: green; margin-left: 6vh;"  *ngIf="mpi2GoodBar">ok bar</span>
-                            <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!mpi2GoodBar">not ok</span> 
-                        </div>
-                        <div class="mt-1 text-sm">
-                            <span>PO : </span><span class="font-medium">{{udtPO}}</span>
-                        </div>
+                    <!-- <div class="bundle" *ngFor="let item of bundles" pTooltip="{{item.id}}">
+                            <span style="color: blue;font-size: x-small;font-weight: bold;margin-left: 3px;">{{item.id}}</span>
+                    </div> -->
+                    <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionA}"  (click)="showRackDialog('Rack_A')" pTooltip="Rack A"><span class="font-semibold"> A </span></div>
+                    <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionB}" (click)="showRackDialog('Rack_B')" pTooltip="Rack B"><span class="font-semibold"> B </span></div>
+                    <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionC}" (click)="showRackDialog('Rack_C')" pTooltip="Rack C"><span class="font-semibold"> C </span></div>
+                    <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionD}" (click)="showRackDialog('Rack_D')" pTooltip="Rack D"><span class="font-semibold"> D </span></div>
+                </div>
+                <div>
+                    <div class="strBed">
+                        <div class="strBundle"><span class="font-semibold" > b0{{strBedData?.BundelId}} </span><br><span  class="font-semibold">{{strBedBars}}</span></div>
                     </div>
-                                  
-                    <div class="ml-2">
-                        <div class="mpi mt-1">
-                            <span class="text-sm font-medium">MPI</span>
-                        </div>
-                        <div class="mpi mt-3">
-                            <span class="text-sm font-medium">MPI</span>
-                        </div>
-                    </div> 
-                    <div>
-                        <div class="rejected text-sm" pTooltip="Rejected bar count">
-                            <span class="font-medium">{{mpi1TrashDataCount}}</span>
-                        </div>
-                        <div class="rejected text-sm" pTooltip="Rejected bar count" style="margin-top: 5vh;">
-                            <span class="font-medium">{{mpi2TrashDataCount}}</span>
-                        </div>
+                    <div class="mt-1 text-sm">
+                        <span>PO :  </span><span class="font-medium">{{strBedPo}}</span>
                     </div>
-                   <div class="ml-3">
-                        <div class="il1BundleArea">
-                            <div class="text-center">
-                                <span class="font-medium">Bundling</span>
+                </div>         
+    
+                <div class="il">
+                    <div class="flex justify-content-between" style="height: 15vh;">
+                        <div>
+                            <!-- <div class="mb-1"><span class="text-sm ">Incoming PO :</span><span class="text-sm font-semibold">{{strIncomingPo}}</span></div> -->
+                            <div class="Straightener" (click)="showstraightenerDialog()" pTooltip="Incoming PO : {{strIncomingPo}}" tooltipPosition="top">
+                                <span class="font-medium header">Straightener</span>
                             </div>
-                            <div class="text-center mt-2">{{barsInBundle1}}</div>
+                            <div class="mt-1 text-sm">
+                               <span class="font-medium">{{strBar}}</span>
+                            </div>
+                            <div class="mt-1 text-sm">
+                                <span>PO : </span><span class="font-medium">{{strPo}}</span>
+                             </div>
                         </div>
-                        <div class="il1BundleArea mt-3">
-                            <div class="text-center">
-                                <span class="font-medium">Bundling</span>
-                                <div class="text-center mt-2">{{barsInBundle2}}</div>
+                        <div class="ml-2">
+                            <div class="udt" (click)="showudtDialog()">
+                                <span class="font-medium header">UDT</span>
+                            </div>  
+                            <div class="udtbar" *ngIf="udtbarStatus" pTooltip="{{udtBarId}}">
+                                <span class="text-sm" style="color: green; margin-left: 6vh;" *ngIf="udtGoodBar" >ok bar</span>
+                                <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!udtGoodBar">not ok</span>
+                            </div>
+                            <div class="okbar"  pTooltip="{{okbarId}}" *ngIf="okbarStatus"><span class="text-sm" style="color: green;">good bar</span></div>
+                            <div class="mpi1bar" *ngIf="mpi1barStatus">
+                                <span class="text-sm" style="color: green; margin-left: 6vh;"  *ngIf="mpi1GoodBar">ok bar</span>
+                                <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!mpi1GoodBar">not ok</span>            
+                            </div>
+                            <div class="mpi2bar" *ngIf="mpi2barStatus">
+                                <span class="text-sm" style="color: green; margin-left: 6vh;"  *ngIf="mpi2GoodBar">ok bar</span>
+                                <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!mpi2GoodBar">not ok</span> 
+                            </div>
+                            <div class="mt-1 text-sm">
+                                <span>PO : </span><span class="font-medium">{{udtPO}}</span>
                             </div>
                         </div>
-                        <!-- <div class="okbar"></div> -->
-                   </div>
-                </div>
-                <div class="text-center">
-                    <span class=" font-medium">Inspection Line-1</span>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="showILDialog('Inspection Line-1')"></button>
-                </div>
-            </div>
-            <div class="billetYard">
-                <div class="text-center">
-                    <span class="font-medium">Yard</span>
-                </div>
-               <div class="flex">
-                    <div class="bundleInYard" pTooltip="PO :{{by1?.po}}" [ngClass]="{'bundleColorInYard': by1 !== null}" (click)="showBundleInYardDialog(by1)"><span class="text-sm">{{by1?.po}}</span><br><span class="font-semibold">{{by1?.NoOfBars}}</span></div>
-                    <div class="bundleInYard" pTooltip="PO :{{by2?.po}}" [ngClass]="{'bundleColorInYard': by2 !== null}" (click)="showBundleInYardDialog(by2)"><span class="text-sm">{{by2?.po}}</span><br><span class="font-semibold">{{by2?.NoOfBars}}</span></div>
-                    <div class="bundleInYard" pTooltip="PO :{{by3?.po}}" [ngClass]="{'bundleColorInYard': by3 !== null}" (click)="showBundleInYardDialog(by3)"><span class="text-sm">{{by3?.po}}</span><br><span class="font-semibold">{{by3?.NoOfBars}}</span></div>
-               </div>
-               <div class="flex">
-                    <div class="bundleInYard" pTooltip="PO :{{by4?.po}}" [ngClass]="{'bundleColorInYard': by4 !== null}" (click)="showBundleInYardDialog(by4)"><span class="text-sm">{{by4?.po}}</span><br><span class="font-semibold">{{by4?.NoOfBars}}</span></div>
-                    <div class="bundleInYard" pTooltip="PO :{{by5?.po}}" [ngClass]="{'bundleColorInYard': by5 !== null}" (click)="showBundleInYardDialog(by5)"><span class="text-sm">{{by5?.po}}</span><br><span class="font-semibold">{{by5?.NoOfBars}}</span></div>
-                    <div class="bundleInYard" pTooltip="PO :{{by6?.po}}" [ngClass]="{'bundleColorInYard': by6 !== null}" (click)="showBundleInYardDialog(by6)"><span class="text-sm">{{by6?.po}}</span><br><span class="font-semibold">{{by6?.NoOfBars}}</span></div>
-                </div>
-            </div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div class="bundlingArea">
-                <div class="text-center">
-                    <span class="font-medium">Rack</span>
-                </div>
-                <!-- <div class="bundle" *ngFor="let item of bundles" pTooltip="{{item.id}}">
-                        <span style="color: blue;font-size: x-small;font-weight: bold;margin-left: 3px;">{{item.id}}</span>
-                </div> -->
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionA}"  (click)="showRackDialog('Rack_A')" pTooltip="Rack A"><span class="font-semibold"> A </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionB}" (click)="showRackDialog('Rack_B')" pTooltip="Rack B"><span class="font-semibold"> B </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionC}" (click)="showRackDialog('Rack_C')" pTooltip="Rack C"><span class="font-semibold"> C </span></div>
-                <div class="bundle text-center" [ngClass]="{'bg-yellow': sectionD}" (click)="showRackDialog('Rack_D')" pTooltip="Rack D"><span class="font-semibold"> D </span></div>
-            </div>
-            <div class="il">
-                <div class="flex justify-content-between" style="height: 15vh;">
-                    <div class="Straightener" (click)="showstraightenerDialog()">
-                        <span class="font-medium header">Straightener</span>
-                    </div>
-                    <div>
-                        <div class="udt" (click)="showudtDialog()">
-                            <span class="font-medium header">UDT</span>
+                                      
+                        <div class="ml-2">
+                            <div class="mpi mt-1">
+                                <span class="text-sm font-medium">MPI</span>
+                            </div>
+                            <div class="mpi mt-3">
+                                <span class="text-sm font-medium">MPI</span>
+                            </div>
                         </div> 
-                        <div class="mt-1 text-sm">
-                            <span>PO :</span><span class="font-medium">11186106</span>
+                        <div>
+                            <div class="rejected text-sm" pTooltip="Rejected bar count">
+                                <span class="font-medium">{{mpi1TrashDataCount}}</span>
+                            </div>
+                            <div class="rejected text-sm" pTooltip="Rejected bar count" style="margin-top: 5vh;">
+                                <span class="font-medium">{{mpi2TrashDataCount}}</span>
+                            </div>
                         </div>
+                       <div class="ml-3">
+                            <div class="il1BundleArea">
+                                <div class="text-center">
+                                    <span class="font-medium">Bundling</span>
+                                </div>
+                                <div class="text-center mt-2">{{barsInBundle1}}</div>
+                            </div>
+                            <div class="il1BundleArea mt-3">
+                                <div class="text-center">
+                                    <span class="font-medium">Bundling</span>
+                                    <div class="text-center mt-2">{{barsInBundle2}}</div>
+                                </div>
+                            </div>
+                            <!-- <div class="okbar"></div> -->
+                       </div>
                     </div>
-                    <div class="mt-5">
-                        <div class="mpi mt-2">
-                            <span class="text-sm font-medium">MPI</span>
-                        </div>
-                        <div class="mpi " style="margin-top: 5vh;">
-                            <span class="text-sm font-medium">MPI</span>
-                        </div>
-                    </div> 
-                    <div class="mt-5">
-                        <div class="rejected text-sm" pTooltip="Rejected bar count">
-                            <span class="font-medium">0</span>
-                        </div>
-                        <div class="rejected text-sm" pTooltip="Rejected bar count" style="margin-top: 7vh;">
-                            <span class="font-medium">0</span>
-                        </div>
-                    </div>
-                    <div class="il2BundleArea ml-3" style="margin-top: 6vh;">
-                        <div class="text-center">
-                            <span class="font-medium">Bundling</span>
-                        </div>
+                    <div class="text-center">
+                        <span class=" font-medium">Inspection Line-1</span>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="showILDialog('Inspection Line-1')"></button>
                     </div>
                 </div>
-                <div class="text-center">
-                    <span class=" font-medium">Inspection Line-2</span>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="showILDialog('Inspection Line-2')"></button>
+                <div class="billetYard">
+                    <div class="text-center">
+                        <span class="font-medium">Yard</span>
+                    </div>
+                   <div class="flex">
+                        <div class="bundleInYard" *ngIf="by1 !== null" pTooltip="PO :{{by1?.po}}" [ngClass]="{'bundleColorInYard': by1 !== null}" (click)="showBundleInYardDialog(by1)"><span class="text-sm">{{by1?.po}}</span><br><span class="font-semibold">{{by1?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by2 !== null" pTooltip="PO :{{by2?.po}}" [ngClass]="{'bundleColorInYard': by2 !== null}" (click)="showBundleInYardDialog(by2)"><span class="text-sm">{{by2?.po}}</span><br><span class="font-semibold">{{by2?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by3 !== null" pTooltip="PO :{{by3?.po}}" [ngClass]="{'bundleColorInYard': by3 !== null}" (click)="showBundleInYardDialog(by3)"><span class="text-sm">{{by3?.po}}</span><br><span class="font-semibold">{{by3?.NoOfBars}}</span></div>
+                   </div>
+                   <div class="flex">
+                        <div class="bundleInYard" *ngIf="by4 !== null" pTooltip="PO :{{by4?.po}}" [ngClass]="{'bundleColorInYard': by4 !== null}" (click)="showBundleInYardDialog(by4)"><span class="text-sm">{{by4?.po}}</span><br><span class="font-semibold">{{by4?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by5 !== null" pTooltip="PO :{{by5?.po}}" [ngClass]="{'bundleColorInYard': by5 !== null}" (click)="showBundleInYardDialog(by5)"><span class="text-sm">{{by5?.po}}</span><br><span class="font-semibold">{{by5?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by6 !== null" pTooltip="PO :{{by6?.po}}" [ngClass]="{'bundleColorInYard': by6 !== null}" (click)="showBundleInYardDialog(by6)"><span class="text-sm">{{by6?.po}}</span><br><span class="font-semibold">{{by6?.NoOfBars}}</span></div>
+                    </div>
                 </div>
+                <!-- <div class="bundleYard1">
+                    <div class="text-center">
+                        <span class="font-medium">Yard</span>
+                    </div>
+                    <div>
+                        <div class="bundleInYard" *ngIf="by1 !== null" pTooltip="PO :{{by1?.po}}" [ngClass]="{'bundleColorInYard': by1 !== null}" (click)="showBundleInYardDialog(by1)"><span class="text-sm">{{by1?.po}}</span><br><span class="font-semibold">{{by1?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by2 !== null" pTooltip="PO :{{by2?.po}}" [ngClass]="{'bundleColorInYard': by2 !== null}" (click)="showBundleInYardDialog(by2)"><span class="text-sm">{{by2?.po}}</span><br><span class="font-semibold">{{by2?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by3 !== null" pTooltip="PO :{{by3?.po}}" [ngClass]="{'bundleColorInYard': by3 !== null}" (click)="showBundleInYardDialog(by3)"><span class="text-sm">{{by3?.po}}</span><br><span class="font-semibold">{{by3?.NoOfBars}}</span></div>
+                    </div>
+                </div> -->
+                <div></div>
             </div>
+            <div class="col-6 flex justify-content-between align-items-center">
+                <div></div>
+                <div class="bundlingArea">
+                    <div class="text-center">
+                        <span class="font-medium">Rack</span>
+                    </div>
+                    <!-- <div class="bundle" *ngFor="let item of bundles" pTooltip="{{item.id}}">
+                            <span style="color: blue;font-size: x-small;font-weight: bold;margin-left: 3px;">{{item.id}}</span>
+                    </div> -->
+                    <div class="bundle text-center" [ngClass]="{'bg-yellow': IL2sectionA}"  (click)="showRackDialog('IL2Rack_A')" pTooltip="Rack A"><span class="font-semibold"> A </span></div>
+                    <div class="bundle text-center" [ngClass]="{'bg-yellow': IL2sectionB}" (click)="showRackDialog('IL2Rack_B')" pTooltip="Rack B"><span class="font-semibold"> B </span></div>
+                    <div class="bundle text-center" [ngClass]="{'bg-yellow': IL2sectionC}" (click)="showRackDialog('IL2Rack_C')" pTooltip="Rack C"><span class="font-semibold"> C </span></div>
+                    <div class="bundle text-center" [ngClass]="{'bg-yellow': IL2sectionD}" (click)="showRackDialog('IL2Rack_D')" pTooltip="Rack D"><span class="font-semibold"> D </span></div>
+                </div>
+                <div>
+                    <div class="strBed">
+                        <div class="strBundle"><span class="font-semibold" > b0{{il2strBedData?.BundelId}}  </span><br><span  class="font-semibold">{{il2strBedBars}}</span></div>
+                    </div>
+                    <div class="mt-1 text-sm">
+                        <span>PO :  </span><span class="font-medium">{{il2strBedPo}}</span>
+                    </div>
+                </div>   
+                <div class="il">
+                    <div class="flex justify-content-between" style="height: 15vh;">
+                        <div>
+                            <div class="Straightener" (click)="showstraightenerDialog()" pTooltip="Incoming PO : {{il2strIncomingPo}}" tooltipPosition="top">
+                                <span class="font-medium header">Straightener</span>
+                            </div>
+                            <div class="mt-1 text-sm">
+                               <span class="font-medium">{{il2strBar}}</span>
+                            </div>
+                            <div class="mt-1 text-sm">
+                                <span>PO : </span><span class="font-medium">{{il2strPo}}</span>
+                             </div>
+                        </div>
+                        <div>
+                            <div class="udt" (click)="showudtDialog()">
+                                <span class="font-medium header">UDT</span>
+                            </div> 
+                            <div class="il2udtbar" *ngIf="il2udtbarStatus" pTooltip="{{il2udtBarId}}">
+                                <span class="text-sm" style="color: green; margin-left: 6vh;" *ngIf="il2udtGoodBar" >ok bar</span>
+                                <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!il2udtGoodBar">not ok</span>
+                            </div>
+                            <div class="il2okbar"  pTooltip="{{il2okbarId}}" *ngIf="il2okbarStatus"><span class="text-sm" style="color: green;">good bar</span></div>
+                            <div class="il2mpi1bar" *ngIf="il2mpi1barStatus">
+                                <span class="text-sm" style="color: green; margin-left: 6vh;"  *ngIf="il2mpi1GoodBar">ok bar</span>
+                                <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;" *ngIf="!il2mpi1GoodBar">not ok</span>            
+                            </div>
+                            <div class="il2mpi2bar" *ngIf="il2mpi2barStatus">
+                                <span class="text-sm" style="color: green; margin-left: 6vh;position: relative;top: -16px;"  *ngIf="il2mpi2GoodBar">ok bar</span>
+                                <span class="text-sm" style="color: rgb(255, 6, 6);margin-left: 6vh;position: relative;top: -16px;" *ngIf="!il2mpi2GoodBar">not ok</span> 
+                            </div>
+                            <div class="mt-1 text-sm">
+                                <span>PO :</span><span class="font-medium">{{il2udtPO}}</span>
+                            </div>
+                            
+                        </div>
+                        <div class="mt-5">
+                            <div class="mpi mt-2">
+                                <span class="text-sm font-medium">MPI</span>
+                            </div>
+                            <div class="mpi " style="margin-top: 5vh;">
+                                <span class="text-sm font-medium">MPI</span>
+                            </div>
+                        </div> 
+                        <div class="mt-5">
+                            <div class="rejected text-sm" pTooltip="Rejected bar count">
+                                <span class="font-medium">{{il2mpi1TrashDataCount}}</span>
+                            </div>
+                            <div class="rejected text-sm" pTooltip="Rejected bar count" style="margin-top: 8vh;">
+                                <span class="font-medium">{{il2mpi2TrashDataCount}}</span>
+                            </div>
+                        </div>
+                        <div class="il2BundleArea ml-3" style="margin-top: 6vh;">
+                            <div class="text-center">
+                                <span class="font-medium">Bundling</span>
+                                <div class="text-center mt-2">{{il2barsInBundle}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-2">
+                        <span class=" font-medium">Inspection Line-2</span>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="showILDialog('Inspection Line-2')"></button>
+                    </div>
+                </div>
+                <div class="billetYard">
+                    <div class="text-center">
+                        <span class="font-medium">Yard</span>
+                    </div>
+                   <div class="flex">
+                        <div class="bundleInYard" *ngIf="il2by1 !== null" pTooltip="PO :{{il2by1?.po}}" [ngClass]="{'bundleColorInYard': il2by1 !== null}" (click)="showBundleInYardDialog(il2by1)"><span class="text-sm">{{il2by1?.po}}</span><br><span class="font-semibold">{{il2by1?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="il2by2 !== null" pTooltip="PO :{{il2by2?.po}}" [ngClass]="{'bundleColorInYard': il2by2 !== null}" (click)="showBundleInYardDialog(il2by2)"><span class="text-sm">{{il2by2?.po}}</span><br><span class="font-semibold">{{il2by2?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="il2by3 !== null" pTooltip="PO :{{il2by3?.po}}" [ngClass]="{'bundleColorInYard': il2by3 !== null}" (click)="showBundleInYardDialog(il2by3)"><span class="text-sm">{{il2by3?.po}}</span><br><span class="font-semibold">{{il2by3?.NoOfBars}}</span></div>
+                   </div>
+                   <div class="flex">
+                        <div class="bundleInYard" *ngIf="il2by4 !== null" pTooltip="PO :{{il2by4?.po}}" [ngClass]="{'bundleColorInYard': il2by4 !== null}" (click)="showBundleInYardDialog(il2by4)"><span class="text-sm">{{il2by4?.po}}</span><br><span class="font-semibold">{{il2by4?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="il2by5 !== null" pTooltip="PO :{{il2by5?.po}}" [ngClass]="{'bundleColorInYard': il2by5 !== null}" (click)="showBundleInYardDialog(il2by5)"><span class="text-sm">{{il2by5?.po}}</span><br><span class="font-semibold">{{il2by5?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="il2by6 !== null" pTooltip="PO :{{il2by6?.po}}" [ngClass]="{'bundleColorInYard': il2by6 !== null}" (click)="showBundleInYardDialog(il2by6)"><span class="text-sm">{{il2by6?.po}}</span><br><span class="font-semibold">{{il2by6?.NoOfBars}}</span></div>
+                    </div>
+                </div>
+            </div>            
         </div>
     </div>
     <app-bof1-dialog [inpBof1Dialog]="showbof1"></app-bof1-dialog>
@@ -477,8 +523,37 @@
         </div>
     </p-header>
     <ng-template pTemplate="content">
-        <div><span>Po :</span><span class="font-medium ml2">{{coldShearPO}}</span></div>
-       <div><span>Bars :</span> <div *ngFor="let item of coldShearData"><span class="font-medium ml-2">{{item.BarId}}</span></div></div>
+        <!-- <div><span>Po :</span><span class="font-medium ml2">{{coldShearPO}}</span></div> -->
+       <!-- <div><span>Bars :</span> <div *ngFor="let item of coldShearData"><span class="font-medium ml-2">{{item.BarId}}</span></div></div> -->
+       <div class="card">
+            <p-table [value]="coldShearData" dataKey="id" 
+                [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [scrollable]="true" [scrollHeight]="'21vh'"  responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>
+                            PO
+                        </th>
+                        <th>
+                            Billet ID
+                        </th>
+                        <th>
+                            Bars (#)
+                        </th>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr [pSelectableRow]="rowData">
+                        <td> {{rowData.po}} </td>
+                        <td> {{rowData.billetId}} </td>
+                        <td> {{rowData.noOfBars}} </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="2">No Data found.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
     </ng-template>
 </p-dialog>
 
@@ -490,7 +565,28 @@
     </p-header>
     <ng-template pTemplate="content">
         <div><span>Po :</span><span class="font-medium ml2">{{rfData?.WorkOrder}}</span></div>
-       <div><span>Billets :</span> <div *ngFor="let item of rfBillets"><span class="font-medium ml-2">{{item.BilletId}}</span></div></div>
+       <!-- <div><span>Billets :</span> <div *ngFor="let item of rfBillets"><span class="font-medium ml-2">{{item.BilletId}}</span></div></div> -->
+       <div class="card">
+            <p-table [value]="rfBillets" dataKey="id" 
+            [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [scrollable]="true" [scrollHeight]="'21vh'"  responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>
+                            Billet ID
+                        </th>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr [pSelectableRow]="rowData">
+                        <td> {{rowData.BilletId}} </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="2">No Data found.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
     </ng-template>
 </p-dialog>
 
@@ -504,5 +600,25 @@
         <div><span>Po :</span><span class="font-medium ml-2">{{dialogBundleInYardPO}}</span></div> 
         <div><span>No Of Bars :</span><span class="font-medium ml-2">{{dialogBundleInYardBarsCount}}</span></div>
        <div><span>Bars :</span> <div *ngFor="let item of bundleinYardBars"><span class="font-medium ml-2">{{item.BarId}}</span></div></div>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="BundleYard" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <ng-template pTemplate="content">
+        <div class="billetYard">
+            <div class="text-center">
+                <span class="font-medium">Yard</span>
+            </div>
+           <div class="flex">
+                <div class="bundleInYard" *ngIf="by1 !== null" pTooltip="PO :{{by1?.po}}" [ngClass]="{'bundleColorInYard': by1 !== null}" (click)="showBundleInYardDialog(by1)"><span class="text-sm">{{by1?.po}}</span><br><span class="font-semibold">{{by1?.NoOfBars}}</span></div>
+                <div class="bundleInYard" *ngIf="by2 !== null" pTooltip="PO :{{by2?.po}}" [ngClass]="{'bundleColorInYard': by2 !== null}" (click)="showBundleInYardDialog(by2)"><span class="text-sm">{{by2?.po}}</span><br><span class="font-semibold">{{by2?.NoOfBars}}</span></div>
+                <div class="bundleInYard" *ngIf="by3 !== null" pTooltip="PO :{{by3?.po}}" [ngClass]="{'bundleColorInYard': by3 !== null}" (click)="showBundleInYardDialog(by3)"><span class="text-sm">{{by3?.po}}</span><br><span class="font-semibold">{{by3?.NoOfBars}}</span></div>
+           </div>
+           <div class="flex">
+                <div class="bundleInYard" *ngIf="by4 !== null" pTooltip="PO :{{by4?.po}}" [ngClass]="{'bundleColorInYard': by4 !== null}" (click)="showBundleInYardDialog(by4)"><span class="text-sm">{{by4?.po}}</span><br><span class="font-semibold">{{by4?.NoOfBars}}</span></div>
+                <div class="bundleInYard" *ngIf="by5 !== null" pTooltip="PO :{{by5?.po}}" [ngClass]="{'bundleColorInYard': by5 !== null}" (click)="showBundleInYardDialog(by5)"><span class="text-sm">{{by5?.po}}</span><br><span class="font-semibold">{{by5?.NoOfBars}}</span></div>
+                <div class="bundleInYard" *ngIf="by6 !== null" pTooltip="PO :{{by6?.po}}" [ngClass]="{'bundleColorInYard': by6 !== null}" (click)="showBundleInYardDialog(by6)"><span class="text-sm">{{by6?.po}}</span><br><span class="font-semibold">{{by6?.NoOfBars}}</span></div>
+            </div>
+        </div>
     </ng-template>
 </p-dialog>

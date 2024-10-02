@@ -11,12 +11,17 @@ billets: any[]=[];
 bars: any[]=[];
 bundles: any[]=[];
 udtbarStatus:boolean = false;
-barstatus: any= "good bar"
 okbarStatus:boolean = false;
 mpi1barStatus:boolean = false;
 mpi2barStatus:boolean = false;
 mpi1GoodBar:boolean = false;
 mpi2GoodBar:boolean = false;
+il2udtbarStatus:boolean = false;
+il2okbarStatus:boolean = false;
+il2mpi1barStatus:boolean = false;
+il2mpi2barStatus:boolean = false;
+il2mpi1GoodBar:boolean = false;
+il2mpi2GoodBar:boolean = false;
 timeInterval: any;
 showbof1: number = 0;
 showbof2: number = 0;
@@ -33,32 +38,57 @@ strData: any;
 strBar: any;
 strPo: any;
 strIncomingPo: any;
+il2strData: any;
+il2strBar: any;
+il2strPo: any;
+il2strIncomingPo: any;
 strBedData: any;
 strBedBars: any;
 strBedPo: any;
+il2strBedData: any;
+il2strBedBars: any;
+il2strBedPo: any;
 mpi1Data: any;
 mpi2Data: any;
 okbarData: any;
 okbarId: any;
+il2mpi1Data: any;
+il2mpi2Data: any;
+il2okbarData: any;
+il2okbarId: any;
 rackAreaData: any;
 dialogRackData: any;
 bundling1Data: any;
 bundling2Dat: any;
 bundling2Data: any;
+il2bundlingData: any;
 bundleYardData: any;
+il2bundleYardData: any;
 mpi1TrashData: any;
 mpi1TrashDataCount: number=0;
 mpi2TrashData: any;
 mpi2TrashDataCount: number=0;
+il2mpi1TrashData: any;
+il2mpi1TrashDataCount: number=0;
+il2mpi2TrashData: any;
+il2mpi2TrashDataCount: number=0;
 udtData: any;
 udtPO: any;
+il2udtData: any;
+il2udtPO: any;
 udtBarId: any;
+il2udtBarId: any;
 udtGoodBar: boolean= false;
+il2udtGoodBar: boolean= false;
 coldShearPO: any;
 rack1: any;
 rack2: any;
 rack3: any;
 rack4: any;
+IL2rack1: any;
+IL2rack2: any;
+IL2rack3: any;
+IL2rack4: any;
 b1Barcount: number=0;
 bundlePO: any;
 bundleBarCount: any;
@@ -81,6 +111,10 @@ sectionA: boolean= false;
 sectionB: boolean= false;
 sectionC: boolean= false;
 sectionD: boolean= false;
+IL2sectionA: boolean= false;
+IL2sectionB: boolean= false;
+IL2sectionC: boolean= false;
+IL2sectionD: boolean= false;
 dialogRackHeader: any;
 dialogHeader: any;
 dialogILHeader: any;
@@ -99,6 +133,7 @@ dialogBundleInYardBarsCount: any;
 bundleinYardBars: any;
 barsInBundle1: number =0;
 barsInBundle2: number =0;
+il2barsInBundle: number =0;
 cb1: any;
 cb2: any;
 cb3: any;
@@ -120,6 +155,12 @@ by3: any;
 by4: any;
 by5: any;
 by6: any;
+il2by1: any;
+il2by2: any;
+il2by3: any;
+il2by4: any;
+il2by5: any;
+il2by6: any;
 
 constructor(
   private http : HttpClient
@@ -143,42 +184,53 @@ startInterval() {
     this.getCoolingBedData();
     this.getColdShearData();
     this.getRackAreaData();
+    this.getIL2RackAreaData();
     this.getStrBedData();
+    this.getIL2StrBedData();
     this.getStraightenerData();
+    this.getil2StraightenerData();
     this.getUdtData();
+    this.getil2UdtData();
     this.getMpi1Data();
     this.getMpi2Data();
+    this.getil2Mpi1Data();
+    this.getil2Mpi2Data();
     this.getmp1RejectedbarsData();
+    this.getil2mp1RejectedbarsData();
     this.getmp2RejectedbarsData();
+    this.getil2mp2RejectedbarsData();
     this.getokbarData();
+    this.getil2okbarData();
     this.getbundling1Data();
-    this.getbundleYardData();
     this.getbundling2Data();
+    this.getil2bundlingData();
+    this.getbundleYardData();
+    this.getil2bundleYardData();
     this.billets.push({id: i});
-    this.bundles.push({id: c, loaded: true});
-    if(c == 1){
-      this.sectionA = true;
-    }
-    if(c == 2){
-      this.sectionB = true;
-    }
-    if(c == 3){
-      this.sectionC = true;
-    }
-    if(c == 4){
-      this.sectionD = true;
-    }
+    // this.bundles.push({id: c, loaded: true});
+    // if(c == 1){
+    //   this.sectionA = true;
+    // }
+    // if(c == 2){
+    //   this.sectionB = true;
+    // }
+    // if(c == 3){
+    //   this.sectionC = true;
+    // }
+    // if(c == 4){
+    //   this.sectionD = true;
+    // }
      
-    c++;
-    if(c>4){
-      this.sectionA = false;
-      this.sectionB = false;
-      this.sectionC = false;
-      this.sectionD = false;
+    // c++;
+    // if(c>4){
+    //   this.sectionA = false;
+    //   this.sectionB = false;
+    //   this.sectionC = false;
+    //   this.sectionD = false;
 
-      this.bundles = [];
-      c=1;
-    }
+    //   this.bundles = [];
+    //   c=1;
+    // }
     if(j%2 == 0){
       this.bars.push({id: j})
     }
@@ -257,6 +309,24 @@ startInterval() {
       this.rack2 = this.rackAreaData.rack_1;
       this.rack3 = this.rackAreaData.rack_2;
       this.rack4 = this.rackAreaData.rack_3;
+      this.sectionA = this.rack1 ? true : false;
+      this.sectionB = this.rack2 ? true : false;
+      this.sectionC = this.rack3 ? true : false;
+      this.sectionD = this.rack4 ? true : false;
+    }));
+  }
+
+  getIL2RackAreaData(){
+    this.http.get('http://127.0.0.1:8000/rack_area?il=1').subscribe((res=>{
+      this.rackAreaData= res;
+      this.IL2rack1 = this.rackAreaData.rack_0;
+      this.IL2rack2 = this.rackAreaData.rack_1;
+      this.IL2rack3 = this.rackAreaData.rack_2;
+      this.IL2rack4 = this.rackAreaData.rack_3;
+      this.IL2sectionA = this.IL2rack1 ? true : false;
+      this.IL2sectionB = this.IL2rack2 ? true : false;
+      this.IL2sectionC = this.IL2rack3 ? true : false;
+      this.IL2sectionD = this.IL2rack4 ? true : false;
     }));
   }
 
@@ -270,6 +340,16 @@ startInterval() {
     }));
   }
 
+  getil2StraightenerData(){
+    this.http.get('http://127.0.0.1:8000/str?il=1').subscribe((res=>{
+      this.il2strData= res;
+      this.il2strBar = this.il2strData?.barId[0];  
+      this.il2strPo = this.il2strData?.currentPo;
+      this.il2strIncomingPo =this.il2strData?.incomingPo  
+
+    }));
+  }
+
   getStrBedData(){
     this.http.get('http://127.0.0.1:8000/str_bed').subscribe((res=>{
       this.strBedData= res;
@@ -278,18 +358,42 @@ startInterval() {
     }));
   }
 
+  getIL2StrBedData(){
+    this.http.get('http://127.0.0.1:8000/str_bed?il=1').subscribe((res=>{
+      this.il2strBedData= res;
+      this.il2strBedPo = this.il2strBedData?.po;
+      this.il2strBedBars = this.il2strBedData?.NoOfBars;      
+    }));
+  }
+
   getUdtData(){
     this.http.get('http://127.0.0.1:8000/udt').subscribe((res=>{
       this.udtData= res;
-      this.udtPO = this.udtData[0].po;
-      this.udtBarId = this.udtData[0].BarId
+      this.udtPO = this.udtData[0]?.po;
+      this.udtBarId = this.udtData[0]?.BarId
       if(this.udtData.length !=0){
         this.udtbarStatus= true
-        this.udtGoodBar = this.udtData[0].goodBar;
+        this.udtGoodBar = this.udtData[0]?.goodBar;
       }
       else{
         this.udtbarStatus = false;
         this.udtGoodBar = false;
+      }
+    }));
+  }
+
+  getil2UdtData(){
+    this.http.get('http://127.0.0.1:8000/udt?il=1').subscribe((res=>{
+      this.il2udtData= res;
+      this.il2udtPO = this.il2udtData[0]?.po;
+      this.il2udtBarId = this.il2udtData[0]?.BarId
+      if(this.il2udtData.length !=0){
+        this.il2udtbarStatus= true
+        this.il2udtGoodBar = this.il2udtData[0]?.goodBar;
+      }
+      else{
+        this.il2udtbarStatus = false;
+        this.il2udtGoodBar = false;
       }
     }));
   }
@@ -323,6 +427,34 @@ startInterval() {
     }));
   }
 
+  getil2Mpi1Data(){
+    this.http.get('http://127.0.0.1:8000/mpi1?il=1').subscribe((res=>{
+      this.il2mpi1Data= res;
+      if(this.il2mpi1Data.length > 0){
+        this.il2mpi1barStatus = true;
+        this.il2mpi1GoodBar = this.il2mpi1Data[0].goodBar
+      }
+      else{
+        this.il2mpi1barStatus = false;
+        this.il2mpi1GoodBar = false;
+      }
+    }));
+  }
+
+  getil2Mpi2Data(){
+    this.http.get('http://127.0.0.1:8000/mpi2?il=1').subscribe((res=>{
+      this.il2mpi2Data= res;
+      if(this.il2mpi2Data.length > 0){
+        this.il2mpi2barStatus = true;
+        this.il2mpi2GoodBar = this.il2mpi2Data[0].goodBar
+      }
+      else{
+        this.il2mpi2barStatus = false;
+        this.il2mpi2GoodBar = false;
+      }
+    }));
+  } 
+
   getokbarData(){
     this.http.get('http://127.0.0.1:8000/good_bar').subscribe((res=>{
       this.okbarData= res;
@@ -336,6 +468,21 @@ startInterval() {
       // this.coldShearPO = this.mpi1Data[0].po;
     }));
   }
+
+  getil2okbarData(){
+    this.http.get('http://127.0.0.1:8000/good_bar?il=2').subscribe((res=>{
+      this.il2okbarData= res;
+      this.il2okbarId = this.il2okbarData[0];
+      if(this.il2okbarData.length > 0){
+        this.il2okbarStatus = true;
+      }
+      else{
+        this.il2okbarStatus = false;
+      }
+      // this.coldShearPO = this.mpi1Data[0].po;
+    }));
+  }
+
   getbundling1Data(){
     this.http.get('http://127.0.0.1:8000/bundle1').subscribe((res=>{
       this.bundling1Data= res;
@@ -347,6 +494,13 @@ startInterval() {
     this.http.get('http://127.0.0.1:8000/bundle2').subscribe((res=>{
       this.bundling2Data= res;
       this.barsInBundle2 = this.bundling2Data.length;
+    }));
+  }
+
+  getil2bundlingData(){
+    this.http.get('http://127.0.0.1:8000/bundle1?il=1').subscribe((res=>{
+      this.il2bundlingData= res;
+      this.il2barsInBundle = this.il2bundlingData.length;
     }));
   }
 
@@ -372,6 +526,29 @@ startInterval() {
       }
     }));
   }
+
+  getil2bundleYardData(){
+    this.http.get('http://127.0.0.1:8000/billet_yard?il=1').subscribe((res=>{
+      this.il2bundleYardData= res;
+      if(this.il2bundleYardData.length >0){
+        this.il2by1 = this.il2bundleYardData[0] ? this.il2bundleYardData[0] : null;
+        this.il2by2 = this.il2bundleYardData[1] ? this.il2bundleYardData[1] : null;
+        this.il2by3 = this.il2bundleYardData[2] ? this.il2bundleYardData[2] : null;
+        this.il2by4 = this.il2bundleYardData[3] ? this.il2bundleYardData[3] : null;
+        this.il2by5 = this.il2bundleYardData[4] ? this.il2bundleYardData[4] : null;
+        this.il2by6 = this.il2bundleYardData[5] ? this.il2bundleYardData[5] : null;
+      }
+      else{
+        this.il2bundleYardData=[];
+        this.il2by1 = null;
+        this.il2by2 = null;
+        this.il2by3 = null;
+        this.il2by4 = null;
+        this.il2by5 = null;
+        this.il2by6 = null;
+      }
+    }));
+  }
  
   getmp1RejectedbarsData(){
     this.http.get('http://127.0.0.1:8000/trash1').subscribe((res=>{
@@ -380,10 +557,24 @@ startInterval() {
     }));
   }
 
+  getil2mp1RejectedbarsData(){
+    this.http.get('http://127.0.0.1:8000/trash1?il=1').subscribe((res=>{
+      this.il2mpi1TrashData= res;
+      this.il2mpi1TrashDataCount = this.il2mpi1TrashData.length;
+    }));
+  }
+
   getmp2RejectedbarsData(){
     this.http.get('http://127.0.0.1:8000/trash2').subscribe((res=>{
       this.mpi2TrashData= res;
       this.mpi2TrashDataCount = this.mpi2TrashData.length;
+    }));
+  }
+
+  getil2mp2RejectedbarsData(){
+    this.http.get('http://127.0.0.1:8000/trash2?il=1').subscribe((res=>{
+      this.il2mpi2TrashData= res;
+      this.il2mpi2TrashDataCount = this.il2mpi2TrashData.length;
     }));
   }
 
@@ -427,6 +618,18 @@ startInterval() {
     }
     else if(data == 'Rack_D'){
       this.dialogRackData = this.rack4
+    }
+    else if(data == 'IL2Rack_A'){
+      this.dialogRackData = this.IL2rack1;
+    }
+    else if(data == 'IL2Rack_B'){
+      this.dialogRackData = this.IL2rack2;
+    }
+    else if(data == 'IL2Rack_C'){
+      this.dialogRackData = this.IL2rack3;
+    }
+    else if(data == 'IL2Rack_D'){
+      this.dialogRackData = this.IL2rack4;
     }
     this.dialogRack = true;
     this.dialogRackHeader = data;
