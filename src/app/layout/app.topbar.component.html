@@ -13,6 +13,7 @@
     </button>
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <i class="pi pi-bell text-3xl p-link mt-3" pBadge value="{{notificationCount}}"></i>
         <button class="p-link layout-topbar-button">
             <i class="pi pi-calendar"></i>
             <span>Calendar</span>

@@ -1,7 +1,7 @@
 <div class="rollingMill">
     <div class="stands flex justify-content-between" >
         <div  *ngFor="let item of standData">
-            <div class="card" (click)="showStandData(item)" pTooltip="{{item.name}}" (click)="showStandData(item)">
+            <div class="card" (click)="showStandData(item)"  pTooltip="{{item.name}}" (click)="showStandData(item)">
                 <div id="container1">
                     <div class="circle1"  ></div>
                     <!--<div *ngIf="stand.status && !stand.idle" class="circle2">
@@ -34,6 +34,8 @@
             <div class="mt-1 text-sm">
                 <span>Speed : </span><span class=" font-medium"> {{item.speedmps}} </span>
             </div>
+            <div></div>
+            <div class="bar" [ngClass]="{'redColor': item.anamoly}"></div>
         </div>       
     </div>
 

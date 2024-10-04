@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NotificationService } from 'src/app/services/common/notification.service';
 
 @Component({
   selector: 'app-rolling-mill',
@@ -90,9 +91,11 @@ export class RollingMillComponent implements OnInit,OnDestroy{
     }
   ];
   timeInterval: any;
+  notificationCount : number =0;
 
  constructor(
-  private http : HttpClient
+  private http : HttpClient,
+  private notificationService : NotificationService
  ){}
   ngOnInit(): void {
     //  this.startInterval();
@@ -103,10 +106,14 @@ export class RollingMillComponent implements OnInit,OnDestroy{
   getCurrent(){
     this.timeInterval = setInterval(() => {
       this.http.get('http://127.0.0.1:8000/get-status').subscribe((res =>{
-        this.standData= res;        
-      }));
-
-         
+        this.standData= res;   
+        this.standData.forEach((element: any) => {
+          if(element.anamoly == true){
+            this.notificationCount = this.notificationCount + 1;
+            this.notificationService.sendData(this.notificationCount);         
+          } 
+        });     
+      }));         
     }, 2000);
   }
   // startInterval() {

@@ -470,7 +470,7 @@ startInterval() {
   }
 
   getil2okbarData(){
-    this.http.get('http://127.0.0.1:8000/good_bar?il=2').subscribe((res=>{
+    this.http.get('http://127.0.0.1:8000/good_bar?il=1').subscribe((res=>{
       this.il2okbarData= res;
       this.il2okbarId = this.il2okbarData[0];
       if(this.il2okbarData.length > 0){

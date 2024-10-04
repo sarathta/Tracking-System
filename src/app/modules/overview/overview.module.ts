@@ -8,17 +8,20 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
-import { OverviewComponent } from 'src/app/demo/components/overview/overview.component';
 import { OverviewRoutingModule } from './overview-routing.module';
 import { OverviewdialogModule } from '../overviewdialog/overviewdialog.module';
-import { RollingMillComponent } from 'src/app/demo/components/rolling-mill/rolling-mill.component';
 import { ApplicationPipesModule } from '../shared/application-pipes.module';
+
+import { OverviewComponent } from 'src/app/demo/components/overview/overview.component';
+import { RollingMillComponent } from 'src/app/demo/components/rolling-mill/rolling-mill.component';
+import { Bof1Component } from 'src/app/demo/components/bof1/bof1.component';
 
 
 
 @NgModule({
   declarations: [
     OverviewComponent,
+    Bof1Component,
     RollingMillComponent
   ],
   imports: [

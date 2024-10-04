@@ -1,12 +1,14 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
+import { NotificationService } from '../services/common/notification.service';
 
 @Component({
     selector: 'app-topbar',
-    templateUrl: './app.topbar.component.html'
+    templateUrl: './app.topbar.component.html',
+    styleUrls: ['./app.topbar.component.scss']
 })
-export class AppTopBarComponent {
+export class AppTopBarComponent implements OnInit {
 
     items!: MenuItem[];
 
@@ -16,5 +18,18 @@ export class AppTopBarComponent {
 
     @ViewChild('topbarmenu') menu!: ElementRef;
 
-    constructor(public layoutService: LayoutService) { }
+    notificationCount: any;
+
+    constructor(
+        public layoutService: LayoutService,
+        private notificationService: NotificationService
+    ) { }
+
+    ngOnInit(): void {
+        this.notificationService.notificationCount.subscribe((data: any)=>{
+            this.notificationCount = data;
+        })
+    }
+
+
 }
