@@ -33,9 +33,9 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        this.notificationService.notificationCount.subscribe((data: any)=>{
-            this.notificationCount = data;
-        })
+        // this.notificationService.notificationCount.subscribe((data: any)=>{
+        //     this.notificationCount = data;
+        // })
         if (this.timeInterval) {
             clearInterval(this.timeInterval);
           }
@@ -52,6 +52,7 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     getNotification(){
         this.http.get('http://127.0.0.1:8000/anomaly').subscribe((res=>{
             this.notificationData= res;
+            this.notificationCount = this.notificationData.length;
         }));
     }
 

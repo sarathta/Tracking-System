@@ -23,6 +23,8 @@
     }
 
     .notificationItem{
-        .hover{}
+        &:hover {
+            background-color: rgba(202, 219, 228, 0.9) !important;
+        }
     }
 }

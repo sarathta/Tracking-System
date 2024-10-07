@@ -108,34 +108,14 @@ export class RollingMillComponent implements OnInit,OnDestroy{
       this.http.get('http://127.0.0.1:8000/get-status').subscribe((res =>{
         this.standData= res;   
         this.standData.forEach((element: any) => {
-          if(element.anamoly == true){
+          if(element.anomaly == true){
             this.notificationCount = this.notificationCount + 1;
             this.notificationService.sendData(this.notificationCount);         
           } 
         });     
       }));         
-    }, 2000);
+    }, 1000);
   }
-  // startInterval() {
-  //   if (this.timeInterval) {
-  //     clearInterval(this.timeInterval);
-  //   }
-  //   this.timeInterval = setInterval(() => {
-  //     let i=0;
-  //     if(i< this.stands.length){
-  //       this.stands[i].billetStatus= true;
-  //       this.stands[i-1].billetStatus = false;
-  //       console.log( this.stands[i].billetStatus);
-        
-  //       i++;
-  //       console.log(i);
-        
-  //     }
-  //     else{
-  //       i=0;
-  //     }
-  //   }, 2000);
-  // }
  
   ngOnDestroy() {
     clearInterval(this.timeInterval);

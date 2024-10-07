@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./bof1.component.scss']
 })
 export class Bof1Component {
+  selectedData: any;
+  loading: boolean = false;
 
 }

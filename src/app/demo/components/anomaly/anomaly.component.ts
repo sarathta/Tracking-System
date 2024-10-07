@@ -11,26 +11,31 @@ export class AnomalyComponent implements OnInit,OnDestroy{
   options: any;
   timeInterval: any;
   anomalyData: any;
+  selectedData: any;
+  loading: boolean= false;
 
   constructor(
     private http : HttpClient
   ){}
 
   ngOnInit(): void {
+    this.loading = true;
     if (this.timeInterval) {
       clearInterval(this.timeInterval);
     }
-    this.timeInterval = setInterval(() => {
+    // this.timeInterval = setInterval(() => {
       this.getData();
-    }, 1000);
+    // }, 1000);
 
-    this.bindData();
 
   }
 
   getData(){
     this.http.get('http://127.0.0.1:8000/anomaly').subscribe((res=>{
       this.anomalyData= res;
+      this.selectedData = this.anomalyData[0];
+      this.bindData()
+      this.loading = false;
   }));
 
   }
@@ -43,20 +48,31 @@ export class AnomalyComponent implements OnInit,OnDestroy{
     const documentStyle = getComputedStyle(document.documentElement);
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-    this.data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-          {
-              label: 'First Dataset',
-              data: [65, 59, 80, 81, 56, 55, 40],
-              fill: false,
-              borderColor: 'red',
-              tension: 0.4
-          }          
-      ]
-    };
-
+    if(this.selectedData){
+      console.log(this.selectedData);
+      
+      let labelArray: any[] = [];
+      let CurrentData: any[] = this.selectedData?.Current;
+      let i =0;      
+      while(i <= CurrentData.length){
+        labelArray.push(i);
+        i=i+1;        
+      }
+      this.data = {
+        labels: labelArray,
+        datasets: [
+            {
+                label: this.selectedData.Name,
+                data: CurrentData,
+                fill: false,
+                borderColor: 'red',
+                tension: 0.4
+            }          
+        ]
+      };
+    }
     this.options = {
+        // responsive: false,
         maintainAspectRatio: false,
         aspectRatio: 0.6,
         plugins: {
