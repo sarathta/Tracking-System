@@ -218,36 +218,40 @@ startInterval() {
     //   this.sectionC = true;
     // }
     // if(c == 4){
-    //   this.sectionD = true;
-    // }
-     
-    // c++;
-    // if(c>4){
-    //   this.sectionA = false;
-    //   this.sectionB = false;
-    //   this.sectionC = false;
-    //   this.sectionD = false;
-
-    //   this.bundles = [];
-    //   c=1;
-    // }
-    if(j%2 == 0){
-      this.bars.push({id: j})
+      //   this.sectionD = true;
+      // }
+      
+      // c++;
+      // if(c>4){
+        //   this.sectionA = false;
+        //   this.sectionB = false;
+        //   this.sectionC = false;
+        //   this.sectionD = false;
+        
+        //   this.bundles = [];
+        //   c=1;
+        // }
+        if(j%2 == 0){
+          this.bars.push({id: j})
+        }
+        j++;
+        i++;
+        if(i>7){
+          this.billets = [];
+          i=0;
+        }  
+        if(j>16){
+          this.bars=[];
+          j=1;
+        } 
+      }, 1000);
     }
-    j++;
-    i++;
-    if(i>7){
-      this.billets = [];
-      i=0;
-    }  
-    if(j>16){
-      this.bars=[];
-      j=1;
-    } 
-  }, 1000);
-}
-
-  getReheatingFurnaceData(){
+    
+    ngOnDestroy() {
+      clearInterval(this.timeInterval);
+    }
+    
+    getReheatingFurnaceData(){
     this.http.get('http://127.0.0.1:8000/po').subscribe((res=>{
       this.rfData= res;
       if(this.rfData != null){
@@ -291,6 +295,24 @@ startInterval() {
         this.cb13 = this.coolingBedData[13]?.BilletId ? this.coolingBedData[13]?.BilletId : null;
         this.cb14 = this.coolingBedData[14]?.BilletId ? this.coolingBedData[14]?.BilletId : null;
         this.cb15 = this.coolingBedData[15]?.BilletId ? this.coolingBedData[15]?.BilletId : null;
+      }
+      else{
+        this.cb1 = null;
+        this.cb2 = null;
+        this.cb3 = null;
+        this.cb4 = null;
+        this.cb5 = null;
+        this.cb6 = null;
+        this.cb7 = null;
+        this.cb8 = null;
+        this.cb9 = null;
+        this.cb10 = null;
+        this.cb11 = null;
+        this.cb12 = null;
+        this.cb12 = null;
+        this.cb13 = null;
+        this.cb14 = null;
+        this.cb15 = null;
       }
     }));
   }
@@ -354,7 +376,7 @@ startInterval() {
     this.http.get('http://127.0.0.1:8000/str_bed').subscribe((res=>{
       this.strBedData= res;
       this.strBedPo = this.strBedData?.po;
-      this.strBedBars = this.strBedData?.NoOfBars;      
+      this.strBedBars = this.strBedData ? this.strBedData.NoOfBars : null;      
     }));
   }
 
@@ -362,7 +384,7 @@ startInterval() {
     this.http.get('http://127.0.0.1:8000/str_bed?il=1').subscribe((res=>{
       this.il2strBedData= res;
       this.il2strBedPo = this.il2strBedData?.po;
-      this.il2strBedBars = this.il2strBedData?.NoOfBars;      
+      this.il2strBedBars = this.il2strBedData ? this.il2strBedData.NoOfBars : null;      
     }));
   }
 
@@ -578,9 +600,6 @@ startInterval() {
     }));
   }
 
-  ngOnDestroy() {
-    clearInterval(this.timeInterval);
-  }
 
   Bof1(){
     this.showbof1 = ++this.showbof1;

@@ -18,6 +18,27 @@ export class AppMenuComponent implements OnInit {
                 label: 'Home',
                 items: [
                     { label: 'Dashboard', icon: 'pi pi-fw pi-qrcode', routerLink: ['/TrackingSystem/overview'] },
+                    { label: 'Process',
+                        icon: 'pi pi-fw pi-sliders-h',
+                        items: [
+                                            {
+                                                label: 'Bof-1',
+                                                // icon: 'pi pi-fw pi-sign-in',
+                                                routerLink: ['/TrackingSystem/overview/bof1']
+                                            },
+                                            {
+                                                label: 'Bof-2',
+                                                // icon: 'pi pi-fw pi-times-circle',
+                                                routerLink: ['/TaskScheduler/auth/error']
+                                            },
+                                            {
+                                                label: 'Laddle Furnace',
+                                                // icon: 'pi pi-fw pi-lock',
+                                                routerLink: ['/TaskScheduler/auth/access']
+                                            }
+                                ] 
+                    },
+                    { label: 'Anomaly', icon: 'pi pi-ticket', routerLink: ['/TrackingSystem/overview/anomaly'] },
                     { label: 'Production', icon: 'pi pi-fw pi-bookmark', routerLink: ['/TrackingSystem/dashboard'] },
                     { label: 'User', icon: 'pi pi-fw pi-users', routerLink: ['/TrackingSystem/'] },
                     { label: 'Master Data', icon: 'pi pi-fw pi-database', routerLink: ['/TrackingSystem/task/MailErrorLog'] }

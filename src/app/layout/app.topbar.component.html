@@ -13,7 +13,7 @@
     </button>
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <i class="pi pi-bell text-3xl p-link mt-3" pBadge value="{{notificationCount}}"></i>
+        <i class="pi pi-bell text-3xl p-link mt-3" pBadge value="{{notificationCount}}" (click)="showNotification()"></i>
         <button class="p-link layout-topbar-button">
             <i class="pi pi-calendar"></i>
             <span>Calendar</span>
@@ -26,5 +26,25 @@
             <i class="pi pi-cog"></i>
             <span>Settings</span>
         </button>
+    </div>
+    <div class="notification_overlay" *ngIf="showNotifications">
+        <div class="header p-2 flex justify-content-between align-items-center border-bottom-1 border-gray-500">
+            <div class="btnClose">
+                <button pButton  label="Clear" class="p-button-sm px-3 py-1 p-button-rounded p-button-info" ></button>
+            </div>
+            <div class="closeIcon" (click)="closeNotification()">
+                <i class="pi pi-times text-xl font-semibold"></i>
+            </div>
+        </div>
+        <div class="notificationContent">
+            <div class="alert-spinner"> </div>
+            <div  class="notificationItem px-3 py-2 border-bottom-1 border-gray-400" *ngFor="let item of notificationData" (click)="router.navigate(['/TrackingSystem/overview/anomaly'])">
+                <div class="grid">
+                    <div class="col-6 text-lg" style="cursor: pointer;">{{item?.Name}} - <span class="font-semibold">{{item?.BilletId}}</span></div>
+                    <div class="col-6 text-right text-sm" style="cursor: pointer;">{{item?.StartTime | date: 'dd/MM/YY HH:MM'}}</div>
+                </div>
+                <div style="cursor: pointer;">Anomaly Detected </div>
+            </div>
+        </div>
     </div>
 </div>

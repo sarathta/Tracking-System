@@ -1,23 +1,28 @@
 
 .notification_overlay {
     width: 380px;
-    background-color: grey;
-    color: white;
+    background-color: rgb(93 93 93 / 90%);
+    color: #000000;
     position: fixed;
+    top: 56px;
     right: 0px;
     clear: both;
 
     .closeIcon :hover {
-        color: rgb(35, 35, 35);
+        color: rgb(255, 255, 255);
     }
 
     .notificationContent {
         position: inherit;
         height: 60vh;
         overflow-x: hidden;
-        background-color: lightgray;
+        background-color: rgb(224 240 248 / 90%);
         width: 380px;
         border-bottom-right-radius: 10px;
         border-bottom-left-radius: 10px;
+    }
+
+    .notificationItem{
+        .hover{}
     }
 }
