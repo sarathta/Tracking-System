@@ -53,6 +53,7 @@ export class AnomalyComponent implements OnInit,OnDestroy{
       
       let labelArray: any[] = [];
       let CurrentData: any[] = this.selectedData?.Current;
+      let AnomalyCurrentData: any[]= this.selectedData?.AnomalyCurrent;
       let i =0;      
       while(i <= CurrentData.length){
         labelArray.push(i);
@@ -61,13 +62,22 @@ export class AnomalyComponent implements OnInit,OnDestroy{
       this.data = {
         labels: labelArray,
         datasets: [
-            {
-                label: this.selectedData.Name,
-                data: CurrentData,
-                fill: false,
-                borderColor: 'red',
-                tension: 0.4
-            }          
+          {
+            label: 'Current Anomaly',
+            data: AnomalyCurrentData,
+            fill: false,
+            borderDash: [5, 5],
+            tension: 0.4,
+            borderColor: documentStyle.getPropertyValue('--orange-500')
+          },
+          {
+            label: 'Current',
+            data: CurrentData,
+            fill: true,
+            borderColor: documentStyle.getPropertyValue('--teal-500'),
+            tension: 0.4,
+            backgroundColor: 'rgba(19, 206, 22, 0.15)'              
+          }       
         ]
       };
     }
