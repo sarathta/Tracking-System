@@ -1,6 +1,6 @@
 <div class="card text-center">
     <div class="col-12">
-        <p-table [value]="[]" [(selection)]="selectedData" selectionMode="single" [rows]="12" [loading]="loading" 
+        <p-table [value]="bof1Data" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
                 [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
 				<ng-template pTemplate="caption">
 					<div class="flex align-items-center justify-content-between flex-column sm:flex-row">
@@ -34,20 +34,19 @@
 				</ng-template>
 				<ng-template pTemplate="body" let-rowData>
 					<tr [pSelectableRow]="rowData">
-						<td> {{rowData.BilletId}} </td>
-						<td> {{rowData.Name}} </td>
-						<td> {{rowData.StartTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-						<td> {{rowData.EndTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                        <td> {{rowData.BilletId}} </td>
-                        <td> {{rowData.BilletId}} </td>
-                        <td> {{rowData.BilletId}} </td>
-                        <td> {{rowData.BilletId}} </td>
-                        <td> {{rowData.BilletId}} </td>
-                        <td> {{rowData.BilletId}} </td>
-                        <td> {{rowData.BilletId}} </td>
-                        <td> {{rowData.BilletId}} </td>
-                        <td> {{rowData.BilletId}} </td>
-
+						<td> {{rowData.Seq}} </td>
+						<td> {{rowData.Date | date: 'dd/MM/YY'}} </td>
+						<td> {{rowData.Time}} </td>
+						<td> {{rowData.Converter}} </td>
+                        <td> {{rowData.Shift}} </td>
+                        <td> {{rowData.HeatNo}} </td>
+                        <td> {{rowData.OperatorName}} </td>
+                        <td> {{rowData.BlowStartDate}} </td>
+                        <td> {{rowData.BlowStartTime}} </td>
+                        <td> {{rowData.BlowEndTime}} </td>
+                        <td> {{rowData.TotalBlowTime}} </td>
+                        <td> {{rowData.N2SplashDuration}} </td>
+                        <td> {{rowData.Temp}} </td>
 					</tr>
 				</ng-template>
 				<ng-template pTemplate="emptymessage">
@@ -59,7 +58,7 @@
 	</div>
     <div class="flex">
         <div class="col-6">
-            <p-table [value]="[]" [(selection)]="selectedData" selectionMode="single" [rows]="12" [loading]="loading" 
+            <p-table [value]="o2ConsuptionData" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
                     [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
                     <ng-template pTemplate="caption">
                         <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
@@ -82,11 +81,11 @@
                     </ng-template>
                     <ng-template pTemplate="body" let-rowData>
                         <tr [pSelectableRow]="rowData">
-                            <td> {{rowData.BilletId}} </td>
-                            <td> {{rowData.Name}} </td>
-                            <td> {{rowData.StartTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                            <td> {{rowData.EndTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                            <td> {{rowData.BilletId}} </td>       
+                            <td> {{rowData.Seq}} </td>
+                            <td> {{rowData.Date  | date: 'dd/MM/YY'}} </td>
+                            <td> {{rowData.LanceA}} </td>      
+                            <td> {{rowData.LanceB}} </td>      
+                            <td> {{rowData.Total}} </td>      
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="emptymessage">

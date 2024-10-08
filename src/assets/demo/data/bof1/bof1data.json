@@ -1,0 +1,47 @@
+[
+    {
+        "Seq" : 1,
+        "Date" : "08/10/2024 22:28:02",
+        "Time" : "22:28:02",
+        "Converter" : 1,
+        "Shift" : "C",
+        "HeatNo" : 90072,
+        "OperatorName" : "kartheek",
+        "BlowStartDate" : "08:10:2024",
+        "BlowStartTime" : "21:42:34",
+        "BlowEndTime" : "22:01:14",
+        "TotalBlowTime" : "18:39",
+        "N2SplashDuration" : "01:20",
+        "Temp" : "1634.89"
+    },
+    {
+        "Seq" : 2,
+        "Date" : "08/10/2024 16:46:20",
+        "Time" : "16:46:20",
+        "Converter" : 1,
+        "Shift" : "B",
+        "HeatNo" : 90078,
+        "OperatorName" : "kartheek",
+        "BlowStartDate" : "08:10:2024",
+        "BlowStartTime" : "15:58:10",
+        "BlowEndTime" : "16:25:21",
+        "TotalBlowTime" : "21:44",
+        "N2SplashDuration" : "00:00",
+        "Temp" : "1645.72"
+    },
+    {
+        "Seq" : 3,
+        "Date" : "07/10/2024 22:28:02",
+        "Time" : "22:28:02",
+        "Converter" : 1,
+        "Shift" : "A",
+        "HeatNo" : 90089,
+        "OperatorName" : "Pavan Kumar",
+        "BlowStartDate" : "07:10:2024",
+        "BlowStartTime" : "21:42:34",
+        "BlowEndTime" : "22:01:14",
+        "TotalBlowTime" : "18:39",
+        "N2SplashDuration" : "01:04",
+        "Temp" : "1683.59"
+    }
+]

@@ -50,7 +50,7 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     }
 
     getNotification(){
-        this.http.get('http://127.0.0.1:8000/anomaly').subscribe((res=>{
+        this.http.get('http://127.0.0.1:8000/notif').subscribe((res=>{
             this.notificationData= res;
             this.notificationCount = this.notificationData.length;
         }));

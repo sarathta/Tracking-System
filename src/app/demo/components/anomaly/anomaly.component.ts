@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-anomaly',
   templateUrl: './anomaly.component.html',
   styleUrls: ['./anomaly.component.scss']
 })
-export class AnomalyComponent implements OnInit,OnDestroy{
+export class AnomalyComponent implements OnInit{
   data: any;
   options: any;
   timeInterval: any;
@@ -20,28 +20,16 @@ export class AnomalyComponent implements OnInit,OnDestroy{
 
   ngOnInit(): void {
     this.loading = true;
-    if (this.timeInterval) {
-      clearInterval(this.timeInterval);
-    }
-    // this.timeInterval = setInterval(() => {
-      this.getData();
-    // }, 1000);
-
-
+    this.getData();
   }
 
   getData(){
-    this.http.get('http://127.0.0.1:8000/anomaly').subscribe((res=>{
+    this.http.get('http://127.0.0.1:8000/anomaly').subscribe(res=>{
       this.anomalyData= res;
       this.selectedData = this.anomalyData[0];
-      this.bindData()
       this.loading = false;
-  }));
-
-  }
-
-  ngOnDestroy() {
-    clearInterval(this.timeInterval);
+      this.bindData()
+    });
   }
 
   bindData(){
