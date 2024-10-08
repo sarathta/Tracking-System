@@ -51,7 +51,7 @@ export class AnomalyComponent implements OnInit{
         labels: labelArray,
         datasets: [
           {
-            label: 'Current Anomaly',
+            label: 'Anomaly',
             data: AnomalyCurrentData,
             fill: false,
             borderDash: [5, 5],
@@ -59,7 +59,7 @@ export class AnomalyComponent implements OnInit{
             borderColor: documentStyle.getPropertyValue('--orange-500')
           },
           {
-            label: 'Current',
+            label: 'Ideal',
             data: CurrentData,
             fill: true,
             borderColor: documentStyle.getPropertyValue('--teal-500'),
