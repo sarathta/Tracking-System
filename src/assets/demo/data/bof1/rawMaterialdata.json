@@ -1,0 +1,35 @@
+[
+    {
+        "Seq" : 1,
+        "Date" : "08/10/2024 22:28:02",
+        "Lime" : 2486.46,
+        "LimeStone" : 322.28,
+        "CalDolomite" : 502.73,
+        "RawDolomite" : 1613.88,
+        "IronOre" : 170.35,
+        "SPC" : 0,
+        "COKE" : 0
+    },
+    {
+        "Seq" : 2,
+        "Date" : "08/10/2024 16:46:20",
+        "Lime" : 2376.79,
+        "LimeStone" : 1297.85,
+        "CalDolomite" : 615.4,
+        "RawDolomite" : 628.35,
+        "IronOre" : 133.88,
+        "SPC" : 208.36,
+        "COKE" : 0
+    },
+    {
+        "Seq" : 3,
+        "Date" : "07/10/2024 22:28:02",
+        "Lime" : 1733.66,
+        "LimeStone" : 735.26,
+        "CalDolomite" : 924.15,
+        "RawDolomite" : 407.9,
+        "IronOre" : 123.54,
+        "SPC" : 0,
+        "COKE" : 0
+    }
+]

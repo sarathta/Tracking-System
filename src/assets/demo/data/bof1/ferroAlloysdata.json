@@ -1,0 +1,35 @@
+[
+    {
+        "Seq" : 1,
+        "Date" : "08/10/2024 22:28:02",
+        "Alloy1" : 482.88,
+        "Alloy2" : 0,
+        "Alloy3" : 181.65,
+        "Alloy4" : 248.26,
+        "Alloy5" : 0,
+        "Alloy6" : 0,
+        "ScrapWeight" : 12065.17
+    },
+    {
+        "Seq" : 2,
+        "Date" : "08/10/2024 16:46:20",
+        "Alloy1" : 232.62,
+        "Alloy2" : 0,
+        "Alloy3" : 0,
+        "Alloy4" : 254.35,
+        "Alloy5" : 19.84,
+        "Alloy6" : 0,
+        "ScrapWeight" : 13603.11
+    },
+    {
+        "Seq" : 3,
+        "Date" : "07/10/2024 22:28:02",
+        "Alloy1" : 145.1,
+        "Alloy2" : 0,
+        "Alloy3" : 92.9,
+        "Alloy4" : 244.11,
+        "Alloy5" : 20.17,
+        "Alloy6" : 0,
+        "ScrapWeight" : 8989.3
+    }
+]

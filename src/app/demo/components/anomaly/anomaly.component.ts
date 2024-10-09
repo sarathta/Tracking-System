@@ -36,9 +36,7 @@ export class AnomalyComponent implements OnInit{
     const documentStyle = getComputedStyle(document.documentElement);
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-    if(this.selectedData){
-      console.log(this.selectedData);
-      
+    if(this.selectedData){      
       let labelArray: any[] = [];
       let CurrentData: any[] = this.selectedData?.Current;
       let AnomalyCurrentData: any[]= this.selectedData?.AnomalyCurrent;

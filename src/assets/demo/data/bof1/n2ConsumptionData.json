@@ -2,22 +2,25 @@
     {
         "Seq" : 1,
         "Date" : "08/10/2024 22:28:02",
-        "LanceA" : "2147.7",
-        "LanceB" : "0",
-        "Total" : "2147.7"        
+        "N2Chute1" : 179.59,
+        "N2Chute2" : 161.01,
+        "N2LanceHole" : 179.49,
+        "Total" : 520.09        
     },
     {
         "Seq" : 2,
         "Date" : "08/10/2024 16:46:20",
-        "LanceA" : "2360.88",
-        "LanceB" : "0",
-        "Total" : "2360.88"  
+        "N2Chute1" : 188.1,
+        "N2Chute2" : 171.66,
+        "N2LanceHole" : 186.03,
+        "Total" : 545.79  
     },
     {
         "Seq" : 3,
         "Date" : "07/10/2024 22:28:02",
-        "LanceA" : "2068.93",
-        "LanceB" : "0",
-        "Total" : "2068.93"  
+        "N2Chute1" : 188.1,
+        "N2Chute2" : 171.66,
+        "N2LanceHole" : 186.03,
+        "Total" : 545.79  
     }
 ]

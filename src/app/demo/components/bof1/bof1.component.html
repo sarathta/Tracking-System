@@ -58,15 +58,15 @@
 	</div>
     <div class="flex">
         <div class="col-6">
-            <p-table [value]="o2ConsuptionData" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+            <p-table [value]="o2ConsuptionData" [(selection)]="selectedO2Data" selectionMode="single" [rows]="3" [loading]="loading" 
                     [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
                     <ng-template pTemplate="caption">
                         <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
                             <div class="font-semibold text-xl">O2 Consumption</div>
                             <span class="p-buttonset ml-3">
                                 <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                                <button pButton pRipple [disabled]="!selectedO2Data" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                                <button pButton pRipple [disabled]="!selectedO2Data" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
                             </span>
                         </div>
                     </ng-template>
@@ -82,7 +82,7 @@
                     <ng-template pTemplate="body" let-rowData>
                         <tr [pSelectableRow]="rowData">
                             <td> {{rowData.Seq}} </td>
-                            <td> {{rowData.Date  | date: 'dd/MM/YY'}} </td>
+                            <td> {{rowData.Date  | date: 'dd/MM/YY HH:MM:ss'}} </td>
                             <td> {{rowData.LanceA}} </td>      
                             <td> {{rowData.LanceB}} </td>      
                             <td> {{rowData.Total}} </td>      
@@ -96,15 +96,15 @@
             </p-table>
         </div>
         <div class="col-6">
-            <p-table [value]="[]" [(selection)]="selectedData" selectionMode="single" [rows]="12" [loading]="loading" 
+            <p-table [value]="n2ConsuptionData" [(selection)]="selectedN2Data" selectionMode="single" [rows]="3" [loading]="loading" 
                     [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
                     <ng-template pTemplate="caption">
                         <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
                             <div class="font-semibold text-xl">N2 Consumption</div>
                             <span class="p-buttonset ml-3">
                                 <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                                <button pButton pRipple [disabled]="!selectedN2Data" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                                <button pButton pRipple [disabled]="!selectedN2Data" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
                             </span>
                         </div>
                     </ng-template>
@@ -120,12 +120,12 @@
                     </ng-template>
                     <ng-template pTemplate="body" let-rowData>
                         <tr [pSelectableRow]="rowData">
-                            <td> {{rowData.BilletId}} </td>
-                            <td> {{rowData.Name}} </td>
-                            <td> {{rowData.StartTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                            <td> {{rowData.EndTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                            <td> {{rowData.BilletId}} </td>       
-                            <td> {{rowData.BilletId}} </td>       
+                            <td> {{rowData.Seq}} </td>
+                            <td> {{rowData.Date | date: 'dd/MM/YY HH:MM:ss'}} </td>
+                            <td> {{rowData.N2Chute1  }} </td>
+                            <td> {{rowData.N2Chute2 }} </td>
+                            <td> {{rowData.N2LanceHole}} </td>       
+                            <td> {{rowData.Total}} </td>       
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="emptymessage">
@@ -138,15 +138,15 @@
    </div>
    <div class="flex">
         <div class="col-6">
-            <p-table [value]="[]" [(selection)]="selectedData" selectionMode="single" [rows]="12" [loading]="loading" 
+            <p-table [value]="rawMaterialConsuptionData" [(selection)]="selectedRawMaterialData" selectionMode="single" [rows]="3" [loading]="loading" 
                     [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
                     <ng-template pTemplate="caption">
                         <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
                             <div class="font-semibold text-xl">Raw Material Consumption</div>
                             <span class="p-buttonset ml-3">
                                 <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                                <button pButton pRipple [disabled]="!selectedRawMaterialData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                                <button pButton pRipple [disabled]="!selectedRawMaterialData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
                             </span>
                         </div>
                     </ng-template>
@@ -165,15 +165,15 @@
                     </ng-template>
                     <ng-template pTemplate="body" let-rowData>
                         <tr [pSelectableRow]="rowData">
-                            <td> {{rowData.BilletId}} </td>
-                            <td> {{rowData.Name}} </td>
-                            <td> {{rowData.StartTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                            <td> {{rowData.EndTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                            <td> {{rowData.BilletId}} </td>       
-                            <td> {{rowData.BilletId}} </td>       
-                            <td> {{rowData.BilletId}} </td>       
-                            <td> {{rowData.BilletId}} </td>       
-                            <td> {{rowData.BilletId}} </td>       
+                            <td> {{rowData.Seq}} </td>
+                            <td> {{rowData.Date | date: 'dd/MM/YY'}} </td>
+                            <td> {{rowData.Lime}} </td>
+                            <td> {{rowData.LimeStone}} </td>
+                            <td> {{rowData.CalDolomite}} </td>       
+                            <td> {{rowData.RawDolomite}} </td>       
+                            <td> {{rowData.IronOre}} </td>       
+                            <td> {{rowData.SPC}} </td>       
+                            <td> {{rowData.COKE}} </td>       
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="emptymessage">
@@ -184,15 +184,15 @@
             </p-table>
         </div>
         <div class="col-6">
-            <p-table [value]="[]" [(selection)]="selectedData" selectionMode="single" [rows]="12" [loading]="loading" 
+            <p-table [value]="ferroAlloysConsuptionData" [(selection)]="selectedFerroAlloysData" selectionMode="single" [rows]="3" [loading]="loading" 
                     [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
                     <ng-template pTemplate="caption">
                         <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
                             <div class="font-semibold text-xl">Ferro Alloys Consumption</div>
                             <span class="p-buttonset ml-3">
                                 <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                                <button pButton pRipple [disabled]="!selectedFerroAlloysData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                                <button pButton pRipple [disabled]="!selectedFerroAlloysData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
                             </span>
                         </div>
                     </ng-template>
@@ -211,15 +211,15 @@
                     </ng-template>
                     <ng-template pTemplate="body" let-rowData>
                         <tr [pSelectableRow]="rowData">
-                            <td> {{rowData.BilletId}} </td>
-                            <td> {{rowData.Name}} </td>
-                            <td> {{rowData.StartTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                            <td> {{rowData.EndTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                            <td> {{rowData.BilletId}} </td>       
-                            <td> {{rowData.BilletId}} </td>       
-                            <td> {{rowData.BilletId}} </td>       
-                            <td> {{rowData.BilletId}} </td>       
-                            <td> {{rowData.BilletId}} </td>       
+                            <td> {{rowData.Seq}} </td>
+                            <td> {{rowData.Date | date: 'dd/MM/YY'}} </td>
+                            <td> {{rowData.Alloy1}} </td>
+                            <td> {{rowData.Alloy2}} </td>
+                            <td> {{rowData.Alloy3}} </td>       
+                            <td> {{rowData.Alloy4}} </td>       
+                            <td> {{rowData.Alloy5}} </td>       
+                            <td> {{rowData.Alloy6}} </td>       
+                            <td> {{rowData.ScrapWeight}} </td>       
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="emptymessage">

@@ -18,4 +18,17 @@ export class Bof1Service {
     return this.http.get('/assets/demo/data/bof1/o2ConsumptionData.json');
   }
 
+  getN2Consumption() {
+    return this.http.get('/assets/demo/data/bof1/n2ConsumptionData.json');
+  }
+
+  getRawMaterialConsumption() {
+    return this.http.get('/assets/demo/data/bof1/rawMaterialdata.json');
+  }
+
+  getFerroAlloysConsumption() {
+    return this.http.get('/assets/demo/data/bof1/ferroAlloysdata.json');
+  }
+
+
 }
