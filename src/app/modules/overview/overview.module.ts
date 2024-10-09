@@ -15,6 +15,7 @@ import { ApplicationPipesModule } from '../shared/application-pipes.module';
 import { OverviewComponent } from 'src/app/demo/components/overview/overview.component';
 import { RollingMillComponent } from 'src/app/demo/components/rolling-mill/rolling-mill.component';
 import { Bof1Component } from 'src/app/demo/components/bof1/bof1.component';
+import { Bof2Component } from 'src/app/demo/components/bof2/bof2.component';
 import { AnomalyComponent } from 'src/app/demo/components/anomaly/anomaly.component';
 
 
@@ -24,7 +25,8 @@ import { AnomalyComponent } from 'src/app/demo/components/anomaly/anomaly.compon
     OverviewComponent,
     Bof1Component,
     RollingMillComponent,
-    AnomalyComponent
+    AnomalyComponent,
+    Bof2Component
   ],
   imports: [
     SharedModule,

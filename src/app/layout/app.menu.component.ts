@@ -29,7 +29,7 @@ export class AppMenuComponent implements OnInit {
                                             {
                                                 label: 'Bof-2',
                                                 // icon: 'pi pi-fw pi-times-circle',
-                                                routerLink: ['/TaskScheduler/auth/error']
+                                                routerLink: ['/TrackingSystem/overview/bof2']
                                             },
                                             {
                                                 label: 'Laddle Furnace',
