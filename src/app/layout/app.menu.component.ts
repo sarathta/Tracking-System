@@ -34,7 +34,7 @@ export class AppMenuComponent implements OnInit {
                                             {
                                                 label: 'Laddle Furnace',
                                                 // icon: 'pi pi-fw pi-lock',
-                                                routerLink: ['/TaskScheduler/auth/access']
+                                                routerLink: ['/TrackingSystem/overview/ladle']
                                             }
                                 ] 
                     },

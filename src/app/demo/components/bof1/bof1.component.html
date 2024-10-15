@@ -1,14 +1,18 @@
 <div class="card text-center">
     <div class="col-12">
         <p-table [value]="bof1Data" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
-                [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+                [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll" (onRowSelect)="onRowSelected($event)">
 				<ng-template pTemplate="caption">
 					<div class="flex align-items-center justify-content-between flex-column sm:flex-row">
 						<div class="font-semibold text-xl">Bof-1</div>
 						<span class="p-buttonset ml-3">
-                            <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                            <button *ngIf="!editMode" pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                            <button *ngIf="!editMode; else EditMode" pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button" (click)="enableEdit()"></button>
+                            <button *ngIf="!editMode" pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                            <ng-template #EditMode>
+                                <button *ngIf="editMode" pButton  pRipple icon='pi pi-save' label="Save" class="p-button-info mr-2 p-button" (click)="saveSubmit()"></button>
+                                <button *ngIf="editMode" pButton pRipple icon='pi pi-times' label="Cancel" class="p-button-info mr-2 p-button" ></button>
+                            </ng-template>
                         </span>
 					</div>
 				</ng-template>
@@ -32,14 +36,45 @@
                         <th> Total Time </th>
                     </tr>
 				</ng-template>
-				<ng-template pTemplate="body" let-rowData>
-					<tr [pSelectableRow]="rowData">
-						<td> {{rowData.Seq}} </td>
+				<ng-template pTemplate="body" let-editing="editing" let-rowData let-ri="rowIndex">
+					<tr [pSelectableRow]="rowData" [pSelectableRowIndex]="ri" [pEditableRow]="rowData" [pContextMenuRow]="rowData" (keydown)="onKeydown($event, ri)">
+                        <td style="display: none;">
+                            <button *ngIf="!editing && editMode" pButton pRipple type="button" pInitEditableRow [ngClass]="'btn_bof_e' + ri" icon="pi pi-pencil" class="p-button-rounded p-button-text"></button>
+                            <button *ngIf="editing && editMode" pButton pRipple type="button" pCancelEditableRow [ngClass]="'btn_bof_c' + ri" icon="pi pi-times" class="p-button-rounded p-button-text p-button-danger"></button>
+                        </td>
+                        <td> {{rowData.Seq}} </td>
 						<td> {{rowData.Date | date: 'dd/MM/YY'}} </td>
-						<td> {{rowData.Time}} </td>
-						<td> {{rowData.Converter}} </td>
+                        <td [pEditableColumn]="rowData.Time" pEditableColumnField="Time" [pEditableColumnDisabled]="!editMode">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="text" [(ngModel)]="rowData.Time" (ngModelChange)="ngModelChange(ri)" (keydown.enter)="saveSubmit()">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Time}}
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+                         <td [pEditableColumn]="rowData.Converter" pEditableColumnField="Converter" [pEditableColumnDisabled]="!editMode">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="number" [(ngModel)]="rowData.Converter" (ngModelChange)="ngModelChange(ri)" (keydown.enter)="saveSubmit()">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.Converter}}
+                                </ng-template>
+                            </p-cellEditor>
+                         </td>
                         <td> {{rowData.Shift}} </td>
-                        <td> {{rowData.HeatNo}} </td>
+                        <td [pEditableColumn]="rowData.HeatNo" pEditableColumnField="HeatNo" [pEditableColumnDisabled]="!editMode">
+                            <p-cellEditor>
+                                <ng-template pTemplate="input">
+                                    <input pInputText type="number" [(ngModel)]="rowData.HeatNo" (ngModelChange)="ngModelChange(ri)" (keydown.enter)="saveSubmit()">
+                                </ng-template>
+                                <ng-template pTemplate="output">
+                                    {{rowData.HeatNo}} 
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
                         <td> {{rowData.OperatorName}} </td>
                         <td> {{rowData.BlowStartDate}} </td>
                         <td> {{rowData.BlowStartTime}} </td>

@@ -13,11 +13,14 @@ export class Bof1Component implements OnInit{
   selectedRawMaterialData: any;
   selectedFerroAlloysData: any;
   loading: boolean = false;
+  editMode: boolean = false;
   bof1Data: any;
   o2ConsuptionData: any;
   n2ConsuptionData: any;
   rawMaterialConsuptionData: any;
   ferroAlloysConsuptionData: any;
+  previousVal: number = 0;
+  currentVal: number = 0;
 
   constructor(
     private bof1Service : Bof1Service
@@ -29,6 +32,19 @@ export class Bof1Component implements OnInit{
     this.getN2ConsumptionData();
     this.getRawMaterialConsumptionData();
     this.getFerroAlloysConsumptionData();
+  }
+
+  onRowSelected(event: any) {
+    this.previousVal = this.currentVal; //For getting previous selected row Id
+    this.currentVal = event.index;
+    //To edit current row //('btn_cs_i') button is for init edit row 
+    let element: HTMLElement = document.getElementsByClassName('btn_bof_e' + this.currentVal)[0] as HTMLElement;
+    element && element.click();
+    if (this.previousVal >= 0 && (this.currentVal !== this.previousVal)) {
+      //To Close previous opened row
+      let prevelement: HTMLElement = document.getElementsByClassName('btn_bof_c' + this.previousVal)[0] as HTMLElement;
+      prevelement && prevelement.click();
+    }
   }
 
   getBof1Data(){
@@ -59,6 +75,17 @@ export class Bof1Component implements OnInit{
     this.bof1Service.getFerroAlloysConsumption().subscribe(res => {
       this.ferroAlloysConsuptionData = res;
     });
+  }
+
+  ngModelChange(data : any){}
+
+  saveSubmit(){}
+
+  onKeydown(event: any, index: number) {  }
+
+  enableEdit() {
+    this.editMode = true;
+    this.selectedData = null;
   }
 
 }
