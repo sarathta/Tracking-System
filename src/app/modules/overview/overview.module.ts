@@ -11,6 +11,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { OverviewRoutingModule } from './overview-routing.module';
 import { OverviewdialogModule } from '../overviewdialog/overviewdialog.module';
 import { ApplicationPipesModule } from '../shared/application-pipes.module';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 import { OverviewComponent } from 'src/app/demo/components/overview/overview.component';
 import { RollingMillComponent } from 'src/app/demo/components/rolling-mill/rolling-mill.component';
@@ -45,6 +46,7 @@ import { LadleFurnaceComponent } from 'src/app/demo/components/ladle-furnace/lad
     OverviewRoutingModule,
     OverviewdialogModule,
     ApplicationPipesModule,
+    ProgressBarModule
   ]
 })
 export class OverviewModule { }

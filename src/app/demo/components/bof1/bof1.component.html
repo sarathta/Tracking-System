@@ -69,8 +69,28 @@
             </p-table>
         </div>
     </div>
+    <div class="col-12">
+        <div class="card">
+            <span>Progress</span>
+            <p-progressBar [value]="progressValue" />
+        </div>
+    </div>
     <div class="flex">
         <div class="col-6">
+            <div class="card">
+                <span >Temperature</span>
+                <p-chart type="line" [data]="Tempdata" [options]="Tempoptions" class="tempChart" />
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <span >Oxydation</span>
+                <p-chart type="line" [data]="Oxydata" [options]="Oxyoptions" class="tempChart" />
+            </div>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="col-4">
             <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
             [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
                 <ng-template pTemplate="caption">
@@ -109,18 +129,12 @@
                 </ng-template>
             </p-table>
         </div>
-        <div class="col-6">
-            <div class="card" style="height: 28vh;">
-            </div>
-        </div>
-    </div>
-    <div class="flex">
-        <div class="col-6">
+        <div class="col-8">
             <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
             [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
                 <ng-template pTemplate="caption">
                     <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
-                        <div class="font-semibold text-xl">Metal Stirring in Ladle with Neutral Gas</div>
+                        <div class="font-semibold text-xl">Metal Stirring and Dart</div>
                         <span class="p-buttonset ml-3">
                             <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
                             <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
@@ -130,11 +144,19 @@
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
+                        <th colspan="5">Metal Stirring in Ladle with Neutral Gas</th>
+                        <th colspan="4">Dart</th>
+                    </tr>
+                    <tr>
                         <th>Q (hh/min) </th>
                         <th> P (kg/sm) </th>
                         <th> Start Time</th>
                         <th> End Time</th>
                         <th> Duration</th>
+                        <th>Dart Reach Indication </th>
+                        <th>Dart Throw Indication </th>
+                        <th>Closer plug</th>
+                        <th>Further plug</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData>
@@ -144,38 +166,6 @@
                         <td> 08:20:00 </td>   
                         <td> 08:45:19 </td>   
                         <td> 338 </td>   
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="emptymessage">
-                    <tr>
-                        <td colspan="5">No Data found.</td>
-                    </tr>
-                </ng-template>
-            </p-table>
-        </div>
-        <div class="col-6">
-            <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
-            [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
-                <ng-template pTemplate="caption">
-                    <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
-                        <div class="font-semibold text-xl">Dart</div>
-                        <span class="p-buttonset ml-3">
-                            <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
-                        </span>
-                    </div>
-                </ng-template>
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>Dart Reach Indication </th>
-                        <th>Dart Throw Indication </th>
-                        <th>Closer plug</th>
-                        <th>Further plug</th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData>
-                    <tr>
                         <td> 1</td>
                         <td> 1</td>
                         <td> </td>   
@@ -184,7 +174,7 @@
                 </ng-template>
                 <ng-template pTemplate="emptymessage">
                     <tr>
-                        <td colspan="4">No Data found.</td>
+                        <td colspan="9">No Data found.</td>
                     </tr>
                 </ng-template>
             </p-table>
