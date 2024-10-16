@@ -1,268 +1,247 @@
-<div class="card text-center">
-    <div class="col-12">
-        <p-table [value]="bof1Data" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
-                [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll" (onRowSelect)="onRowSelected($event)">
-				<ng-template pTemplate="caption">
-					<div class="flex align-items-center justify-content-between flex-column sm:flex-row">
-						<div class="font-semibold text-xl">Bof-1</div>
-						<span class="p-buttonset ml-3">
-                            <button *ngIf="!editMode" pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                            <button *ngIf="!editMode; else EditMode" pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button" (click)="enableEdit()"></button>
-                            <button *ngIf="!editMode" pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
-                            <ng-template #EditMode>
-                                <button *ngIf="editMode" pButton  pRipple icon='pi pi-save' label="Save" class="p-button-info mr-2 p-button" (click)="saveSubmit()"></button>
-                                <button *ngIf="editMode" pButton pRipple icon='pi pi-times' label="Cancel" class="p-button-info mr-2 p-button" ></button>
-                            </ng-template>
+<div class="bof1">
+    <div class="row">
+        <div class="col-12">
+            <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+            [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                        <div class="font-semibold text-xl">Bof-1</div>
+                        <span class="p-buttonset ml-3">
+                            <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
                         </span>
-					</div>
-				</ng-template>
-				<ng-template pTemplate="header">
-					<tr>
-						<th rowspan="2"> Sl.No. </th>
-						<th rowspan="2"> Date </th>
-                        <th rowspan="2" style="min-width: 10rem"> Time </th>
-                        <th rowspan="2"> Converter </th>
-                        <th rowspan="2"> Shift </th>
-                        <th rowspan="2"> Heat No </th>
-                        <th rowspan="2"> Operator Name</th>
-                        <th colspan="4" class="text-center"> Blow </th>
-                        <th rowspan="2"> N2 Splash Dur.</th>
-                        <th rowspan="2"> Temp </th>
-                    </tr>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
                     <tr>
-                        <th> StartDate </th>
-                        <th> Start Time </th>
-                        <th> End Time </th>
-                        <th> Total Time </th>
+                        <th> Status </th>
+                        <th> Heat No </th>
+                        <th> Date</th>
+                        <th> Start Time</th>
+                        <th> End Time</th>
+                        <th> Team No </th>
+                        <th> Shift No </th>
+                        <th> Steel Grade </th>
+                        <th> Ladle No </th>
                     </tr>
-				</ng-template>
-				<ng-template pTemplate="body" let-editing="editing" let-rowData let-ri="rowIndex">
-					<tr [pSelectableRow]="rowData" [pSelectableRowIndex]="ri" [pEditableRow]="rowData" [pContextMenuRow]="rowData" (keydown)="onKeydown($event, ri)">
-                        <td style="display: none;">
-                            <button *ngIf="!editing && editMode" pButton pRipple type="button" pInitEditableRow [ngClass]="'btn_bof_e' + ri" icon="pi pi-pencil" class="p-button-rounded p-button-text"></button>
-                            <button *ngIf="editing && editMode" pButton pRipple type="button" pCancelEditableRow [ngClass]="'btn_bof_c' + ri" icon="pi pi-times" class="p-button-rounded p-button-text p-button-danger"></button>
-                        </td>
-                        <td> {{rowData.Seq}} </td>
-						<td> {{rowData.Date | date: 'dd/MM/YY'}} </td>
-                        <td [pEditableColumn]="rowData.Time" pEditableColumnField="Time" [pEditableColumnDisabled]="!editMode">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="text" [(ngModel)]="rowData.Time" (ngModelChange)="ngModelChange(ri)" (keydown.enter)="saveSubmit()">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData.Time}}
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                         <td [pEditableColumn]="rowData.Converter" pEditableColumnField="Converter" [pEditableColumnDisabled]="!editMode">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="number" [(ngModel)]="rowData.Converter" (ngModelChange)="ngModelChange(ri)" (keydown.enter)="saveSubmit()">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData.Converter}}
-                                </ng-template>
-                            </p-cellEditor>
-                         </td>
-                        <td> {{rowData.Shift}} </td>
-                        <td [pEditableColumn]="rowData.HeatNo" pEditableColumnField="HeatNo" [pEditableColumnDisabled]="!editMode">
-                            <p-cellEditor>
-                                <ng-template pTemplate="input">
-                                    <input pInputText type="number" [(ngModel)]="rowData.HeatNo" (ngModelChange)="ngModelChange(ri)" (keydown.enter)="saveSubmit()">
-                                </ng-template>
-                                <ng-template pTemplate="output">
-                                    {{rowData.HeatNo}} 
-                                </ng-template>
-                            </p-cellEditor>
-                        </td>
-                        <td> {{rowData.OperatorName}} </td>
-                        <td> {{rowData.BlowStartDate}} </td>
-                        <td> {{rowData.BlowStartTime}} </td>
-                        <td> {{rowData.BlowEndTime}} </td>
-                        <td> {{rowData.TotalBlowTime}} </td>
-                        <td> {{rowData.N2SplashDuration}} </td>
-                        <td> {{rowData.Temp}} </td>
-					</tr>
-				</ng-template>
-				<ng-template pTemplate="emptymessage">
-					<tr>
-						<td colspan="13">No Data found.</td>
-					</tr>
-				</ng-template>
-    	</p-table>	
-	</div>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr style="background-color: #91d991;">
+                        <td> Ongoing </td>
+                        <td> 241617 </td>
+                        <td> 15/10/2024 </td>
+                        <td> 15/10/2024 08:23:45 </td>
+                        <td></td>
+                        <td> 4 </td>      
+                        <td> 2 </td>      
+                        <td> C45 </td>      
+                        <td> 2 </td>      
+                    </tr>
+                    <tr >
+                        <td> Finished </td>
+                        <td> 241616 </td>
+                        <td> 14/10/2024 </td>
+                        <td> 14/10/2024 06:11:00 </td>
+                        <td> 14/10/2024 12:16:50</td>
+                        <td> 3 </td>      
+                        <td> 1 </td>      
+                        <td> C45 </td>      
+                        <td> 1 </td>      
+                    </tr>
+                    <tr >
+                        <td> Schedule </td>
+                        <td> 241618 </td>
+                        <td> 15/10/2024 </td>
+                        <td></td>
+                        <td></td>
+                        <td> 5 </td>      
+                        <td> 3 </td>      
+                        <td> C45 </td>      
+                        <td> 3 </td>      
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="6">No Data found.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
     <div class="flex">
         <div class="col-6">
-            <p-table [value]="o2ConsuptionData" [(selection)]="selectedO2Data" selectionMode="single" [rows]="3" [loading]="loading" 
-                    [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
-                    <ng-template pTemplate="caption">
-                        <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
-                            <div class="font-semibold text-xl">O2 Consumption</div>
-                            <span class="p-buttonset ml-3">
-                                <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                                <button pButton pRipple [disabled]="!selectedO2Data" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                                <button pButton pRipple [disabled]="!selectedO2Data" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
-                            </span>
-                        </div>
-                    </ng-template>
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th> Sl.No. </th>
-                            <th> Date </th>
-                            <th> Lance A </th>
-                            <th> Lance B </th>
-                            <th> Total </th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData>
-                        <tr [pSelectableRow]="rowData">
-                            <td> {{rowData.Seq}} </td>
-                            <td> {{rowData.Date  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                            <td> {{rowData.LanceA}} </td>      
-                            <td> {{rowData.LanceB}} </td>      
-                            <td> {{rowData.Total}} </td>      
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="emptymessage">
-                        <tr>
-                            <td colspan="5">No Data found.</td>
-                        </tr>
-                    </ng-template>
+            <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+            [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                        <div class="font-semibold text-xl">Alloys</div>
+                        <span class="p-buttonset ml-3">
+                            <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th> Deoxidizer in Ladle </th>
+                        <th> OZM of Deoxidizer </th>
+                        <th> Weight (kg)</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr>
+                        <td> SiMn </td>
+                        <td> 105000076 </td>
+                        <td> 584 </td>   
+                    </tr>
+                    <tr >
+                        <td> FeSi </td>
+                        <td> 105000088 </td>
+                        <td> 185 </td>     
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="3">No Data found.</td>
+                    </tr>
+                </ng-template>
             </p-table>
         </div>
         <div class="col-6">
-            <p-table [value]="n2ConsuptionData" [(selection)]="selectedN2Data" selectionMode="single" [rows]="3" [loading]="loading" 
-                    [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
-                    <ng-template pTemplate="caption">
-                        <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
-                            <div class="font-semibold text-xl">N2 Consumption</div>
-                            <span class="p-buttonset ml-3">
-                                <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                                <button pButton pRipple [disabled]="!selectedN2Data" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                                <button pButton pRipple [disabled]="!selectedN2Data" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
-                            </span>
-                        </div>
-                    </ng-template>
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th> Sl.No. </th>
-                            <th> Date </th>
-                            <th> Chute 1 </th>
-                            <th> Chute 2 </th>
-                            <th> Lance Hole </th>
-                            <th> Total </th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData>
-                        <tr [pSelectableRow]="rowData">
-                            <td> {{rowData.Seq}} </td>
-                            <td> {{rowData.Date | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                            <td> {{rowData.N2Chute1  }} </td>
-                            <td> {{rowData.N2Chute2 }} </td>
-                            <td> {{rowData.N2LanceHole}} </td>       
-                            <td> {{rowData.Total}} </td>       
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="emptymessage">
-                        <tr>
-                            <td colspan="6">No Data found.</td>
-                        </tr>
-                    </ng-template>
-            </p-table>
+            <div class="card" style="height: 28vh;">
+            </div>
         </div>
-   </div>
-   <div class="flex">
+    </div>
+    <div class="flex">
         <div class="col-6">
-            <p-table [value]="rawMaterialConsuptionData" [(selection)]="selectedRawMaterialData" selectionMode="single" [rows]="3" [loading]="loading" 
-                    [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
-                    <ng-template pTemplate="caption">
-                        <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
-                            <div class="font-semibold text-xl">Raw Material Consumption</div>
-                            <span class="p-buttonset ml-3">
-                                <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                                <button pButton pRipple [disabled]="!selectedRawMaterialData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                                <button pButton pRipple [disabled]="!selectedRawMaterialData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
-                            </span>
-                        </div>
-                    </ng-template>
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th> Sl.No. </th>
-                            <th> Date </th>
-                            <th> Lime </th>
-                            <th> Lime Stone </th>
-                            <th> Cal Dolomite </th>
-                            <th> Raw Dolomite </th>
-                            <th> Iron Ore </th>
-                            <th> SPC </th>
-                            <th> COKE </th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData>
-                        <tr [pSelectableRow]="rowData">
-                            <td> {{rowData.Seq}} </td>
-                            <td> {{rowData.Date | date: 'dd/MM/YY'}} </td>
-                            <td> {{rowData.Lime}} </td>
-                            <td> {{rowData.LimeStone}} </td>
-                            <td> {{rowData.CalDolomite}} </td>       
-                            <td> {{rowData.RawDolomite}} </td>       
-                            <td> {{rowData.IronOre}} </td>       
-                            <td> {{rowData.SPC}} </td>       
-                            <td> {{rowData.COKE}} </td>       
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="emptymessage">
-                        <tr>
-                            <td colspan="9">No Data found.</td>
-                        </tr>
-                    </ng-template>
+            <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+            [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                        <div class="font-semibold text-xl">Metal Stirring in Ladle with Neutral Gas</div>
+                        <span class="p-buttonset ml-3">
+                            <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Q (hh/min) </th>
+                        <th> P (kg/sm) </th>
+                        <th> Start Time</th>
+                        <th> End Time</th>
+                        <th> Duration</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr>
+                        <td> 9.97 </td>
+                        <td> 12.72 </td>
+                        <td> 08:20:00 </td>   
+                        <td> 08:45:19 </td>   
+                        <td> 338 </td>   
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="5">No Data found.</td>
+                    </tr>
+                </ng-template>
             </p-table>
         </div>
         <div class="col-6">
-            <p-table [value]="ferroAlloysConsuptionData" [(selection)]="selectedFerroAlloysData" selectionMode="single" [rows]="3" [loading]="loading" 
-                    [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
-                    <ng-template pTemplate="caption">
-                        <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
-                            <div class="font-semibold text-xl">Ferro Alloys Consumption</div>
-                            <span class="p-buttonset ml-3">
-                                <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
-                                <button pButton pRipple [disabled]="!selectedFerroAlloysData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                                <button pButton pRipple [disabled]="!selectedFerroAlloysData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
-                            </span>
-                        </div>
-                    </ng-template>
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th> Sl.No. </th>
-                            <th> Date </th>
-                            <th> Alloy 1 </th>
-                            <th> Alloy 2 </th>
-                            <th> Alloy 3 </th>
-                            <th> Alloy 4 </th>
-                            <th> Alloy 5 </th>
-                            <th> Alloy 6 </th>
-                            <th> Scrap Weight </th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData>
-                        <tr [pSelectableRow]="rowData">
-                            <td> {{rowData.Seq}} </td>
-                            <td> {{rowData.Date | date: 'dd/MM/YY'}} </td>
-                            <td> {{rowData.Alloy1}} </td>
-                            <td> {{rowData.Alloy2}} </td>
-                            <td> {{rowData.Alloy3}} </td>       
-                            <td> {{rowData.Alloy4}} </td>       
-                            <td> {{rowData.Alloy5}} </td>       
-                            <td> {{rowData.Alloy6}} </td>       
-                            <td> {{rowData.ScrapWeight}} </td>       
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="emptymessage">
-                        <tr>
-                            <td colspan="9">No Data found.</td>
-                        </tr>
-                    </ng-template>
+            <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+            [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                        <div class="font-semibold text-xl">Dart</div>
+                        <span class="p-buttonset ml-3">
+                            <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Dart Reach Indication </th>
+                        <th>Dart Throw Indication </th>
+                        <th>Closer plug</th>
+                        <th>Further plug</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr>
+                        <td> 1</td>
+                        <td> 1</td>
+                        <td> </td>   
+                        <td>  </td>   
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="4">No Data found.</td>
+                    </tr>
+                </ng-template>
             </p-table>
         </div>
-   </div>
+    </div>
+    <div>
+        <div class="col-12">
+            <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+            [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                        <div class="font-semibold text-xl">Chemical Composition</div>
+                        <span class="p-buttonset ml-3">
+                            <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                            <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Probe No </th>
+                        <th>Time</th>
+                        <th>C</th>
+                        <th>Mn</th>
+                        <th>Si</th>
+                        <th>S</th>
+                        <th>P</th>
+                        <th>Cu</th>
+                        <th>Ni</th>
+                        <th>Cr</th>
+                        <th>Mo</th>
+                        <th>AI</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr>
+                        <td> 1</td>
+                        <td> 15/10/2024 08:30:22</td>
+                        <td>0.031 </td>   
+                        <td> 0.073 </td>   
+                        <td> 0.005 </td>   
+                        <td> 0.02 </td>   
+                        <td> 0.017 </td>   
+                        <td> 0.009 </td>   
+                        <td> 0.011 </td>   
+                        <td> 0.027 </td>   
+                        <td> 0 </td>   
+                        <td> 0 </td>   
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="12">No Data found.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
 </div>
