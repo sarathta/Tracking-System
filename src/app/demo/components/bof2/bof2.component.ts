@@ -1,4 +1,5 @@
-import { Component,OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component,OnDestroy,OnInit } from '@angular/core';
 import { Bof1Service } from 'src/app/services/bof1.service';
 
 @Component({
@@ -6,58 +7,171 @@ import { Bof1Service } from 'src/app/services/bof1.service';
   templateUrl: './bof2.component.html',
   styleUrls: ['./bof2.component.scss']
 })
-export class Bof2Component implements OnInit{
+export class Bof2Component implements OnInit,OnDestroy{
   selectedData: any;
-  selectedO2Data: any;
-  selectedN2Data: any;
-  selectedRawMaterialData: any;
-  selectedFerroAlloysData: any;
-  loading: boolean = false;
-  bof1Data: any;
-  o2ConsuptionData: any;
-  n2ConsuptionData: any;
-  rawMaterialConsuptionData: any;
-  ferroAlloysConsuptionData: any;
+  loading: boolean =false;
+  temperatureData : any;
+  oxydationData : any;
+  Tempdata : any;
+  Oxydata : any;
+  Tempoptions: any;
+  Oxyoptions: any;
+  progressValue: any;
+  timeInterval: any;
+
 
   constructor(
-    private bof1Service : Bof1Service
+    private http : HttpClient
   ){}
-
+  
   ngOnInit(): void {
-    this.getBof1Data();
-    this.getO2ConsumptionData();
-    this.getN2ConsumptionData();
-    this.getRawMaterialConsumptionData();
-    this.getFerroAlloysConsumptionData();
+    this.startInterval();
+    this.getTempData();
+    this.getOxyData();    
   }
 
-  getBof1Data(){
-    this.bof1Service.getbof1().subscribe(res => {
-      this.bof1Data = res;
+  ngOnDestroy() {
+    clearInterval(this.timeInterval);
+  }
+
+  startInterval() {
+    //this.intervalService.setisInterval(true);
+    if (this.timeInterval) {
+      clearInterval(this.timeInterval);
+    }
+    this.timeInterval = setInterval(() => {
+      this.http.get('http://127.0.0.1:8000/rem_time').subscribe(res=>{
+        let number: any = res;
+        this.progressValue= Math.trunc(number);
+      });
+    },1000);
+  }
+
+  getTempData(){
+    this.http.get('http://127.0.0.1:8000/temperature').subscribe(res=>{
+      this.temperatureData= res;
+      this.bindTempData()
     });
   }
 
-  getO2ConsumptionData(){
-    this.bof1Service.getO2Consumption().subscribe(res => {
-      this.o2ConsuptionData = res;
+  getOxyData(){
+    this.http.get('http://127.0.0.1:8000/oxidation').subscribe(res=>{
+      this.oxydationData= res;
+      this.bindOxyData()
     });
   }
+ 
+  bindTempData(){
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+    let templabelArray: any[] = [];
+    let TempData: any[] = this.temperatureData.temp;
+    let i =0;      
+    while(i <= TempData.length){
+      templabelArray.push(i);
+      i=i+1;        
+    }
+    this.Tempdata = {
+      labels: templabelArray,
+      datasets: [
+          {
+              label: 'Temperature',
+              data: TempData,
+              fill: false,
+              borderColor: documentStyle.getPropertyValue('--orange-300'),
+              tension: 0.4
+          }
+      ]
+    };
 
-  getN2ConsumptionData(){
-    this.bof1Service.getN2Consumption().subscribe(res => {
-      this.n2ConsuptionData = res;
-    });
+    this.Tempoptions = {
+        maintainAspectRatio: false,
+        aspectRatio: 0.6,
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'black'
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: 'black'
+                },
+                grid: {
+                    color: surfaceBorder,
+                    drawBorder: false
+                }
+            },
+            y: {
+                ticks: {
+                    color: textColorSecondary
+                },
+                grid: {
+                    color: surfaceBorder,
+                    drawBorder: false
+                }
+            }
+        }
+    };
   }
 
-  getRawMaterialConsumptionData(){
-    this.bof1Service.getRawMaterialConsumption().subscribe(res => {
-      this.rawMaterialConsuptionData = res;
-    });
-  }
+  bindOxyData(){
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+    let oxylabelArray: any[] = [];
+    let OxyData: any[] = this.oxydationData.oxidation;
+    let i =0;      
+    while(i <= OxyData.length){
+      oxylabelArray.push(i);
+      i=i+1;        
+    }
+    this.Oxydata = {
+      labels: oxylabelArray,
+      datasets: [
+          {
+              label: 'Oxydation',
+              data: OxyData,
+              fill: false,
+              borderColor: documentStyle.getPropertyValue('--green-300'),
+              tension: 0.4
+          }
+      ]
+    };
 
-  getFerroAlloysConsumptionData(){
-    this.bof1Service.getFerroAlloysConsumption().subscribe(res => {
-      this.ferroAlloysConsuptionData = res;
-    });
+    this.Oxyoptions = {
+        maintainAspectRatio: false,
+        aspectRatio: 0.6,
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'black'
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: 'black'
+                },
+                grid: {
+                    color: surfaceBorder,
+                    drawBorder: false
+                }
+            },
+            y: {
+                ticks: {
+                    color: textColorSecondary
+                },
+                grid: {
+                    color: surfaceBorder,
+                    drawBorder: false
+                }
+            }
+        }
+    };
   }
 }
