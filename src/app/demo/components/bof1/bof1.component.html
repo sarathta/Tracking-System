@@ -72,20 +72,20 @@
     <div class="col-12">
         <div class="card">
             <span>Progress</span>
-            <p-progressBar [value]="progressValue" />
+            <p-progressBar [value]="progressValue" class="customProgress" />
         </div>
     </div>
     <div class="flex">
         <div class="col-6">
             <div class="card">
                 <span >Temperature</span>
-                <p-chart type="line" [data]="Tempdata" [options]="Tempoptions" class="tempChart" />
+                <p-chart type="line" [data]="Tempdata" [options]="Tempoptions" height="281px"/>
             </div>
         </div>
         <div class="col-6">
             <div class="card">
                 <span >Oxydation</span>
-                <p-chart type="line" [data]="Oxydata" [options]="Oxyoptions" class="tempChart" />
+                <p-chart type="line" [data]="Oxydata" [options]="Oxyoptions" height="281px"/>
             </div>
         </div>
     </div>
