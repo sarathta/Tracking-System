@@ -1,1 +1,397 @@
-<p>ladle-furnace works!</p>
+<!-- <h2>LADLE FURNACE</h2>
+<div class="card">
+  <p-table 
+      [value]="products" 
+      styleClass="p-datatable-gridlines" 
+      [tableStyle]="{ 'min-width': '50rem' }">
+          <ng-template pTemplate="header">
+              <tr>
+                  <th>Status</th>
+                  <th>Position</th>
+                  <th>Heat No</th>
+                  <th>BOF Finish Time</th>
+                  <th>Arrival Time</th>
+                  <th>Grade</th>
+                  <th>Ladle No</th>
+                  <th>Initial Temp</th>
+                  <th>Target Temp</th>
+                  <th>Steel Weight</th>
+                  <th>Ladle Weight</th>
+                  <th>Slag Height</th>
+                  <th>Initial O2</th>
+
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product>
+              <tr>
+                  <td>{{ product.Status }}</td>
+                  <td>{{ product.Position }}</td>
+                  <td>{{ product.HeatNo }}</td>
+                  <td>{{ product.BOFFinishTime }}</td>
+                  <td>{{ product.ArrivalTime }}</td>
+                  <td>{{ product.Grade }}</td>
+                  <td>{{ product.LadleNo }}</td>
+                  <td>{{ product.InitialTemp }}</td>
+                  <td>{{ product.TargetTemp }}</td>
+                  <td>{{ product.SteelWeight }}</td>
+                  <td>{{ product.LadleWeight }}</td>
+                  <td>{{ product.SlagHeight }}</td>
+                  <td>{{ product.InitialO2 }}</td>
+              </tr>
+          </ng-template>
+  </p-table>
+</div> -->
+<div class="lf">
+  <div class="row">
+      <div class="col-12">
+          <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+          [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+              <ng-template pTemplate="caption">
+                  <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                      <div class="font-semibold text-xl">LADLE FURNACE</div>
+                      <span class="p-buttonset ml-3">
+                          <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                          <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                          <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                      </span>
+                  </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                  <tr>
+                    <th>Status</th>
+                    <th>Position</th>
+                    <th>Heat No</th>
+                    <th>BOF Finish Time</th>
+                    <th>Arrival Time</th>
+                    <th>Grade</th>
+                    <th>Ladle No</th>
+                    <th>Initial Temp</th>
+                    <th>Target Temp</th>
+                    <th>Steel Weight</th>
+                    <th>Ladle Weight</th>
+                    <th>Slag Height</th>
+                    <th>Initial O2</th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData>
+                  <tr style="background-color:#6fb6df;">
+                      <td style="background-color: rgb(127, 222, 127);"> LF Ongoing </td>
+                      <td> 1 </td>
+                      <td> 261565 </td>
+                      <td> 26/09/2024 07:18:45 </td>
+                      <td> 26/09/2024 07:42:45 </td>
+                      <td> SAE1006 </td>      
+                      <td> 30 </td>      
+                      <td> 1613 </td>      
+                      <td> 1593 </td>
+                      <td> 123.1 </td>
+                      <td> 70.7 </td>
+                      <td> 100 </td> 
+                      <td> 2 </td>     
+
+                  </tr>
+                  <tr >
+                      <td style="background-color: rgb(127, 222, 127);"> LF Ongoing </td>
+                      <td> 2 </td>
+                      <td> 261565 </td>
+                      <td></td>
+                      <td> 26/09/2024 08:42:00</td>
+                      <td> SAE1006 </td>      
+                      <td> 999 </td>      
+                      <td> 1573 </td>      
+                      <td> 1593 </td>   
+                      <td> 154.5 </td> 
+                      <td> 99.3 </td> 
+                      <td> 100 </td>    
+                      <td> 67.54 </td> 
+                  </tr>
+                  <tr >
+                      <td> LF Schedule </td>
+                      <td> 2 </td>
+                      <td> 261566 </td>
+                      <td>26/09/2024 08:03:00</td>
+                      <td>30/09/2024 14:59:00</td>
+                      <td> SAE1006 </td>      
+                      <td> 11 </td>      
+                      <td> 15 </td>      
+                      <td> 0 </td>
+                      <td></td>      
+                      <td> 71.9 </td>
+                      <td> 98 </td>
+                      <td> 5 </td>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                  <tr>
+                      <td colspan="6">No Data found.</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+      </div>
+  </div>
+  <div class="flex">
+      <div class="col-6">
+          <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+          [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+              <ng-template pTemplate="caption">
+                  <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                      <div class="font-semibold text-xl">MODEL</div>
+                      <span class="p-buttonset ml-3">
+                          <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                          <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                          <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                      </span>
+                  </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                  <tr >
+                      <th> Aroing </th>
+                      <th> Aroing Time(min) </th>
+                      <th> Emergy(kWh)</th>
+                      <th> Emergy(kWh/T)</th>
+                      <th> Steel wt(T)</th>
+                      <th> Temp</th>
+
+                      
+
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData>
+                  <tr [ngStyle]="{ 'color': 'RED' }">
+                      <td> Model </td>
+                      <td> 03:09:00 </td>
+                      <td> 2281.76 </td>
+                      <td> 18.46 </td>
+                      <td> 123.58 </td>
+                      <td> 1593.0 </td>   
+                  </tr>
+                  <tr [ngStyle]="{ 'color': 'GREEN' }" >
+                      <td> Current </td>
+                      <td> 00:26:17 </td>
+                      <td> 5298.00 </td> 
+                      <td> 42.87 </td>
+                      <td> 123.58 </td>
+                      <td> 1557.6 </td>    
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                  <tr>
+                      <td colspan="3">No Data found.</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+      </div>
+      <div class="col-6">
+          <div class="card" style="height: 28vh;">
+          </div>
+      </div>
+  </div>
+  <div class="flex">
+      <div class="col-6">
+          <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+          [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+              <ng-template pTemplate="caption">
+                  <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                      <div class="font-semibold text-xl">ALLOYS</div>
+                      <span class="p-buttonset ml-3">
+                          <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                          <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                          <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                      </span>
+                  </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th>Alloy</th>
+                      <th> FeSi(kg) </th>
+                      <th> FeMn78%(kg)</th>
+                      <th> SiCa(kg)</th>
+                      <th> C(%)</th>
+                      <th> Mn(%)</th>
+                      <th> Si(%)</th>
+                      <th> S(%)</th>
+                      <th> P(%)</th>
+                      <th> Cr(%)</th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData>
+                  <tr [ngStyle]="{ 'color': 'RED' }">
+                      <td> Model </td>
+                      <td> 10 </td>
+                      <td> 0 </td>   
+                      <td> 8 </td>   
+                      <td> 0.032</td>
+                      <td> 0.3531</td> 
+                      <td> 0.075</td>
+                      <td> 0.016</td>
+                      <td> 0.016</td>
+                      <td> 0.035</td>
+                      
+                  </tr>
+                  <tr [ngStyle]="{ 'color': 'GREEN' }">
+                    <td> Actual </td>
+                    <td> 472 </td>
+                    <td> 53 </td>   
+                    <td> 0 </td>   
+                    <td> 0.038</td>
+                    <td> 0.397</td> 
+                    <td> 0.067</td>
+                    <td> 0.009</td>
+                    <td> 0.017</td>
+                    <td> 0.039</td>
+                    
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                  <tr>
+                      <td colspan="5">No Data found.</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+      </div>
+      <div class="col-6">
+          <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+          [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+              <ng-template pTemplate="caption">
+                  <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                      <div class="font-semibold text-xl">SLAG</div>
+                      <span class="p-buttonset ml-3">
+                          <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                          <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                          <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                      </span>
+                  </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th>Slag </th>
+                      <th>CaO(kg) </th>
+                      <th>CaF2(kg)</th>
+                      <th>SiO2(%)</th>
+                      <th>Al2O3(%)</th>
+                      <th>Cao(%)</th>
+                      <th>MgO(%)</th>
+                      <th>MnO(%)</th>
+                      <th>FeO(%)</th>
+                      <th>P2O5(%)</th>
+
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData>
+                <tr [ngStyle]="{ 'color': 'RED' }">
+                  <td> Model </td>
+                  <td> 1080 </td>
+                  <td> 270 </td>   
+                  <td> 32 </td>   
+                  <td> 3.84</td>
+                  <td> 55</td> 
+                  <td> 9.12</td>
+                  <td> 7</td>
+                  <td> 4.48</td>
+                  <td> 0.64</td>
+                  
+              </tr>
+              <tr [ngStyle]="{ 'color': 'GREEN' }">
+                <td> Actual </td>
+                <td> 1106 </td>
+                <td> 0 </td>   
+                <td> 19.65 </td>   
+                <td> 3.56</td>
+                <td> 51.06</td> 
+                <td> 15.63</td>
+                <td> 4.16</td>
+                <td> 4.16</td>
+                <td> 0.59</td>
+                
+            </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                  <tr>
+                      <td colspan="4">No Data found.</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+      </div>
+  </div>
+  <div>
+      <div class="col-12">
+          <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+          [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
+              <ng-template pTemplate="caption">
+                  <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                      <div class="font-semibold text-xl">STEP DATA</div>
+                      <span class="p-buttonset ml-3">
+                          <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                          <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                          <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                      </span>
+                  </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th>Steps</th>
+                      <th>Last Start Time</th>
+                      <th colspan="2">Duration(hh:mm:ss)</th>
+                      <th colspan="3">Gas Line1(Nl/min)</th>
+                      <th colspan="3">Gas Line2(Nl/min)</th>
+                      <th colspan="2">Emergency</th>
+                      <th>Act.Pressure(Bar)</th>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Total</th>
+                    <th> Est </th>
+                    <th> Model</th>
+                    <th> SP</th>
+                    <th> Act</th>
+                    <th>Model </th>
+                    <th>SP </th>
+                    <th>Act</th>
+                    <th>SP</th>
+                    <th>Act</th>
+                    <th></th>
+                </tr>
+                  
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData>
+                  <tr >
+                      <td>LadleIn</td>
+                      <td>07:43:00</td>
+                      <td>00.02:13 </td>   
+                      <td>00:04:00 </td>   
+                      <td>190</td>   
+                      <td>190</td>   
+                      <td>311</td>   
+                      <td>190 </td>   
+                      <td>190 </td>   
+                      <td>344 </td>   
+                      <td> 0 </td>   
+                      <td> 0 </td> 
+                      <td>12.54</td>  
+                  </tr>
+                  <tr style="background-color: rgb(93, 236, 136);">
+                    <td>Idle</td>
+                    <td>08:35:00</td>
+                    <td>00:48:22 </td>   
+                    <td></td>   
+                    <td>379</td>   
+                    <td>379</td>   
+                    <td>133</td>   
+                    <td>379</td>   
+                    <td>379</td>   
+                    <td>123 </td>   
+                    <td> 0 </td>   
+                    <td> 0 </td> 
+                    <td>5.83</td>  
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                  <tr>
+                      <td colspan="12">No Data found.</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+      </div>
+  </div>
+</div>
