@@ -28,8 +28,8 @@
 }
 
 .billetyard {
-    width: 15vh;
-    height: 14vh;
+    width: 20vh;
+    height: 15vh;
     border: 1px solid rgb(104, 103, 103);
 
     .billet {
@@ -69,6 +69,15 @@
     text-align: center;
     font-size: small;
     font-weight: 500;
+}
+
+.byCol {
+    border: 1px solid black;
+    height: 2.1vh;
+    width: 7vh;
+    text-align: center;
+    font-size: small;
+    font-weight: 400;
 }
 
 .cs {

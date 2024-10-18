@@ -155,6 +155,21 @@ by3: any;
 by4: any;
 by5: any;
 by6: any;
+billetyard1: any;
+billetyard2: any;
+billetyard3: any;
+billetyard4: any;
+billetyard5: any;
+billetyard6: any;
+billetyard7: any;
+billetyard8: any;
+billetyard9: any;
+billetyard10: any;
+billetyard11: any;
+billetyard12: any;
+billetyard13: any;
+billetyard14: any;
+billetyard15: any;
 il2by1: any;
 il2by2: any;
 il2by3: any;
@@ -176,7 +191,7 @@ startInterval() {
   if (this.timeInterval) {
     clearInterval(this.timeInterval);
   }
-  let i=0,j=1,c=1;
+  let i=1001,j=1,c=1;
   this.timeInterval = setInterval(() => {
     this.getLfData();
     this.getCcmata();
@@ -231,19 +246,29 @@ startInterval() {
         //   this.bundles = [];
         //   c=1;
         // }
-        if(j%2 == 0){
-          this.bars.push({id: j})
-        }
-        j++;
         i++;
-        if(i>7){
+        console.log(i);
+        
+        this.billetyard1 = this.billets[0].id ? this.billets[0].id : null;
+        this.billetyard2 = this.billets[1].id ? this.billets[1].id : null;
+        this.billetyard3 = this.billets[2].id ? this.billets[2].id : null;
+        this.billetyard4 = this.billets[3].id ? this.billets[3].id : null;
+        this.billetyard5 = this.billets[4].id ? this.billets[4].id : null;
+        this.billetyard6 = this.billets[5].id ? this.billets[5].id : null;
+        this.billetyard7 = this.billets[6].id ? this.billets[6].id : null;
+        this.billetyard8 = this.billets[7].id ? this.billets[7].id : null;
+        this.billetyard9 = this.billets[8].id ? this.billets[8].id : null;
+        this.billetyard10 = this.billets[9].id ? this.billets[9].id : null;
+        this.billetyard11 = this.billets[10].id ? this.billets[10].id : null;
+        this.billetyard12 = this.billets[11].id ? this.billets[11].id : null;
+        this.billetyard13 = this.billets[12].id ? this.billets[12].id : null;
+        this.billetyard14 = this.billets[13].id ? this.billets[13].id : null;
+        this.billetyard15 = this.billets[14].id ? this.billets[14].id : null;
+        if(i>15){
           this.billets = [];
-          i=0;
+          i=1001;
         }  
-        if(j>16){
-          this.bars=[];
-          j=1;
-        } 
+
       }, 1000);
     }
     
