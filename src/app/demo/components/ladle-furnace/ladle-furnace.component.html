@@ -111,8 +111,8 @@
                   <tr >
                       <th> Aroing </th>
                       <th> Aroing Time(min) </th>
-                      <th> Emergy(kWh)</th>
-                      <th> Emergy(kWh/T)</th>
+                      <th> Energy(kWh)</th>
+                      <th> Energy(kWh/T)</th>
                       <th> Steel wt(T)</th>
                       <th> Temp</th>
 
@@ -211,7 +211,7 @@
           </p-table>
       </div>
       <div class="col-6">
-          <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" height="250px"
+          <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
           [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll">
               <ng-template pTemplate="caption">
                   <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
