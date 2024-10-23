@@ -38,6 +38,7 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     goodbars:any;
     trashbars:any;
     correctedbars:any;
+  
 
 
     constructor(
@@ -123,13 +124,11 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
                      
             } 
             
-                this.goodbars = this.statusData.good_bars;
+            this.goodbars = this.statusData.good_bars;
                     
-                this.trashbars =this.statusData.trash_bars;
+            this.trashbars =this.statusData.trash_bars;
                      
-                this.correctedbars = this.statusData.corrected_bars;
-                     
-           
+            this.correctedbars = this.statusData.corrected_bars;
         }));
       }
 
