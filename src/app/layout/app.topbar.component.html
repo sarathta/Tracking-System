@@ -7,12 +7,15 @@
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
         <i class="pi pi-bars"></i>
     </button>
-
     <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
         <i class="pi pi-ellipsis-v"></i>
     </button>
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <input type="text" pInputText placeholder="Enter PO Number" [(ngModel)]="inputPo"/>
+        <button class="p-button mr-3"><i class="pi pi-search" style="height: 2vh;" (click)="showrfDialog()"></i></button>
+        
+        
         <i class="pi pi-bell text-3xl p-link mt-3" pBadge value="{{notificationCount}}" (click)="showNotification()"></i>
         <button class="p-link layout-topbar-button">
             <i class="pi pi-calendar"></i>
@@ -47,4 +50,69 @@
             </div>
         </div>
     </div>
+    <p-dialog header="STATUS" [(visible)]="dialogRF" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" (onHide)="hideDialog()">
+        <!-- <ng-template pTemplate="header">
+            <tr>
+                <td>Rolls</td>
+                <td>Cooling bed</t>
+                <th>Cold shear</th>
+                <th>Rack</th>
+                <th>Straightener</th>
+                <th>Udt</th>
+                <th>Bundle</th>
+                <th>Good bars</th>
+                <th>Trash bars</th>
+                <th>Corrected bars</th>
+            </tr>
+              
+        </ng-template> -->
+        <p-table [value]="[{}]"   selectionMode="single"  [rows]="10" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
+            <ng-template pTemplate="body" let-rowData>
+                <tr [pSelectableRow]="rowData">
+                    <td> Rolls </td>
+                    <td>{{rolls}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td> Cooling Bed </td>
+                    <td>{{coolingbed}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td>Cold Shear</td>
+                    <td>{{coldShear}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td>Rack</td>
+                    <td>{{rack}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td>Straightener</td>
+                    <td>{{straightener}}</td>
+                </tr>
+                
+                <tr [pSelectableRow]="rowData">
+                    <td>Udt</td>
+                    <td>{{udt}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td>Bundles</td>
+                    <td>{{bundle}}</td>
+                </tr>
+                
+                <tr [pSelectableRow]="rowData">
+                    <td> Good Bars </td>
+                    <td>{{goodbars}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td>Trash Bars</td>
+                    <td>{{trashbars}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td>Corrected Bars</td>
+                    <td>{{correctedbars}}</td>
+                </tr>
+            </ng-template>
+            
+        </p-table>
+        
+    </p-dialog>
 </div>

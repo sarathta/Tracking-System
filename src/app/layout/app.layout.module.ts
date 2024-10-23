@@ -14,6 +14,7 @@ import { BadgeModule } from 'primeng/badge';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { RippleModule } from 'primeng/ripple';
+import { SharedModule } from '../modules/shared/shared.module';
 import { AppMenuComponent } from './app.menu.component';
 import { AppMenuitemComponent } from './app.menuitem.component';
 import { RouterModule } from '@angular/router';
@@ -49,7 +50,8 @@ import { AppLayoutComponent } from "./app.layout.component";
         RippleModule,
         RouterModule,
         AppConfigModule,
-        ToastModule
+        ToastModule,
+        SharedModule
     ],
     exports: [LoginComponent]
 })
