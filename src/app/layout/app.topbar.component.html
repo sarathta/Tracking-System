@@ -50,8 +50,7 @@
             </div>
         </div>
     </div>
-    <p-dialog header="STATUS" [(visible)]="dialogRF" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" (onHide)="hideDialog()">
-        
+    <p-dialog header="STATUS"  [(visible)]="dialogRF" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" (onHide)="hideDialog()">
         <p-table [value]="[{}]"   selectionMode="single"  [rows]="10" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
             <ng-template pTemplate="body" let-rowData>
                 <tr [pSelectableRow]="rowData">
