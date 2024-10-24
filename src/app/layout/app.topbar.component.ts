@@ -85,6 +85,8 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
         this.dialogRF = true;
       }
       hideDialog(){
+        this.inputPo = null;
+        this.dialogRF= false;
         // this.dialogbundles = false;
         // this.dialogRack = false;
         // this.dialogbars = false;
