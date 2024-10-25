@@ -27,7 +27,6 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     inputPo: any;
     dialogRF: boolean=false;
     statusData: any;
-    datas = [{id:0 ,name:'Not Reached'},{id:1 ,name:'Reached'},{id:2 ,name:'Completed'}];
     rolls:any;
     coolingbed:any;
     coldShear:any;
@@ -38,6 +37,7 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     goodbars:any;
     trashbars:any;
     correctedbars:any;
+    coolingbedstatus:any;
   
 
 
@@ -93,39 +93,24 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
       getStatusData(){
         this.http.get('http://127.0.0.1:8000/po_search?po='+ this.inputPo).subscribe((res=>{
             this.statusData= res;
-            const item1 = this.datas.find(res => res.id == this.statusData.rolls);
-            const item2 = this.datas.find(res => res.id == this.statusData.cooling_bed);
-            const item3 = this.datas.find(res => res.id == this.statusData.cold_shear);    
-            const item4 = this.datas.find(res => res.id == this.statusData.rack);  
-            const item5 = this.datas.find(res => res.id == this.statusData.str);    
-            const item6 = this.datas.find(res => res.id == this.statusData.udt);    
-            const item7 = this.datas.find(res => res.id == this.statusData.bundle);
- 
-            if(item1){
-                this.rolls = item1.name;
-            }   
-            if(item2){
-                this.coolingbed = item2.name;
-            } 
-            if(item3){
-                this.coldShear = item3.name;
-            } 
-            if(item4){
-                this.rack = item4.name;
-            } 
-            if(item5){
-                this.straightener= item5.name;
-            } 
-            if(item6){
-                this.udt = item6.name;
-            } 
-            if(item7){
-                this.bundle = item7.name;
-                     
-            } 
+            this.rolls = this.statusData.rolling;
+
+            this.coolingbed = this.statusData.cooling_bed;
+
+            this.coolingbedstatus = this.statusData.cooling_bed_status;
+
+            this.coldShear = this.statusData.cold_shear;
+
+            this.rack = this.statusData.rack;
+
+            this.straightener = this.statusData.str;
+
+            this.udt = this.statusData.udt;
+
+            this.bundle= this.statusData.bundle;
+
+            this.goodbars =this.statusData.good_bars;
             
-            this.goodbars = this.statusData.good_bars;
-                    
             this.trashbars =this.statusData.trash_bars;
                      
             this.correctedbars = this.statusData.corrected_bars;
@@ -134,3 +119,4 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
 
 
 }
+ 

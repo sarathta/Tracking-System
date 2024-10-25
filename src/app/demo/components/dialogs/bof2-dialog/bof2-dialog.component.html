@@ -8,6 +8,16 @@
         <ng-template pTemplate="content">
             <div >
                 <p-table [value]="[{}]" dataKey="id"  selectionMode="single" [paginator]="false" [rows]="11" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
+                    <!-- <ng-template pTemplate="caption">
+                        <div class="flex justify-content-between flex-column sm:flex-row">
+                            <h5>Flux Additions</h5>
+                            <span class="p-buttonset ml-3">
+                                <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" (click)="addDialog()" ></button>
+                                <button pButton pRipple [disabled]="!selectedTask || (selectedTask?.status == taskStatus.Closed)" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button" (click)="editDialog()" ></button>
+                                <button pButton pRipple [disabled]="!selectedTask" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button" (click)="deleteTask()"></button>
+                            </span>
+                        </div>
+                    </ng-template> -->
                     <ng-template pTemplate="header">
                         <tr>
                             <th style="min-width: 10rem" colspan="2">
@@ -26,41 +36,61 @@
                         <tr>
                             <td>Lime Stone</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">5.0</label>
+                                <label class="font-semibold">326</label>
                             </td>
                             <td>AlCr</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">0.8</label>
+                                <label class="font-semibold">40</label>
                             </td>
                         </tr>
                         <tr>
-                            <td>Dolomite</td>
+                            <td>Cal Dolomite</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">2.5</label>
+                                <label class="font-semibold">910</label>
                             </td>
                             <td>SiMn</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">0.5</label>
+                                <label class="font-semibold">184</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Coal</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">0.3</label>
+                                <label class="font-semibold"></label>
                             </td>
                             <td>FeSi65</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">3</label>
+                                <label class="font-semibold">19</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Coke</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">0.1</label>
+                                <label class="font-semibold"></label>
                             </td>
                             <td>FeMn78</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">7</label>
+                                <label class="font-semibold"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Raw Dolomite</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold"> 284</label>
+                            </td>
+                            <td>CPC</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">5</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Iron Ore</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">110</label>
+                            </td>
+                            <td>MgO Powder</td>
+                            <td class="px-2 py-1">
+                                <label class="font-semibold">20</label>
                             </td>
                         </tr>
                     </ng-template>
@@ -71,7 +101,7 @@
                     </ng-template>
                     <ng-template pTemplate="loadingbody">
                         <tr>
-                            <td colspan="4">Loading Bof-2 data. Please wait.</td>
+                            <td colspan="4">Loading Bof-1 data. Please wait.</td>
                         </tr>
                     </ng-template>
                 </p-table>
@@ -91,43 +121,43 @@
                         <tr>
                             <td>Heat No</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">232141</label>
+                                <label class="font-semibold">92790</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Steel Grade</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">C45</label>
+                                <label class="font-semibold">SAE10B38M2</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Start Time</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold"> 11/09/24 08:01</label>
+                                <label class="font-semibold">23/10/24 17:25</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Finish Time</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold"> 11/09/24 08:02</label>
+                                <label class="font-semibold">23/10/24 17:31</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Ladle No</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">30</label>
+                                <label class="font-semibold">H7</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Ladle Weight</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">149</label>
+                                <label class="font-semibold">31.7</label>
                             </td>
                         </tr>
                         <tr>
                             <td>Oxygen Flow</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">800</label>
+                                <label class="font-semibold">1851</label>
                             </td>
                         </tr>
                         <tr>
@@ -145,7 +175,7 @@
                         <tr>
                             <td>Oxydation</td>
                             <td class="px-2 py-1">
-                                <label class="font-semibold">77.6</label>
+                                <label class="font-semibold"></label>
                             </td>
                         </tr>
                         <tr>
@@ -180,7 +210,7 @@
                     </ng-template>
                     <ng-template pTemplate="loadingbody">
                         <tr>
-                            <td colspan="4">Loading Bof-2 data. Please wait.</td>
+                            <td colspan="4">Loading Bof-1 data. Please wait.</td>
                         </tr>
                     </ng-template>
                 </p-table>
