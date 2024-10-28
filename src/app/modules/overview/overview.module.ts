@@ -22,6 +22,8 @@ import { Bof2Component } from 'src/app/demo/components/bof2/bof2.component';
 import { AnomalyComponent } from 'src/app/demo/components/anomaly/anomaly.component';
 import { LadleFurnaceComponent } from 'src/app/demo/components/ladle-furnace/ladle-furnace.component';
 import { BlastFurnaceComponent } from 'src/app/demo/components/blast-furnace/blast-furnace.component';
+import { LfLogsheetComponent } from 'src/app/demo/components/logsheets/lf-logsheet/lf-logsheet.component';
+import { BarPlanningComponent } from 'src/app/demo/components/bar-planning/bar-planning.component';
 
 
 
@@ -34,7 +36,9 @@ import { BlastFurnaceComponent } from 'src/app/demo/components/blast-furnace/bla
     Bof2Component,
     LadleFurnaceComponent,
     Bof1DetailsComponent,
-    BlastFurnaceComponent
+    BlastFurnaceComponent,
+    LfLogsheetComponent,
+    BarPlanningComponent
   ],
   imports: [
     SharedModule,

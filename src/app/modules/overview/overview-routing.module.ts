@@ -7,6 +7,7 @@ import { Bof2Component } from 'src/app/demo/components/bof2/bof2.component';
 import { LadleFurnaceComponent } from 'src/app/demo/components/ladle-furnace/ladle-furnace.component';
 import { Bof1DetailsComponent } from 'src/app/demo/components/bof1/bof1-details/bof1-details.component';
 import { BlastFurnaceComponent } from 'src/app/demo/components/blast-furnace/blast-furnace.component';
+import { BarPlanningComponent } from 'src/app/demo/components/bar-planning/bar-planning.component';
 
 const routes: Routes = [
   { path: '', component: OverviewComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'bof1details', component: Bof1DetailsComponent},
   { path: 'bof2', component: Bof2Component},
   { path: 'anomaly', component: AnomalyComponent},
+  { path: 'planning', component: BarPlanningComponent},
   { path: 'ladle', component: LadleFurnaceComponent},
   { path: 'blastfurnace', component: BlastFurnaceComponent}
 ];

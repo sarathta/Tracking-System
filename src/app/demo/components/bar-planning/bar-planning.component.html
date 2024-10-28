@@ -1,0 +1,100 @@
+<div class="barPlanning">
+    <div class="card">
+        <p-table [value]="barPlanData" [(selection)]="selectedData" selectionMode="single" [rows]="15" [loading]="loading" 
+        [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll" (onRowSelect)="rowSelected()">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                <div class="font-semibold text-xl">Day Wise Rolling Plan</div>
+                <span class="p-buttonset ml-3">
+                    <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button"></button>
+                    <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                    <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th colspan="2">Record No:</th>
+                <th colspan="2">F/S&OP-RM/03</th>
+                <th>REV:02</th>
+                <th colspan="12"></th>
+            </tr>
+            <tr>
+                <th style="min-width: 8rem" pTooltip="Estimated Date">
+                    Date
+                    <p-columnFilter type="text" field="BilletId" display="menu" placeholder="Search by name"></p-columnFilter>
+                </th>
+                <th pTooltip="Sales Order">
+                    SO
+                </th>
+                <th>
+                    Line Item
+                </th>
+                <th pTooltip="Product Type (Bar/ Billet/ Bright Bar/ Flats)">
+                    Product
+                </th>
+                <th>
+                    Customer
+                </th>
+                <th pTooltip="Production Order Number">
+                    PO
+                </th>
+                <th>
+                    Heat No
+                </th>
+                <th>
+                    No of Billets
+                </th>
+                <th>
+                    Grade
+                </th>
+                <th>
+                    Grade Classification
+                </th>
+                <th>
+                    Size (mm)
+                </th>
+                <th>
+                    Order Qty (MT)
+                </th>
+                <th>
+                    TAS NO.
+                </th>
+                <th>
+                    REV. NO.
+                </th>
+                <th>
+                    Length (mm)
+                </th>
+                <th>
+                    To be Inspected in
+                </th>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+            <tr [pSelectableRow]="rowData">
+                <td> {{rowData.BilletId}} </td>
+                <td> {{rowData.Name}} </td>
+                <td> {{rowData.StartTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
+                <td> {{rowData.EndTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
+                <td> {{rowData.Type}} </td>
+                <td> {{rowData.Cause}} </td>
+                <td> {{rowData.Cause}} </td>
+                <td> {{rowData.Cause}} </td>
+                <td> {{rowData.Cause}} </td>
+                <td> {{rowData.Cause}} </td>
+                <td> {{rowData.Cause}} </td>
+                <td> {{rowData.Cause}} </td>
+                <td> {{rowData.Cause}} </td>
+                <td> {{rowData.Cause}} </td>
+                <td> {{rowData.Cause}} </td>
+                <td> {{rowData.Cause}} </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="16">No Data found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
+</div>
