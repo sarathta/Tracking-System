@@ -42,6 +42,8 @@ export class BarPlanningComponent implements OnInit{
     Order_Qty:0,Tas:'',Rev:0,Length:0,To_be_inspectedId:0
   }
 
+  statusData:any=[{id:1,name:"Not started"},{id:2,name:"SMS"},{id:3,name:"Rolling"},{id:4,name:"Billet Yard"}];
+
   constructor(
     private http : HttpClient
   ){}
@@ -55,6 +57,12 @@ export class BarPlanningComponent implements OnInit{
     this.loading= true;
     this.http.get('/assets/demo/data/dayWisePlan.json').subscribe(res=>{
       this.barPlanData= res;
+      this.barPlanData.map((result: any)=>{
+        const status = this.statusData.find((item: any)=> item.id == result.status);
+        if(status){
+          result.statusName = status.name;
+        }
+      })
       this.loading = false;
     });
   }

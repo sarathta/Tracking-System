@@ -355,8 +355,8 @@ ngOnInit(): void {
     this.http.get('http://127.0.0.1:8000/str').subscribe((res=>{
       this.strData= res;
       this.strBar = this.strData?.barId[0];  
-      this.strPo = this.strData?.currentPo;
-      this.strIncomingPo =this.strData?.incomingPo  
+      this.strPo = this.strData?.currentPo != '9999999' && this.il2strData?.strData != '-1' ? this.strData?.currentPo : null;
+      this.strIncomingPo =this.strData?.incomingPo  != '-1' ? this.strData?.incomingPo : null;
 
     }));
   }
@@ -365,8 +365,8 @@ ngOnInit(): void {
     this.http.get('http://127.0.0.1:8000/str?il=1').subscribe((res=>{
       this.il2strData= res;
       this.il2strBar = this.il2strData?.barId[0];  
-      this.il2strPo = this.il2strData?.currentPo;
-      this.il2strIncomingPo =this.il2strData?.incomingPo  
+      this.il2strPo = this.il2strData?.currentPo != '9999999' && this.il2strData?.currentPo != '-1' ? this.il2strData?.currentPo : null;
+      this.il2strIncomingPo =this.il2strData?.incomingPo  != '-1' ? this.il2strData?.incomingPo : null;
 
     }));
   }
