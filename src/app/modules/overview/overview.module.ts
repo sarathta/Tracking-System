@@ -13,6 +13,8 @@ import { OverviewdialogModule } from '../overviewdialog/overviewdialog.module';
 import { ApplicationPipesModule } from '../shared/application-pipes.module';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { CalendarModule } from 'primeng/calendar';
+import { PrimeNgCommonModule } from '../common/prime-ng-common.module';
 
 import { OverviewComponent } from 'src/app/demo/components/overview/overview.component';
 import { RollingMillComponent } from 'src/app/demo/components/rolling-mill/rolling-mill.component';
@@ -43,6 +45,7 @@ import { BarPlanningComponent } from 'src/app/demo/components/bar-planning/bar-p
   imports: [
     SharedModule,
     CommonModule,
+    PrimeNgCommonModule,
     FormsModule,
     ChartModule,
     MenuModule,
@@ -54,7 +57,8 @@ import { BarPlanningComponent } from 'src/app/demo/components/bar-planning/bar-p
     OverviewdialogModule,
     ApplicationPipesModule,
     ProgressBarModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    CalendarModule
   ]
 })
 export class OverviewModule { }
