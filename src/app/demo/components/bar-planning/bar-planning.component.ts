@@ -64,10 +64,11 @@ export class BarPlanningComponent implements OnInit{
   }
 
   showEditDialog(){
-    this.barPlanDialogData = this.selectedData;
-    if(this.barPlanDialogData.Estimated_Date){
-      this.barPlanDialogData.Estimated_Date = new Date(this.barPlanDialogData.Estimated_Date);
-    }
+    this.barPlanDialogData = {...this.selectedData};
+    // if(this.barPlanDialogData.Estimated_Date){      
+    //   this.barPlanDialogData.Estimated_Date = new Date(this.barPlanDialogData.Estimated_Date);
+    //   console.log(this.barPlanDialogData.Estimated_Date);
+    // }
     this.isEdit= true;
     this.barPlanDialog =true;
   }
