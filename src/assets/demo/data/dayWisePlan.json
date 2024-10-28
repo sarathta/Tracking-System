@@ -19,7 +19,8 @@
         "Rev" : 3,
         "Length" : 6000,
         "To_be_inspected" : "FASTTRACK",
-        "To_be_inspectedId" : 1
+        "To_be_inspectedId" : 1,
+        "status" : 1
 
     },
     {
@@ -42,7 +43,8 @@
         "Rev" : 1,
         "Length" : 6000,
         "To_be_inspected" : "IL-2",
-        "To_be_inspectedId" : 2
+        "To_be_inspectedId" : 2,
+        "status" : 2
 
     },
     {
@@ -65,7 +67,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 3
 
     },
     {
@@ -88,7 +91,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 4
 
     },
     {
@@ -111,7 +115,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     },
     {
@@ -134,7 +139,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     },
     {
@@ -157,7 +163,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     },
     {
@@ -180,7 +187,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     },
     {
@@ -203,7 +211,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     },
     {
@@ -226,7 +235,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     },
     {
@@ -249,7 +259,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     },
     {
@@ -272,7 +283,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     },
     {
@@ -295,7 +307,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     },
     {
@@ -318,7 +331,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     },
     {
@@ -341,7 +355,8 @@
         "Rev" : 0,
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
-        "To_be_inspectedId" : 4
+        "To_be_inspectedId" : 4,
+        "status" : 1
 
     }
 ]

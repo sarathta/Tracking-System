@@ -74,6 +74,20 @@
                     <th pTooltip="To be Inspected in">
                         Inspected in
                     </th>
+                    <th style="width: 8rem;">
+                        Status
+                        <p-columnFilter field="status" matchMode="equals" display="menu">
+                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                <p-dropdown [ngModel]="value" [options]="statusData" [filter]="true" filterBy="name" (onChange)="filter($event.value)" placeholder="Any" optionValue="id" optionLabel="name"> 
+                                    <ng-template let-option pTemplate="item">  
+                                        <div [ngClass]="'statuscolor_' + option.id">
+                                            {{option.name}}
+                                        </div>                                          
+                                    </ng-template>
+                                </p-dropdown>
+                            </ng-template>
+                        </p-columnFilter>
+                    </th>
             </ng-template>
             <ng-template pTemplate="body" let-rowData>
                 <tr [pSelectableRow]="rowData">
@@ -97,6 +111,7 @@
                     <td> {{rowData.Rev}} </td>
                     <td> {{rowData.Length}} </td>
                     <td> {{rowData.To_be_inspected}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.statusName}} </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
