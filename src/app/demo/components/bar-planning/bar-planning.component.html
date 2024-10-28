@@ -1,6 +1,6 @@
 <div class="barPlanning">
     <div class="card">
-        <p-table [value]="barPlanData" [(selection)]="selectedData" selectionMode="single" [rows]="15" [loading]="loading" 
+        <p-table [value]="barPlanData" [(selection)]="selectedData" selectionMode="single" [rows]="10" [loading]="loading" 
         [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll" (onRowSelect)="rowSelected()">
             <ng-template pTemplate="caption">
                 <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
@@ -14,9 +14,8 @@
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th colspan="2">Record No:</th>
-                    <th colspan="2">F/S&OP-RM/03</th>
-                    <th>REV:02</th>
+                    <th colspan="4">Record No: F/S&OP-RM/03</th>
+                    <th>REV: 02</th>
                     <th colspan="12"></th>
                 </tr>
                 <tr>
@@ -124,7 +123,7 @@
                 <div class="flex justify-content-between">  
                     <div class="field fieldWidth">
                         <label>Estimated Date</label>
-                        <p-calendar appendTo="body" [minDate]="minDate" [disabled]="false" [(ngModel)]="barPlanDialogData.Date" [showTime]="false" hourFormat="24" dateFormat="dd/mm/yy" [showSeconds]="false" inputId="time"></p-calendar>
+                        <p-calendar appendTo="body" [minDate]="minDate" [disabled]="false" [(ngModel)]="barPlanDialogData.Estimated_Date" [showTime]="false" hourFormat="24" dateFormat="dd/mm/yy" [showSeconds]="false" inputId="time"></p-calendar>
                         <!-- <small class="p-error" *ngIf="submitted && !delay.startTime">{{'delay.startTime' | translate}} {{'global.isRequired' | translate}}</small> -->
                     </div>
                     <div class="field fieldWidth ml-2">
@@ -225,7 +224,7 @@
         <ng-template pTemplate="footer">
             <button *ngIf="!isEdit" pButton pRipple label="Add" icon="pi pi-check" class="p-button-outlined"></button>
             <button *ngIf="isEdit" pButton pRipple label="Update" icon="pi pi-check" class="p-button-outlined"></button>
-            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-outlined" ></button>
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-outlined" (click)="hideDialog()" ></button>
         </ng-template>
     </p-dialog>
 </div>
