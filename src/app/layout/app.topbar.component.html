@@ -54,8 +54,36 @@
         <p-table [value]="[{}]"   selectionMode="single"  [rows]="10" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
             <ng-template pTemplate="body" let-rowData>
                 <tr [pSelectableRow]="rowData">
-                    <td> Po Number </td>
-                    <td>{{inputPo}}</td>
+                    <td> Customer </td>
+                    <td>{{customer}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td> Grade </td>
+                    <td>{{grade}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td> Estimated Date </td>
+                    <td>{{estimateddate}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td> PO Number </td>
+                    <td>{{ponumber}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td> Heat Number </td>
+                    <td>{{heatno}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td> No Of Billets </td>
+                    <td>{{noofbillets}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td> Size </td>
+                    <td>{{size}}</td>
+                </tr>
+                <tr [pSelectableRow]="rowData">
+                    <td> Order Qty MT </td>
+                    <td>{{orderqtymt}}</td>
                 </tr>
                 <tr [pSelectableRow]="rowData">
                     <td> BOF-1 </td>

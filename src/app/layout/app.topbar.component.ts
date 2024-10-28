@@ -38,6 +38,14 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     trashbars:any;
     correctedbars:any;
     coolingbedstatus:any;
+    customer:any;
+    grade:any;
+    estimateddate:any;
+    ponumber:any;
+    heatno:any;
+    noofbillets:any;
+    size:any;
+    orderqtymt:any;
   
 
 
@@ -95,6 +103,23 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
       getStatusData(){
         this.http.get('http://127.0.0.1:8000/po_search?po='+ this.inputPo).subscribe((res=>{
             this.statusData= res;
+
+            this.customer = this.statusData.Customer;
+
+            this.grade = this.statusData.Grade;
+
+            this.estimateddate = this.statusData.Estimated_Date;
+
+            this.ponumber = this.statusData.PO_NUMBER;
+
+            this.heatno = this.statusData.Heat_no;
+
+            this.noofbillets = this.statusData.No_of_billets;
+
+            this.size = this.statusData.Size_mm;
+
+            this.orderqtymt = this.statusData.Order_Qty_MT;
+
             this.rolls = this.statusData.rolling;
 
             this.coolingbed = this.statusData.cooling_bed;
