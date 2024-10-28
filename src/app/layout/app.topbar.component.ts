@@ -143,6 +143,7 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
             this.correctedbars = this.statusData.corrected_bars;
         }));
       }
+      
 
 
 }
