@@ -186,91 +186,65 @@ ngOnInit(): void {
   
 }
 
-startInterval() {
-  //this.intervalService.setisInterval(true);
-  if (this.timeInterval) {
-    clearInterval(this.timeInterval);
-  }
-  let i=1001,j=1,c=1;
-  this.timeInterval = setInterval(() => {
-    this.getLfData();
-    this.getCcmata();
-    this.getReheatingFurnaceData();
-    this.getCoolingBedData();
-    this.getColdShearData();
-    this.getRackAreaData();
-    this.getIL2RackAreaData();
-    this.getStrBedData();
-    this.getIL2StrBedData();
-    this.getStraightenerData();
-    this.getil2StraightenerData();
-    this.getUdtData();
-    this.getil2UdtData();
-    this.getMpi1Data();
-    this.getMpi2Data();
-    this.getil2Mpi1Data();
-    this.getil2Mpi2Data();
-    this.getmp1RejectedbarsData();
-    this.getil2mp1RejectedbarsData();
-    this.getmp2RejectedbarsData();
-    this.getil2mp2RejectedbarsData();
-    this.getokbarData();
-    this.getil2okbarData();
-    this.getbundling1Data();
-    this.getbundling2Data();
-    this.getil2bundlingData();
-    this.getbundleYardData();
-    this.getil2bundleYardData();
-    this.billets.push({id: i});
-    // this.bundles.push({id: c, loaded: true});
-    // if(c == 1){
-    //   this.sectionA = true;
-    // }
-    // if(c == 2){
-    //   this.sectionB = true;
-    // }
-    // if(c == 3){
-    //   this.sectionC = true;
-    // }
-    // if(c == 4){
-      //   this.sectionD = true;
-      // }
-      
-      // c++;
-      // if(c>4){
-        //   this.sectionA = false;
-        //   this.sectionB = false;
-        //   this.sectionC = false;
-        //   this.sectionD = false;
-        
-        //   this.bundles = [];
-        //   c=1;
-        // }
-        i++;
-        console.log(i);
-        
-        this.billetyard1 = this.billets[0].id ? this.billets[0].id : null;
-        this.billetyard2 = this.billets[1].id ? this.billets[1].id : null;
-        this.billetyard3 = this.billets[2].id ? this.billets[2].id : null;
-        this.billetyard4 = this.billets[3].id ? this.billets[3].id : null;
-        this.billetyard5 = this.billets[4].id ? this.billets[4].id : null;
-        this.billetyard6 = this.billets[5].id ? this.billets[5].id : null;
-        this.billetyard7 = this.billets[6].id ? this.billets[6].id : null;
-        this.billetyard8 = this.billets[7].id ? this.billets[7].id : null;
-        this.billetyard9 = this.billets[8].id ? this.billets[8].id : null;
-        this.billetyard10 = this.billets[9].id ? this.billets[9].id : null;
-        this.billetyard11 = this.billets[10].id ? this.billets[10].id : null;
-        this.billetyard12 = this.billets[11].id ? this.billets[11].id : null;
-        this.billetyard13 = this.billets[12].id ? this.billets[12].id : null;
-        this.billetyard14 = this.billets[13].id ? this.billets[13].id : null;
-        this.billetyard15 = this.billets[14].id ? this.billets[14].id : null;
-        if(i>15){
-          this.billets = [];
-          i=1001;
-        }  
-
-      }, 1000);
+  startInterval() {
+    //this.intervalService.setisInterval(true);
+    if (this.timeInterval) {
+      clearInterval(this.timeInterval);
     }
+    let i = 1001;
+    this.timeInterval = setInterval(() => {
+      this.getLfData();
+      this.getCcmata();
+      this.getReheatingFurnaceData();
+      this.getCoolingBedData();
+      this.getColdShearData();
+      this.getRackAreaData();
+      this.getIL2RackAreaData();
+      this.getStrBedData();
+      this.getIL2StrBedData();
+      this.getStraightenerData();
+      this.getil2StraightenerData();
+      this.getUdtData();
+      this.getil2UdtData();
+      this.getMpi1Data();
+      this.getMpi2Data();
+      this.getil2Mpi1Data();
+      this.getil2Mpi2Data();
+      this.getmp1RejectedbarsData();
+      this.getil2mp1RejectedbarsData();
+      this.getmp2RejectedbarsData();
+      this.getil2mp2RejectedbarsData();
+      this.getokbarData();
+      this.getil2okbarData();
+      this.getbundling1Data();
+      this.getbundling2Data();
+      this.getil2bundlingData();
+      this.getbundleYardData();
+      this.getil2bundleYardData();
+      this.billets.push({ id: i });
+      i++;
+      this.billetyard1 = this.billets[0]?.id ? this.billets[0]?.id : null;
+      this.billetyard2 = this.billets[1]?.id ? this.billets[1]?.id : null;
+      this.billetyard3 = this.billets[2]?.id ? this.billets[2]?.id : null;
+      this.billetyard4 = this.billets[3]?.id ? this.billets[3]?.id : null;
+      this.billetyard5 = this.billets[4]?.id ? this.billets[4]?.id : null;
+      this.billetyard6 = this.billets[5]?.id ? this.billets[5]?.id : null;
+      this.billetyard7 = this.billets[6]?.id ? this.billets[6]?.id : null;
+      this.billetyard8 = this.billets[7]?.id ? this.billets[7]?.id : null;
+      this.billetyard9 = this.billets[8]?.id ? this.billets[8]?.id : null;
+      this.billetyard10 = this.billets[9]?.id ? this.billets[9]?.id : null;
+      this.billetyard11 = this.billets[10]?.id ? this.billets[10]?.id : null;
+      this.billetyard12 = this.billets[11]?.id ? this.billets[11]?.id : null;
+      this.billetyard13 = this.billets[12]?.id ? this.billets[12]?.id : null;
+      this.billetyard14 = this.billets[13]?.id ? this.billets[13]?.id : null;
+      this.billetyard15 = this.billets[14]?.id ? this.billets[14]?.id : null;
+      if (i > 1015) {
+        this.billets = [];
+        i = 1001;
+      }
+
+    }, 1000);
+  }
     
     ngOnDestroy() {
       clearInterval(this.timeInterval);
@@ -366,10 +340,10 @@ startInterval() {
   getIL2RackAreaData(){
     this.http.get('http://127.0.0.1:8000/rack_area?il=1').subscribe((res=>{
       this.rackAreaData= res;
-      this.IL2rack1 = this.rackAreaData.rack_0;
-      this.IL2rack2 = this.rackAreaData.rack_1;
-      this.IL2rack3 = this.rackAreaData.rack_2;
-      this.IL2rack4 = this.rackAreaData.rack_3;
+      this.IL2rack1 = this.rackAreaData?.rack_0;
+      this.IL2rack2 = this.rackAreaData?.rack_1;
+      this.IL2rack3 = this.rackAreaData?.rack_2;
+      this.IL2rack4 = this.rackAreaData?.rack_3;
       this.IL2sectionA = this.IL2rack1 ? true : false;
       this.IL2sectionB = this.IL2rack2 ? true : false;
       this.IL2sectionC = this.IL2rack3 ? true : false;
@@ -450,7 +424,7 @@ startInterval() {
       this.mpi1Data= res;
       if(this.mpi1Data.length > 0){
         this.mpi1barStatus = true;
-        this.mpi1GoodBar = this.mpi1Data[0].goodBar
+        this.mpi1GoodBar = this.mpi1Data[0]?.goodBar
       }
       else{
         this.mpi1barStatus = false;
@@ -464,7 +438,7 @@ startInterval() {
       this.mpi2Data= res;
       if(this.mpi2Data.length > 0){
         this.mpi2barStatus = true;
-        this.mpi2GoodBar = this.mpi2Data[0].goodBar
+        this.mpi2GoodBar = this.mpi2Data[0]?.goodBar
       }
       else{
         this.mpi2barStatus = false;
@@ -479,7 +453,7 @@ startInterval() {
       this.il2mpi1Data= res;
       if(this.il2mpi1Data.length > 0){
         this.il2mpi1barStatus = true;
-        this.il2mpi1GoodBar = this.il2mpi1Data[0].goodBar
+        this.il2mpi1GoodBar = this.il2mpi1Data[0]?.goodBar
       }
       else{
         this.il2mpi1barStatus = false;
@@ -493,7 +467,7 @@ startInterval() {
       this.il2mpi2Data= res;
       if(this.il2mpi2Data.length > 0){
         this.il2mpi2barStatus = true;
-        this.il2mpi2GoodBar = this.il2mpi2Data[0].goodBar
+        this.il2mpi2GoodBar = this.il2mpi2Data[0]?.goodBar
       }
       else{
         this.il2mpi2barStatus = false;
@@ -506,7 +480,7 @@ startInterval() {
     this.http.get('http://127.0.0.1:8000/good_bar').subscribe((res=>{
       this.okbarData= res;
       this.okbarId = this.okbarData[0];
-      if(this.okbarData.length > 0){
+      if(this.okbarData?.length > 0){
         this.okbarStatus = true;
       }
       else{
@@ -520,7 +494,7 @@ startInterval() {
     this.http.get('http://127.0.0.1:8000/good_bar?il=1').subscribe((res=>{
       this.il2okbarData= res;
       this.il2okbarId = this.il2okbarData[0];
-      if(this.il2okbarData.length > 0){
+      if(this.il2okbarData?.length > 0){
         this.il2okbarStatus = true;
       }
       else{
@@ -533,21 +507,21 @@ startInterval() {
   getbundling1Data(){
     this.http.get('http://127.0.0.1:8000/bundle1').subscribe((res=>{
       this.bundling1Data= res;
-      this.barsInBundle1 = this.bundling1Data.length;
+      this.barsInBundle1 = this.bundling1Data?.length;
     }));
   }
 
   getbundling2Data(){
     this.http.get('http://127.0.0.1:8000/bundle2').subscribe((res=>{
       this.bundling2Data= res;
-      this.barsInBundle2 = this.bundling2Data.length;
+      this.barsInBundle2 = this.bundling2Data?.length;
     }));
   }
 
   getil2bundlingData(){
     this.http.get('http://127.0.0.1:8000/bundle1?il=1').subscribe((res=>{
       this.il2bundlingData= res;
-      this.il2barsInBundle = this.il2bundlingData.length;
+      this.il2barsInBundle = this.il2bundlingData?.length;
     }));
   }
 
@@ -600,28 +574,28 @@ startInterval() {
   getmp1RejectedbarsData(){
     this.http.get('http://127.0.0.1:8000/trash1').subscribe((res=>{
       this.mpi1TrashData= res;
-      this.mpi1TrashDataCount = this.mpi1TrashData.length;
+      this.mpi1TrashDataCount = this.mpi1TrashData?.length;
     }));
   }
 
   getil2mp1RejectedbarsData(){
     this.http.get('http://127.0.0.1:8000/trash1?il=1').subscribe((res=>{
       this.il2mpi1TrashData= res;
-      this.il2mpi1TrashDataCount = this.il2mpi1TrashData.length;
+      this.il2mpi1TrashDataCount = this.il2mpi1TrashData?.length;
     }));
   }
 
   getmp2RejectedbarsData(){
     this.http.get('http://127.0.0.1:8000/trash2').subscribe((res=>{
       this.mpi2TrashData= res;
-      this.mpi2TrashDataCount = this.mpi2TrashData.length;
+      this.mpi2TrashDataCount = this.mpi2TrashData?.length;
     }));
   }
 
   getil2mp2RejectedbarsData(){
     this.http.get('http://127.0.0.1:8000/trash2?il=1').subscribe((res=>{
       this.il2mpi2TrashData= res;
-      this.il2mpi2TrashDataCount = this.il2mpi2TrashData.length;
+      this.il2mpi2TrashDataCount = this.il2mpi2TrashData?.length;
     }));
   }
 

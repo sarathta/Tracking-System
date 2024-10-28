@@ -2,99 +2,230 @@
     <div class="card">
         <p-table [value]="barPlanData" [(selection)]="selectedData" selectionMode="single" [rows]="15" [loading]="loading" 
         [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll" (onRowSelect)="rowSelected()">
-        <ng-template pTemplate="caption">
-            <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
-                <div class="font-semibold text-xl">Day Wise Rolling Plan</div>
-                <span class="p-buttonset ml-3">
-                    <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button"></button>
-                    <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                    <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
-                </span>
+            <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                    <div class="font-semibold text-xl">Day Wise Rolling Plan</div>
+                    <span class="p-buttonset ml-3">
+                        <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" (click)="showAddDialog()"></button>
+                        <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button" (click)="showEditDialog()"></button>
+                        <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th colspan="2">Record No:</th>
+                    <th colspan="2">F/S&OP-RM/03</th>
+                    <th>REV:02</th>
+                    <th colspan="12"></th>
+                </tr>
+                <tr>
+                    <th style="min-width: 8rem" pTooltip="Estimated Date">
+                        Date
+                        <p-columnFilter type="text" field="BilletId" display="menu" placeholder="Search by name"></p-columnFilter>
+                    </th>
+                    <th pTooltip="Sales Order" style="width: 6rem;">
+                        SO
+                        <p-columnFilter type="text" field="So" display="menu" placeholder="Search by name"></p-columnFilter>
+                    </th>
+                    <th>
+                        Line Item
+                    </th>
+                    <th pTooltip="Product Type (Bar/ Billet/ Bright Bar/ Flats)">
+                        Product
+                    </th>
+                    <th>
+                        Customer
+                    </th>
+                    <th pTooltip="Production Order Number">
+                        PO
+                    </th>
+                    <th>
+                        Heat No
+                    </th>
+                    <th>
+                        No of Billets
+                    </th>
+                    <th style="width: 8rem;">
+                        Grade
+                        <p-columnFilter field="GradeId" matchMode="equals" display="menu">
+                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                <p-dropdown [ngModel]="value" [options]="GradeList" [filter]="true" filterBy="name" (onChange)="filter($event.value)" placeholder="Any" optionValue="id" optionLabel="name"> </p-dropdown>
+                            </ng-template>
+                        </p-columnFilter>
+                    </th>
+                    <th pTooltip="Grade Classification">
+                        Classification
+                    </th>
+                    <th>
+                        Size (mm)
+                    </th>
+                    <th>
+                        Order Qty (MT)
+                    </th>
+                    <th>
+                        TAS NO.
+                    </th>
+                    <th>
+                        REV. NO.
+                    </th>
+                    <th>
+                        Length (mm)
+                    </th>
+                    <th pTooltip="To be Inspected in">
+                        Inspected in
+                    </th>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData>
+                <tr [pSelectableRow]="rowData">
+                    <td> {{rowData.Estimated_Date}} </td>
+                    <td> {{rowData.So}} </td>
+                    <td> {{rowData.LineItemNo}} </td>
+                    <td> {{rowData.Product_Type}} </td>
+                    <td [pTooltip]="rowData.Customer"> 
+                        <div style="width: 7rem;" class="white-space-nowrap overflow-hidden text-overflow-ellipsis">
+                            {{rowData.Customer}}
+                        </div> 
+                    </td>
+                    <td> {{rowData.Po}} </td>
+                    <td> {{rowData.HeatNo}} </td>
+                    <td> {{rowData.NoOfBillets}} </td>
+                    <td> {{rowData.Grade}} </td>
+                    <td> {{rowData.Grade_Classify}} </td>
+                    <td> {{rowData.Size}} </td>
+                    <td> {{rowData.Order_Qty}} </td>
+                    <td> {{rowData.Tas}} </td>
+                    <td> {{rowData.Rev}} </td>
+                    <td> {{rowData.Length}} </td>
+                    <td> {{rowData.To_be_inspected}} </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="16">No Data found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <p-dialog [(visible)]="barPlanDialog" (onHide)="hideDialog()" [style]="{width: '450px'}" [modal]="true" styleClass="p-fluid dlgDelayAlert" [draggable]="true">
+        <p-header>
+            <div class="div_Header">
+                <!-- <div *ngIf="isGeneralDiv" class="dialogHeader">
+                    <i class="pi pi-exclamation-triangle headerIcon"></i>
+                    <span class="headerLabel">Delay Alert</span>
+                </div> -->
+                <span *ngIf="!isEdit" class="headerLabel">Add Plan</span>
+                <span *ngIf="isEdit" class="headerLabel">Update Plan</span>
+                <!-- <span *ngIf="isAddSubDelayDiv" class="headerLabel">Add Sub Delay</span> -->
+            </div>
+        </p-header>
+        <ng-template pTemplate="content">
+            <div>
+                <div class="flex justify-content-between">  
+                    <div class="field fieldWidth">
+                        <label>Estimated Date</label>
+                        <p-calendar appendTo="body" [minDate]="minDate" [disabled]="false" [(ngModel)]="barPlanDialogData.Date" [showTime]="false" hourFormat="24" dateFormat="dd/mm/yy" [showSeconds]="false" inputId="time"></p-calendar>
+                        <!-- <small class="p-error" *ngIf="submitted && !delay.startTime">{{'delay.startTime' | translate}} {{'global.isRequired' | translate}}</small> -->
+                    </div>
+                    <div class="field fieldWidth ml-2">
+                        <label>Sales Order No.</label>
+                        <input pInputText type="text" [(ngModel)]="barPlanDialogData.So" maxlength="10" required/>
+                        <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                    </div>
+                </div>                  
+                <div class="flex justify-content-between">                    
+                    <div class="field fieldWidth">
+                        <label>Line Item No.</label>
+                        <input pInputText type="number" [(ngModel)]="barPlanDialogData.LineItemNo"  pTooltip="Range from  to " tooltipPosition="right">  
+                        <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                    </div>
+                    <div class="field ml-2 fieldWidth">
+                        <label >Product Type </label>
+                        <div>
+                            <p-dropdown placeholder="Select type" [showClear]="true" appendTo="body" [options]="ProductTypeList" [(ngModel)]="barPlanDialogData.Product_TypeId" optionValue="id" optionLabel="name"></p-dropdown>
+                        </div>
+                    </div>
+                </div>               
+                <div class="field">
+                    <label>Customer</label>
+                    <input pInputText type="text" [(ngModel)]="barPlanDialogData.Customer" maxlength="10" required/>
+                    <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                </div>
+                <div class="field">
+                    <label>Production Order No.</label>
+                    <input pInputText type="text" [(ngModel)]="barPlanDialogData.Po" maxlength="10" required/>
+                    <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                </div>
+                <div class="flex justify-content-between">   
+                    <div class="field fieldWidth">
+                        <label>Heat No.</label>
+                        <input pInputText type="text" [(ngModel)]="barPlanDialogData.HeatNo" maxlength="10" required/>
+                        <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                    </div>
+                    <div class="field ml-2 fieldWidth">
+                        <label>No. of Billets</label>
+                        <input pInputText type="number" [(ngModel)]="barPlanDialogData.NoOfBillets"  pTooltip="Range from  to " tooltipPosition="right">  
+                        <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                    </div>
+                </div>                 
+                <div class="flex justify-content-between">    
+                    <div class="field fieldWidth">
+                        <label > Steel Grade </label>
+                        <div>
+                            <p-dropdown  placeholder="Select grade" [filter]="true" filterBy="name" [showClear]="true" appendTo="body" [options]="GradeList" [(ngModel)]="barPlanDialogData.GradeId" optionValue="id" optionLabel="name" ></p-dropdown>
+                        </div>
+                    </div>
+                    <div class="field ml-2 fieldWidth">
+                        <label > Grade Classification </label>
+                        <div>
+                            <p-dropdown [showClear]="true" appendTo="body" [options]="GradeClassifyList" [(ngModel)]="barPlanDialogData.Grade_ClassifyId" optionValue="id" optionLabel="name" ></p-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-content-between">    
+                    <div class="field fieldWidth">
+                        <label>Size (mm)</label>
+                        <input pInputText type="number" [(ngModel)]="barPlanDialogData.Size"  pTooltip="Range from  to " tooltipPosition="right">  
+                        <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                    </div>
+                    <div class="field ml-2 fieldWidth">
+                        <label>Order Qty (MT)</label>
+                        <input pInputText type="number" [(ngModel)]="barPlanDialogData.Order_Qty"  pTooltip="Range from  to " tooltipPosition="right">  
+                        <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                    </div>
+                </div>
+                <div class="flex justify-content-between">    
+                    <div class="field fieldWidth">
+                        <label>TAS No.</label>
+                        <input pInputText type="text" [(ngModel)]="barPlanDialogData.Tas" maxlength="10" required/>
+                        <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                    </div>
+                    <div class="field ml-2 fieldWidth">
+                        <label>REV. NO.</label>
+                        <input pInputText type="number" [(ngModel)]="barPlanDialogData.Order_Qty"  pTooltip="Range from  to " tooltipPosition="right">  
+                        <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                    </div>
+                </div>
+                <div class="flex justify-content-between">    
+                    <div class="field fieldWidth">
+                        <label>Length (mm)</label>
+                        <input pInputText type="number" [(ngModel)]="barPlanDialogData.Order_Qty"  pTooltip="Range from  to " tooltipPosition="right">  
+                        <!-- <small class="p-error" *ngIf="submitted && !mainDelay.code"> {{'delayCodes.code' | translate}}{{'global.isRequired' | translate}}</small> -->
+                    </div>
+                    <div class="field ml-2 fieldWidth">
+                        <label >To be Inpected In </label>
+                        <div>
+                            <p-dropdown   [showClear]="true" appendTo="body" [options]="InspectedInList" [(ngModel)]="barPlanDialogData.To_be_inspectedId" optionValue="id" optionLabel="name"></p-dropdown>
+                        </div>
+                    </div>    
+                </div>                          
             </div>
         </ng-template>
-        <ng-template pTemplate="header">
-            <tr>
-                <th colspan="2">Record No:</th>
-                <th colspan="2">F/S&OP-RM/03</th>
-                <th>REV:02</th>
-                <th colspan="12"></th>
-            </tr>
-            <tr>
-                <th style="min-width: 8rem" pTooltip="Estimated Date">
-                    Date
-                    <p-columnFilter type="text" field="BilletId" display="menu" placeholder="Search by name"></p-columnFilter>
-                </th>
-                <th pTooltip="Sales Order">
-                    SO
-                </th>
-                <th>
-                    Line Item
-                </th>
-                <th pTooltip="Product Type (Bar/ Billet/ Bright Bar/ Flats)">
-                    Product
-                </th>
-                <th>
-                    Customer
-                </th>
-                <th pTooltip="Production Order Number">
-                    PO
-                </th>
-                <th>
-                    Heat No
-                </th>
-                <th>
-                    No of Billets
-                </th>
-                <th>
-                    Grade
-                </th>
-                <th>
-                    Grade Classification
-                </th>
-                <th>
-                    Size (mm)
-                </th>
-                <th>
-                    Order Qty (MT)
-                </th>
-                <th>
-                    TAS NO.
-                </th>
-                <th>
-                    REV. NO.
-                </th>
-                <th>
-                    Length (mm)
-                </th>
-                <th>
-                    To be Inspected in
-                </th>
+    
+        <ng-template pTemplate="footer">
+            <button *ngIf="!isEdit" pButton pRipple label="Add" icon="pi pi-check" class="p-button-outlined"></button>
+            <button *ngIf="isEdit" pButton pRipple label="Update" icon="pi pi-check" class="p-button-outlined"></button>
+            <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-outlined" ></button>
         </ng-template>
-        <ng-template pTemplate="body" let-rowData>
-            <tr [pSelectableRow]="rowData">
-                <td> {{rowData.BilletId}} </td>
-                <td> {{rowData.Name}} </td>
-                <td> {{rowData.StartTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                <td> {{rowData.EndTime  | date: 'dd/MM/YY HH:MM:ss'}} </td>
-                <td> {{rowData.Type}} </td>
-                <td> {{rowData.Cause}} </td>
-                <td> {{rowData.Cause}} </td>
-                <td> {{rowData.Cause}} </td>
-                <td> {{rowData.Cause}} </td>
-                <td> {{rowData.Cause}} </td>
-                <td> {{rowData.Cause}} </td>
-                <td> {{rowData.Cause}} </td>
-                <td> {{rowData.Cause}} </td>
-                <td> {{rowData.Cause}} </td>
-                <td> {{rowData.Cause}} </td>
-                <td> {{rowData.Cause}} </td>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-            <tr>
-                <td colspan="16">No Data found.</td>
-            </tr>
-        </ng-template>
-    </p-table>
-    </div>
+    </p-dialog>
 </div>
