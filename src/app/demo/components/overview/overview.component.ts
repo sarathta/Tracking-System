@@ -177,6 +177,7 @@ il2by4: any;
 il2by5: any;
 il2by6: any;
 lfLogSheetDialog: boolean = false;
+showLfLogSheet: number = 0;
 
 constructor(
   private http : HttpClient
@@ -688,6 +689,7 @@ ngOnInit(): void {
   }
 
   lfLogSheet(){
+    this.showLfLogSheet = ++this.showLfLogSheet
     this.lfLogSheetDialog=true;
   }
 
