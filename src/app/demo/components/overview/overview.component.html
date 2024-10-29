@@ -648,13 +648,13 @@
         </div>
     </ng-template>
 </p-dialog>
-<p-dialog [(visible)]="lfLogSheetDialog" [modal]="true" showEffect="fade" [style]="{width: '90vw'}"  styleClass="p-fluid"  (onHide)="hideDialog()">
+<!-- <p-dialog [(visible)]="lfLogSheetDialog" [modal]="true" showEffect="fade" [style]="{width: '90vw'}"  styleClass="p-fluid"  (onHide)="hideDialog()"> -->
     <!-- <p-header>
         <div>
             <span>ladle Furnace</span>
         </div>
     </p-header> -->
-    <ng-template pTemplate="content">
-       <app-lf-logsheet></app-lf-logsheet>
-    </ng-template>
-</p-dialog>
+    <!-- <ng-template pTemplate="content"> -->
+       <app-lf-logsheet [inp_ShowDialog]="showLfLogSheet"></app-lf-logsheet>
+    <!-- </ng-template> -->
+<!-- </p-dialog> -->
