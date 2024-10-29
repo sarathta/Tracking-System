@@ -176,6 +176,7 @@ il2by3: any;
 il2by4: any;
 il2by5: any;
 il2by6: any;
+lfLogSheetDialog: boolean = false;
 
 constructor(
   private http : HttpClient
@@ -684,6 +685,10 @@ ngOnInit(): void {
     this.bundleinYardBars = this.bundleYardData.BarIds
     this.dialogbundleYard = true;
 
+  }
+
+  lfLogSheet(){
+    this.lfLogSheetDialog=true;
   }
 
   hideDialog(){

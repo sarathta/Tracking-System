@@ -38,6 +38,7 @@
                 <div>
                     <span class=" font-medium">Ladle Furnace</span>
                     <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="LF()"></button>
+                    <button pButton pRipple icon="pi pi-book" pTooltip="Log Sheet" tooltipPosition="top" class="Button p-button-info p-mr-2 ml-2" style="height: 2vh;" (click)="lfLogSheet()"></button>
                 </div>
                 <div class="mt-1 text-sm">
                     <span>Heat Id : </span><span class=" font-medium"> 92775 </span>
@@ -645,5 +646,15 @@
                 <div class="bundleInYard" *ngIf="by6 !== null" pTooltip="PO :{{by6?.po}}" [ngClass]="{'bundleColorInYard': by6 !== null}" (click)="showBundleInYardDialog(by6)"><span class="text-sm">{{by6?.po}}</span><br><span class="font-semibold">{{by6?.NoOfBars}}</span></div>
             </div>
         </div>
+    </ng-template>
+</p-dialog>
+<p-dialog [(visible)]="lfLogSheetDialog" [modal]="true" showEffect="fade" [style]="{width: '90vw'}"  styleClass="p-fluid"  (onHide)="hideDialog()">
+    <!-- <p-header>
+        <div>
+            <span>ladle Furnace</span>
+        </div>
+    </p-header> -->
+    <ng-template pTemplate="content">
+       <app-lf-logsheet></app-lf-logsheet>
     </ng-template>
 </p-dialog>
