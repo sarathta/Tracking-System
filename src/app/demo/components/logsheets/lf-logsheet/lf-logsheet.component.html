@@ -1,101 +1,111 @@
 <div class="logSheet">
-    <div class="card">
-        <p-table [value]="lfLogSheetData" [(selection)]="selectedData" selectionMode="single" [rows]="10" [loading]="loading" 
-        [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true" responsiveLayout="scroll" (onRowSelect)="rowSelected()">
-            <ng-template pTemplate="caption">
-                <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
-                    <div class="font-semibold text-xl">Ladle Furnace Log Sheet</div>
-                    <span class="p-buttonset ml-3">
-                        <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button"></button>
-                        <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
-                        <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
-                    </span>
-                </div>
-            </ng-template>
-            <ng-template pTemplate="header">
-                <tr>
-                    <th rowspan="2">
-                        Seq
-                    </th>
-                    <th rowspan="2">
-                        Date
-                    </th>
-                    <th rowspan="2">
-                        Heat No
-                    </th>
-                    <th rowspan="2">
-                        Shift
-                    </th>
-                    <th rowspan="2">
-                        Customer
-                    </th>
-                    <th rowspan="2">
-                        Grade
-                    </th>
-                    <th rowspan="2">
-                        Liq Temp (°C)
-                    </th>
-                    <th rowspan="2">
-                        Type
-                    </th>
-                    <th rowspan="2">
-                        Grade
-                    </th>
-                    <th rowspan="2">
-                        TAS
-                    </th>
-                    <th rowspan="2" pTooltip="Net Liquid Steel Weight">
-                        Weight (T)
-                    </th>
-                    <th rowspan="2">
-                        Free Board (mm)
-                    </th>
-                    <th rowspan="2">
-                       Size (mm)
-                    </th>
-                    <th rowspan="2">
-                        REV. NO.
-                    </th>
-                    <th rowspan="2">
-                        Length (mm)
-                    </th>
-                    <th colspan="7">
-                        Ladle
-                    </th>
-                </tr>
-                <tr pTooltip="Ladle In Time (Hrs)">
+    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="10" [loading]="loading"
+        [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [paginator]="true"
+        responsiveLayout="scroll" (onRowSelect)="rowSelected()">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                <div class="font-semibold text-xl">Ladle Furnace Log Sheet</div>
+                <span class="p-buttonset ml-3">
+                    <button pButton pRipple pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus"
+                        class="p-button-success p-button"></button>
+                    <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top"
+                        icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                    <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top"
+                        icon="pi pi-trash" class="p-button-danger p-button"></button>
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th rowspan="2">
+                    Seq
+                </th>
+                <th rowspan="2">
+                    Date
+                </th>
+                <th rowspan="2">
+                    Heat No
+                </th>
+                <th rowspan="2">
+                    Shift
+                </th>
+                <th rowspan="2">
+                    Grade
+                </th>
+                <th rowspan="2">
+                    Liq Temp (°C)
+                </th>
+                <th rowspan="2">
+                    Type
+                </th>
+                <th rowspan="2">
+                    TAS
+                </th>
+                <th rowspan="2" pTooltip="Net Liquid Steel Weight">
+                    Weight (T)
+                </th>
+                <th rowspan="2">
+                    Free Board (mm)
+                </th>
+                <th rowspan="2">
+                    Size (mm)
+                </th>
+                <th colspan="7" class="text-center">
+                    Ladle
+                </th>
+            </tr>
+            <tr>
+                <th pTooltip="Ladle In Time (Hrs)">
                     Time (Hrs)
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-rowData>
-                <tr [pSelectableRow]="rowData">
-                    <td> {{rowData.Estimated_Date}} </td>
-                    <td> {{rowData.So}} </td>
-                    <td> {{rowData.LineItemNo}} </td>
-                    <td> {{rowData.Product_Type}} </td>
-                    <td [pTooltip]="rowData.Customer"> 
-                        <div style="width: 7rem;" class="white-space-nowrap overflow-hidden text-overflow-ellipsis">
-                            {{rowData.Customer}}
-                        </div> 
-                    </td>
-                    <td> {{rowData.Po}} </td>
-                    <td> {{rowData.HeatNo}} </td>
-                    <td> {{rowData.NoOfBillets}} </td>
-                    <td> {{rowData.Grade}} </td>
-                    <td> {{rowData.Grade_Classify}} </td>
-                    <td> {{rowData.Size}} </td>
-                    <td> {{rowData.Order_Qty}} </td>
-                    <td> {{rowData.Tas}} </td>
-                    <td> {{rowData.Rev}} </td>
-                    <td> {{rowData.Length}} </td>
-                    <td> {{rowData.To_be_inspected}} </td>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="emptymessage">
-                <tr>
-                    <td colspan="16">No Data found.</td>
-                </tr>
-            </ng-template>
-        </p-table>
-    </div>
+                </th>
+                <th pTooltip="Ladle In Temp (°C)">
+                    Temp (°C)
+                </th>
+                <th>
+                    Arcing Time (mns)
+                </th>
+                <th>
+                    Argon Flow (LPM)
+                </th>
+                <th>
+                    Ar Consumption (I)
+                </th>
+                <th>
+                    Car No.
+                </th>
+                <th>
+                    LRF Process Time (mns)
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+            <tr [pSelectableRow]="rowData">
+                <td> {{rowData.Estimated_Date}}1 </td>
+                <td> {{rowData.So}} 29/10/2024</td>
+                <td> {{rowData.So}} 92787</td>
+                <td> {{rowData.LineItemNo}}A </td>
+                <td> {{rowData.Product_Type}}ENIAPB </td>
+                <td> 1520 </td>
+                <td> {{rowData.Po}} NVD</td>
+                <td> {{rowData.HeatNo}}HY002 </td>
+                <td> {{rowData.NoOfBillets}} 32.5</td>
+                <td> {{rowData.Grade}} 300</td>
+                <td> {{rowData.Grade_Classify}} 160</td>
+                <td> {{rowData.Size}} 14:20</td>
+                <td> {{rowData.Order_Qty}} 1500</td>
+                <td> {{rowData.Tas}} 58</td>
+                <td> {{rowData.Rev}} 40</td>
+                <td> {{rowData.Length}}917 </td>
+                <td> {{rowData.To_be_inspected}} 2</td>
+                <td> {{rowData.To_be_inspected}} </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="19">No Data found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
 </div>
+
