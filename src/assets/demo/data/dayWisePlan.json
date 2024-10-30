@@ -188,7 +188,7 @@
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
         "To_be_inspectedId" : 4,
-        "status" : 1
+        "status" : 2
 
     },
     {
@@ -236,7 +236,7 @@
         "Length" : 6000,
         "To_be_inspected" : "MANUAL",
         "To_be_inspectedId" : 4,
-        "status" : 1
+        "status" : 2
 
     },
     {

@@ -91,26 +91,26 @@
             </ng-template>
             <ng-template pTemplate="body" let-rowData>
                 <tr [pSelectableRow]="rowData">
-                    <td> {{rowData.Estimated_Date}} </td>
-                    <td> {{rowData.So}} </td>
-                    <td> {{rowData.LineItemNo}} </td>
-                    <td> {{rowData.Product_Type}} </td>
-                    <td [pTooltip]="rowData.Customer"> 
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.Estimated_Date}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.So}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.LineItemNo}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.Product_Type}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status" [pTooltip]="rowData.Customer"> 
                         <div style="width: 7rem;" class="white-space-nowrap overflow-hidden text-overflow-ellipsis">
                             {{rowData.Customer}}
                         </div> 
                     </td>
-                    <td> {{rowData.Po}} </td>
-                    <td> {{rowData.HeatNo}} </td>
-                    <td> {{rowData.NoOfBillets}} </td>
-                    <td> {{rowData.Grade}} </td>
-                    <td> {{rowData.Grade_Classify}} </td>
-                    <td> {{rowData.Size}} </td>
-                    <td> {{rowData.Order_Qty}} </td>
-                    <td> {{rowData.Tas}} </td>
-                    <td> {{rowData.Rev}} </td>
-                    <td> {{rowData.Length}} </td>
-                    <td> {{rowData.To_be_inspected}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.Po}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.HeatNo}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.NoOfBillets}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.Grade}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.Grade_Classify}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.Size}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.Order_Qty}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.Tas}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.Rev}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.Length}} </td>
+                    <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.To_be_inspected}} </td>
                     <td [ngClass]="'statuscolor_' + rowData.status"> {{rowData.statusName}} </td>
                 </tr>
             </ng-template>

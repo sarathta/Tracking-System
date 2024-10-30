@@ -48,6 +48,7 @@ export class LfLogsheetComponent implements OnInit{
   isLfLogSheetDialog: boolean = false;
   isMasterDataLoaded: boolean = false;
   dlgProgress: boolean = false;
+  minDate: Date = new Date();
 
   constructor( ) { }
 

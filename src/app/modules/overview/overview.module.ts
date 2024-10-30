@@ -26,6 +26,7 @@ import { LadleFurnaceComponent } from 'src/app/demo/components/ladle-furnace/lad
 import { BlastFurnaceComponent } from 'src/app/demo/components/blast-furnace/blast-furnace.component';
 import { LfLogsheetComponent } from 'src/app/demo/components/logsheets/lf-logsheet/lf-logsheet.component';
 import { BarPlanningComponent } from 'src/app/demo/components/bar-planning/bar-planning.component';
+import { LadleFurnaceProcessComponent } from 'src/app/demo/components/ladle-furnace/ladle-furnace-process/ladle-furnace-process.component';
 
 
 
@@ -40,7 +41,8 @@ import { BarPlanningComponent } from 'src/app/demo/components/bar-planning/bar-p
     Bof1DetailsComponent,
     BlastFurnaceComponent,
     LfLogsheetComponent,
-    BarPlanningComponent
+    BarPlanningComponent,
+    LadleFurnaceProcessComponent
   ],
   imports: [
     SharedModule,
