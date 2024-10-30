@@ -135,8 +135,8 @@
                     <ng-template pTemplate="header">
                         <tr>
                           <th></th>
-                          <th colspan="15" style="width: 40rem;">Grade chemistry (%)</th>
-                          <th colspan="2">Gases (PPM)</th>
+                          <th colspan="15" class="text-center" style="width: 40rem;">Grade chemistry (%)</th>
+                          <th colspan="2" class="text-center">Gases (PPM)</th>
                         </tr>
                         <tr>
                             <th>Melt</th>
@@ -346,7 +346,7 @@
                     </ng-template>
                     <ng-template pTemplate="emptymessage">
                         <tr>
-                            <td colspan="6">No Data found.</td>
+                            <td colspan="18">No Data found.</td>
                         </tr>
                     </ng-template>
                 </p-table>
@@ -367,7 +367,7 @@
                     <ng-template pTemplate="header">
                         <tr>
                           <th></th>
-                          <th colspan="15">Tapping additions in BOF (Kgs)</th>
+                          <th colspan="15" class="text-center">Tapping additions in BOF (Kgs)</th>
                         </tr>
                         <tr>
                             <th>CPC</th>
@@ -434,7 +434,7 @@
                     </ng-template>
                     <ng-template pTemplate="emptymessage">
                         <tr>
-                            <td colspan="14">No Data found.</td>
+                            <td colspan="22">No Data found.</td>
                         </tr>
                     </ng-template>
                 </p-table>
@@ -442,8 +442,459 @@
         </div>
 
     </div>
-    <div class="card">
-        
+    <div class="p-card">
+        <div class="col-12">
+            <p-table [value]="logSheetList1" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+            [tableStyle]="{'min-width': '10rem'}" [loading]="isMasterDataLoaded" selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="67vh">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th rowspan="2"></th>               
+                    <th colspan="2" class="text-center">
+                        Arcing Details
+                    </th>
+                    <th rowspan="2">
+                        Temp (°C)
+                    </th>
+                    <th colspan="15" class="text-center">
+                        Flux/Frro Alloys/Alloys (Kgs)
+                    </th>
+                    <th colspan="5" class="text-center">
+                        Wires (Meters)
+                    </th>     
+                </tr>
+                <tr>
+                    <th>
+                        Start
+                    </th>
+                    <th >
+                        Stop
+                    </th>
+                    <th>
+                        CPC
+                    </th>
+                    <th>
+                        FeSi
+                    </th>
+                    <th>
+                        Hc FeMn
+                    </th>
+                    <th>
+                        Mc FeMn
+                    </th>
+                    <th>
+                        SiMn
+                    </th>
+                    <th>
+                        Hc FeCr
+                    </th>
+                    <th>
+                        Lc FeCr
+                    </th>
+                    <th>
+                        Fe Mo
+                    </th>
+                    <th>
+                        Ni
+                    </th>
+                    <th>
+                        FeAl
+                    </th>
+                    <th>
+                        MgO
+                    </th>
+                    <th>
+                        Lime
+                    </th>
+                    <th>
+                        Al Mix
+                    </th>
+                    <th>
+                        Synt slag
+                    </th>
+                    <th>
+                        Spar
+                    </th>
+                    <th>
+                        Al
+                    </th>
+                    <th>
+                        CaSi
+                    </th>
+                    <th>
+                        S
+                    </th>
+                    <th>
+                        C
+                    </th>
+                    <th>
+                        N2
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+                <tr [pSelectableRow]="rowData" [pReorderableRow]="index">
+                    <td>
+                        <button pButton pRipple  pTooltip="Remove" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button-sm" (click)="removeItem(index)"></button>
+                    </td>
+                    <td>
+                        {{rowData.time | date: 'HH:mm'}}
+                    </td>
+                    <td>
+                        {{rowData.time | date: 'HH:mm'}}
+                    </td>
+                    <td>
+                        {{rowData.q}}
+                    </td>
+                    <td>
+                        {{rowData.r}}
+                    </td>
+                    <td>
+                        {{rowData.w}}
+                    </td>
+                    <td>
+                        {{rowData.e}}
+                    </td>
+                    <td>
+                        {{rowData.r}}
+                    </td>
+                    <td>
+                        {{rowData.e}}
+                    </td>
+                    <td>
+                        {{rowData.e}}
+                    </td>
+                    <td>
+                        {{rowData.f}}
+                    </td>
+                    <td>
+                        {{rowData.s}}
+                    </td>
+                    <td>
+                        {{rowData.f }}
+                    </td>
+                    <td>
+                        {{rowData.d}}
+                    </td>
+                    <td>
+                        {{rowData.d}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                    <td>
+                        {{rowData.v}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <tr>
+                    <td>
+                        <button pButton pRipple pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" (click)="addNewItem_to_List()"></button>
+                    </td>
+                    <td>
+                        <p-calendar appendTo="body" [(ngModel)]="dialogData.time" [style]="{height:'2rem',width: '4rem'}"   [showIcon]="false" [timeOnly]="true" inputId="templatedisplay"></p-calendar>
+                    </td>
+                    <td>
+                        <p-calendar appendTo="body" [(ngModel)]="dialogData.time" [style]="{height:'2rem',width: '4rem'}"   [showIcon]="false" [timeOnly]="true" inputId="templatedisplay"></p-calendar>
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>  
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>  
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>                        
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td> 
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                </tr>
+                <tr *ngIf="errorMessage">
+                    <td colspan="5">
+                        <small class="p-error">{{errorMessage}}</small>                    
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        </div>
+        <div class="col-12">
+            <p-table [value]="logSheetList2" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+                [tableStyle]="{'min-width': '10rem'}" [loading]="isMasterDataLoaded" selectionMode="single"
+                [(selection)]="selectedData" [scrollable]="true" scrollHeight="67vh">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th rowspan="2"></th>
+                        <th rowspan="2">L</th>
+                        <th colspan="16" class="text-center">
+                            Chemistry (%)
+                        </th>
+                        <th colspan="3" class="text-center">
+                            Gases (PPM)
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                            C
+                        </th>
+                        <th>
+                            Mn
+                        </th>
+                        <th>
+                            Si
+                        </th>
+                        <th>
+                            S
+                        </th>
+                        <th>
+                            P
+                        </th>
+                        <th>
+                            Cr
+                        </th>
+                        <th>
+                           Ni
+                        </th>
+                        <th>
+                            Cu
+                        </th>
+                        <th>
+                           Mo
+                        </th>
+                        <th>
+                            Al
+                        </th>
+                        <th>
+                            V
+                        </th>
+                        <th>
+                            Ti
+                        </th>
+                        <th>
+                            Ca
+                        </th>
+                        <th>
+                            B
+                        </th>
+                        <th>
+                            
+                        </th>
+                        <th>
+                            N2
+                        </th>
+                        <th>
+                           H2
+                        </th>
+                        <th>
+                           O2
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+                    <tr [pSelectableRow]="rowData" [pReorderableRow]="index">
+                        <td>
+                            <button pButton pRipple pTooltip="Remove" tooltipPosition="top" icon="pi pi-trash"
+                                class="p-button-danger p-button-sm" (click)="removeItem2(index)"></button>
+                        </td>
+                        <td>
+                            {{rowData.time | date: 'HH:mm'}}
+                        </td>
+                        <td>
+                            {{rowData.time | date: 'HH:mm'}}
+                        </td>
+                        <td>
+                            {{rowData.q}}
+                        </td>
+                        <td>
+                            {{rowData.r}}
+                        </td>
+                        <td>
+                            {{rowData.w}}
+                        </td>
+                        <td>
+                            {{rowData.e}}
+                        </td>
+                        <td>
+                            {{rowData.r}}
+                        </td>
+                        <td>
+                            {{rowData.e}}
+                        </td>
+                        <td>
+                            {{rowData.e}}
+                        </td>
+                        <td>
+                            {{rowData.f}}
+                        </td>
+                        <td>
+                            {{rowData.s}}
+                        </td>
+                        <td>
+                            {{rowData.f }}
+                        </td>
+                        <td>
+                            {{rowData.d}}
+                        </td>
+                        <td>
+                            {{rowData.d}}
+                        </td>
+                        <td>
+                            {{rowData.c}}
+                        </td>
+                        <td>
+                            {{rowData.c}}
+                        </td>
+                        <td>
+                            {{rowData.c}}
+                        </td>
+                        <td>
+                            {{rowData.v}}
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <tr>
+                        <td>
+                            <button pButton pRipple pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus"
+                                class="p-button-success p-button" (click)="addNewItem_to_List2()"></button>
+                        </td>
+                        <td>
+                            <input pInputText type="text" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                    </tr>
+                    <tr *ngIf="errorMessage">
+                        <td colspan="22">
+                            <small class="p-error">{{errorMessage}}</small>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
     </div>
     <p-dialog [(visible)]="isLfLogSheetDialog" showEffect="fade" [modal]="true" styleClass="p-fluid" [style]="{width: '130rem'}" [draggable]="true" (onHide)="clearData()">
         <p-header>
@@ -453,7 +904,7 @@
         </p-header>
         <ng-template pTemplate="content">
             <div>
-                <p-table [value]="logSheetList" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+                <p-table [value]="logSheetList1" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
                 [tableStyle]="{'min-width': '20rem'}" [loading]="isMasterDataLoaded" selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="67vh">
                 <ng-template pTemplate="header">
                     <tr>
