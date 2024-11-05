@@ -29,6 +29,8 @@ import { BarPlanningComponent } from 'src/app/demo/components/bar-planning/bar-p
 import { LadleFurnaceProcessComponent } from 'src/app/demo/components/ladle-furnace/ladle-furnace-process/ladle-furnace-process.component';
 import { VdLogsheetComponent } from 'src/app/demo/components/logsheets/vd-logsheet/vd-logsheet.component';
 import { VaccumDegassingComponent } from 'src/app/demo/components/vaccum-degassing/vaccum-degassing.component';
+import { Bof1ProcessComponent } from 'src/app/demo/components/bof1/bof1-process/bof1-process.component';
+import { Bof1LogsheetComponent } from 'src/app/demo/components/logsheets/bof1-logsheet/bof1-logsheet.component';
 
 
 
@@ -46,7 +48,9 @@ import { VaccumDegassingComponent } from 'src/app/demo/components/vaccum-degassi
     BarPlanningComponent,
     LadleFurnaceProcessComponent,
     VdLogsheetComponent,
-    VaccumDegassingComponent
+    VaccumDegassingComponent,
+    Bof1ProcessComponent,
+    Bof1LogsheetComponent
   ],
   imports: [
     SharedModule,
