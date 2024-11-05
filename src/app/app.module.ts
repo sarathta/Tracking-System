@@ -15,10 +15,13 @@ import { PhotoService } from './demo/service/photo.service';
 import { MessageService } from 'primeng/api';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+
+
 @NgModule({
     declarations: [
         AppComponent,
         NotfoundComponent,
+        
     ],
     imports: [
         AppRoutingModule,

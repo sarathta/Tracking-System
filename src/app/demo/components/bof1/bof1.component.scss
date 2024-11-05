@@ -1,5 +1,12 @@
-
-::ng-deep .p-progressbar .p-progressbar-value {
-    background:  #7aa5d2 !important;
+.processBtn{
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+    border-right-color: rgb(180, 182, 184);
 }
-   
+.logSheetbtn{
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+}
+.selectedBtn{
+    background-color: rgb(6, 6, 158);
+}
