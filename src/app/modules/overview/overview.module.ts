@@ -31,6 +31,9 @@ import { VdLogsheetComponent } from 'src/app/demo/components/logsheets/vd-logshe
 import { VaccumDegassingComponent } from 'src/app/demo/components/vaccum-degassing/vaccum-degassing.component';
 import { Bof1ProcessComponent } from 'src/app/demo/components/bof1/bof1-process/bof1-process.component';
 import { Bof1LogsheetComponent } from 'src/app/demo/components/logsheets/bof1-logsheet/bof1-logsheet.component';
+import { Bof2ProcessComponent } from 'src/app/demo/components/bof2/bof2-process/bof2-process.component';
+import { Bof2LogsheetComponent } from 'src/app/demo/components/logsheets/bof2-logsheet/bof2-logsheet.component';
+
 
 
 
@@ -50,7 +53,10 @@ import { Bof1LogsheetComponent } from 'src/app/demo/components/logsheets/bof1-lo
     VdLogsheetComponent,
     VaccumDegassingComponent,
     Bof1ProcessComponent,
-    Bof1LogsheetComponent
+    Bof1LogsheetComponent,
+    Bof2ProcessComponent,
+    Bof2LogsheetComponent
+
   ],
   imports: [
     SharedModule,
