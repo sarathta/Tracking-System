@@ -50,39 +50,29 @@
             </div>
         </div>
     </div>
-    <p-dialog header="STATUS"  [(visible)]="dialogRF" [modal]="true" showEffect="fade" [style]="{width: '31vw'}" styleClass="p-fluid" (onHide)="hideDialog()">
+    <p-dialog header="STATUS"  [(visible)]="dialogRF" [modal]="true" showEffect="fade" [style]="{width: '80vw'}" styleClass="p-fluid z-2" (onHide)="hideDialog()">
         <p-table [value]="[{}]"   selectionMode="single"  [rows]="10" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Customer</th>
+                    <th>Grade</th>
+                    <th>Estimated Date</th>
+                    <th>PO Number</th>
+                    <th>Heat Number</th>
+                    <th>No Of Billets </th>
+                    <th>Size </th>
+                    <th>Order Qty MT </th>
+                </tr>
+            </ng-template>
             <ng-template pTemplate="body" let-rowData>
-                <tr [pSelectableRow]="rowData">
-                    <td> Customer </td>
+                <tr [pSelectableRow]="rowData" style="color: blue;">
                     <td>{{customer}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Grade </td>
                     <td>{{grade}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Estimated Date </td>
                     <td>{{estimateddate}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> PO Number </td>
                     <td>{{ponumber}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Heat Number </td>
                     <td>{{heatno}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> No Of Billets </td>
                     <td>{{noofbillets}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Size </td>
                     <td>{{size}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Order Qty MT </td>
                     <td>{{orderqtymt}}</td>
                 </tr>
                 <!-- <tr [pSelectableRow]="rowData">
@@ -158,19 +148,21 @@
             </ng-template>
             
         </p-table>
-        <div class="mt-2">
-            <p-timeline [value]="timelineData" [align]="'alternate'" styleClass="customized-timeline">
+        <div class=" mt-2">
+            <p-timeline [value]="timelineData" layout="horizontal" [align]="'alternate'" styleClass="text-sm" [style]="{height: '23rem'}">
                 <ng-template pTemplate="marker" let-event>
                     <span
-                        class="flex w-2rem h-2rem align-items-center justify-content-center text-white border-circle z-1 shadow-1"
+                        class="flex w-1rem h-1rem align-items-center justify-content-center text-white border-circle z-1 shadow-1"
                         [style]="{ 'background-color': event.color }">
                     </span>
                 </ng-template>
         
                 <ng-template pTemplate="content" let-event>
-                    <p-card [header]="event.title" [subheader]="event.Date">
-                        <div>{{event.status}}</div>
-                        <div>{{event.desc}}</div>
+                    <p-card class="p-0"> 
+                        <div class="font-medium">{{event.title}}</div>
+                        <!-- <div class="font-semibold">{{event.Date}}</div> -->
+                        <div class="text-sm" [style]="{color: 'event.color'}">{{event.status}}</div>
+                        <!-- <div>{{event.desc}}</div> -->
                     </p-card>
                 </ng-template>
             </p-timeline>
