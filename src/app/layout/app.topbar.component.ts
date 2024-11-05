@@ -46,6 +46,8 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     noofbillets:any;
     size:any;
     orderqtymt:any;
+
+    timelineData: any;
   
 
 
@@ -66,7 +68,92 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
         this.timeInterval = setInterval(() => {
             this.getNotification();
           }, 1000);
+
+        this.getTimeLineData();
         
+    }
+
+    getTimeLineData(){
+        this.timelineData = [
+            {
+                title: "BOF",
+                Date: "05/11/2024 08:18",
+                color: "#607D8B",
+                status: "Completed",
+                desc : null
+            },
+            {
+                title: "Ladle Furnace",
+                Date: "05/11/2024 09:11",
+                color: "#607D8B",
+                status: "Completed",
+                desc : null
+            },
+            {
+                title: "Vaccum Degassing ",
+                Date: "05/11/2024 09:50",
+                color: "#607D8B",
+                status: "Completed",
+                desc : null
+            },
+            {
+                title: "Continous Caster",
+                Date: "05/11/2024 11:23",
+                color: "#607D8B",
+                status: "Completed",
+                desc : null
+            },
+            {
+                title: "Billet Yard",
+                Date: "05/11/2024 12:50",
+                color: "#607D8B",
+                status: "Completed",
+                desc : "no of billets: 27"
+            },
+            {
+                title: "Reheating Furnace",
+                Date: "05/11/2024 13:40",
+                color: "#607D8B",
+                status: "Completed",
+                desc : null
+
+            },
+            {
+                title: "Rolling Mill",
+                Date: "",
+                color: "#99e200",
+                status: "Under Progress",
+                desc : null
+            },
+            {
+                title: "Cooling Bed",
+                Date: "",
+                color: "#99e200",
+                status: "Under Progress",
+                desc : null
+            },
+            {
+                title: "Cold Shear",
+                Date: "",
+                color: "#607D8B",
+                status: "Not Reached",
+                desc : null
+            },
+            {
+                title: "IL-1",
+                Date: "",
+                color: "#607D8B",
+                status: "Not Reached",
+                desc : null
+            },
+            {
+                title: "Yard",
+                Date: "",
+                color: "#607D8B",
+                status: "Not Reached",
+                desc : null
+            }
+        ];
     }
 
     ngOnDestroy() {

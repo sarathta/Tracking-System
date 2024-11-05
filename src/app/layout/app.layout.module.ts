@@ -23,6 +23,8 @@ import { AppFooterComponent } from './app.footer.component';
 import { AppConfigModule } from './config/config.module';
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
+import { TimelineModule } from "primeng/timeline";
+import { CardModule } from "primeng/card";
 
 @NgModule({
     declarations: [
@@ -51,7 +53,9 @@ import { AppLayoutComponent } from "./app.layout.component";
         RouterModule,
         AppConfigModule,
         ToastModule,
-        SharedModule
+        SharedModule,
+        TimelineModule,
+        CardModule
     ],
     exports: [LoginComponent]
 })
