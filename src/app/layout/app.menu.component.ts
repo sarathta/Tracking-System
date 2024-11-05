@@ -37,6 +37,11 @@ export class AppMenuComponent implements OnInit {
                                                 routerLink: ['/TrackingSystem/overview/ladle']
                                             },
                                             {
+                                                label: 'Vaccum Degassing',
+                                                // icon: 'pi pi-fw pi-lock',
+                                                routerLink: ['/TrackingSystem/overview/vd']
+                                            },
+                                            {
                                                 label: 'Blast Furnace',
                                                 // icon: 'pi pi-fw pi-lock',
                                                 routerLink: ['/TrackingSystem/overview/blastfurnace']

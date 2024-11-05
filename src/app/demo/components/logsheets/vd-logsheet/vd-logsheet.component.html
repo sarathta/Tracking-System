@@ -1,0 +1,973 @@
+<div class="logSheet">    
+    <div class="p-card flex">
+        <div class="flex flex-column justify-content-evenly cardSection1" style="border-right: 1px solid rgb(230, 230, 230);">
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Date </label>:
+                <div class="ml-2 font-semibold cardInput">
+                    <p-calendar appendTo="body" [minDate]="minDate" [style]="{height:'2rem',width: '8rem'}"  [disabled]="false" [(ngModel)]="dialogData.date" [showTime]="false" hourFormat="24" dateFormat="dd/mm/yy" [showSeconds]="false" inputId="time"></p-calendar>
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Heat No </label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="text" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.heatNo" maxlength="10" />
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Shift </label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <p-dropdown  [(ngModel)]="dialogData.shiftId" [style]="{height:'2rem',width: '8rem'}" [showClear]="false" [options]="shift" placeholder="Shift" optionValue="id" optionLabel="name" appendTo="body"> </p-dropdown>           
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Grade </label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <p-dropdown appendTo="body" [(ngModel)]="dialogData.steelGradeId" [style]="{height:'2rem',width: '8rem'}" [options]="steelGradeList" [showClear]="false"  [filter]="true" filterBy="name" placeholder="Grade"  optionLabel="name" optionValue="id">
+                        <ng-template let-option pTemplate="item">
+                            <div>
+                                <span class="ml-1 mt-1">{{ option.name }} </span>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Liq Temp (°C) </label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="number" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.liqTemp" maxlength="10" />
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Type </label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <p-dropdown  [(ngModel)]="dialogData.gradeTypeId" [style]="{height:'2rem',width: '8rem'}" [showClear]="false" [options]="GradeClassifyList" placeholder="Type" optionValue="id" optionLabel="name" appendTo="body"> </p-dropdown>           
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >TAS No</label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="text" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.tas" maxlength="10" />
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" pTooltip="Net Liquid Steel Weight">Weight (T)</label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="number" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.weight" maxlength="10" />
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1 mb-1">
+                <label class="font-semibold cardLabel"> Free Board (mm)</label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="number" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.freeBoard" maxlength="10" />
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-column justify-content-evenly cardSection2" style="border-right: 1px solid rgb(230, 230, 230);">
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Seq No </label>:
+                <div class="ml-2 font-semibold cardInput">
+                    <input pInputText type="number" [style]="{height:'2rem',width: '8rem'}"  maxlength="10" />
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Size (mm) </label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="number" [style]="{height:'2rem',width: '8rem'}"  maxlength="10" />
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Ladle In Time (Hrs) </label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <p-calendar appendTo="body" [(ngModel)]="dialogData.time" [style]="{height:'2rem',width: '8rem'}"   [showIcon]="false" [timeOnly]="true" inputId="templatedisplay"></p-calendar>
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Ladle In Temp (°C) </label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="number" [(ngModel)]="dialogData.ladleTemp" [style]="{height:'2rem',width: '8rem'}"  maxlength="10" />
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Arcing Time (mns)</label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="number" [(ngModel)]="dialogData.arcingTime" [style]="{height:'2rem',width: '8rem'}"  maxlength="10" />
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Argon Flow (LPM) </label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="number" [(ngModel)]="dialogData.argonFlow" [style]="{height:'2rem',width: '8rem'}"  maxlength="10" />
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel" >Ar Consumption (I) </label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="number" [(ngModel)]="dialogData.arConsumption" [style]="{height:'2rem',width: '8rem'}"  maxlength="10" />
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1">
+                <label class="font-semibold cardLabel">Car No.</label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <p-dropdown  [(ngModel)]="dialogData.carNo"  [style]="{height:'2rem',width: '8rem'}" [showClear]="true" [options]="CarNo" placeholder="No" optionValue="id" optionLabel="name" appendTo="body" [style]="{'width':'100%'}" > </p-dropdown>           
+                </div>
+            </div>
+            <div class="flex align-items-center mt-1 ml-1 mb-1">
+                <label class="font-semibold cardLabel"> LRF Process Time (mns)</label>:
+                <div class=" ml-2 font-semibold cardInput">
+                    <input pInputText type="number" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.lrfProcessTime" maxlength="10" />
+                </div>
+            </div>
+        </div>
+        <div class="ml-2">
+            <div>
+                <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [tableStyle]="{'min-width': '10rem'}"
+                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines" [paginator]="false">
+                    <!-- <ng-template pTemplate="caption">
+                        <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                            <div class="font-semibold text-xl">LADLE FURNACE</div>
+                            <span class="p-buttonset ml-3">
+                                <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                            </span>
+                        </div>
+                    </ng-template> -->
+                    <ng-template pTemplate="header">
+                        <tr>
+                          <th></th>
+                          <th colspan="15" class="text-center" style="width: 40rem;">Grade chemistry (%)</th>
+                          <th colspan="2" class="text-center">Gases (PPM)</th>
+                        </tr>
+                        <tr>
+                            <th>Melt</th>
+                            <th>C</th>
+                            <th>Si</th>
+                            <th>S</th>
+                            <th>P</th>
+                            <th>Cr</th>
+                            <th>Ni</th>
+                            <th>Cu</th>
+                            <th>Mo</th>
+                            <th>Al</th>
+                            <th>V</th>
+                            <th>Ti</th>
+                            <th>Ca</th>
+                            <th>B</th>
+                            <th></th>
+                            <th>N2</th>
+                            <th>H2</th>
+                            <th>O2</th>
+                          </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr>
+                            <td style="background-color: rgb(224, 248, 224);">Min </td>   
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: rgb(224, 248, 224);">Max </td>   
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: rgb(224, 248, 224);">Aim </td>   
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="footer">
+                        <tr>
+                            <td>CE :</td>
+                            <td colspan="3"style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '9rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td></td>
+                            <td colspan="2">Jominy :</td>
+                            <td colspan="3"style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '9rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td>Dl :</td>
+                            <td colspan="3"style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '9rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="18">No Data found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+            <div class="mt-3 mb-2">
+                <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [tableStyle]="{'min-width': '10rem'}"
+                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines" [paginator]="false">
+                    <!-- <ng-template pTemplate="caption">
+                        <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                            <div class="font-semibold text-xl">LADLE FURNACE</div>
+                            <span class="p-buttonset ml-3">
+                                <button pButton pRipple  pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" ></button>
+                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Edit" tooltipPosition="top" icon="pi pi-pencil" class="p-button-warning p-button"></button>
+                                <button pButton pRipple [disabled]="!selectedData" pTooltip="Delete" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button"></button>
+                            </span>
+                        </div>
+                    </ng-template> -->
+                    <ng-template pTemplate="header">
+                        <tr>
+                          <th></th>
+                          <th colspan="15" class="text-center">Tapping additions in BOF (Kgs)</th>
+                        </tr>
+                        <tr>
+                            <th>CPC</th>
+                            <th>FeSi</th>
+                            <th>Hc FeMn</th>
+                            <th></th>
+                            <th>SiMn</th>
+                            <th>Hc FeCr</th>
+                            <th>Cu</th>
+                            <th>MgO</th>
+                            <th>Ni</th>
+                            <th>S Sticks</th>
+                            <th>L Ti FeCr</th>
+                            <th>Lime</th>
+                            <th>Al</th>
+                            <th>Cd</th>
+                          </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '5rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '5rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '5rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '5rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                            <td style="padding: 0%;">
+                                <input pInputText type="text" class="text-sm" [style]="{height:'2rem',width: '3rem',padding:'2%'}"  maxlength="10" />
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="22">No Data found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+    </div>
+    <div class="p-card">
+        <div class="col-12">
+            <p-table [value]="logSheetList1" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+            [tableStyle]="{'min-width': '10rem'}" [loading]="isMasterDataLoaded" selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="67vh">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th rowspan="2"></th>               
+                    <th colspan="2" class="text-center">
+                        Arcing Details
+                    </th>
+                    <th rowspan="2">
+                        Temp (°C)
+                    </th>
+                    <th colspan="15" class="text-center">
+                        Flux/Frro Alloys/Alloys (Kgs)
+                    </th>
+                    <th colspan="5" class="text-center">
+                        Wires (Meters)
+                    </th>     
+                </tr>
+                <tr>
+                    <th>
+                        Start
+                    </th>
+                    <th >
+                        Stop
+                    </th>
+                    <th>
+                        CPC
+                    </th>
+                    <th>
+                        FeSi
+                    </th>
+                    <th>
+                        Hc FeMn
+                    </th>
+                    <th>
+                        Mc FeMn
+                    </th>
+                    <th>
+                        SiMn
+                    </th>
+                    <th>
+                        Hc FeCr
+                    </th>
+                    <th>
+                        Lc FeCr
+                    </th>
+                    <th>
+                        Fe Mo
+                    </th>
+                    <th>
+                        Ni
+                    </th>
+                    <th>
+                        FeAl
+                    </th>
+                    <th>
+                        MgO
+                    </th>
+                    <th>
+                        Lime
+                    </th>
+                    <th>
+                        Al Mix
+                    </th>
+                    <th>
+                        Synt slag
+                    </th>
+                    <th>
+                        Spar
+                    </th>
+                    <th>
+                        Al
+                    </th>
+                    <th>
+                        CaSi
+                    </th>
+                    <th>
+                        S
+                    </th>
+                    <th>
+                        C
+                    </th>
+                    <th>
+                        N2
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+                <tr [pSelectableRow]="rowData" [pReorderableRow]="index">
+                    <td>
+                        <button pButton pRipple  pTooltip="Remove" tooltipPosition="top" icon="pi pi-trash" class="p-button-danger p-button-sm" (click)="removeItem(index)"></button>
+                    </td>
+                    <td>
+                        {{rowData.time | date: 'HH:mm'}}
+                    </td>
+                    <td>
+                        {{rowData.time | date: 'HH:mm'}}
+                    </td>
+                    <td>
+                        {{rowData.q}}
+                    </td>
+                    <td>
+                        {{rowData.r}}
+                    </td>
+                    <td>
+                        {{rowData.w}}
+                    </td>
+                    <td>
+                        {{rowData.e}}
+                    </td>
+                    <td>
+                        {{rowData.r}}
+                    </td>
+                    <td>
+                        {{rowData.e}}
+                    </td>
+                    <td>
+                        {{rowData.e}}
+                    </td>
+                    <td>
+                        {{rowData.f}}
+                    </td>
+                    <td>
+                        {{rowData.s}}
+                    </td>
+                    <td>
+                        {{rowData.f }}
+                    </td>
+                    <td>
+                        {{rowData.d}}
+                    </td>
+                    <td>
+                        {{rowData.d}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                    <td>
+                        {{rowData.v}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                    <td>
+                        {{rowData.c}}
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <tr>
+                    <td>
+                        <button pButton pRipple pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus" class="p-button-success p-button" (click)="addNewItem_to_List()"></button>
+                    </td>
+                    <td>
+                        <p-calendar appendTo="body" [(ngModel)]="dialogData.time" [style]="{height:'2rem',width: '4rem'}"   [showIcon]="false" [timeOnly]="true" inputId="templatedisplay"></p-calendar>
+                    </td>
+                    <td>
+                        <p-calendar appendTo="body" [(ngModel)]="dialogData.time" [style]="{height:'2rem',width: '4rem'}"   [showIcon]="false" [timeOnly]="true" inputId="templatedisplay"></p-calendar>
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>  
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>  
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>                        
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td> 
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                    <td>
+                        <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                    </td>
+                </tr>
+                <tr *ngIf="errorMessage">
+                    <td colspan="5">
+                        <small class="p-error">{{errorMessage}}</small>                    
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        </div>
+        <div class="col-12">
+            <p-table [value]="logSheetList2" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+                [tableStyle]="{'min-width': '10rem'}" [loading]="isMasterDataLoaded" selectionMode="single"
+                [(selection)]="selectedData" [scrollable]="true" scrollHeight="67vh">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th rowspan="2"></th>
+                        <th rowspan="2">Avd</th>
+                        <th colspan="16" class="text-center">
+                            Chemistry (%)
+                        </th>
+                        <th colspan="3" class="text-center">
+                            Gases (PPM)
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                            C
+                        </th>
+                        <th>
+                            Mn
+                        </th>
+                        <th>
+                            Si
+                        </th>
+                        <th>
+                            S
+                        </th>
+                        <th>
+                            P
+                        </th>
+                        <th>
+                            Cr
+                        </th>
+                        <th>
+                           Ni
+                        </th>
+                        <th>
+                            Cu
+                        </th>
+                        <th>
+                           Mo
+                        </th>
+                        <th>
+                            Al
+                        </th>
+                        <th>
+                            V
+                        </th>
+                        <th>
+                            Ti
+                        </th>
+                        <th>
+                            Ca
+                        </th>
+                        <th>
+                            B
+                        </th>
+                        <th>
+                            
+                        </th>
+                        <th>
+                            N2
+                        </th>
+                        <th>
+                           H2
+                        </th>
+                        <th>
+                           O2
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-index="rowIndex">
+                    <tr [pSelectableRow]="rowData" [pReorderableRow]="index">
+                        <td>
+                            <button pButton pRipple pTooltip="Remove" tooltipPosition="top" icon="pi pi-trash"
+                                class="p-button-danger p-button-sm" (click)="removeItem2(index)"></button>
+                        </td>
+                        <td>
+                            {{rowData.time | date: 'HH:mm'}}
+                        </td>
+                        <td>
+                            {{rowData.time | date: 'HH:mm'}}
+                        </td>
+                        <td>
+                            {{rowData.q}}
+                        </td>
+                        <td>
+                            {{rowData.r}}
+                        </td>
+                        <td>
+                            {{rowData.w}}
+                        </td>
+                        <td>
+                            {{rowData.e}}
+                        </td>
+                        <td>
+                            {{rowData.r}}
+                        </td>
+                        <td>
+                            {{rowData.e}}
+                        </td>
+                        <td>
+                            {{rowData.e}}
+                        </td>
+                        <td>
+                            {{rowData.f}}
+                        </td>
+                        <td>
+                            {{rowData.s}}
+                        </td>
+                        <td>
+                            {{rowData.f }}
+                        </td>
+                        <td>
+                            {{rowData.d}}
+                        </td>
+                        <td>
+                            {{rowData.d}}
+                        </td>
+                        <td>
+                            {{rowData.c}}
+                        </td>
+                        <td>
+                            {{rowData.c}}
+                        </td>
+                        <td>
+                            {{rowData.c}}
+                        </td>
+                        <td>
+                            {{rowData.v}}
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <tr>
+                        <td>
+                            <button pButton pRipple pTooltip="Add New" tooltipPosition="top" icon="pi pi-plus"
+                                class="p-button-success p-button" (click)="addNewItem_to_List2()"></button>
+                        </td>
+                        <td>
+                            <input pInputText type="text" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                        <td>
+                            <input pInputText type="number" [style]="{height:'2rem',width: '4rem'}" maxlength="10" />
+                        </td>
+                    </tr>
+                    <tr *ngIf="errorMessage">
+                        <td colspan="22">
+                            <small class="p-error">{{errorMessage}}</small>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <div class="col-12 flex">
+            <!-- <div class="flex"> -->
+                <div class="flex flex-column justify-content-evenly cardSection1" style="border-right: 1px solid rgb(230, 230, 230);">
+                    <div class="flex align-items-center mt-1 ml-1">
+                        <label class="font-semibold cardLabel" >Ladle In Temp(°C) </label>:
+                        <div class="ml-2 font-semibold cardInput">
+                            <input pInputText type="text" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.heatNo" maxlength="10" />
+                        </div>
+                    </div>
+                    <div class="flex align-items-center mt-1 ml-1">
+                        <label class="font-semibold cardLabel" >VD Start Time(Hrs) </label>:
+                        <div class=" ml-2 font-semibold cardInput">
+                            <p-calendar appendTo="body" [(ngModel)]="dialogData.time" [style]="{height:'2rem',width: '8rem'}"   [showIcon]="false" [timeOnly]="true" inputId="templatedisplay"></p-calendar>
+                        </div>
+                    </div>
+                </div> 
+                <div class="flex flex-column justify-content-evenly cardSection1" style="border-right: 1px solid rgb(230, 230, 230);">
+                    <div class="flex align-items-center mt-1 ml-1">
+                        <label class="font-semibold cardLabel" >1mb achieving time(min)</label>:
+                        <div class="ml-2 font-semibold cardInput">
+                            <input pInputText type="text" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.heatNo" maxlength="10" />
+                        </div>
+                    </div>
+                    <div class="flex align-items-center mt-1 ml-1">
+                        <label class="font-semibold cardLabel" >Lowest M.Bar achieved </label>:
+                        <div class="ml-2 font-semibold cardInput">
+                            <input pInputText type="text" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.heatNo" maxlength="10" />
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-column justify-content-evenly cardSection1" style="border-right: 1px solid rgb(230, 230, 230);">
+                    <div class="flex align-items-center mt-1 ml-1">
+                        <label class="font-semibold cardLabel" >Ar flow during VD</label>:
+                        <div class="ml-2 font-semibold cardInput">
+                            <input pInputText type="text" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.heatNo" maxlength="10" />
+                        </div>
+                    </div>
+                    <div class="flex align-items-center mt-1 ml-1">
+                        <label class="font-semibold cardLabel" >Holding Time </label>:
+                        <div class="ml-2 font-semibold cardInput">
+                            <input pInputText type="text" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.heatNo" maxlength="10" />
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-column justify-content-evenly cardSection1" style="border-right: 1px solid rgb(230, 230, 230);">
+                    <div class="flex align-items-center mt-1 ml-1">
+                        <label class="font-semibold cardLabel" >VD End Time</label>:
+                        <div class="ml-2 font-semibold cardInput">
+                            <p-calendar appendTo="body" [(ngModel)]="dialogData.time" [style]="{height:'2rem',width: '8rem'}"   [showIcon]="false" [timeOnly]="true" inputId="templatedisplay"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="flex align-items-center mt-1 ml-1">
+                        <label class="font-semibold cardLabel" >Total Time </label>:
+                        <div class="ml-2 font-semibold cardInput">
+                            <input pInputText type="text" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.heatNo" maxlength="10" />
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-column justify-content-evenly cardSection1" style="border-right: 1px solid rgb(230, 230, 230);">
+                    <div class="flex align-items-center mt-1 ml-1">
+                        <label class="font-semibold cardLabel" >After VD Temp(°C)</label>:
+                        <div class="ml-2 font-semibold cardInput">
+                            <input pInputText type="text" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.heatNo" maxlength="10" />
+                        </div>
+                    </div>
+                    <div class="flex align-items-center mt-1 ml-1">
+                        <label class="font-semibold cardLabel" >Floatation Time</label>:
+                        <div class="ml-2 font-semibold cardInput">
+                            <input pInputText type="text" [style]="{height:'2rem',width: '8rem'}" [(ngModel)]="dialogData.heatNo" maxlength="10" />
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
