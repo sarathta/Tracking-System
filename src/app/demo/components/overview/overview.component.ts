@@ -179,6 +179,7 @@ il2by6: any;
 lfLogSheetDialog: boolean = false;
 showLfLogSheet: number = 0;
 billetNo = 1001;
+time: any;
 
 constructor(
   private http : HttpClient
@@ -224,6 +225,7 @@ ngOnInit(): void {
       this.getbundleYardData();
       this.getil2bundleYardData();
       this.billetYardData();
+      this.getTime();
 
     }, 1000);
   }
@@ -547,6 +549,12 @@ ngOnInit(): void {
     this.http.get('http://127.0.0.1:8000/bundle1?il=1').subscribe((res=>{
       this.il2bundlingData= res;
       this.il2barsInBundle = this.il2bundlingData?.length;
+    }));
+  }
+
+  getTime(){
+    this.http.get('http://127.0.0.1:8000/time').subscribe((res=>{
+      this.time = res;
     }));
   }
 
