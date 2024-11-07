@@ -178,6 +178,7 @@ il2by5: any;
 il2by6: any;
 lfLogSheetDialog: boolean = false;
 showLfLogSheet: number = 0;
+billetNo = 1001;
 
 constructor(
   private http : HttpClient
@@ -193,7 +194,6 @@ ngOnInit(): void {
     if (this.timeInterval) {
       clearInterval(this.timeInterval);
     }
-    let i = 1001;
     this.timeInterval = setInterval(() => {
       this.getLfData();
       this.getCcmata();
@@ -223,33 +223,56 @@ ngOnInit(): void {
       this.getil2bundlingData();
       this.getbundleYardData();
       this.getil2bundleYardData();
-      this.billets.push({ id: i });
-      i++;
-      this.billetyard1 = this.billets[0]?.id ? this.billets[0]?.id : null;
-      this.billetyard2 = this.billets[1]?.id ? this.billets[1]?.id : null;
-      this.billetyard3 = this.billets[2]?.id ? this.billets[2]?.id : null;
-      this.billetyard4 = this.billets[3]?.id ? this.billets[3]?.id : null;
-      this.billetyard5 = this.billets[4]?.id ? this.billets[4]?.id : null;
-      this.billetyard6 = this.billets[5]?.id ? this.billets[5]?.id : null;
-      this.billetyard7 = this.billets[6]?.id ? this.billets[6]?.id : null;
-      this.billetyard8 = this.billets[7]?.id ? this.billets[7]?.id : null;
-      this.billetyard9 = this.billets[8]?.id ? this.billets[8]?.id : null;
-      this.billetyard10 = this.billets[9]?.id ? this.billets[9]?.id : null;
-      this.billetyard11 = this.billets[10]?.id ? this.billets[10]?.id : null;
-      this.billetyard12 = this.billets[11]?.id ? this.billets[11]?.id : null;
-      this.billetyard13 = this.billets[12]?.id ? this.billets[12]?.id : null;
-      this.billetyard14 = this.billets[13]?.id ? this.billets[13]?.id : null;
-      this.billetyard15 = this.billets[14]?.id ? this.billets[14]?.id : null;
-      if (i > 1015) {
-        this.billets = [];
-        i = 1001;
-      }
+      this.billetYardData();
 
     }, 1000);
   }
     
     ngOnDestroy() {
       clearInterval(this.timeInterval);
+    }
+
+    billetYardData(){
+     if(this.rfData != null){
+        this.billets.push({ id: this.billetNo });
+        this.billetNo++;
+        this.billetyard1 = this.billets[0]?.id ? this.billets[0]?.id : null;
+        this.billetyard2 = this.billets[1]?.id ? this.billets[1]?.id : null;
+        this.billetyard3 = this.billets[2]?.id ? this.billets[2]?.id : null;
+        this.billetyard4 = this.billets[3]?.id ? this.billets[3]?.id : null;
+        this.billetyard5 = this.billets[4]?.id ? this.billets[4]?.id : null;
+        this.billetyard6 = this.billets[5]?.id ? this.billets[5]?.id : null;
+        this.billetyard7 = this.billets[6]?.id ? this.billets[6]?.id : null;
+        this.billetyard8 = this.billets[7]?.id ? this.billets[7]?.id : null;
+        this.billetyard9 = this.billets[8]?.id ? this.billets[8]?.id : null;
+        this.billetyard10 = this.billets[9]?.id ? this.billets[9]?.id : null;
+        this.billetyard11 = this.billets[10]?.id ? this.billets[10]?.id : null;
+        this.billetyard12 = this.billets[11]?.id ? this.billets[11]?.id : null;
+        this.billetyard13 = this.billets[12]?.id ? this.billets[12]?.id : null;
+        this.billetyard14 = this.billets[13]?.id ? this.billets[13]?.id : null;
+        this.billetyard15 = this.billets[14]?.id ? this.billets[14]?.id : null;
+        if (this.billetNo > 1015) {
+          this.billets = [];
+          this.billetNo = 1001;
+        }
+     }
+     else{
+      this.billetyard1 = null;
+      this.billetyard2 = null;
+      this.billetyard3 = null;
+      this.billetyard4 = null;
+      this.billetyard5 = null;
+      this.billetyard6 = null;
+      this.billetyard7 = null;
+      this.billetyard8 = null;
+      this.billetyard9 = null;
+      this.billetyard10 = null;
+      this.billetyard11 = null;
+      this.billetyard12 = null;
+      this.billetyard13 = null;
+      this.billetyard14 = null;
+      this.billetyard15 = null;
+     }
     }
     
     getReheatingFurnaceData(){
