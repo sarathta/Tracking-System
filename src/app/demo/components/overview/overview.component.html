@@ -334,14 +334,14 @@
                         <span class="font-medium">Yard</span>
                     </div>
                    <div class="flex">
-                        <div class="bundleInYard" *ngIf="by1 !== null" pTooltip="PO :{{by1?.po}}" [ngClass]="{'bundleColorInYard': by1 !== null}" (click)="showBundleInYardDialog(by1)"><span class="text-sm">{{by1?.po}}</span><br><span class="font-semibold">{{by1?.NoOfBars}}</span></div>
-                        <div class="bundleInYard" *ngIf="by2 !== null" pTooltip="PO :{{by2?.po}}" [ngClass]="{'bundleColorInYard': by2 !== null}" (click)="showBundleInYardDialog(by2)"><span class="text-sm">{{by2?.po}}</span><br><span class="font-semibold">{{by2?.NoOfBars}}</span></div>
-                        <div class="bundleInYard" *ngIf="by3 !== null" pTooltip="PO :{{by3?.po}}" [ngClass]="{'bundleColorInYard': by3 !== null}" (click)="showBundleInYardDialog(by3)"><span class="text-sm">{{by3?.po}}</span><br><span class="font-semibold">{{by3?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by1 !== null" pTooltip="PO :{{by1?.po}}" [ngStyle]="{'background-color' : by1?.color}" (click)="showBundleInYardDialog(by1)"><span class="font-semibold">{{by1?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by2 !== null" pTooltip="PO :{{by2?.po}}" [ngStyle]="{'background-color' : by2?.color}"  (click)="showBundleInYardDialog(by2)"><span class="font-semibold">{{by2?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by3 !== null" pTooltip="PO :{{by3?.po}}" [ngStyle]="{'background-color' : by3?.color}"  (click)="showBundleInYardDialog(by3)"><span class="font-semibold">{{by3?.NoOfBars}}</span></div>
                    </div>
                    <div class="flex">
-                        <div class="bundleInYard" *ngIf="by4 !== null" pTooltip="PO :{{by4?.po}}" [ngClass]="{'bundleColorInYard': by4 !== null}" (click)="showBundleInYardDialog(by4)"><span class="text-sm">{{by4?.po}}</span><br><span class="font-semibold">{{by4?.NoOfBars}}</span></div>
-                        <div class="bundleInYard" *ngIf="by5 !== null" pTooltip="PO :{{by5?.po}}" [ngClass]="{'bundleColorInYard': by5 !== null}" (click)="showBundleInYardDialog(by5)"><span class="text-sm">{{by5?.po}}</span><br><span class="font-semibold">{{by5?.NoOfBars}}</span></div>
-                        <div class="bundleInYard" *ngIf="by6 !== null" pTooltip="PO :{{by6?.po}}" [ngClass]="{'bundleColorInYard': by6 !== null}" (click)="showBundleInYardDialog(by6)"><span class="text-sm">{{by6?.po}}</span><br><span class="font-semibold">{{by6?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by4 !== null" pTooltip="PO :{{by4?.po}}" [ngStyle]="{'background-color' : by4?.color}"  (click)="showBundleInYardDialog(by4)"><span class="font-semibold">{{by4?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by5 !== null" pTooltip="PO :{{by5?.po}}" [ngStyle]="{'background-color' : by5?.color}"  (click)="showBundleInYardDialog(by5)"><span class="font-semibold">{{by5?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="by6 !== null" pTooltip="PO :{{by6?.po}}" [ngStyle]="{'background-color' : by6?.color}"  (click)="showBundleInYardDialog(by6)"><span class="font-semibold">{{by6?.NoOfBars}}</span></div>
                     </div>
                 </div>
                 <!-- <div class="bundleYard1">
@@ -446,14 +446,14 @@
                         <span class="font-medium">Yard</span>
                     </div>
                    <div class="flex">
-                        <div class="bundleInYard" *ngIf="il2by1 !== null" pTooltip="PO :{{il2by1?.po}}" [ngClass]="{'bundleColorInYard': il2by1 !== null}" (click)="showBundleInYardDialog(il2by1)"><span class="text-sm">{{il2by1?.po}}</span><br><span class="font-semibold">{{il2by1?.NoOfBars}}</span></div>
-                        <div class="bundleInYard" *ngIf="il2by2 !== null" pTooltip="PO :{{il2by2?.po}}" [ngClass]="{'bundleColorInYard': il2by2 !== null}" (click)="showBundleInYardDialog(il2by2)"><span class="text-sm">{{il2by2?.po}}</span><br><span class="font-semibold">{{il2by2?.NoOfBars}}</span></div>
-                        <div class="bundleInYard" *ngIf="il2by3 !== null" pTooltip="PO :{{il2by3?.po}}" [ngClass]="{'bundleColorInYard': il2by3 !== null}" (click)="showBundleInYardDialog(il2by3)"><span class="text-sm">{{il2by3?.po}}</span><br><span class="font-semibold">{{il2by3?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="il2by1 !== null" pTooltip="PO :{{il2by1?.po}}" [ngStyle]="{'background-color' : il2by1?.color}" (click)="showBundleInYardDialog(il2by1)"><span class="font-semibold">{{il2by1?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="il2by2 !== null" pTooltip="PO :{{il2by2?.po}}" [ngStyle]="{'background-color' : il2by2?.color}" (click)="showBundleInYardDialog(il2by2)"><span class="font-semibold">{{il2by2?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="il2by3 !== null" pTooltip="PO :{{il2by3?.po}}" [ngStyle]="{'background-color' : il2by3?.color}" (click)="showBundleInYardDialog(il2by3)"><span class="font-semibold">{{il2by3?.NoOfBars}}</span></div>
                    </div>
                    <div class="flex">
-                        <div class="bundleInYard" *ngIf="il2by4 !== null" pTooltip="PO :{{il2by4?.po}}" [ngClass]="{'bundleColorInYard': il2by4 !== null}" (click)="showBundleInYardDialog(il2by4)"><span class="text-sm">{{il2by4?.po}}</span><br><span class="font-semibold">{{il2by4?.NoOfBars}}</span></div>
-                        <div class="bundleInYard" *ngIf="il2by5 !== null" pTooltip="PO :{{il2by5?.po}}" [ngClass]="{'bundleColorInYard': il2by5 !== null}" (click)="showBundleInYardDialog(il2by5)"><span class="text-sm">{{il2by5?.po}}</span><br><span class="font-semibold">{{il2by5?.NoOfBars}}</span></div>
-                        <div class="bundleInYard" *ngIf="il2by6 !== null" pTooltip="PO :{{il2by6?.po}}" [ngClass]="{'bundleColorInYard': il2by6 !== null}" (click)="showBundleInYardDialog(il2by6)"><span class="text-sm">{{il2by6?.po}}</span><br><span class="font-semibold">{{il2by6?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="il2by4 !== null" pTooltip="PO :{{il2by4?.po}}" [ngStyle]="{'background-color' : il2by4?.color}" (click)="showBundleInYardDialog(il2by4)"><span class="font-semibold">{{il2by4?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="il2by5 !== null" pTooltip="PO :{{il2by5?.po}}" [ngStyle]="{'background-color' : il2by5?.color}" (click)="showBundleInYardDialog(il2by5)"><span class="font-semibold">{{il2by5?.NoOfBars}}</span></div>
+                        <div class="bundleInYard" *ngIf="il2by6 !== null" pTooltip="PO :{{il2by6?.po}}" [ngStyle]="{'background-color' : il2by6?.color}" (click)="showBundleInYardDialog(il2by6)"><span class="font-semibold">{{il2by6?.NoOfBars}}</span></div>
                     </div>
                 </div>
             </div>            
@@ -678,14 +678,14 @@
                 <span class="font-medium">Yard</span>
             </div>
            <div class="flex">
-                <div class="bundleInYard" *ngIf="by1 !== null" pTooltip="PO :{{by1?.po}}" [ngClass]="{'bundleColorInYard': by1 !== null}" (click)="showBundleInYardDialog(by1)"><span class="text-sm">{{by1?.po}}</span><br><span class="font-semibold">{{by1?.NoOfBars}}</span></div>
-                <div class="bundleInYard" *ngIf="by2 !== null" pTooltip="PO :{{by2?.po}}" [ngClass]="{'bundleColorInYard': by2 !== null}" (click)="showBundleInYardDialog(by2)"><span class="text-sm">{{by2?.po}}</span><br><span class="font-semibold">{{by2?.NoOfBars}}</span></div>
-                <div class="bundleInYard" *ngIf="by3 !== null" pTooltip="PO :{{by3?.po}}" [ngClass]="{'bundleColorInYard': by3 !== null}" (click)="showBundleInYardDialog(by3)"><span class="text-sm">{{by3?.po}}</span><br><span class="font-semibold">{{by3?.NoOfBars}}</span></div>
+                <div class="bundleInYard" *ngIf="by1 !== null" pTooltip="PO :{{by1?.po}}" [ngClass]="{'bundleColorInYard': by1 !== null}" (click)="showBundleInYardDialog(by1)"><span class="font-semibold">{{by1?.NoOfBars}}</span></div>
+                <div class="bundleInYard" *ngIf="by2 !== null" pTooltip="PO :{{by2?.po}}" [ngClass]="{'bundleColorInYard': by2 !== null}" (click)="showBundleInYardDialog(by2)"><span class="font-semibold">{{by2?.NoOfBars}}</span></div>
+                <div class="bundleInYard" *ngIf="by3 !== null" pTooltip="PO :{{by3?.po}}" [ngClass]="{'bundleColorInYard': by3 !== null}" (click)="showBundleInYardDialog(by3)"><span class="font-semibold">{{by3?.NoOfBars}}</span></div>
            </div>
            <div class="flex">
-                <div class="bundleInYard" *ngIf="by4 !== null" pTooltip="PO :{{by4?.po}}" [ngClass]="{'bundleColorInYard': by4 !== null}" (click)="showBundleInYardDialog(by4)"><span class="text-sm">{{by4?.po}}</span><br><span class="font-semibold">{{by4?.NoOfBars}}</span></div>
-                <div class="bundleInYard" *ngIf="by5 !== null" pTooltip="PO :{{by5?.po}}" [ngClass]="{'bundleColorInYard': by5 !== null}" (click)="showBundleInYardDialog(by5)"><span class="text-sm">{{by5?.po}}</span><br><span class="font-semibold">{{by5?.NoOfBars}}</span></div>
-                <div class="bundleInYard" *ngIf="by6 !== null" pTooltip="PO :{{by6?.po}}" [ngClass]="{'bundleColorInYard': by6 !== null}" (click)="showBundleInYardDialog(by6)"><span class="text-sm">{{by6?.po}}</span><br><span class="font-semibold">{{by6?.NoOfBars}}</span></div>
+                <div class="bundleInYard" *ngIf="by4 !== null" pTooltip="PO :{{by4?.po}}" [ngClass]="{'bundleColorInYard': by4 !== null}" (click)="showBundleInYardDialog(by4)"><span class="font-semibold">{{by4?.NoOfBars}}</span></div>
+                <div class="bundleInYard" *ngIf="by5 !== null" pTooltip="PO :{{by5?.po}}" [ngClass]="{'bundleColorInYard': by5 !== null}" (click)="showBundleInYardDialog(by5)"><span class="font-semibold">{{by5?.NoOfBars}}</span></div>
+                <div class="bundleInYard" *ngIf="by6 !== null" pTooltip="PO :{{by6?.po}}" [ngClass]="{'bundleColorInYard': by6 !== null}" (click)="showBundleInYardDialog(by6)"><span class="font-semibold">{{by6?.NoOfBars}}</span></div>
             </div>
         </div>
     </ng-template>
