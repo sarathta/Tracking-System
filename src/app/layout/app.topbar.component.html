@@ -68,7 +68,7 @@
                 <tr [pSelectableRow]="rowData" style="color: blue;">
                     <td>{{customer}}</td>
                     <td>{{grade}}</td>
-                    <td>{{estimateddate}}</td>
+                    <td>{{estimateddate}}</td>  
                     <td>{{ponumber}}</td>
                     <td>{{heatno}}</td>
                     <td>{{noofbillets}}</td>
@@ -153,7 +153,7 @@
                 <ng-template pTemplate="marker" let-event>
                     <span
                         class="flex w-1rem h-1rem align-items-center justify-content-center text-white border-circle z-1 shadow-1"
-                        [style]="{ 'background-color': event.color }">
+                        [style]="{ 'background-color': event.color }" pTooltip="{{event.title}}">
                     </span>
                 </ng-template>
         
