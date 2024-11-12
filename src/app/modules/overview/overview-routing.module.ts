@@ -9,6 +9,7 @@ import { Bof1DetailsComponent } from 'src/app/demo/components/bof1/bof1-details/
 import { BlastFurnaceComponent } from 'src/app/demo/components/blast-furnace/blast-furnace.component';
 import { BarPlanningComponent } from 'src/app/demo/components/bar-planning/bar-planning.component';
 import { VaccumDegassingComponent } from 'src/app/demo/components/vaccum-degassing/vaccum-degassing.component';
+import { PowerConsumptionComponent } from 'src/app/demo/components/power-consumption/power-consumption.component';
 
 const routes: Routes = [
   { path: '', component: OverviewComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'planning', component: BarPlanningComponent},
   { path: 'ladle', component: LadleFurnaceComponent},
   { path: 'vd', component: VaccumDegassingComponent},
-  { path: 'blastfurnace', component: BlastFurnaceComponent}
+  { path: 'blastfurnace', component: BlastFurnaceComponent},
+  { path: 'consumption', component: PowerConsumptionComponent}
 ];
 
 @NgModule({

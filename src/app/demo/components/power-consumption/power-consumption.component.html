@@ -1,0 +1,25 @@
+<div class="powerConsumption">
+    <div class="card"> <!-- <div id="day-chart" class="mt-5" style="width: 100%;"></div> -->
+        <div class="text-center font-semibold">Power Consumptions</div>
+        <div class="flex">
+            <div class="col-6">
+                <div class="card">
+                    <span class="font-semibold">Shift</span>
+                    <p-chart type="bar" [data]="shiftData" [options]="shiftOptions" height="260px" />
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <span class="font-semibold">Day</span>
+                    <p-chart type="line" [data]="dayData" [options]="dayOptions" height="260px" />
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <span class="font-semibold">Month</span>
+                <p-chart type="line" [data]="monthData" [options]="monthOptions" height="260px" />
+            </div>
+        </div>
+    </div>
+</div>
