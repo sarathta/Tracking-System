@@ -52,8 +52,8 @@ export class PowerConsumptionComponent implements OnInit{
     const documentStyle = getComputedStyle(document.documentElement);
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-    let shiftData: any[] = this.shiftDatas.consumption_data;
-    let shiftLabels: any[] =  this.shiftDatas.shift_data;
+    let shiftData: any[] = this.shiftDatas.value;
+    let shiftLabels: any[] =  this.shiftDatas.time;
 
     this.shiftData = {
       labels: shiftLabels,
@@ -105,8 +105,8 @@ export class PowerConsumptionComponent implements OnInit{
     const documentStyle = getComputedStyle(document.documentElement);
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-    let dayData: any[] = this.dailyData.totalConsumption;
-    let dayLabels: any[] =  this.dailyData.date;
+    let dayData: any[] = this.dailyData.value;
+    let dayLabels: any[] =  this.dailyData.time;
 
     this.dayData = {
       labels: dayLabels,
