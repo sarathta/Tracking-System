@@ -50,6 +50,7 @@ export class AppMenuComponent implements OnInit {
                     },
                     { label: 'Anomaly', icon: 'pi pi-ticket', routerLink: ['/TrackingSystem/overview/anomaly'] },
                     { label: 'Planning', icon: 'pi pi-fw pi-clone', routerLink: ['/TrackingSystem/overview/planning'] },
+                    { label: 'Power Consumption', icon: 'pi pi-fw pi-bolt', routerLink: ['/TrackingSystem/overview/consumption'] },
                     { label: 'Production', icon: 'pi pi-fw pi-bookmark', routerLink: ['/TrackingSystem/dashboard'] },
                     { label: 'User', icon: 'pi pi-fw pi-users', routerLink: ['/TrackingSystem/'] },
                     { label: 'Master Data', icon: 'pi pi-fw pi-database', routerLink: ['/TrackingSystem/task/MailErrorLog'] }
