@@ -13,7 +13,7 @@
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
         <input type="text" pInputText placeholder="Enter PO Number" [(ngModel)]="inputPo" style="border-top-right-radius: 0%;border-bottom-right-radius: 0%;"/>
-        <button class="p-button mr-3" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%;"><i class="pi pi-search" style="height: 2vh;" (click)="showrfDialog()"></i></button>
+        <button class="p-button mr-3" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%;" (click)="showrfDialog()"><i class="pi pi-search" style="height: 2vh;"></i></button>
         
         
         <i class="pi pi-bell text-3xl p-link mt-3" pBadge value="{{notificationCount}}" (click)="showNotification()"></i>
