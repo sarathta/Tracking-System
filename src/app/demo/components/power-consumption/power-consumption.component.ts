@@ -81,7 +81,7 @@ export class PowerConsumptionComponent implements OnInit{
         scales: {
             x: {
                 ticks: {
-                    color: 'black'
+                    color: textColorSecondary
                 },
                 grid: {
                     color: surfaceBorder,
@@ -134,7 +134,7 @@ export class PowerConsumptionComponent implements OnInit{
         scales: {
             x: {
                 ticks: {
-                    color: 'black'
+                    color: textColorSecondary
                 },
                 grid: {
                     color: surfaceBorder,
@@ -187,7 +187,7 @@ export class PowerConsumptionComponent implements OnInit{
         scales: {
             x: {
                 ticks: {
-                    color: 'black'
+                    color: textColorSecondary
                 },
                 grid: {
                     color: surfaceBorder,
