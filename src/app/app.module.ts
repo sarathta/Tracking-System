@@ -18,10 +18,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
         NotfoundComponent,
+        
+        
         
     ],
     imports: [

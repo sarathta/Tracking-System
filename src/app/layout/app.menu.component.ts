@@ -45,6 +45,11 @@ export class AppMenuComponent implements OnInit {
                                                 label: 'Blast Furnace',
                                                 // icon: 'pi pi-fw pi-lock',
                                                 routerLink: ['/TrackingSystem/overview/blastfurnace']
+                                            },
+                                            {
+                                                label: 'CCM',
+                                                // icon: 'pi pi-fw pi-lock',
+                                                routerLink: ['/TrackingSystem/overview/ccm']
                                             }
                                 ] 
                     },
