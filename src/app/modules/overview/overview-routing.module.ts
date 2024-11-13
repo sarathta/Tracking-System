@@ -9,6 +9,7 @@ import { Bof1DetailsComponent } from 'src/app/demo/components/bof1/bof1-details/
 import { BlastFurnaceComponent } from 'src/app/demo/components/blast-furnace/blast-furnace.component';
 import { BarPlanningComponent } from 'src/app/demo/components/bar-planning/bar-planning.component';
 import { VaccumDegassingComponent } from 'src/app/demo/components/vaccum-degassing/vaccum-degassing.component';
+import { CcmLogsheetComponent } from 'src/app/demo/components/logsheets/ccm-logsheet/ccm-logsheet.component';
 import { PowerConsumptionComponent } from 'src/app/demo/components/power-consumption/power-consumption.component';
 import { ProductionComponent } from 'src/app/demo/components/production/production.component';
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'ladle', component: LadleFurnaceComponent},
   { path: 'vd', component: VaccumDegassingComponent},
   { path: 'blastfurnace', component: BlastFurnaceComponent},
+  {path:'ccm', component: CcmLogsheetComponent},
   { path: 'consumption', component: PowerConsumptionComponent},
   { path: 'production', component: ProductionComponent}
 ];

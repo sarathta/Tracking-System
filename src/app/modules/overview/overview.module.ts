@@ -33,6 +33,7 @@ import { Bof1ProcessComponent } from 'src/app/demo/components/bof1/bof1-process/
 import { Bof1LogsheetComponent } from 'src/app/demo/components/logsheets/bof1-logsheet/bof1-logsheet.component';
 import { Bof2ProcessComponent } from 'src/app/demo/components/bof2/bof2-process/bof2-process.component';
 import { Bof2LogsheetComponent } from 'src/app/demo/components/logsheets/bof2-logsheet/bof2-logsheet.component';
+import { CcmLogsheetComponent } from 'src/app/demo/components/logsheets/ccm-logsheet/ccm-logsheet.component';
 import { PowerConsumptionComponent } from 'src/app/demo/components/power-consumption/power-consumption.component';
 import { ProductionComponent } from 'src/app/demo/components/production/production.component';
 
@@ -58,6 +59,7 @@ import { ProductionComponent } from 'src/app/demo/components/production/producti
     Bof1LogsheetComponent,
     Bof2ProcessComponent,
     Bof2LogsheetComponent,
+    CcmLogsheetComponent,
     PowerConsumptionComponent,
     ProductionComponent
 
