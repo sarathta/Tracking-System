@@ -3,22 +3,44 @@
         <div class="text-center font-semibold">Power Consumptions</div>
         <div class="flex">
             <div class="col-6">
-                <div class="card">
+                <div class="card consCard">
                     <span class="font-semibold">Shift</span>
-                    <p-chart type="bar" [data]="shiftData" [options]="shiftOptions" height="260px" />
+                    <p-chart type="line" [data]="shiftData" [options]="shiftOptions" [plugins]="plugin" height="260px" />
                 </div>
             </div>
-            <div class="col-6">
-                <div class="card">
+            <div class="col-3">
+                <div class="card consCard">
                     <span class="font-semibold">Day</span>
-                    <p-chart type="line" [data]="dayData" [options]="dayOptions" height="260px" />
+                    <p-chart type="line" [data]="dayData" [options]="dayOptions" [plugins]="plugin" height="260px" />
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card consCard">
+                    <span class="font-semibold">Month</span>
+                    <p-chart type="bar" [data]="monthData" [options]="monthOptions" [plugins]="plugin" height="260px" />
                 </div>
             </div>
         </div>
-        <div class="col-12">
-            <div class="card">
-                <span class="font-semibold">Month</span>
-                <p-chart type="line" [data]="monthData" [options]="monthOptions" height="260px" />
+        <div class="flex">
+            <div class="col-4">
+                <div class="card consCard">
+                    <span class="block text-900 font-medium">Daily Peak Demand</span>
+                    <div class="text-900 font-medium text-4xl">
+                        <p-chart type="bar" [data]="peakDemandData" [options]="peakDemandOptions" [plugins]="plugin" height="260px" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card consCard">
+                    <span class="font-semibold">Energy Loss</span>
+                    <p-chart type="bar" [data]="energyLossData" [options]="energyLossOptions" [plugins]="plugin" height="260px" />
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card consCard">
+                    <span class="font-semibold">Energy Per Ton</span>
+                    <p-chart type="bar" [data]="energyPerWeightData" [options]="energyPerWeightOptions" [plugins]="plugin" height="260px" />
+                </div>
             </div>
         </div>
     </div>

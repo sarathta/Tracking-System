@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    <p-dialog header="STATUS"  [(visible)]="dialogRF" [modal]="true" showEffect="fade" [style]="{width: '61vw'}" styleClass="p-fluid z-2" (onHide)="hideDialog()">
+    <p-dialog header="STATUS"  [(visible)]="dialogRF" [modal]="true" [position]="'right'"  [style]="{width: '68vw'}" styleClass="p-fluid" (onHide)="hideDialog()">
         <p-table [value]="[{}]"   selectionMode="single"  [rows]="10" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
             <ng-template pTemplate="header">
                 <tr>
@@ -149,7 +149,7 @@
             
         </p-table>
         <div class=" mt-2">
-            <p-timeline [value]="timelineData" layout="horizontal" [align]="'alternate'" styleClass="text-sm" [style]="{height: '23rem'}">
+            <p-timeline [value]="timelineData" layout="horizontal" [align]="'alternate'" styleClass="text-sm" [style]="{height: '17rem'}">
                 <ng-template pTemplate="marker" let-event>
                     <span
                         class="flex w-1rem h-1rem align-items-center justify-content-center text-white border-circle z-1 shadow-1"
@@ -158,12 +158,12 @@
                 </ng-template>
         
                 <ng-template pTemplate="content" let-event>
-                    <p-card class="p-0"> 
-                        <div class="font-medium">{{event.title}}</div>
+                    <div class="p-card" style="width: 100px;height: 80px;">
+                        <div class="font-medium p-2">{{event.title}}</div>
                         <!-- <div class="font-semibold">{{event.Date}}</div> -->
-                        <div class="text-sm" [style]="{color: 'event.color'}">{{event.status}}</div>
+                        <div class="text-sm flex justify-content-center align-items-center" [style]="{color: 'event.color',padding:'0%'}">{{event.status}}</div>
                         <!-- <div>{{event.desc}}</div> -->
-                    </p-card>
+                    </div>                        
                 </ng-template>
             </p-timeline>
         </div>
