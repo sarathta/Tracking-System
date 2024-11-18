@@ -12,6 +12,7 @@ import { VaccumDegassingComponent } from 'src/app/demo/components/vaccum-degassi
 import { CcmLogsheetComponent } from 'src/app/demo/components/logsheets/ccm-logsheet/ccm-logsheet.component';
 import { PowerConsumptionComponent } from 'src/app/demo/components/power-consumption/power-consumption.component';
 import { ProductionComponent } from 'src/app/demo/components/production/production.component';
+import { ShiftOverviewComponent } from 'src/app/demo/components/shift-overview/shift-overview.component';
 
 const routes: Routes = [
   { path: '', component: OverviewComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'blastfurnace', component: BlastFurnaceComponent},
   {path:'ccm', component: CcmLogsheetComponent},
   { path: 'consumption', component: PowerConsumptionComponent},
-  { path: 'production', component: ProductionComponent}
+  { path: 'production', component: ProductionComponent},
+  { path: 'shiftOverview', component: ShiftOverviewComponent}
 ];
 
 @NgModule({

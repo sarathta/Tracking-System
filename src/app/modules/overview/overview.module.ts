@@ -36,6 +36,7 @@ import { Bof2LogsheetComponent } from 'src/app/demo/components/logsheets/bof2-lo
 import { CcmLogsheetComponent } from 'src/app/demo/components/logsheets/ccm-logsheet/ccm-logsheet.component';
 import { PowerConsumptionComponent } from 'src/app/demo/components/power-consumption/power-consumption.component';
 import { ProductionComponent } from 'src/app/demo/components/production/production.component';
+import { ShiftOverviewComponent } from 'src/app/demo/components/shift-overview/shift-overview.component';
 
 
 
@@ -61,7 +62,8 @@ import { ProductionComponent } from 'src/app/demo/components/production/producti
     Bof2LogsheetComponent,
     CcmLogsheetComponent,
     PowerConsumptionComponent,
-    ProductionComponent
+    ProductionComponent,
+    ShiftOverviewComponent
 
   ],
   imports: [
