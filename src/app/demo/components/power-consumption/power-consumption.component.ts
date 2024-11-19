@@ -417,7 +417,7 @@ export class PowerConsumptionComponent implements OnInit{
       labels: dayLabels,
       datasets: [
           {
-              label: 'kWh',
+            //   label: 'kWh',
               data: dayData,
               fill: false,
               borderColor: documentStyle.getPropertyValue('--green-300'),
@@ -442,6 +442,7 @@ export class PowerConsumptionComponent implements OnInit{
                 color: 'black',
               },
             legend: {
+                display: false,
                 labels: {
                     color: 'black'
                 }
@@ -481,7 +482,7 @@ export class PowerConsumptionComponent implements OnInit{
       labels: monthLabels,
       datasets: [
           {
-              label: 'kWh',
+            //   label: 'kWh',
               data: monthData,
               fill: false,
               backgroundColor: 'rgba(4, 151, 119, 0.2)',
@@ -492,7 +493,7 @@ export class PowerConsumptionComponent implements OnInit{
     };
 
     this.monthOptions = {
-        indexAxis: 'y',
+        // indexAxis: 'y',
         maintainAspectRatio: false,
         aspectRatio: 0.6,
         plugins: {
@@ -508,6 +509,7 @@ export class PowerConsumptionComponent implements OnInit{
                 color: 'black',
               },
             legend: {
+                display: false,
                 labels: {
                     color: 'black'
                 }
