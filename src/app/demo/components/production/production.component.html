@@ -3,8 +3,8 @@
 </div>
 <div class="grid">
     <div class="col-12 lg:col-6 xl:col-2">
-        <div class="card prodCard text-center ">
-            <span class="block text-900 font-medium">Shift</span>
+        <div class="card prodCard">
+            <span class="block text-900 font-medium">Shift (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="line" [data]="shiftProdData" [options]="shiftProdOptions" [plugins]="plugin"
                     height="180px" />
@@ -12,16 +12,16 @@
         </div>
     </div>
     <div class="col-12 lg:col-6 xl:col-3">
-        <div class="card prodCard text-center ">
-            <span class="block text-900 font-medium">Day</span>
+        <div class="card prodCard">
+            <span class="block text-900 font-medium">Day (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="bar" [data]="dayProdData" [options]="dayProdOptions" [plugins]="plugin" height="180px" />
             </div>
         </div>
     </div>
     <div class="col-12 lg:col-6 xl:col-2">
-        <div class="card prodCard text-center ">
-            <span class="block text-900 font-medium">Month</span>
+        <div class="card prodCard">
+            <span class="block text-900 font-medium">Month (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="bar" [data]="monthProdData" [options]="monthProdOptions" [plugins]="plugin"
                     height="180px" />
@@ -29,8 +29,8 @@
         </div>
     </div>
     <div class="col-9 lg:col-6 xl:col-4">
-        <div class="card prodCard text-center ">
-            <span class="block text-900 font-medium">Actual - Planned</span>
+        <div class="card prodCard">
+            <span class="block text-900 font-medium">Actual vs Planned (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="bar" [data]="actualPlannedData" [options]="actualPlannedOptions" [plugins]="plugin"
                     height="180px" />
@@ -39,7 +39,6 @@
     </div>
     <div class="col-3 lg:col-6 xl:col-1">
         <div class="p-card p-2 text-center ">
-            <!-- <span class="block text-900 font-medium  mb-5">Cobble</span> -->
             <span class="block text-900 font-medium mt-5 mb-3">Last Cobble</span>
             <div class="font-medium flex justify-content-center align-items-center mb-3">
                 <span class="text-red-500 text-5xl mr-2">{{cobbleTime}}</span> <span>Hrs</span>
@@ -54,7 +53,7 @@
     </div>
     <div class="col-12 lg:col-12 xl:col-4">
         <div class="card prodCard">
-            <span class="block text-900 font-medium">Billets Rolled in Shift</span>
+            <span class="block text-900 font-medium">Billets Rolled in Shift (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="bar" [data]="shiftCountData" [options]="shiftCountOptions" [plugins]="plugin"
                     height="180px" />
@@ -63,7 +62,7 @@
     </div>
     <div class="col-12 lg:col-12 xl:col-4">
         <div class="card prodCard">
-            <span class="block text-900 font-medium">Delay</span>
+            <span class="block text-900 font-medium">Delay (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="line" [data]="delayData" [options]="delayOptions" [plugins]="plugin" height="180px" />
             </div>
@@ -71,7 +70,7 @@
     </div>
     <div class="col-12 lg:col-12 xl:col-4">
         <div class="card prodCard">
-            <span class="block text-900 font-medium">Hourly Production Rate</span>
+            <span class="block text-900 font-medium">Hourly Production Rate (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="line" [data]="hourlyProdData" [options]="hourlyProdOptions" [plugins]="plugin"
                     height="180px" />
@@ -80,7 +79,7 @@
     </div>
     <div class="col-12 lg:col-12 xl:col-3">
         <div class="card prodCard">
-            <span class="block text-900 font-medium">Equipment Efficiency</span>
+            <span class="block text-900 font-medium">Equipment Efficiency (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="line" [data]="equipData" [options]="equipOptions" [plugins]="plugin" height="180px" />
             </div>
@@ -88,7 +87,7 @@
     </div>
     <div class="col-12 lg:col-12 xl:col-3">
         <div class="card prodCard">
-            <span class="block text-900 font-medium">Yield</span>
+            <span class="block text-900 font-medium">Yield (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="line" [data]="yieldData" [options]="yieldOptions" [plugins]="plugin" height="180px" />
             </div>
@@ -96,7 +95,7 @@
     </div>
     <div class="col-12 lg:col-12 xl:col-3">
         <div class="card prodCard">
-            <span class="block text-900 font-medium">Yield Loss</span>
+            <span class="block text-900 font-medium">Yield Loss (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="line" [data]="yieldLossData" [options]="yieldLossOptions" [plugins]="plugin"
                     height="180px" />
@@ -105,7 +104,7 @@
     </div>
     <div class="col-12 lg:col-12 xl:col-3">
         <div class="card prodCard">
-            <span class="block text-900 font-medium">Defect Rate</span>
+            <span class="block text-900 font-medium">Defect Rate (t)</span>
             <div class="text-900 font-medium text-4xl">
                 <p-chart type="bar" [data]="defectData" [options]="defectOptions" [plugins]="plugin" height="180px" />
             </div>
