@@ -30,6 +30,20 @@ export class PowerConsumptionComponent implements OnInit{
   peakDemandData : any;
   peakDemandOptions: any;
   peakDemandValues: any;
+  
+  equipData1 : any;
+  equipOptions1: any;
+
+  equipData2 : any;
+  equipOptions2: any;
+  equipValues: any;
+
+  pieDate1: any;
+  pieDate2: any;
+  pieLegends: any[]= [{name:'CCS1',color:'#BFC9CA'},{name:'CCS2',color:'#E1D03B'},{name:'CCS2',color:'#9BBB59'},{name:'CCS2',color:'#8064A2'},{name:'CCS2',color:'#00B0F0'},{name:'CCS2',color:'#FF8C00'},{name:'CCS2',color:'#40E0D0'},{name:'CCS2',color:'#FFC0CB'},{name:'CCS2',color:'#FFFACD'},{name:'CCS2',color:'#B0C4DE'}]
+//   backgroundColor:  ['#BFC9CA', '#E1D03B', '#9BBB59', '#8064A2', '#00B0F0', '#FF8C00','#40E0D0','#FFC0CB','#FFFACD','#B0C4DE'],
+
+
 
   plugin = [ChartDataLabels];
 
@@ -49,6 +63,7 @@ export class PowerConsumptionComponent implements OnInit{
     this.getEnergyLossData(); 
     this.getEnergyPerWeightData();
     this.getPeakDemandData();
+    this.getEquipmentData();
   }
 
   initShiftChart() {
@@ -237,7 +252,7 @@ export class PowerConsumptionComponent implements OnInit{
                   return Math.trunc(value);
                 },
                 font: {
-                  size: 9
+                  size: 10
                 },
                 // anchor: 'end',
                 align: 'end',
@@ -281,14 +296,14 @@ export class PowerConsumptionComponent implements OnInit{
   }
 
   getDailyData(){
-    this.http.get('http://127.0.0.1:8000/day_consumption').subscribe(res=>{
+    this.http.get('http://127.0.0.1:8000/daily_consumption').subscribe(res=>{
       this.dailyData = res;
       this.bindDailyData()
     });
   }
 
   getMonthlyData(){
-    this.http.get('http://127.0.0.1:8000/month_consumption').subscribe(res=>{
+    this.http.get('http://127.0.0.1:8000/monthly_consumption').subscribe(res=>{
       this.monthlyData = res;
       this.bindMonthlyData()
     });
@@ -305,6 +320,13 @@ export class PowerConsumptionComponent implements OnInit{
     this.http.get('http://127.0.0.1:8000/energy_per_weight').subscribe(res=>{
       this.energyPerWeightValues = res;
       this.bindEnergyPerWeightData()
+    });
+  }
+
+  getEquipmentData(){
+    this.http.get('http://127.0.0.1:8000/con_eq').subscribe(res=>{
+      this.equipValues = res;
+      this.bindEquipmentData()
     });
   }
 
@@ -347,7 +369,7 @@ export class PowerConsumptionComponent implements OnInit{
                   return Math.trunc(value);
                 },
                 font: {
-                  size: 9
+                  size: 10
                 },
                 // anchor: 'end',
                 // align: 'end',
@@ -413,7 +435,7 @@ export class PowerConsumptionComponent implements OnInit{
                   return Math.trunc(value);
                 },
                 font: {
-                  size: 9
+                  size: 10
                 },
                 // anchor: 'end',
                 align: 'start',
@@ -479,7 +501,7 @@ export class PowerConsumptionComponent implements OnInit{
                   return Math.trunc(value);
                 },
                 font: {
-                  size: 9
+                  size: 10
                 },
                 // anchor: 'end',
                 // align: 'end',
@@ -553,7 +575,7 @@ export class PowerConsumptionComponent implements OnInit{
                   return value.toFixed(2);
                 },
                 font: {
-                  size: 9
+                  size: 10
                 },
                 // anchor: 'end',
                 // align: 'end',
@@ -619,7 +641,7 @@ export class PowerConsumptionComponent implements OnInit{
                   return Math.trunc(value);
                 },
                 font: {
-                  size: 9
+                  size: 10
                 },
                 // anchor: 'end',
                 // align: 'end',
@@ -653,6 +675,130 @@ export class PowerConsumptionComponent implements OnInit{
             }
         }
     };
+  }
+  
+  bindEquipmentData(){
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+    let equipData1: any[] = this.equipValues.date1;
+    let equipData2: any[] = this.equipValues.date2;
+    let equipLabels: any[] =  this.equipValues.description;
+    this.pieDate1 = this.equipValues.dates[0];
+    this.pieDate2 = this.equipValues.dates[1];
+
+    this.equipData1 = {
+      labels: equipLabels,
+      datasets: [
+          {
+              data: equipData1,
+              backgroundColor: ['#BFC9CA', '#E1D03B', '#9BBB59', '#8064A2', '#00B0F0', '#FF8C00','#40E0D0','#FFC0CB','#FFFACD','#B0C4DE'],
+              hoverBackgroundColor: ['#C2CBCB','#ECDB40','#A5C663','#9678B7','#18B8F2','#FFBE68','#7BF3E7','#FFD5DC','#FAF5C8','#BECDE2']
+          }
+      ]
+    };
+    this.equipData2 = {
+        labels: equipLabels,
+        datasets: [
+            {
+                data: equipData2,
+                backgroundColor:  ['#BFC9CA', '#E1D03B', '#9BBB59', '#8064A2', '#00B0F0', '#FF8C00','#40E0D0','#FFC0CB','#FFFACD','#B0C4DE'],
+                hoverBackgroundColor: ['#C2CBCB','#ECDB40','#A5C663','#9678B7','#18B8F2','#FFBE68','#7BF3E7','#FFD5DC','#FAF5C8','#BECDE2']
+            }
+        ]
+      };
+
+    this.equipOptions1 = {
+        // maintainAspectRatio: false,
+        // aspectRatio: 0.8,
+        plugins: {
+            datalabels:{
+                formatter: (value : any) => {
+                  return Math.trunc(value);
+                },
+                font: {
+                  size: 10
+                },
+                // anchor: 'end',
+                align: 'center',
+                color: 'black',
+              },
+            legend: {
+                display: false,
+                position: "bottom" ,
+                labels: {
+                    usePointStyle: true,
+                    color: 'black'
+                }
+            }
+        },
+        // scales: {
+        //     x: {
+        //         ticks: {
+        //             color: textColorSecondary
+        //         },
+        //         grid: {
+        //             color: surfaceBorder,
+        //             drawBorder: false
+        //         }
+        //     },
+        //     y: {
+        //         ticks: {
+        //             color: textColorSecondary
+        //         },
+        //         grid: {
+        //             color: surfaceBorder,
+        //             drawBorder: false
+        //         }
+        //     }
+        // }
+    };
+    this.equipOptions2 = {
+        // maintainAspectRatio: false,
+        // aspectRatio: 0.8,
+        plugins: {
+            datalabels:{
+                formatter: (value : any) => {
+                  return Math.trunc(value);
+                },
+                font: {
+                  size: 9
+                },
+                // anchor: 'end',
+                align: 'center',
+                color: 'black',
+              },
+            legend: {
+                display: true,
+                position: "right" ,
+                labels: {
+                    usePointStyle: true,
+                    color: 'black'
+                }
+            }
+        },
+        // scales: {
+        //     x: {
+        //         ticks: {
+        //             color: textColorSecondary
+        //         },
+        //         grid: {
+        //             color: surfaceBorder,
+        //             drawBorder: false
+        //         }
+        //     },
+        //     y: {
+        //         ticks: {
+        //             color: textColorSecondary
+        //         },
+        //         grid: {
+        //             color: surfaceBorder,
+        //             drawBorder: false
+        //         }
+        //     }
+        // }
+    };
+    
   }
 
 }

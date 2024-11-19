@@ -355,7 +355,7 @@ export class ProductionComponent implements OnInit{
               return Math.trunc(value);
             },
             font: {
-              size: 9
+              size: 10
             },
             // anchor: 'end',
             // align: 'end',
@@ -428,7 +428,7 @@ export class ProductionComponent implements OnInit{
               return Math.trunc(value);
             },
             font: {
-              size: 9
+              size: 10
             },
             // anchor: 'end',
             // align: 'end',
@@ -502,7 +502,7 @@ export class ProductionComponent implements OnInit{
             return Math.trunc(value);
           },
           font: {
-            size: 9
+            size: 10
           },
           // anchor: 'end',
           // align: 'end',
@@ -574,7 +574,7 @@ export class ProductionComponent implements OnInit{
               return Math.trunc(value);
             },
             font: {
-              size: 9
+              size: 10
             },
             // anchor: 'end',
             // align: 'end',
@@ -647,7 +647,7 @@ export class ProductionComponent implements OnInit{
               return Math.trunc(value);
             },
             font: {
-              size: 9
+              size: 10
             },
             // anchor: 'end',
             align: 'end',
@@ -720,7 +720,7 @@ export class ProductionComponent implements OnInit{
               return Math.trunc(value);
             },
             font: {
-              size: 9
+              size: 10
             },
             // anchor: 'end',
             align: 'end',
@@ -793,7 +793,7 @@ export class ProductionComponent implements OnInit{
               return Math.trunc(value);
             },
             font: {
-              size: 9
+              size: 10
             },
             // anchor: 'end',
             align: 'end',
@@ -872,7 +872,7 @@ export class ProductionComponent implements OnInit{
               return Math.trunc(value);
             },
             font: {
-              size: 9
+              size: 10
             },
             // anchor: 'end',
             align: 'end',
@@ -946,7 +946,7 @@ export class ProductionComponent implements OnInit{
               return Math.trunc(value);
             },
             font: {
-              size: 9
+              size: 10
             },
             // anchor: 'end',
             align: 'end',
@@ -1027,7 +1027,7 @@ export class ProductionComponent implements OnInit{
               return Math.trunc(value);
             },
             font: {
-              size: 9
+              size: 10
             },
             // anchor: 'end',
             align: 'end',
@@ -1100,7 +1100,7 @@ export class ProductionComponent implements OnInit{
               return Math.trunc(value);
             },
             font: {
-              size: 9
+              size: 10
             },
             // anchor: 'end',
             align: 'top',
