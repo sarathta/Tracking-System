@@ -1,16 +1,184 @@
-<div class="header">
+<div class="flex">
+    <div class="col-4">
+    <div class="card flex" >
+        <span class=" font-medium align-items-center mt -4 ml-3 ">STATUS</span>
+        <div class="flex  mt-1 ml-1">
+            <div class="p-card ml-3 flex ">
+                <div 
+                  class="circle mt-3" 
+                  [ngStyle]="{ 'background-color': 'RED' }">
+                </div>
+                <div class="ml-2">Melting Station</div>
+            </div>
+            <div class="p-card flex p5 ml-3">
+                <div 
+                  class="circle mt-3" 
+                  [ngStyle]="{ 'background-color': 'RED' }">
+                </div>
+                <div class="ml-2">Continous Casting</div>
+            </div>
+            <div class="p-card flex p5 ml-3">
+                <div 
+                  class="circle mt-3" 
+                  [ngStyle]="{ 'background-color': 'GREEN' }">
+                </div>
+                <div class="ml-2">Rolling Mill</div>
+            </div>
+            <div class="p-card flex p5 ml-3">
+                <div 
+                  class="circle mt-3" 
+                  [ngStyle]="{ 'background-color': 'GREEN' }">
+                </div>
+                <div class="ml-2">Finishing Area</div>
+            </div>
+        </div>  
+    </div>
+</div>
+<div class="col-8">
+    <div class="card">
+        
+    </div>
+</div>
+
+</div>
+<div class="col-12">
+<div class="card"> 
+    <input type="text" pInputText placeholder="Search"  style="border-top-right-radius: 0%;border-bottom-right-radius: 0%;width: 1701px;"/>
+        <button class="p-button mr-3 ml-1" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%;height: 36px;" ><i class="pi pi-search " style="height: 2vh;"></i></button>
+</div>
+
+<div class="col-12">
+    <div class="card">
+        <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
+        [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="false" responsiveLayout="scroll">
+            <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                    <div class="font-semibold text-xl text-center">Production Plan</div>
+                     
+                 </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr >
+                    <th >Stage</th>
+                    <th >Planned Output(Tones)</th>
+                    <th >Actual Output(Tones)</th>
+                    <th >Completion(%)</th>
+                    
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData>
+              <tr >
+                <td> Raw Material Prep </td>
+                <td style="color: rgb(20, 176, 62);" > 25,000 </td>
+                <td style="color: rgb(233, 47, 47);"> 24,000 </td>   
+                <td> 96%</td>   
+                
+                
+            </tr>
+            <tr  >
+                <td>Ironmaking (Hot Metal) </td>
+                <td style="color: rgb(20, 176, 62);"> 20,000 </td>
+                <td style="color: rgb(233, 47, 47);">19,200 </td>   
+                <td> 96%</td>   
+                
+                
+            </tr>
+            <tr >
+                <td> Steelmaking (Liquid) </td>
+                <td style="color: rgb(20, 176, 62);"> 18,000 </td>
+                <td style="color: rgb(233, 47, 47);"> 17,500 </td>   
+                <td>97%</td>   
+                
+                
+            </tr>
+            <tr >
+                <td>Rolling Mill </td>
+                <td style="color: rgb(20, 176, 62);">15,000</td>
+                <td style="color: rgb(233, 47, 47);">14,800</td>   
+                <td>99%</td>   
+                
+                
+            </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="4">No Data found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div> 
+<div class="col-12">
+    <div class="card">
+
+    </div>
+
+</div> 
+
+        
+
+
+<!-- <div class="card">
     <div class="plant-name"> {{ plantName }}</div>
     <div class="shift-overview">{{ shiftOverview }}</div>
     <div class="datetime">{{ currentDateTime }}</div>
-  </div>
+</div> -->
 
-  <div class="col-6">
-    <div class="card">
-        <span class="font-semibold"></span>
-       
-    </div>
-</div>
+
   
+<!-- <div class="flex">
+    <div class="col-4">
+        <div class="card">
+            <span class="block text-1200 font-medium mt-5 mb-3">Key Performance Indicators (KPIs)</span>
+            <div class="flex align-items-center mt-1 ml-1">
+                <div class="p-card p-5">
+                    <div>Total Production (Today/Shift):</div>
+                    <div>
+                        <div><span>Actual : </span><span class="ml-5 font-medium">18,500 Tons</span></div>
+                        <div><span>Target : </span><span class="ml-5 font-medium">20,000 Tons</span></div>
+                    </div>
+                </div>
+                <div class="p-card p-5 ml-3">
+                    <div>Operational Cost per Ton:</div>
+                    <div>
+                        <div><span>Actual : </span><span class="ml-5 font-medium">$120/Ton</span></div>
+                        <div><span>Target : </span><span class="ml-5 font-medium">$115/Ton</span></div>
+                    </div>
+                </div>
+                
+            
+            </div>
 
+            <div class="flex align-items-center mt-3 ">
+                <div class="p-card p-5 ">
+                    <div>Rejection Rate:</div>
+                    <div>
+                        <div><span>Actual : </span><span class="ml-5 font-medium">2%</span></div>
+                        <div><span>Target : </span><span class="ml-5 font-medium">less than 1%</span></div>
+                    </div>
+                </div>
+
+                <div class="p-card p-5 ml-3 ">
+                    <div>Yield:</div>
+                    <div>
+                        <div><span>Actual : </span><span class="ml-5 font-medium">95%</span></div>
+                        <div><span>Target : </span><span class="ml-5 font-medium">96%</span></div>
+                    </div>
+                </div>
+               
+                
+            
+            </div>
+       
+        </div>
+    </div>
+        
+ 
+      
+    
+</div> --> 
+   
+    
 
 
