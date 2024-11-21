@@ -17,7 +17,8 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Home',
                 items: [
-                    { label: 'Dashboard', icon: 'pi pi-fw pi-qrcode', routerLink: ['/TrackingSystem/overview'] },
+                    { label: 'Overview', icon: 'pi pi-fw pi-qrcode', routerLink: ['/TrackingSystem/overview'] },
+                    { label: 'Dashboard', icon: 'pi pi-fw pi-credit-card', routerLink: ['/TrackingSystem/overview/dashboard'] },
                     { label: 'Process',
                         icon: 'pi pi-fw pi-sliders-h',
                         items: [
@@ -59,8 +60,7 @@ export class AppMenuComponent implements OnInit {
                     { label: 'Power Consumption', icon: 'pi pi-fw pi-bolt', routerLink: ['/TrackingSystem/overview/consumption'] },
                     { label: 'Production', icon: 'pi pi-fw pi-bookmark', routerLink: ['/TrackingSystem/overview/production'] },
                     { label: 'User', icon: 'pi pi-fw pi-users', routerLink: ['/TrackingSystem/'] },
-                    { label: 'Master Data', icon: 'pi pi-fw pi-database', routerLink: ['/TrackingSystem/'] },
-                    { label: 'Shift Overview', icon: 'pi pi-fw pi-database', routerLink: ['/TrackingSystem/overview/shiftOverview'] }
+                    { label: 'Master Data', icon: 'pi pi-fw pi-database', routerLink: ['/TrackingSystem/'] }
                 ]
              },
         ];

@@ -15,7 +15,8 @@ import { ProductionComponent } from 'src/app/demo/components/production/producti
 import { ShiftOverviewComponent } from 'src/app/demo/components/shift-overview/shift-overview.component';
 
 const routes: Routes = [
-  { path: '', component: OverviewComponent },
+  { path: '', component: ShiftOverviewComponent},
+  { path: 'dashboard', component: OverviewComponent },
   { path: 'bof1', component: Bof1Component},
   { path: 'bof1details', component: Bof1DetailsComponent},
   { path: 'bof2', component: Bof2Component},
@@ -26,8 +27,7 @@ const routes: Routes = [
   { path: 'blastfurnace', component: BlastFurnaceComponent},
   {path:'ccm', component: CcmLogsheetComponent},
   { path: 'consumption', component: PowerConsumptionComponent},
-  { path: 'production', component: ProductionComponent},
-  { path: 'shiftOverview', component: ShiftOverviewComponent}
+  { path: 'production', component: ProductionComponent}
 ];
 
 @NgModule({

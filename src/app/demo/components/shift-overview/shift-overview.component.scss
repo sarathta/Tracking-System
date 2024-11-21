@@ -1,103 +1,28 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #487eb9; /* Blue */
-    color: white;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .plant-name {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .shift-overview {
-    font-size: 16px;
-    font-style: italic;
-  }
-  
-  .datetime {
-    font-size: 14px;
-  }
-  .circle {
-    width: 16px; /* Adjust as needed */
-    height: 10px; /* Adjust as needed */
-    border-radius: 50%; /* Makes it a circle */
-    display: inline-block; /* Keeps it inline */
-  }
-  .news-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    font-family: "Roboto", sans-serif;
-    box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.3);
-}
-.news-container .title {
-    position: absolute;
-    background: #df2020;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    color: white;
-    font-weight: bold;
-    z-index: 200;
-}
-.news-container ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    animation: scroll 25s infinite linear;
-}
-.news-container ul li {
-    white-space: nowrap;
-    padding: 10px 24px;
-    color: #494949;
-    position: relative;
-}
-.news-container ul li::after {
-    content:"";
-    width: 1px;
-    height: 100%;
-    background: #b8b8b8;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-.news-container ul li:last-child::after {
-    display: none;
-}
-@keyframes scroll {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-1083px);
-    }
-}
-.flash-news-container {
-  display: flex;
-  align-items: center;
-  background-color: #7fa0c6;
-  padding: 10px;
-  border: 1px solid #7fa0c6;
-  font-family: Arial, sans-serif;
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
 }
 
-.flash-news-label {
-  font-weight: bold;
-  margin-right: 10px;
+.assetCircle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-top: 2px;
 }
 
-.flash-news-text {
-  color: #d32f2f;
-  font-weight: bold;
-  font-size: 1.1em;
+.w-full{
+  width: 100%;
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 
   
