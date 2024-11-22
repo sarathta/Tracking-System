@@ -15,6 +15,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { CalendarModule } from 'primeng/calendar';
 import { PrimeNgCommonModule } from '../common/prime-ng-common.module';
+import { TimelineModule } from "primeng/timeline";
+import { CarouselModule } from 'primeng/carousel';
 
 import { OverviewComponent } from 'src/app/demo/components/overview/overview.component';
 import { RollingMillComponent } from 'src/app/demo/components/rolling-mill/rolling-mill.component';
@@ -82,7 +84,9 @@ import { ShiftOverviewComponent } from 'src/app/demo/components/shift-overview/s
     ApplicationPipesModule,
     ProgressBarModule,
     HighchartsChartModule,
-    CalendarModule
+    CalendarModule,
+    TimelineModule,
+    CarouselModule
   ]
 })
 export class OverviewModule { }

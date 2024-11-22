@@ -1,112 +1,158 @@
-<div class="flex">
-    <div class="col-4">
-    <div class="card flex" >
-        <span class=" font-medium align-items-center mt -4 ml-3 ">STATUS</span>
-        <div class="flex  mt-1 ml-1">
-            <div class="p-card ml-3 flex ">
-                <div 
-                  class="circle mt-3" 
-                  [ngStyle]="{ 'background-color': 'RED' }">
+<div class="card">
+    <div class=" flex justify-content-evenly align-items-center p-2">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="flex">
+            <div class="p-card flex justify-content-center align-items-center p-2">
+                <div class="circle blink_me" [ngStyle]="{ 'background-color': 'green' }">
                 </div>
-                <div class="ml-2">Melting Station</div>
+                <div class="ml-2 font-semibold">Melting Station</div>
             </div>
-            <div class="p-card flex p5 ml-3">
-                <div 
-                  class="circle mt-3" 
-                  [ngStyle]="{ 'background-color': 'RED' }">
+            <div class="p-card flex justify-content-center align-items-center p-2 ml-2">
+                <div class="circle blink_me" [ngStyle]="{ 'background-color': 'green' }">
                 </div>
-                <div class="ml-2">Continous Casting</div>
+                <div class="ml-2 font-semibold">Continous Casting</div>
             </div>
-            <div class="p-card flex p5 ml-3">
-                <div 
-                  class="circle mt-3" 
-                  [ngStyle]="{ 'background-color': 'GREEN' }">
+            <div class="p-card flex justify-content-center align-items-center p-2 ml-2">
+                <div class="circle blink_me" [ngStyle]="{ 'background-color': 'green' }">
                 </div>
-                <div class="ml-2">Rolling Mill</div>
+                <div class="ml-2 font-semibold">Rolling Mill</div>
             </div>
-            <div class="p-card flex p5 ml-3">
-                <div 
-                  class="circle mt-3" 
-                  [ngStyle]="{ 'background-color': 'GREEN' }">
+            <div class="p-card flex justify-content-center align-items-center p-2 ml-2">
+                <div class="circle blink_me" [ngStyle]="{ 'background-color': 'orange' }">
                 </div>
-                <div class="ml-2">Finishing Area</div>
+                <div class="ml-2 font-semibold">Finishing Area</div>
             </div>
-        </div>  
+        </div>
+        <div></div>
+        <div>
+            <input type="text" pInputText   style="border-top-right-radius: 0%;border-bottom-right-radius: 0%; height: 32px;"/>
+            <button class="p-button p-button-info    mr-3" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%; " >search</button>
+        </div>
+    
     </div>
-</div>
-<div class="col-8">
-    <div class="card">
-        
+    <div class="p-card mt-1" style="border-top: 1px solid rgb(213, 210, 210);">
+        <marquee direction="left" behavior="alternate" style="color: red;">
+            Our target for today is to produce 500 tons of steel by the end of the shift
+        </marquee>
     </div>
-</div>
-
-</div>
-<div class="col-12">
-<div class="card"> 
-    <input type="text" pInputText placeholder="Search"  style="border-top-right-radius: 0%;border-bottom-right-radius: 0%;width: 1701px;"/>
-        <button class="p-button mr-3 ml-1" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%;height: 36px;" ><i class="pi pi-search " style="height: 2vh;"></i></button>
-</div>
-
-<div class="col-12">
-    <div class="card">
-        <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" 
-        [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="false" responsiveLayout="scroll">
+    <div  class="mt-1">
+        <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="1" [loading]="loading" 
+        [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
             <ng-template pTemplate="caption">
-                <div class="flex align-items-center justify-content-between flex-column sm:flex-row">
+                <div class="text-center">
                     <div class="font-semibold text-xl text-center">Production Plan</div>
                      
                  </div>
             </ng-template>
             <ng-template pTemplate="header">
                 <tr >
-                    <th >Stage</th>
-                    <th >Planned Output(Tones)</th>
-                    <th >Actual Output(Tones)</th>
-                    <th >Completion(%)</th>
-                    
-
+                    <th >Date</th>
+                    <th >SO</th>
+                    <th >Line Item</th>
+                    <th >Product</th>
+                    <th >Customer</th>
+                    <th >PO</th>
+                    <th > Heat No</th>
+                    <th > No of Billets</th>
+                    <th > Grade</th>
+                    <th > Classification</th>
+                    <th > Size (mm)</th>
+                    <th > Order Qty (MT)</th>
+                    <th >  TAS NO.</th>
+                    <th > REV. NO.</th>
+                    <th > Length (mm)</th>
+                    <th > Inspected in</th>
+                    <th > Status</th>                 
+    
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-rowData>
-              <tr >
-                <td> Raw Material Prep </td>
-                <td style="color: rgb(20, 176, 62);" > 25,000 </td>
-                <td style="color: rgb(233, 47, 47);"> 24,000 </td>   
-                <td> 96%</td>   
-                
-                
+              <tr style="color: green;">
+                <td>30/10/2024 </td>
+                <td> 123188</td>
+                <td> 20 </td>   
+                <td>BAR</td>   
+                <td> ABCD</td>   
+                <td> 193054</td>   
+                <td> 92339</td>   
+                <td> 9</td>   
+                <td> SAE1018</td>   
+                <td> VD</td>   
+                <td> 38</td>   
+                <td> 15</td>   
+                <td>3759</td>   
+                <td> 0</td>   
+                <td>6000</td>   
+                <td> MANUAL</td>              
+                <td> Rolling</td>              
             </tr>
-            <tr  >
-                <td>Ironmaking (Hot Metal) </td>
-                <td style="color: rgb(20, 176, 62);"> 20,000 </td>
-                <td style="color: rgb(233, 47, 47);">19,200 </td>   
-                <td> 96%</td>   
-                
-                
+            <tr style="color: blue;">
+                <td>30/10/2024 </td>
+                <td> 123188</td>
+                <td> 20 </td>   
+                <td>BAR</td>   
+                <td> ABCD</td>   
+                <td> 193056</td>   
+                <td> 92339</td>   
+                <td> 9</td>   
+                <td> SAE1018</td>   
+                <td> VD</td>   
+                <td> 38</td>   
+                <td> 15</td>   
+                <td>3759</td>   
+                <td> 0</td>   
+                <td>6000</td>   
+                <td> MANUAL</td>              
+                <td> Billet Yard</td>              
             </tr>
-            <tr >
-                <td> Steelmaking (Liquid) </td>
-                <td style="color: rgb(20, 176, 62);"> 18,000 </td>
-                <td style="color: rgb(233, 47, 47);"> 17,500 </td>   
-                <td>97%</td>   
-                
-                
+            <tr style="color: orange;">
+                <td>30/10/2024 </td>
+                <td> 123163</td>
+                <td> 40 </td>   
+                <td>BAR</td>   
+                <td> ABCD</td>   
+                <td> 193057</td>   
+                <td> 92339</td>   
+                <td> 9</td>   
+                <td> SAE1018</td>   
+                <td> VD</td>   
+                <td> 38</td>   
+                <td> 15</td>   
+                <td>3759</td>   
+                <td> 0</td>   
+                <td>6000</td>   
+                <td> IL-2</td>              
+                <td> SMS</td>              
             </tr>
-            <tr >
-                <td>Rolling Mill </td>
-                <td style="color: rgb(20, 176, 62);">15,000</td>
-                <td style="color: rgb(233, 47, 47);">14,800</td>   
-                <td>99%</td>   
-                
-                
+            <tr>
+                <td>30/10/2024 </td>
+                <td> 91983</td>
+                <td> 350 </td>   
+                <td>BAR</td>   
+                <td> ABCD</td>   
+                <td> 193058</td>   
+                <td> 92339</td>   
+                <td> 9</td>   
+                <td> SAE1018</td>   
+                <td> VD</td>   
+                <td> 38</td>   
+                <td> 15</td>   
+                <td>3759</td>   
+                <td> 0</td>   
+                <td>6000</td>   
+                <td> FASTTRACK</td>              
+                <td> Not started</td>              
             </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="4">No Data found.</td>
+                    <td colspan="17">No Data found.</td>
                 </tr>
             </ng-template>
         </p-table>
+<<<<<<< HEAD
     </div>
 </div> 
 <div class="col-12">
@@ -125,3 +171,463 @@
     
 
 
+=======
+    </div> 
+    <div class="flex mt-2">
+        <div style="width: 16vh;">
+            <div class="p-card p-2">
+                <div class="text-center">
+                    <span class=" font-semibold"> Total Production (t)</span>
+                </div>
+                <div class="p-card flex justify-content-between mt-2 p-2">
+                    <span>Actual</span> <span>:</span><span class="font-medium" style="color: orange;">18,500</span>
+                </div>
+                <div class="p-card flex justify-content-between mt-1 p-2">
+                    <span>Plan</span> <span>:</span><span class="font-medium" style="color: green;">20,000</span>
+                </div>
+            </div>
+            <div class="p-card mt-2 p-2">
+                <div class="text-center">
+                    <span class=" font-semibold"> Yield (%)</span>
+                </div>
+                <div class="p-card flex justify-content-between mt-2 p-2">
+                    <span>Actual</span> <span>:</span><span class="font-medium" style="color: orange;">95</span>
+                </div>
+                <div class="p-card flex justify-content-between mt-1 p-2">
+                    <span>Plan</span> <span>:</span><span class="font-medium" style="color: green;">96</span>
+                </div>
+            </div>
+            <div class="p-card mt-2 p-2">
+                <div class="text-center">
+                    <span class=" font-semibold">Shift</span>
+                </div>
+                <div class="p-card flex justify-content-between mt-2 p-2">
+                    <span>Team</span> <span>:</span><span class="font-medium"></span>
+                </div>
+                <div class="p-card flex justify-content-between mt-1 p-2">
+                    <span>Crew</span> <span>:</span><span class="font-medium"></span>
+                </div>
+            </div>
+        </div>
+        <div class="p-card col-11 p-3 ml-2 flex justify-content-evenly">
+            <div class="p-card p-2 " style="width: 33vh;border:1px solid rgb(213, 210, 210)">
+                    <div class="text-center">
+                        <span class="font-medium">MELTING STATION</span>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Heat No </span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> 92789 </span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Steel Grade</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> SAE10B38M2</span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Start Time</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> 23/10/2024 15:25 </span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Finish Time</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> 23/10/2024 15:31 </span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Ladle No</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> H7</span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Weight</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> 31.7</span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Oxygen Flow</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> 1851</span></div>
+                    </div>
+                    <!-- <div>
+                        <p-table [value]="[{}]" dataKey="id"  selectionMode="single" [paginator]="false" [rows]="11" [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="min-width: 10rem" colspan="2">
+                                        <div class="flex justify-content-between align-items-center">
+                                            Process Status
+                                        </div>
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData>
+                                <tr>
+                                    <td>Heat No</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">92789</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Steel Grade</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">SAE10B38M2</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Start Time</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">23/10/24 15:25</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Finish Time</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">23/10/24 15:31</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Ladle No</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">H7</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Ladle Weight</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">31.7</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Oxygen Flow</td>
+                                    <td class="px-2 py-1">
+                                        <label class="font-semibold">1851</label>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="emptymessage">
+                                <tr>
+                                    <td colspan="4">No Data found.</td>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="loadingbody">
+                                <tr>
+                                    <td colspan="4">Loading Bof-1 data. Please wait.</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div> -->
+            </div>
+            <div class="p-card p-2" style="width: 33vh;border:1px solid rgb(213, 210, 210)">
+                    <div class="text-center">
+                        <span class="font-medium">CONTINOUS CASTING</span>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Heat No </span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> 92785 </span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Steel Grade</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> SAE4140</span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Start Time</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> 22/10/2024 15:01 </span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Finish Time</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> 22/10/2024 15:43 </span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Ladle No</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium">14</span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Strands opr</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium">0</span></div>
+                    </div>
+                    <div class="p-card flex mt-2 p-2">
+                        <div style="width: 35%;"><span>Wt. in Tundish</span></div>
+                        <div><span> :</span></div>
+                        <div style="width: 60%;"><span class="ml-2 font-medium"> 6.5</span></div>
+                    </div>
+            </div>
+            <div class="p-card p-2" style="width: 33vh;border:1px solid rgb(213, 210, 210)">
+                <div class="text-center">
+                    <span class="font-medium">ROLLING MILL</span>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 60%;"><span>Furnace Temperature</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 40%;"><span class="ml-2 font-medium"> 1250 </span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 60%;"><span>Fuel Consumption</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 40%;"><span class="ml-2 font-medium"> 0.25Gcal/ton</span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 60%;"><span>Material Residence Time</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 40%;"><span class="ml-2 font-medium">40 Mins </span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 60%;"><span>Oxygen Level</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 40%;"><span class="ml-2 font-medium">3-5%</span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 60%;"><span>Thermal Efficiency</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 40%;"><span class="ml-2 font-medium"> 70%</span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 60%;"><span>Steel Grade</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 40%;"><span class="ml-2 font-medium">EN1APB</span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 60%;"><span>PO No</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 40%;"><span class="ml-2 font-medium">1192424</span></div>
+                </div>
+            </div>
+            <div class="p-card p-2" style="width: 33vh;border:1px solid rgb(213, 210, 210)">
+                <div class="text-center">
+                    <span class="font-medium">FINISHING AREA</span>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 35%;"><span>Heat No </span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 60%;"><span class="ml-2 font-medium"> 92789 </span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 35%;"><span>Steel Grade</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 60%;"><span class="ml-2 font-medium"> SAE10B38M2</span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 35%;"><span>Start Time</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 60%;"><span class="ml-2 font-medium"> 23/10/2024 15:25 </span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 35%;"><span>Finish Time</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 60%;"><span class="ml-2 font-medium"> 23/10/2024 15:31 </span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 35%;"><span>Ladle No</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 60%;"><span class="ml-2 font-medium"> H7</span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 35%;"><span>Weight</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 60%;"><span class="ml-2 font-medium"> 31.7</span></div>
+                </div>
+                <div class="p-card flex mt-2 p-2">
+                    <div style="width: 35%;"><span>Oxygen Flow</span></div>
+                    <div><span> :</span></div>
+                    <div style="width: 60%;"><span class="ml-2 font-medium"> 1851</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="flex justify-content-evenly mt-3"> -->
+    <div class="col-12 p-0 mt-3 flex">
+        <div class="col-3 p-1">
+            <div class="card p-2">
+                <div class="text-center">
+                    <span class="font-medium">Production</span>
+                </div>
+                <!-- <div class="card"> -->
+                    <p-carousel 
+                        [value]="productionGraphs" 
+                        [numVisible]="1" 
+                        [numScroll]="1" 
+                        [circular]="true" 
+                        [autoplayInterval]="3000">
+                            <ng-template let-product pTemplate="item">
+                                <div class="border-1 surface-border border-round p-1">
+                                    <span class="block text-900 font-medium">{{product.name}}</span>
+                                    <div class="text-900 font-medium text-4xl">
+                                        <p-chart type="line" [data]="product.data" [options]="product.options" [plugins]="plugin" height="180px" (click)="productionScreen()"/>
+                                    </div>
+                                </div>
+                            </ng-template>
+                    </p-carousel>
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="col-3  p-1">
+            <div class="card p-2"  style="height: 100%;">
+                <div class="text-center">
+                    <span class="font-medium">Asset Monitoring</span>
+                </div>
+                <div class="flex justify-content-center align-items-center"  style="height: 100%;">
+                    <p-carousel 
+                    [value]="AssetsData" 
+                    [numVisible]="1" 
+                    [numScroll]="1" 
+                    [circular]="true" 
+                    
+                    [autoplayInterval]="4000" style="width: 100%;">
+                        <ng-template let-product pTemplate="item">
+                            <div class="border-1 surface-border border-round p-1">
+                                <div class="text-center">
+                                    <span class="block text-900 font-medium">{{product.name}}</span>
+                                </div>
+                                <div class="text-900 flex font-medium  mt-3">
+                                    <div class="assetCircle mr-1" [ngStyle]="{ 'background-color': product.circleColor }">
+                                    </div>
+                                    <span>{{product.status}}</span>
+                                </div>
+                                <div class="text-900 text-sm font-medium  mt-3">
+                                    <span>{{product.data}}</span>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-carousel>
+                </div>
+            </div>
+        </div>
+        <div class="col-3  p-1">
+            <div class="card p-2"  style="height: 100%;">
+                <div class="text-center">
+                    <span class="font-medium">Cost Module</span>
+                </div>
+                <p-carousel 
+                [value]="costGraphs" 
+                [numVisible]="1" 
+                [numScroll]="1" 
+                [circular]="true" 
+                [autoplayInterval]="3000">
+                    <ng-template let-cost pTemplate="item">
+                        <div class="border-1 surface-border border-round p-1">
+                            <span class="block text-900 font-medium">{{cost.name}}</span>
+                            <div class="text-900 font-medium text-4xl">
+                                <p-chart type="line" [data]="cost.data" [options]="cost.options" [plugins]="plugin" height="180px"/>
+                            </div>
+                        </div>
+                    </ng-template>
+            </p-carousel>
+            </div>
+        </div>
+        <div class="col-3  p-1">
+            <div class="card p-2" style="height: 100%;">
+                <div class="text-center">
+                    <span class="font-medium">Anomaly</span>
+                </div>
+                <div class="flex justify-content-center align-items-center"  style="height: 100%;">
+                    <p-carousel 
+                    [value]="anomalyData" 
+                    [numVisible]="1" 
+                    [numScroll]="1" 
+                    [circular]="true"                     
+                    [autoplayInterval]="4000" style="width: 100%;">
+                        <ng-template let-anomaly pTemplate="item">
+                           <div class="card p-2" (click)="anomalyScreen()">
+                                <!-- <div class="border-1 surface-border border-round p-1"> -->
+                                    <div class="text-center">
+                                        <span class="block text-900 font-medium">{{anomaly.name}}</span>
+                                    </div>
+                                    <div class="text-900 font-medium  mt-2">
+                                        <span>{{anomaly.date}}</span><span class=" ml-2" style="color: red;">{{anomaly.type}}</span>
+                                    </div>
+                                    <div class="text-900 text-sm font-medium  mt-2">
+                                        <span>{{anomaly.data}}</span>
+                                    </div>
+                                <!-- </div> -->
+                           </div>
+                        </ng-template>
+                    </p-carousel>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-0 mt-2 flex">
+        <div class="col-3 p-1">
+            <div class="card p-2" style="height: 100%;">
+                <div class="text-center">
+                    <span class="font-medium">Inventory</span>
+                </div>
+                <div class="flex justify-content-center align-items-center"  style="height: 100%;">
+                    <p-carousel [value]="inventoryData" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="4000"
+                        style="width: 100%;">
+                        <ng-template let-inventory pTemplate="item">
+                            <div class="card p-2" (click)="anomalyScreen()">
+                                <div class="text-center">
+                                    <span class="block text-900 font-medium">{{inventory.name}}</span>
+                                </div>
+                                <div class="text-900 font-medium text-lg mt-2">
+                                    <span>{{inventory.data}}</span>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-carousel>
+                </div>                
+            </div>
+        </div>
+        <div class="col-3  p-1">
+            <div class="card p-2"  style="height: 100%;">
+                <div class="text-center">
+                    <span class="font-medium">Performance</span>
+                </div>
+                <!-- <div class="card"> -->
+                    <p-carousel 
+                        [value]="performanceGraphs" 
+                        [numVisible]="1" 
+                        [numScroll]="1" 
+                        [circular]="true" 
+                        [autoplayInterval]="3000">
+                            <ng-template let-product pTemplate="item">
+                                <div class="border-1 surface-border border-round p-1">
+                                    <span class="block text-900 font-medium">{{product.name}}</span>
+                                    <div class="text-900 font-medium text-4xl">
+                                        <p-chart type="line" [data]="product.data" [options]="product.options" [plugins]="plugin" height="180px" (click)="productionScreen()"/>
+                                    </div>
+                                </div>
+                            </ng-template>
+                    </p-carousel>
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="col-3  p-1">
+            <div class="card p-2"  style="height: 100%;">
+                <div class="text-center">
+                    <span class="font-medium">Operator Logs</span>
+                </div>
+                <div  class="mt-1 p-4" style="height: 21vh;">
+                    <div class="p-card p-2 mt-1 font-medium" *ngFor="let item of operatorLogs" style="border: 1px solid rgb(213, 210, 210);">
+                        <span>{{item.data}}</span>
+                    </div>
+                </div>
+                <div class="flex justify-content-center">
+                    <input type="text" pInputText placeholder="Enter here"   style="border-top-right-radius: 0%;border-bottom-right-radius: 0%; height: 32px;width: 80%;" [(ngModel)]="logItem" />
+                    <button class="p-button p-button-success" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%; " (click)="addLogItem()" >+</button>        
+                </div>
+            </div>
+        </div>
+        <div class="col-3  p-1">
+            <div class="card p-2" style="height: 100%;">
+                <div class="text-center">
+                    <span class="font-medium">Video Feeds</span>
+                </div>
+                <div class="flex justify-content-center align-items-center" style="background-color: #dbdbdb;height: 90%;">
+                    <div>
+                        <i class="pi pi-video" style="color: white;font-size: 2.5rem"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+    <!-- </div> -->
+</div>
+>>>>>>> main
