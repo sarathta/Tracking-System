@@ -37,9 +37,10 @@
                 </div>
             </div>
             <div class="col-5">
-                <div class="card consCard">
-                    <span class="font-semibold">Equipments (kWh)</span>
-                    <div class="flex">
+                <div class="card consCard " style="height: 319px;" >
+                    <div class="flex justify-content-between">
+                        <span class="font-semibold">Equipments (kWh)</span>
+                    <!-- <div class="flex">
                         <div class="text-center">
                             <span class="text-sm font-semibold">{{pieDate1}}</span>
                             <p-chart type="pie" [data]="equipData1" [options]="equipOptions1" [plugins]="plugin" height="255px" />
@@ -48,7 +49,49 @@
                             <span class="text-sm font-semibold">{{pieDate2}}</span>
                             <p-chart type="pie" [data]="equipData2" [options]="equipOptions2" [plugins]="plugin" height="255px" width="400px" />    
                         </div>
+                    </div> -->
+                    <div class="border-top-right-radius=0% " >
+                        <p-dropdown 
+                            [options]="Date" 
+                            [(ngModel)]="selectedate" 
+                            optionLabel="name"                        
+                            optionValue="name" (onChange)="equipmentsTableDropDown($event.value)"/>
                     </div>
+                    </div>
+                    <p-table [value]="Equipmentsdata" [(selection)]="selectedData" selectionMode="single" [rows]="3" [paginator]="true"  styleClass="p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll"[loading]="loading" [rowHover]="true" style="height: 100px;" >
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="min-width: 8rem">
+                                    Equipments
+                                    
+                                </th>
+                                <th>
+                                    Consumption
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData>
+                            <tr [pSelectableRow]="rowData">
+                                <td> {{rowData.description}} </td>
+                                <td> {{rowData.consumption | numberFormat: 2}} </td>
+                                
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="5">No Data found.</td>
+                            </tr>
+                        </ng-template>        
+
+
+
+
+
+
+                    </p-table>
+                  
+                    
+            
                 </div>
             </div>
             <div class="col-4">
