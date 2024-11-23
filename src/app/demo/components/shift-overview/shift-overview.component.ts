@@ -54,27 +54,27 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   anomalyData: any[]=[
     {
       name: 'STAND1',
-      date: '06/05/24 19:05:44',
-      type: 'Internal cracks',
-      data: 'Internal cracks are defects that form within the billet during rolling due to improper stress distribution or material deformation. These cracks may not be visible from the outside but can significantly weaken the final product, leading to reduced mechanical properties.'
-    },
-    {
-      name: 'STAND1',
       date: '06/05/24 19:05:46',
       type: 'Shrinkage',
-      data: 'Shrinkage defects are caused by the improper cooling of steel billets, leading to contraction and voids within the billet. These defects can compromise the integrity and structure of the steel, making it unsuitable for certain applications requiring high strength.'
+      data: 'Shrinkage was observed in billet ID 167890 during casting in Ladle Refining Furnace (LRF), attributed to a lower-than-optimal pouring temperature of 1,480°C.'
     },
     {
-      name: 'STAND1',
+      name: 'STAND2',
       date: '06/05/24 19:05:24',
       type: 'Cobble',
-      data: 'A cobble occurs when the billet leaves the rolling path or gets tangled in the rollers, causing a physical jam in the rolling mill. It can result in a significant loss of material and requires immediate action to clear the machinery and restart the process.'
+      data: 'Cobble occurred before Stand 6 for billet ID 155605 due to improper alignment, resulting in excessive tension during rolling.'
     },
     {
       name: 'STAND1',
       date: '06/05/24 19:05:12',
       type: 'Wavy edges',
-      data: 'Wavy edges occur when the edges of the billet or rolled product exhibit a wave-like pattern due to uneven material flow or non-uniform rolling forces. This defect can affect the dimensional accuracy and appearance of the final product, requiring rework or trimming'
+      data: 'Wavy edges were noted in bar ID 234890 post Stand 5, due to uneven roll gap and temperature variations along the edges.'
+    },
+    {
+      name: 'STAND6',
+      date: '06/05/24 19:05:44',
+      type: 'Cobble',
+      data: 'Cobble occurred before Stand 6 for billet ID 155605 due to improper alignment, resulting in excessive tension during rolling.'
     }
   ]
 
@@ -619,6 +619,11 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   private timer: any;
   selectedData: any;
   loading: boolean =false;
+  tracking: any;
+  bofClass: any;
+  lfClass: any;
+  vdClass: any;
+  ccmClass: any;
  
 
   
@@ -633,6 +638,53 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   ngOnInit(): void {
     this.overviewScreenService.sendData(1);
     this.layoutService.onMenuToggle();
+    let i =0;
+    this.tracking = setInterval(() => {
+      if(i<=5){
+        this.bofClass = 'empty'
+        this.lfClass = 'cross'
+        this.vdClass = 'yellow'
+        this.ccmClass = 'green'
+      }
+      else if(i>5 && i<=10){
+        this.bofClass = 'yellow'
+        this.lfClass = 'empty'
+        this.vdClass = 'green'
+        this.ccmClass = 'orange'
+      }
+      else if(i>10 && i<=15){
+        this.bofClass = 'green'
+        this.lfClass = 'yellow'
+        this.vdClass = 'orange'
+        this.ccmClass = 'blue'
+      }
+      else if(i>15 && i<=20){
+        this.bofClass = 'orange'
+        this.lfClass = 'green'
+        this.vdClass = 'blue'
+        this.ccmClass = 'cross'
+      }
+      else if(i>20 && i<=25){
+        this.bofClass = 'blue'
+        this.lfClass = 'orange'
+        this.vdClass = 'cross'
+        this.ccmClass = 'empty'
+      }
+      else if(i>25 && i<=30){
+        this.bofClass = 'cross'
+        this.lfClass = 'blue'
+        this.vdClass = 'empty'
+        this.ccmClass = 'yellow'
+      }
+      else{
+        this.bofClass = 'empty'
+        this.lfClass = 'cross'
+        this.vdClass = 'yellow'
+        this.ccmClass = 'green'
+        i=0;
+      }
+      i++;
+    }, 1000);
     this.timer = setInterval(() => {
       this.today = new Date();
     }, 1000);
