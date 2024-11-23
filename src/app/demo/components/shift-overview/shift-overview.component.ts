@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import  ChartDataLabels  from 'chartjs-plugin-datalabels';
+import { OverviewScreenService } from 'src/app/services/overviewScreen.service';
 
 @Component({
   selector: 'app-shift-overview',
   templateUrl: './shift-overview.component.html',
   styleUrls: ['./shift-overview.component.scss']
 })
-export class ShiftOverviewComponent implements OnInit{
+export class ShiftOverviewComponent implements OnInit,OnDestroy{
+  @ViewChild("myCarousel") myCarousel: any;
   today: Date = new Date();
   plugin = [ChartDataLabels];
-  operatorLogs: any[]=[{data:"ahsahf"},{data:"nbfsgrhrh"}]
+  operatorLogs: any[]=[{data:"ahsahf"}];
+  assetborder: any;
   productionPlanData: any[]=[
     {id:1,date:"30/10/2024",so:"123188",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
-      grade: "SAE1018",classification:"VD",
+      grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"MANUAL",status:'50%',color:'#90fc90'
+    },
+    {id:2,date:"30/10/2024",so:"123189",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
+      grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"IL-2",status:'0%',color:'#ffffb7'
+    },
+    {id:3,date:"30/10/2024",so:"123189",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
+      grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"IL-2",status:'0%',color:'#ffffb7'
     }
   ]; 
   logItem: any;
@@ -23,19 +32,22 @@ export class ShiftOverviewComponent implements OnInit{
       name: 'Blast Furnace',
       circleColor:'#02c602',
       status: 'Healthy',
-      data: 'Healthy (Temperature: 1500°C | Pressure: 5.2 Bar)'
+      data: 'Healthy (Temperature: 1500°C | Pressure: 5.2 Bar)',
+      borderclass:'greenBorderBlink'
     },
     {
       name: 'Rolling Mill',
       circleColor:'orange',
       status: 'Warning',
-      data: 'Vibration: 3.5 m/s²'
+      data: 'Vibration: 3.5 m/s²',
+      borderclass:'orangeBorderBlink'
     },
     {
       name: 'Crane',
       circleColor:'red',
       status: 'Critical',
-      data: 'Motor Temp: 90°C, Overload Detected'
+      data: 'Motor Temp: 90°C, Overload Detected',
+      borderclass:'redBorderBlink'
     }
   ]
   
@@ -82,7 +94,7 @@ export class ShiftOverviewComponent implements OnInit{
   ]
   productionGraphs: any[]=[
     {
-      name:'Shift',
+      name:'Shift (t)',
       data:{
         labels:  [
           "10-31",
@@ -170,7 +182,7 @@ export class ShiftOverviewComponent implements OnInit{
       }
     },
     {
-      name:'Day',
+      name:'Day (t)',
       data:{
         labels: [
           "10-31",
@@ -242,7 +254,7 @@ export class ShiftOverviewComponent implements OnInit{
       }
     },
     {
-      name:'Month',
+      name:'Month (t)',
       data:{
         labels: [
           "09-01",
@@ -613,11 +625,13 @@ export class ShiftOverviewComponent implements OnInit{
 
   constructor(
     private layoutService: LayoutService,
-    public router: Router
+    public router: Router,
+    private overviewScreenService: OverviewScreenService
   ) { }
 
   
   ngOnInit(): void {
+    this.overviewScreenService.sendData(1);
     this.layoutService.onMenuToggle();
     this.timer = setInterval(() => {
       this.today = new Date();
@@ -625,6 +639,7 @@ export class ShiftOverviewComponent implements OnInit{
   }
    
   ngOnDestroy(): void {
+    this.overviewScreenService.sendData(0);
     if (this.timer) {
       clearInterval(this.timer); // Clean up timer
     }

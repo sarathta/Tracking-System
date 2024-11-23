@@ -11,12 +11,102 @@
   margin-top: 2px;
 }
 
+.tableCaption{
+  color: white;
+  background-color: #b2c5cb;;
+  height: 3vh;
+}
+
 .w-full{
   width: 100%;
 }
 
 .blink_me {
   animation: blinker 1s linear infinite;
+}
+
+.rowBackground{
+  background-color: #90fc90;
+}
+
+.load{    
+  height: 12px;
+  background: blue;  
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.noload{
+  width: 100px;    
+  background-color: #c3c0c0;     
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #999999;    
+  position: relative;
+}
+
+.loadtext {
+  font-family: Consolas;    
+  font-size: 11px;
+  color: #ffffff;
+  position: absolute;
+  bottom: -1px;
+  left: 5px
+}
+
+.anomalyCardBlink {
+  background-color: #fffefe;
+  animation: anomalyCardBlink 1s linear infinite;
+}
+
+.redBorderBlink {
+  border:2px solid #FF2929;
+  animation: redBorderBlink 1s linear infinite;
+}
+
+.orangeBorderBlink {
+  border:2px solid orange;
+  animation: orangeBorderBlink 1s linear infinite;
+}
+@keyframes anomalyCardBlink {
+  0%{background-color: #FF2929;}
+  50%{background-color: #fce7e7;}
+  100%{background-color: #FF2929;}
+}
+
+.greenBorderBlink {
+  border:2px solid rgb(0, 255, 0);
+  animation: greenBorderBlink 1s linear infinite;
+}
+
+.bof_empty {
+  background-image: url("../../../../assets/Icons/bof/bof_empty.svg");
+  width: 100px;
+  height: 110px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+@keyframes redBorderBlink {
+  0%{border:2px solid #FF2929;}
+  50%{border:2px solid #ffffff;}
+  100%{border:2px solid #FF2929;}
+}
+
+
+@keyframes orangeBorderBlink {
+  0%{border:2px solid rgb(252, 173, 25);}
+  50%{border:2px solid #ffffff;}
+  100%{border:2px solid rgb(252, 173, 25);}
+}
+
+
+@keyframes greenBorderBlink {
+  0%{border:2px solid rgb(0, 255, 0);}
+  50%{border:2px solid #ffffff;}
+  100%{border:2px solid rgb(0, 255, 0);}
 }
 
 @keyframes blinker {

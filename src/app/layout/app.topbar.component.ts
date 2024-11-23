@@ -4,6 +4,7 @@ import { LayoutService } from "./service/app.layout.service";
 import { NotificationService } from '../services/common/notification.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { OverviewScreenService } from '../services/overviewScreen.service';
 
 @Component({
     selector: 'app-topbar',
@@ -47,6 +48,7 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     noofbillets:any;
     size:any;
     orderqtymt:any;
+    isOverview: boolean = false;
 
     timelineData: any[]= [
         {
@@ -124,13 +126,24 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
         public layoutService: LayoutService,
         private notificationService: NotificationService,
         private http : HttpClient,
-        public router: Router
-    ) { }
+        public router: Router,
+        private overviewScreenService: OverviewScreenService
+      ) { }
 
     ngOnInit(): void {
-        // this.notificationService.notificationCount.subscribe((data: any)=>{
-        //     this.notificationCount = data;
-        // })
+     
+      this.overviewScreenService.overviewData.subscribe((data: any)=>{
+        if(data==1){
+          this.isOverview = true;
+        }
+        else{
+          this.isOverview = false;
+        }
+      })
+        
+        this.notificationService.notificationCount.subscribe((data: any)=>{
+            this.notificationCount = data;
+        })
         if (this.timeInterval) {
             clearInterval(this.timeInterval);
           }
