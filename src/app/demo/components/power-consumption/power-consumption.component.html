@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-5">
+            <div class="col-3">
                 <div class="card consCard " style="height: 319px;" >
                     <div class="flex justify-content-between">
                         <span class="font-semibold">Equipments (kWh)</span>
@@ -58,7 +58,7 @@
                             optionValue="name" (onChange)="equipmentsTableDropDown($event.value)"/>
                     </div>
                     </div>
-                    <p-table [value]="Equipmentsdata" [(selection)]="selectedData" selectionMode="single" [rows]="3" [paginator]="true"  styleClass="p-datatable-gridlines p-datatable-striped" responsiveLayout="scroll"[loading]="loading" [rowHover]="true" style="height: 100px;" >
+                    <p-table [value]="Equipmentsdata" [rows]="3" [paginator]="false"  styleClass="p-datatable-gridlines " responsiveLayout="scroll" [scrollHeight]="'25.5vh'" [loading]="loading" [rowHover]="true" style="height: 100px;" >
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="min-width: 8rem">
@@ -94,7 +94,7 @@
             
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
                 <div class="card consCard">
                     <span class="font-semibold">Energy Per Ton (kWh/t)</span>
                     <p-chart type="bar" [data]="energyPerWeightData" [options]="energyPerWeightOptions" [plugins]="plugin" height="270px" />

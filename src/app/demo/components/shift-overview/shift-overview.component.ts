@@ -13,8 +13,14 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   @ViewChild("myCarousel") myCarousel: any;
   today: Date = new Date();
   plugin = [ChartDataLabels];
-  operatorLogs: any[]=[{data:"ahsahf"}];
+  operatorLogs: any[]=[{data:"Carbon content in molten iron measured at 4.1%"}];
   assetborder: any;
+  bof1Details: boolean =false;
+  bof2Details: boolean =false;
+  lfDetails: boolean =false;
+  vdDetails: boolean =false;
+  ccmDetails: boolean =false;
+  standDetails: boolean =false;
   productionPlanData: any[]=[
     {id:1,date:"30/10/2024",so:"123188",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
       grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"MANUAL",status:'50%',color:'#90fc90'
@@ -325,7 +331,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   
   costGraphs: any[]=[
     {
-      name:'Day',
+      name:'Day (INR)',
       data:{
         labels: [
           "08-01",
@@ -395,7 +401,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
       }
     },
     {
-      name:'Month',
+      name:'Month (INR)',
       data:{
         labels: [
           "Jul",
@@ -470,7 +476,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   
   performanceGraphs: any[]=[
     {
-      name:'Defect Rate',
+      name:'Defect Rate (%)',
       data:{
         labels: [
           "08-01",
@@ -481,10 +487,10 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
         datasets: [
           {
             data: [
-              1200,
-              1250,
-              1230,
-              1220
+              20,
+              50,
+              30,
+              60
             ],
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgb(75, 192, 192)',
@@ -539,7 +545,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
       }
     },
     {
-      name:'Yield-Rate',
+      name:'Yield-Rate (%)',
       data:{
         labels: [
           "07-01",
@@ -610,6 +616,107 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
       }
     }    
   ];
+
+  inventoryChartData: any ={
+    labels:  [
+      "Iron Ore",
+      "Coke",
+      "Limestone",
+      "Dolomite",
+      "Scrap Steel"
+    ],
+    datasets: [
+      {
+        type: 'bar',
+        label: 'Quantity of Raw Materials (t)',
+        yAxisID: 'y',
+        data:  [
+          379.9267272949219,
+          235.97850036621094,
+          437.4613037109375,
+          411.20208740234375,
+          218.46881103515625
+        ],
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgb(54, 162, 235)',
+        borderWidth: 1
+      },
+      {
+        type: 'line',
+        label: 'Days left',
+        yAxisID: 'y1',
+        data: [
+          30,
+          40,
+          30,
+          20,
+          22
+        ],
+        backgroundColor: 'orange',
+        borderColor: 'orange',
+        borderWidth: 1
+      }
+    ]
+  }
+
+  inventoryOptions: any ={
+    // indexAxis: 'y',
+    maintainAspectRatio: false,
+    aspectRatio: 0.8,
+    plugins: {
+      datalabels:{
+        formatter: (value : any) => {
+          return Math.trunc(value);
+        },
+        font: {
+          size: 10
+        },
+        // anchor: 'end',
+        // align: 'end',
+        color: 'black',
+      },
+        legend: {
+          // display: false,
+            labels: {
+                color: 'black'
+            }
+        }
+    },
+    scales: {
+        x: {
+            stacked: true,
+            ticks: {
+                color: '#6c757d'
+            },
+            grid: {
+                color: '#dee2e6',
+                drawBorder: false
+            }
+        },
+        y: {
+            // stacked: true,
+            position: 'left',
+            ticks: {
+                color: '#6c757d'
+            },
+            grid: {
+                color: '#dee2e6',
+                drawBorder: false
+            }
+        },
+        y1: {
+          // stacked: true,
+          position: 'right',
+          ticks: {
+              color: '#6c757d'
+          },
+          grid: {
+              color: '#dee2e6',
+              drawBorder: false
+          }
+      }
+    }
+  }
   
 
 
@@ -624,6 +731,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   lfClass: any;
   vdClass: any;
   ccmClass: any;
+  standClass: any;
  
 
   
@@ -641,46 +749,60 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     let i =0;
     this.tracking = setInterval(() => {
       if(i<=5){
-        this.bofClass = 'empty'
-        this.lfClass = 'cross'
-        this.vdClass = 'yellow'
-        this.ccmClass = 'green'
+        this.bofClass = 'empty';
+        this.lfClass = 'cross';
+        this.vdClass = 'yellow';
+        this.ccmClass = 'green';
+        this.standClass = 'cross';
+
       }
       else if(i>5 && i<=10){
         this.bofClass = 'yellow'
         this.lfClass = 'empty'
         this.vdClass = 'green'
         this.ccmClass = 'orange'
+        this.standClass = 'empty';
+
       }
       else if(i>10 && i<=15){
         this.bofClass = 'green'
         this.lfClass = 'yellow'
         this.vdClass = 'orange'
         this.ccmClass = 'blue'
+        this.standClass = 'yellow';
+
       }
       else if(i>15 && i<=20){
         this.bofClass = 'orange'
         this.lfClass = 'green'
         this.vdClass = 'blue'
         this.ccmClass = 'cross'
+        this.standClass = 'green';
+
       }
       else if(i>20 && i<=25){
         this.bofClass = 'blue'
         this.lfClass = 'orange'
         this.vdClass = 'cross'
         this.ccmClass = 'empty'
+        this.standClass = 'orange';
+
       }
       else if(i>25 && i<=30){
         this.bofClass = 'cross'
         this.lfClass = 'blue'
         this.vdClass = 'empty'
         this.ccmClass = 'yellow'
+        this.standClass = 'blue';
+
       }
       else{
         this.bofClass = 'empty'
         this.lfClass = 'cross'
         this.vdClass = 'yellow'
         this.ccmClass = 'green'
+        this.standClass = 'cross';
+
         i=0;
       }
       i++;
@@ -710,6 +832,66 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
         this.operatorLogs.push({data: this.logItem});
         this.logItem= null;
     }
+  }
+
+  bof1DetailsShow(){
+    this.bof1Details = !this.bof1Details ;
+    this.bof2Details = false;
+    this.lfDetails = false;
+    this.vdDetails = false;
+    this.ccmDetails = false;
+    this.standDetails = false;
+  }
+
+  bof2DetailsShow(){
+    this.bof2Details = !this.bof2Details ;
+    this.bof1Details =false;
+    this.lfDetails = false;
+    this.vdDetails = false;
+    this.ccmDetails = false;
+    this.standDetails = false;
+  }
+
+  lfDetailsShow(){
+    this.lfDetails = !this.lfDetails ;
+    this.bof1Details =false;
+    this.bof2Details = false ;
+    this.vdDetails = false;
+    this.ccmDetails = false;
+    this.standDetails = false;
+  }
+  vdDetailsShow(){
+    this.vdDetails = !this.vdDetails;
+    this.lfDetails = false ;
+    this.bof1Details =false;
+    this.bof2Details = false ;
+    this.ccmDetails = false;
+    this.standDetails = false;
+  }
+  ccmDetailsShow(){
+    this.ccmDetails = !this.ccmDetails;
+    this.lfDetails = false ;
+    this.bof1Details =false;
+    this.bof2Details = false ;
+    this.vdDetails = false;
+    this.standDetails = false;
+  }
+  standDetailsShow(){
+    this.standDetails = !this.standDetails;
+    this.ccmDetails = false;
+    this.lfDetails = false ;
+    this.bof1Details =false;
+    this.bof2Details = false ;
+    this.vdDetails = false;
+  }
+
+  hideDialog(){
+    this.bof1Details = false ;
+    this.bof2Details = false;
+    this.lfDetails = false;
+    this.vdDetails = false;
+    this.ccmDetails = false;
+    this.standDetails = false;
   }
 
 }
