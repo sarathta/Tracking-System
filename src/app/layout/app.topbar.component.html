@@ -15,6 +15,10 @@
         <input *ngIf="!isOverview" type="text" pInputText placeholder="Enter PO Number" [(ngModel)]="inputPo" style="border-top-right-radius: 0%;border-bottom-right-radius: 0%;"/>
         <button *ngIf="!isOverview" class="p-button mr-3" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%;" (click)="showrfDialog()"><i class="pi pi-search" style="height: 2vh;"></i></button>
         
+        <div  class="font-semibold mr-3 mt-1">
+            <div><span>{{today | date : 'dd/MM/yyyy'}}</span></div>
+            <div><span>{{today | date : 'HH:mm:ss'}}</span></div>
+        </div>
         
         <i class="pi pi-bell text-3xl p-link mt-3" pBadge value="{{notificationCount}}" (click)="showNotification()"></i>
         <button class="p-link layout-topbar-button">
@@ -75,76 +79,6 @@
                     <td>{{size}}</td>
                     <td>{{orderqtymt}}</td>
                 </tr>
-                <!-- <tr [pSelectableRow]="rowData">
-                    <td> BOF-1 </td>
-                    <td>Completed</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> BOF-2 </td>
-                    <td>Completed</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Ladle Furnace </td>
-                    <td>Completed</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Vaccum Degassing </td>
-                    <td>Completed</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Continous Caster </td>
-                    <td>Completed</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Reheating Furnace </td>
-                    <td>Completed</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Rolling Mill </td>
-                    <td>{{rolls}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Cooling Bed </td>
-                    <td>{{coolingbed}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td> Cooling Bed Status </td>
-                    <td>{{coolingbedstatus}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td>Cold Shear</td>
-                    <td>{{coldShear}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td>Rack</td>
-                    <td>{{rack}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td>Straightener</td>
-                    <td>{{straightener}}</td>
-                </tr>
-                
-                <tr [pSelectableRow]="rowData">
-                    <td>Udt</td>
-                    <td>{{udt}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td>Bundles</td>
-                    <td>{{bundle}}</td>
-                </tr>
-                
-                <tr [pSelectableRow]="rowData">
-                    <td> Good Bars </td>
-                    <td>{{goodbars}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td>Trash Bars</td>
-                    <td>{{trashbars}}</td>
-                </tr>
-                <tr [pSelectableRow]="rowData">
-                    <td>Corrected Bars</td>
-                    <td>{{correctedbars}}</td>
-                </tr> -->
             </ng-template>
             
         </p-table>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @Component({
   selector: 'app-overview',
@@ -181,10 +182,12 @@ showLfLogSheet: number = 0;
 billetNo = 1001;
 
 constructor(
-  private http : HttpClient
+  private http : HttpClient,
+  private layoutService: LayoutService,
  ){}
 
 ngOnInit(): void {
+  this.layoutService.onMenuToggle();
    this.startInterval();
   
 }

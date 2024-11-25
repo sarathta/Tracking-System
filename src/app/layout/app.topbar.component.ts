@@ -49,6 +49,8 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     size:any;
     orderqtymt:any;
     isOverview: boolean = false;
+    today: Date = new Date();
+    timer: any;
 
     timelineData: any[]= [
         {
@@ -131,7 +133,9 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
       ) { }
 
     ngOnInit(): void {
-     
+      this.timer = setInterval(() => {
+        this.today = new Date();
+      }, 1000);
       this.overviewScreenService.overviewData.subscribe((data: any)=>{
         if(data==1){
           this.isOverview = true;
@@ -156,6 +160,9 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
     ngOnDestroy() {
         clearInterval(this.timeInterval);
         clearInterval(this.statusInterval);
+        if (this.timer) {
+          clearInterval(this.timer); // Clean up timer
+        }
     }
 
     getNotification(){
