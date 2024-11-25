@@ -111,7 +111,7 @@
                             <span class="font-semibold">Act / Plan</span><span class="ml-1">:</span>
                         </div> -->
                         <div class="font-medium lg:text-lg xl:text-xl ml-1">
-                            <span  style="color: orange;">18,500</span>/
+                            <span  style="color: #ffc65c;">18,500</span>/
                             <span  style="color: #3ff83f;">20,000</span>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                             <span class="font-semibold">Actual / Plan</span><span class="ml-1">:</span>
                         </div>
                         <div class="font-medium text-xl ml-1">
-                            <span  style="color: orange;">95</span>/
+                            <span  style="color: #ffc65c;">95</span>/
                             <span  style="color: #3ff83f;">96</span>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
                             <span class="font-semibold">Actual / Plan</span><span class="ml-1">:</span>
                         </div>
                         <div class="font-medium text-xl  ml-1">
-                            <span  style="color: orange;">88</span>/
+                            <span  style="color: #ffc65c;">88</span>/
                             <span  style="color: #3ff83f;">90</span>
                         </div>
                     </div>
@@ -170,18 +170,75 @@
                 <div class="flex justify-content-between">
                     <span class=" font-semibold  text-xl">  Power Consumption </span>
                     <div class="flex justify-content-center align-items-center">
-                       <span class="font-medium text-xl  ml-2"><span style="color: #3ff83f;">4</span>-<span style="color: #3ff83f;">6</span> GJ/ton</span>
+                       <span class="font-medium text-xl  ml-2"><span style="color: #3ff83f;">5</span> GJ/ton</span>
                     </div>
                     <div class="flex justify-content-center align-items-center">
-                        <span class="font-semibold">Monthly</span><span class="ml-2">:</span><span class="font-medium text-xl  ml-2"><span style="color: #3ff83f;">6,000</span> - <span style="color: #3ff83f;">12,000</span> MWh</span>
+                        <span class="font-semibold">Monthly</span><span class="ml-2">:</span><span class="font-medium text-xl  ml-2"><span style="color: #3ff83f;">8,000</span> MWh</span>
                     </div>
                 </div>
             </div>
         </div> 
     </div>
-    <div class="p-card mt-1 flex justify-content-center align-items-center p-1" style="height: 20vh;background-color: #f3f8ff;">
+    <div class="p-card flex justify-content-center align-items-center mt-1 p-1" style="height: 24vh;background-color: #f3f8ff;">
+       <div class="col-12 p-0">
         <div class="flex justify-content-between" style="width: 100%;">
-            <div>
+            <div class="flex justify-content-center align-items-center">
+                <div>
+                    <div [class]="'bof_'+ bofClass" (click)="dashboardScreen()"></div>
+                    <div class="flex  mt-3">
+                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec;">
+                            <span class="font-medium"> BOF</span>
+                        </div>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                            class="Button p-button-info" style="height: 3vh;" (click)="bof1DetailsShow()"></button>
+                    </div>
+                </div>
+                <div style="width: 18rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                          <!-- <tr style="background-color: #90fc90;"> -->
+                            <tr>
+                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                            </tr>
+                            <tr>
+                                <td>Deviations</td>
+                                <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                            </tr>
+                            <tr>
+                                <td>Heat No</td>
+                                <td class="font-medium">92339</td>              
+                            </tr>
+                            <tr>
+                                <td>Grade</td>
+                                <td class="font-medium">SAE1018</td>              
+                            </tr>
+                            <tr>
+                                <td style="width: 7rem;">Start Time</td>
+                                <td class="font-medium">30/10/2024 07:15</td>              
+                            </tr>
+                            <tr>
+                                <td>Finish Time</td>
+                                <td class="font-medium">30/10/2024 07:44</td>              
+                            </tr>
+                            <tr>
+                                <td>Ladle No</td>
+                                <td class="font-medium">H7</td>              
+                            </tr>
+                            <tr>
+                                <td>Weight (t)</td>
+                                <td class="font-medium">31.7</td>              
+                            </tr>
+                            <tr>
+                                <td>Oxygen Nm³/min</td>
+                                <td class="font-medium">1851</td>              
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+            <!-- <div>
                 <div [class]="'bof_'+ bofClass"></div>
                 <div class="flex  mt-3">
                     <div class="p-card text-center p-2" style="width: 80%;">
@@ -200,8 +257,101 @@
                     <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
                         class="Button p-button-info mt-1" style="height: 3vh;" (click)="bof2DetailsShow()"></button>
                 </div>
+            </div> -->
+            <div class="flex justify-content-center align-items-center">
+                <div>
+                    <div [class]="'lf_'+ lfClass"></div>
+                    <div class="flex  mt-3">
+                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                            <span class="font-medium"> LF</span>
+                        </div>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                            class="Button p-button-info" style="height: 3vh;" (click)="lfDetailsShow()"></button>
+                            <!-- <div *ngIf="lfDetails" class="p-card p-2 DetailsCard">
+                                <div style="width: 17rem;">
+                                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'137px'"
+                                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                                        <ng-template pTemplate="body" let-rowData>
+                                        <tr >
+                                            <td style="border-top:1px solid rgb(204, 204, 204)">Person in Charge</td>
+                                            <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                                        </tr>
+                                        <tr>
+                                            <td>Heat No</td>
+                                            <td class="font-medium">92339</td>              
+                                        </tr>
+                                        <tr>
+                                            <td>Grade</td>
+                                            <td class="font-medium">SAE1018</td>              
+                                        </tr>
+                                        <tr>
+                                            <td>Start Time</td>
+                                            <td class="font-medium">30/10/2024 06:11</td>              
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 7rem;">Finish Time</td>
+                                            <td class="font-medium" style="width: 10rem;">30/10/2024 09:23</td>              
+                                        </tr>
+                                        <tr>
+                                            <td>Ladle No</td>
+                                            <td class="font-medium">H7</td>              
+                                        </tr>
+                                        <tr>
+                                            <td>Weight (t)</td>
+                                            <td class="font-medium">31.7</td>              
+                                        </tr>
+                                        <tr>
+                                            <td>Oxygen Nm³/min</td>
+                                            <td class="font-medium">300</td>              
+                                        </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div> -->
+                    </div>
+                </div>
+                <div style="width: 18rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                          <!-- <tr style="background-color: #90fc90;"> -->
+                            <tr >
+                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                            </tr>
+                            <tr>
+                                <td>Heat No</td>
+                                <td class="font-medium">92339</td>              
+                            </tr>
+                            <tr>
+                                <td>Grade</td>
+                                <td class="font-medium">SAE1018</td>              
+                            </tr>
+                            <tr>
+                                <td style="width: 7rem;">Start Time</td>
+                                <td class="font-medium">30/10/2024 08:30</td>              
+                            </tr>
+                            <tr>
+                                <td>Finish Time</td>
+                                <td class="font-medium">30/10/2024 08:59</td>              
+                            </tr>
+                            <tr>
+                                <td>Ladle No</td>
+                                <td class="font-medium">04</td>              
+                            </tr>
+                            <tr>
+                                <td>Weight (t)</td>
+                                <td class="font-medium">99.3</td>              
+                            </tr>
+                            <tr>
+                                <td>Oxygen Nm³/min</td>
+                                <td class="font-medium">67.54</td>              
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
             </div>
-            <div> 
+            <!-- <div> 
                 <div [class]="'lf_'+ lfClass"></div>
                 <div class="flex  mt-3">
                     <div class="p-card text-center p-2" style="width: 80%;">
@@ -209,50 +359,62 @@
                     </div>
                     <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
                         class="Button p-button-info mt-1" style="height: 3vh;" (click)="lfDetailsShow()"></button>
-                        <!-- <div *ngIf="lfDetails" class="p-card p-2 DetailsCard">
-                            <div style="width: 17rem;">
-                                <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'137px'"
-                                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                                    <ng-template pTemplate="body" let-rowData>
-                                    <tr >
-                                        <td style="border-top:1px solid rgb(204, 204, 204)">Person in Charge</td>
-                                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
-                                    </tr>
-                                    <tr>
-                                        <td>Heat No</td>
-                                        <td class="font-medium">92339</td>              
-                                    </tr>
-                                    <tr>
-                                        <td>Grade</td>
-                                        <td class="font-medium">SAE1018</td>              
-                                    </tr>
-                                    <tr>
-                                        <td>Start Time</td>
-                                        <td class="font-medium">30/10/2024 06:11</td>              
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 7rem;">Finish Time</td>
-                                        <td class="font-medium" style="width: 10rem;">30/10/2024 09:23</td>              
-                                    </tr>
-                                    <tr>
-                                        <td>Ladle No</td>
-                                        <td class="font-medium">H7</td>              
-                                    </tr>
-                                    <tr>
-                                        <td>Weight (t)</td>
-                                        <td class="font-medium">31.7</td>              
-                                    </tr>
-                                    <tr>
-                                        <td>Oxygen Nm³/min</td>
-                                        <td class="font-medium">300</td>              
-                                    </tr>
-                                    </ng-template>
-                                </p-table>
-                            </div>
-                        </div> -->
+                      
+                </div>
+            </div> -->
+            <div class="flex justify-content-center align-items-center">
+                <div>
+                    <div [class]="'vd_'+ vdClass"></div>
+                    <div class="flex  mt-3">
+                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                            <span class="font-medium"> VD</span>
+                        </div>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                            class="Button p-button-info" style="height: 3vh;" (click)="vdDetailsShow()"></button>
+                    </div>
+                </div>
+                <div style="width: 18rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                          <!-- <tr style="background-color: #90fc90;"> -->
+                            <tr >
+                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                            </tr>
+                            <tr>
+                                <td>Heat No</td>
+                                <td class="font-medium">92339</td>              
+                            </tr>
+                            <tr>
+                                <td>Grade</td>
+                                <td class="font-medium">SAE1018</td>              
+                            </tr>
+                            <tr>
+                                <td style="width: 7rem;">Start Time</td>
+                                <td class="font-medium">30/10/2024 09:00</td>              
+                            </tr>
+                            <tr>
+                                <td>Finish Time</td>
+                                <td class="font-medium">30/10/2024 09:23</td>              
+                            </tr>
+                            <tr>
+                                <td>Ladle No</td>
+                                <td class="font-medium">04</td>              
+                            </tr>
+                            <tr>
+                                <td>Weight (t)</td>
+                                <td class="font-medium">32.5</td>              
+                            </tr>
+                            <tr>
+                                <td>Oxygen Nm³/min</td>
+                                <td class="font-medium">15</td>              
+                            </tr>
+                        </ng-template>
+                    </p-table>
                 </div>
             </div>
-            <div>
+            <!-- <div>
                 <div [class]="'vd_'+ vdClass"></div>
                 <div class="flex  mt-3">
                     <div class="p-card text-center p-2" style="width: 80%;">
@@ -261,8 +423,8 @@
                     <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
                         class="Button p-button-info mt-1" style="height: 3vh;" (click)="vdDetailsShow()"></button>
                 </div>
-            </div>
-            <div style="width: 17rem;">
+            </div> -->
+            <!-- <div style="width: 17rem;">
                 <div class="font-medium text-center mt-2" style="height: 3vh;">
                     <span>MELTING STATION</span>
                 </div>
@@ -299,8 +461,60 @@
                     </tr>
                     </ng-template>
                 </p-table>
+            </div> -->
+            <div class="flex justify-content-center align-items-center">
+                <div>
+                    <div [class]="'ccm_'+ ccmClass"></div>
+                    <div class="flex  mt-3">
+                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                            <span class="font-medium"> CCM</span>
+                        </div>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                            class="Button p-button-info" style="height: 3vh;" (click)="ccmDetailsShow()"></button>
+                    </div>
+                </div>
+                <div style="width: 18rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                          <!-- <tr style="background-color: #90fc90;"> -->
+                            <tr >
+                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                            </tr>
+                            <tr>
+                                <td>Heat No</td>
+                                <td class="font-medium">92339</td>              
+                            </tr>
+                            <tr>
+                                <td>Grade</td>
+                                <td class="font-medium">SAE1018</td>              
+                            </tr>
+                            <tr>
+                                <td style="width: 7rem;">Start Time</td>
+                                <td class="font-medium">30/10/2024 06:11</td>              
+                            </tr>
+                            <tr>
+                                <td>Finish Time</td>
+                                <td class="font-medium">30/10/2024 09:23</td>              
+                            </tr>
+                            <tr>
+                                <td>Ladle No</td>
+                                <td class="font-medium">H7</td>              
+                            </tr>
+                            <tr>
+                                <td>Weight (t)</td>
+                                <td class="font-medium">31.7</td>              
+                            </tr>
+                            <tr>
+                                <td>Oxygen Nm³/min</td>
+                                <td class="font-medium">300</td>              
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
             </div>
-            <div>
+            <!-- <div>
                 <div [class]="'ccm_'+ ccmClass"></div>
                 <div class="flex  mt-3">
                     <div class="p-card text-center p-2" style="width: 80%;">
@@ -309,8 +523,8 @@
                     <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
                         class="Button p-button-info mt-1" style="height: 3vh;" (click)="ccmDetailsShow()"></button>
                 </div>
-            </div>  
-            <div style="width: 17rem;">
+            </div>   -->
+            <!-- <div style="width: 17rem;">
                 <div class="font-medium text-center mt-2" style="height: 3vh;">
                     <span>CONTINOUS CASTING</span>
                 </div>
@@ -347,8 +561,68 @@
                     </tr>
                     </ng-template>
                 </p-table>
-            </div>
+            </div> -->
+            <div class="flex justify-content-center align-items-center">
             <div>
+                <div class="card standCard" [class]="'standBackground_' + standClass">
+                    <div id="container1">
+                        <div class="circle1"></div>
+                    </div>
+                    <div></div>
+                    <div id="container">
+                        <div class="circle1"></div>
+                    </div>
+                </div>
+                <div class="flex  mt-3">
+                    <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                        <span class="font-medium">STAND</span>
+                    </div>
+                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                        class="Button p-button-info" style="height: 3vh;" (click)="standDetailsShow()"></button>
+                </div>
+            </div>
+                <div style="width: 18rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                          <!-- <tr style="background-color: #90fc90;"> -->
+                            <tr >
+                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                            </tr>
+                            <tr>
+                                <td>Heat No</td>
+                                <td class="font-medium">92339</td>              
+                            </tr>
+                            <tr>
+                                <td>Grade</td>
+                                <td class="font-medium">SAE1018</td>              
+                            </tr>
+                            <tr>
+                                <td style="width: 7rem;">Start Time</td>
+                                <td class="font-medium">30/10/2024 06:11</td>              
+                            </tr>
+                            <tr>
+                                <td>Finish Time</td>
+                                <td class="font-medium">30/10/2024 09:23</td>              
+                            </tr>
+                            <tr>
+                                <td>Ladle No</td>
+                                <td class="font-medium">H7</td>              
+                            </tr>
+                            <tr>
+                                <td>Weight (t)</td>
+                                <td class="font-medium">31.7</td>              
+                            </tr>
+                            <tr>
+                                <td>Oxygen Nm³/min</td>
+                                <td class="font-medium">300</td>              
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+            <!-- <div>
                 <div class="card standCard" [class]="'standBackground_' + standClass">
                     <div id="container1">
                         <div class="circle1"  ></div>
@@ -403,8 +677,8 @@
                     </tr>
                     </ng-template>
                 </p-table>
-            </div>  
-            <div style="width: 17rem;">
+            </div>   -->
+            <!-- <div style="width: 17rem;">
                 <div class="font-medium text-center mt-2" style="height: 3vh;">
                     <span>FINISHING AREA</span>
                 </div>
@@ -441,8 +715,53 @@
                     </tr>
                     </ng-template>
                 </p-table>
-            </div>  
+            </div>   -->
         </div>
+        <div  class="col-12 flex justify-content-center align-items-center p-0 mt-2">
+            <div class="p-card flex justify-content-between font-medium p-2" style="background-color: #2e838d;color: white;">
+               <span>C %</span> <span class="ml-3"><span style="color: #ffc65c;">0.14</span>/<span style="color: #3ff83f;">0.15</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>Mn %</span> <span class="ml-3"><span style="color: #ffc65c;">0.73</span>/<span style="color: #3ff83f;">0.74</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>Si %</span> <span class="ml-3"><span style="color: #ffc65c;">0.18</span>/<span style="color: #3ff83f;">0.18</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>B %</span> <span class="ml-3"><span style="color: #ffc65c;">0.11</span>/<span style="color: #3ff83f;">0.12</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>Cr %</span> <span class="ml-3"><span style="color: #ffc65c;">0.00</span>/<span style="color: #3ff83f;">0.00</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>Ti %</span> <span class="ml-3"><span style="color: #ffc65c;">0.21</span>/<span style="color: #3ff83f;">0.24</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>Ni %</span> <span class="ml-3"><span style="color: #ffc65c;">0.57</span>/<span style="color: #3ff83f;">0.57</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>V %</span> <span class="ml-3"><span style="color: #ffc65c;">0.13</span>/<span style="color: #3ff83f;">0.12</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>Мо %</span> <span class="ml-3"><span style="color: #ffc65c;">0.11</span>/<span style="color: #3ff83f;">0.12</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>S %</span> <span class="ml-3"><span style="color: #ffc65c;">0.33</span>/<span style="color: #3ff83f;">0.34</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>P %</span> <span class="ml-3"><span style="color: #ffc65c;">0.43</span>/<span style="color: #3ff83f;">0.43</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>Al %</span> <span class="ml-3"><span style="color: #ffc65c;">0.24</span>/<span style="color: #3ff83f;">0.26</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>Ca %</span> <span class="ml-3"><span style="color: #ffc65c;">0.27</span>/<span style="color: #3ff83f;">0.28</span></span>
+            </div>
+            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
+                <span>W %</span> <span class="ml-3"><span style="color: #ffc65c;">0.44</span>/<span style="color: #3ff83f;">0.47</span></span>
+            </div>
+        </div> 
+       </div>
     </div>
     <div class="col-12 p-0 mt-1 flex">
         <div class="col-3 p-1">
@@ -532,7 +851,6 @@
                     [autoplayInterval]="4000" style="width: 100%;">
                         <ng-template let-anomaly pTemplate="item">
                            <div class="card p-2 anomalyCardBlink" (click)="anomalyScreen()">
-                                <!-- <div class="border-1 surface-border border-round p-1"> -->
                                     <div class="text-center">
                                         <span class="block text-900 font-medium">{{anomaly.name}}</span>
                                     </div>
@@ -542,13 +860,38 @@
                                     <div class="text-900 text-sm font-medium  mt-2">
                                         <span>{{anomaly.data}}</span>
                                     </div>
-                                <!-- </div> -->
                            </div>
                         </ng-template>
                     </p-carousel>
                 </div>
             </div>
         </div>
+        <!-- <div class="col-3  p-1">
+            <div class="card p-0 redBorderBlink" style="height: 100%;">
+                <div class="flex justify-content-center align-items-center"  style="height: 100%;width: 100%;">
+                    <p-carousel 
+                    [value]="anomalyData" 
+                    [numVisible]="1" 
+                    [numScroll]="1" 
+                    [circular]="true"                     
+                    [autoplayInterval]="4000" style="width: 100%;">
+                        <ng-template let-anomaly pTemplate="item">
+                           <div class="card p-2 anomalyCardBlink" (click)="anomalyScreen()">
+                                    <div class="text-center">
+                                        <span class="block text-900 font-medium">{{anomaly.name}}</span>
+                                    </div>
+                                    <div class="text-900 font-medium  mt-2">
+                                        <span>{{anomaly.date}}</span><span class=" ml-2" style="color: red;">{{anomaly.type}}</span>
+                                    </div>
+                                    <div class="text-900 text-sm font-medium  mt-2">
+                                        <span>{{anomaly.data}}</span>
+                                    </div>
+                           </div>
+                        </ng-template>
+                    </p-carousel>
+                </div>
+            </div>
+        </div> -->
     </div>
     <div class="col-12 p-0 flex">
         <div class="col-3 p-1">
@@ -633,7 +976,7 @@
                 [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                     <ng-template pTemplate="body" let-rowData>
                     <tr >
-                        <td style="border-top:1px solid rgb(204, 204, 204)">Person in Charge</td>
+                        <td style="border-top:1px solid rgb(204, 204, 204);">Person in Charge</td>
                         <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                     </tr>
                     <tr>
@@ -703,7 +1046,7 @@
                     </tr>
                     <tr>
                         <td>Start Time</td>
-                        <td class="font-medium">30/10/2024 7:15</td>              
+                        <td class="font-medium">30/10/2024 07:15</td>              
                     </tr>
                     <tr>
                         <td>Finish Time</td>
@@ -752,11 +1095,11 @@
                     </tr>
                     <tr>
                         <td>Start Time</td>
-                        <td class="font-medium">30/10/2024 8:30</td>              
+                        <td class="font-medium">30/10/2024 08:30</td>              
                     </tr>
                     <tr>
                         <td>Finish Time</td>
-                        <td class="font-medium">30/10/2024 8:59</td>              
+                        <td class="font-medium">30/10/2024 08:59</td>              
                     </tr>
                     <tr>
                         <td>Ladle No</td>
