@@ -360,10 +360,10 @@
   border-bottom: 19px solid transparent;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
-  -moz-transform: rotate(320deg);
-  -webkit-transform: rotate(320deg);
-  -o-transform: rotate(320deg);
-  -ms-transform: rotate(320deg);
+  // -moz-transform: rotate(320deg);
+  // -webkit-transform: rotate(320deg);
+  // -o-transform: rotate(320deg);
+  // -ms-transform: rotate(320deg);
   animation: spin1 0.5s infinite linear;
   -webkit-animation: spin1 0.5s infinite linear;
 }
