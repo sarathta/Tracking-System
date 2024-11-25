@@ -753,7 +753,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
         this.lfClass = 'cross';
         this.vdClass = 'yellow';
         this.ccmClass = 'green';
-        this.standClass = 'cross';
+        this.standClass = 'empty';
 
       }
       else if(i>5 && i<=10){
@@ -769,7 +769,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
         this.lfClass = 'yellow'
         this.vdClass = 'orange'
         this.ccmClass = 'blue'
-        this.standClass = 'yellow';
+        this.standClass = 'green';
 
       }
       else if(i>15 && i<=20){
@@ -785,7 +785,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
         this.lfClass = 'orange'
         this.vdClass = 'cross'
         this.ccmClass = 'empty'
-        this.standClass = 'orange';
+        this.standClass = 'green';
 
       }
       else if(i>25 && i<=30){
@@ -793,7 +793,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
         this.lfClass = 'blue'
         this.vdClass = 'empty'
         this.ccmClass = 'yellow'
-        this.standClass = 'blue';
+        this.standClass = 'green';
 
       }
       else{
@@ -825,6 +825,10 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   
   anomalyScreen(){
     this.router.navigate(['/TrackingSystem/overview/anomaly']);
+  }
+
+  dashboardScreen(){
+    this.router.navigate(['/TrackingSystem/overview/dashboard']);
   }
 
   addLogItem(){
