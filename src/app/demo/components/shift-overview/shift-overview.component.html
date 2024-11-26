@@ -32,9 +32,11 @@
         </div>
     
     </div>
-    <div class="p-card font-medium mt-2" style="border-top: 1px solid rgb(213, 210, 210);">
-        <marquee direction="left" behavior="scroll" style="color: red;">
-            Our target for today is to produce 500 tons of steel by the end of the shift
+    <div class="p-card p-0 font-medium mt-2" style="border-top: 1px solid rgb(213, 210, 210);">
+        <marquee direction="left" behavior="scroll" style="height: 2vh;">
+            &bull;<span style="color: rgb(237, 0, 0);">Batch #202411: 2 bars rejected due to surface cracks. Length deviation: +2.5 mm above tolerance.</span> 
+            <span style="color: rgb(255, 121, 4);margin-left: 20vh;"> <span style="color: black;">&bull;</span>WARN: Slag tap temperature dropped to 1,200°C, below threshold. Alert issued</span> 
+            <span style="color: rgb(237, 0, 0);margin-left: 20vh;"><span style="color: black;">&bull;</span>Stand1 to Stand6 Roll Dia needs to be changed on the next shift</span> 
         </marquee>
     </div>
     <div  class="mt-1">
@@ -179,7 +181,7 @@
             </div>
         </div> 
     </div>
-    <div class="p-card flex justify-content-center align-items-center mt-1 p-1" style="height: 24vh;background-color: #f3f8ff;">
+    <div class="p-card flex justify-content-center align-items-center mt-1 p-1" style="background-color: #f3f8ff;">
        <div class="col-12 p-0">
         <div class="flex justify-content-between" style="width: 100%;">
             <div class="flex justify-content-center align-items-center">
@@ -320,6 +322,10 @@
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
                             <tr>
+                                <td>Deviations</td>
+                                <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                            </tr>
+                            <tr>
                                 <td>Heat No</td>
                                 <td class="font-medium">92339</td>              
                             </tr>
@@ -381,6 +387,10 @@
                             <tr >
                                 <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                            </tr>
+                            <tr>
+                                <td>Deviations</td>
+                                <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
                             </tr>
                             <tr>
                                 <td>Heat No</td>
@@ -483,6 +493,10 @@
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
                             <tr>
+                                <td>Deviations</td>
+                                <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                            </tr>
+                            <tr>
                                 <td>Heat No</td>
                                 <td class="font-medium">92339</td>              
                             </tr>
@@ -514,73 +528,17 @@
                     </p-table>
                 </div>
             </div>
-            <!-- <div>
-                <div [class]="'ccm_'+ ccmClass"></div>
-                <div class="flex  mt-3">
-                    <div class="p-card text-center p-2" style="width: 80%;">
-                        <span class="font-medium"> CCM</span>
-                    </div>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
-                        class="Button p-button-info mt-1" style="height: 3vh;" (click)="ccmDetailsShow()"></button>
-                </div>
-            </div>   -->
-            <!-- <div style="width: 17rem;">
-                <div class="font-medium text-center mt-2" style="height: 3vh;">
-                    <span>CONTINOUS CASTING</span>
-                </div>
-                <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'137px'"
-                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                    <ng-template pTemplate="body" let-rowData>
-                      <tr >
-                        <td style="border-top:1px solid rgb(204, 204, 204)">Heat No</td>
-                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">92339</td>              
-                    </tr>
-                    <tr>
-                        <td>Grade</td>
-                        <td class="font-medium">SAE1018</td>              
-                    </tr>
-                    <tr>
-                        <td>Start Time</td>
-                        <td class="font-medium">30/10/2024 10:25</td>              
-                    </tr>
-                    <tr>
-                        <td>Finish Time</td>
-                        <td class="font-medium">30/10/2024 14:53</td>              
-                    </tr>
-                    <tr>
-                        <td>Ladle No</td>
-                        <td class="font-medium">H6</td>              
-                    </tr>
-                    <tr>
-                        <td>Weight (t)</td>
-                        <td class="font-medium">6.5</td>              
-                    </tr> 
-                    <tr>
-                        <td>Strands</td>
-                        <td class="font-medium">3</td>              
-                    </tr>
-                    </ng-template>
-                </p-table>
-            </div> -->
             <div class="flex justify-content-center align-items-center">
-            <div>
-                <div class="card standCard" [class]="'standBackground_' + standClass">
-                    <div id="container1">
-                        <div class="circle1"></div>
-                    </div>
-                    <div></div>
-                    <div id="container">
-                        <div class="circle1"></div>
+                <div>
+                    <div [class]="'rf_'+ vdClass"></div>
+                    <div class="flex  mt-3">
+                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                            <span class="font-medium">RF</span>
+                        </div>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                            class="Button p-button-info" style="height: 3vh;" (click)="standDetailsShow()"></button>
                     </div>
                 </div>
-                <div class="flex  mt-3">
-                    <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
-                        <span class="font-medium">STAND</span>
-                    </div>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
-                        class="Button p-button-info" style="height: 3vh;" (click)="standDetailsShow()"></button>
-                </div>
-            </div>
                 <div style="width: 18rem;">
                     <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
                     [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
@@ -591,6 +549,10 @@
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
                             <tr>
+                                <td>Deviations</td>
+                                <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                            </tr>
+                            <tr>
                                 <td>Heat No</td>
                                 <td class="font-medium">92339</td>              
                             </tr>
@@ -622,102 +584,8 @@
                     </p-table>
                 </div>
             </div>
-            <!-- <div>
-                <div class="card standCard" [class]="'standBackground_' + standClass">
-                    <div id="container1">
-                        <div class="circle1"  ></div>
-                    </div> 
-                    <div></div>             
-                    <div id="container">
-                        <div class="circle1"></div>
-                    </div>
-                </div>
-                <div class="flex  mt-3">
-                    <div class="p-card text-center p-2" style="width: 80%;">
-                        <span class="font-medium">STAND</span>
-                    </div>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
-                        class="Button p-button-info mt-1" style="height: 3vh;" (click)="standDetailsShow()"></button>
-                </div>
-            </div>
-            <div style="width: 17rem;">
-                <div class="font-medium text-center mt-2" style="height: 3vh;">
-                    <span>ROLLING MILL</span>
-                </div>
-                <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'137px'"
-                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                    <ng-template pTemplate="body" let-rowData>
-                      <tr >
-                        <td style="border-top:1px solid rgb(204, 204, 204)">PO</td>
-                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">193056</td>              
-                    </tr>
-                    <tr>
-                        <td>Grade</td>
-                        <td class="font-medium">SAE1018</td>              
-                    </tr>
-                    <tr>
-                        <td>Temp (°C)</td>
-                        <td class="font-medium">1250</td>              
-                    </tr>
-                    <tr>
-                        <td>Efficiency (%)</td>
-                        <td class="font-medium">70</td>              
-                    </tr>
-                    <tr>
-                        <td>Cons. (kWh/t)</td>
-                        <td class="font-medium">380</td>              
-                    </tr>
-                    <tr>
-                        <td>Next maintenance in (hr)</td>
-                        <td class="font-medium">15</td>              
-                    </tr>
-                    <tr>
-                        <td>Speed (m/s)</td>
-                        <td class="font-medium">8.5</td>              
-                    </tr>
-                    </ng-template>
-                </p-table>
-            </div>   -->
-            <!-- <div style="width: 17rem;">
-                <div class="font-medium text-center mt-2" style="height: 3vh;">
-                    <span>FINISHING AREA</span>
-                </div>
-                <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'137px'"
-                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                    <ng-template pTemplate="body" let-rowData>
-                      <tr >
-                        <td style="border-top:1px solid rgb(204, 204, 204)">Heat No</td>
-                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">92339</td>              
-                    </tr>
-                    <tr>
-                        <td>Grade</td>
-                        <td class="font-medium">SAE1018</td>              
-                    </tr>
-                    <tr>
-                        <td>Start Time</td>
-                        <td class="font-medium">30/10/2024 17:25</td>              
-                    </tr>
-                    <tr>
-                        <td style="width: 7rem;">Finish Time</td>
-                        <td class="font-medium" style="width: 10rem;">30/10/2024 19:25</td>              
-                    </tr>
-                    <tr>
-                        <td>Packed (80%)</td>
-                        <td class="font-medium">80</td>              
-                    </tr>
-                    <tr>
-                        <td>Downtime (hr)</td>
-                        <td class="font-medium">1.5</td>              
-                    </tr>
-                    <tr>
-                        <td>Throughput (bars/hr)</td>
-                        <td class="font-medium">350</td>              
-                    </tr>
-                    </ng-template>
-                </p-table>
-            </div>   -->
         </div>
-        <div  class="col-12 flex justify-content-center align-items-center p-0 mt-2">
+        <!-- <div  class="col-12 flex justify-content-center align-items-center p-0 mt-2">
             <div class="p-card flex justify-content-between font-medium p-2" style="background-color: #2e838d;color: white;">
                <span>C %</span> <span class="ml-3"><span style="color: #ffc65c;">0.14</span>/<span style="color: #3ff83f;">0.15</span></span>
             </div>
@@ -760,204 +628,432 @@
             <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
                 <span>W %</span> <span class="ml-3"><span style="color: #ffc65c;">0.44</span>/<span style="color: #3ff83f;">0.47</span></span>
             </div>
-        </div> 
+        </div>  -->
        </div>
     </div>
     <div class="col-12 p-0 mt-1 flex">
-        <div class="col-3 p-1">
-            <div class="card p-0">
-                <div class="text-center mt-2">
-                    <span class="font-medium">PRODUCTION</span>
-                </div>
-                <p-carousel [value]="productionGraphs" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
-                    <ng-template let-product pTemplate="item">
-                        <div class="border-1 surface-border border-round p-1">
-                            <span class="block text-900 font-medium">{{product.name}}</span>
-                            <div class="text-900 font-medium text-4xl">
-                                <p-chart type="line" [data]="product.data" [options]="product.options" [plugins]="plugin"
-                                    height="130px" (click)="productionScreen()" />
+        <div class="col-10 p-0">
+           <div class="col-12 p-0 flex">
+                <div class="col-9 p-1">
+                    <div class="p-card flex justify-content-center align-items-center mt-1 p-1" style="background-color: #f3f8ff; height: 100%;" >
+                        <div class="col-12 flex justify-content-between p-0">
+                            <div class="flex justify-content-center align-items-center">
+                                <div>
+                                    <div class="card standCard ml-2" [class]="'standBackground_' + standClass">
+                                        <div id="container1">
+                                            <div class="circle1"></div>
+                                        </div>
+                                        <div></div>
+                                        <div id="container">
+                                            <div class="circle1"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex  mt-3">
+                                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                                            <span class="font-medium">STAND</span>
+                                        </div>
+                                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                                            class="Button p-button-info" style="height: 3vh;" (click)="standDetailsShow()"></button>
+                                    </div>
+                                </div>
+                                <div style="width: 18rem;">
+                                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                                        <ng-template pTemplate="body" let-rowData>
+                                          <!-- <tr style="background-color: #90fc90;"> -->
+                                            <tr >
+                                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Heat No</td>
+                                                <td class="font-medium">92339</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Grade</td>
+                                                <td class="font-medium">SAE1018</td>              
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 7rem;">Start Time</td>
+                                                <td class="font-medium">30/10/2024 06:11</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Finish Time</td>
+                                                <td class="font-medium">30/10/2024 09:23</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Ladle No</td>
+                                                <td class="font-medium">H7</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Weight (t)</td>
+                                                <td class="font-medium">31.7</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Oxygen Nm³/min</td>
+                                                <td class="font-medium">300</td>              
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                            <div class="flex justify-content-center align-items-center">
+                                <div>
+                                    <div [class]="'il_'+ vdClass"></div>
+                                    <div class="flex  mt-3">
+                                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                                            <span class="font-medium"> IL-1</span>
+                                        </div>
+                                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                                            class="Button p-button-info" style="height: 3vh;" (click)="lfDetailsShow()"></button>
+                                    </div>
+                                </div>
+                                <div style="width: 18rem;">
+                                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                                        <ng-template pTemplate="body" let-rowData>
+                                            <tr >
+                                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Heat No</td>
+                                                <td class="font-medium">92339</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Grade</td>
+                                                <td class="font-medium">SAE1018</td>              
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 7rem;">Start Time</td>
+                                                <td class="font-medium">30/10/2024 06:11</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Finish Time</td>
+                                                <td class="font-medium">30/10/2024 09:23</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Ladle No</td>
+                                                <td class="font-medium">H7</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Weight (t)</td>
+                                                <td class="font-medium">31.7</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Oxygen Nm³/min</td>
+                                                <td class="font-medium">300</td>              
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                            <div class="flex justify-content-center align-items-center">
+                                <div>
+                                    <div [class]="'il_'+ lfClass"></div>
+                                    <div class="flex  mt-3">
+                                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                                            <span class="font-medium"> IL-2</span>
+                                        </div>
+                                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                                            class="Button p-button-info" style="height: 3vh;" (click)="lfDetailsShow()"></button>
+                                    </div>
+                                </div>
+                                <div style="width: 18rem;">
+                                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                                        <ng-template pTemplate="body" let-rowData>
+                                            <tr >
+                                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Heat No</td>
+                                                <td class="font-medium">92339</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Grade</td>
+                                                <td class="font-medium">SAE1018</td>              
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 7rem;">Start Time</td>
+                                                <td class="font-medium">30/10/2024 06:11</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Finish Time</td>
+                                                <td class="font-medium">30/10/2024 09:23</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Ladle No</td>
+                                                <td class="font-medium">H7</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Weight (t)</td>
+                                                <td class="font-medium">31.7</td>              
+                                            </tr>
+                                            <tr>
+                                                <td>Oxygen Nm³/min</td>
+                                                <td class="font-medium">300</td>              
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
                             </div>
                         </div>
-                    </ng-template>
-                </p-carousel>
-            </div>
-        </div>
-        <div class="col-3  p-1">
-            <div class="card p-0" style="height: 100%;">
-                <div class="text-center mt-2">
-                    <span class="font-medium">ASSET MONITORING</span>
-                </div>
-                <div class="flex justify-content-center align-items-center"  style="height: 100%;">
-                    <p-carousel 
-                    #myCarousel
-                    [value]="AssetsData" 
-                    [numVisible]="1" 
-                    [numScroll]="1" 
-                    [circular]="true" 
-                    
-                    [autoplayInterval]="4000" style="width: 100%;">
-                        <ng-template let-product pTemplate="item">
-                            <div  [class]="product.borderclass">
-                                <div class="text-center">
-                                    <span class="block text-900 font-medium">{{product.name}}</span>
-                                </div>
-                                <div class="text-900 flex font-medium ml-3 mt-3">
-                                    <div class="assetCircle blink_me mr-1" [ngStyle]="{ 'background-color': product.circleColor }">
-                                    </div>
-                                    <span>{{product.status}}</span>
-                                </div>
-                                <div class="text-900 text-sm font-medium ml-3 mt-3 mb-2">
-                                    <span>{{product.data}}</span>
-                                </div>
-                            </div>
-                        </ng-template>
-                    </p-carousel>
-                </div>
-            </div>
-        </div>
-        <div class="col-3  p-1">
-            <div class="card p-0"  style="height: 100%;">
-                <div class="text-center mt-2">
-                    <span class="font-medium">COST MODULE</span>
-                </div>
-                <p-carousel 
-                [value]="costGraphs" 
-                [numVisible]="1" 
-                [numScroll]="1" 
-                [circular]="true" 
-                [autoplayInterval]="3000">
-                    <ng-template let-cost pTemplate="item">
-                        <div class="border-1 surface-border border-round p-1">
-                            <span class="block text-900 font-medium">{{cost.name}}</span>
-                            <div class="text-900 font-medium text-4xl">
-                                <p-chart type="line" [data]="cost.data" [options]="cost.options" [plugins]="plugin" height="130px"/>
-                            </div>
-                        </div>
-                    </ng-template>
-            </p-carousel>
-            </div>
-        </div>
-        <div class="col-3  p-1">
-            <div class="card p-0 redBorderBlink" style="height: 100%;">
-                <div class="text-center mt-2">
-                    <span class="font-medium">ANOMALY</span>
-                </div>
-                <div class="flex justify-content-center align-items-center"  style="height: 100%;">
-                    <p-carousel 
-                    [value]="anomalyData" 
-                    [numVisible]="1" 
-                    [numScroll]="1" 
-                    [circular]="true"                     
-                    [autoplayInterval]="4000" style="width: 100%;">
-                        <ng-template let-anomaly pTemplate="item">
-                           <div class="card p-2 anomalyCardBlink" (click)="anomalyScreen()">
-                                    <div class="text-center">
-                                        <span class="block text-900 font-medium">{{anomaly.name}}</span>
-                                    </div>
-                                    <div class="text-900 font-medium  mt-2">
-                                        <span>{{anomaly.date}}</span><span class=" ml-2" style="color: red;">{{anomaly.type}}</span>
-                                    </div>
-                                    <div class="text-900 text-sm font-medium  mt-2">
-                                        <span>{{anomaly.data}}</span>
-                                    </div>
-                           </div>
-                        </ng-template>
-                    </p-carousel>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="col-3  p-1">
-            <div class="card p-0 redBorderBlink" style="height: 100%;">
-                <div class="flex justify-content-center align-items-center"  style="height: 100%;width: 100%;">
-                    <p-carousel 
-                    [value]="anomalyData" 
-                    [numVisible]="1" 
-                    [numScroll]="1" 
-                    [circular]="true"                     
-                    [autoplayInterval]="4000" style="width: 100%;">
-                        <ng-template let-anomaly pTemplate="item">
-                           <div class="card p-2 anomalyCardBlink" (click)="anomalyScreen()">
-                                    <div class="text-center">
-                                        <span class="block text-900 font-medium">{{anomaly.name}}</span>
-                                    </div>
-                                    <div class="text-900 font-medium  mt-2">
-                                        <span>{{anomaly.date}}</span><span class=" ml-2" style="color: red;">{{anomaly.type}}</span>
-                                    </div>
-                                    <div class="text-900 text-sm font-medium  mt-2">
-                                        <span>{{anomaly.data}}</span>
-                                    </div>
-                           </div>
-                        </ng-template>
-                    </p-carousel>
-                </div>
-            </div>
-        </div> -->
-    </div>
-    <div class="col-12 p-0 flex">
-        <div class="col-3 p-1">
-            <div class="card p-2" style="height: 100%;">
-                <div class="text-center">
-                    <span class="font-medium">INVENTORY</span>
-                </div>
-                <div class="border-1 surface-border border-round p-1">
-                    <div class="text-900 font-medium text-4xl">
-                        <p-chart type="line" [data]="inventoryChartData" [options]="inventoryOptions" [plugins]="plugin" height="160px" (click)="productionScreen()"/>
                     </div>
-                </div>             
-            </div>
-        </div>
-        <div class="col-3  p-1">
-            <div class="card p-0"  style="height: 100%;">
-                <div class="text-center mt-2">
-                    <span class="font-medium">PERFORMANCE</span>
                 </div>
-                <!-- <div class="card"> -->
-                    <p-carousel 
-                        [value]="performanceGraphs" 
-                        [numVisible]="1" 
-                        [numScroll]="1" 
-                        [circular]="true" 
-                        [autoplayInterval]="3000">
+                <div class="col-3  p-1">
+                    <div class="card mt-1 p-1" style="padding-bottom: 2px;">
+                        <div class="text-center">
+                            <span class="font-medium">PERFORMANCE</span>
+                        </div>
+                        <div>
+                            <p-table [value]="performanceTableData" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'16vh'"
+                                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                                    <ng-template pTemplate="header">
+                                        <tr >
+                                            <th >Stand</th>
+                                            <th >Roll Dia (mm)</th>
+                                            <th >Last Change</th>
+                                            <th >Rolled (t)</th> 
+                                            <th >Next change</th> 
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-rowData>
+                                    <tr [ngStyle]="{'color': rowData.color}">
+                                        <td>{{rowData.stand}} </td>
+                                        <td> {{rowData.rolldia}}</td>
+                                        <td class="text-sm"> {{rowData.lastchange}} </td>   
+                                        <td> {{rowData.tonsRolled}} </td>             
+                                        <td class="text-sm"> {{rowData.nextchange}} </td>             
+                                    </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="emptymessage">
+                                        <tr>
+                                            <td colspan="4">No Data found.</td>
+                                        </tr>
+                                    </ng-template>
+                            </p-table>
+                        </div>
+                        <!-- <p-carousel [value]="costGraphs" [showNavigators]="false"  [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
+                            <ng-template let-cost pTemplate="item">
+                                <div class="border-1 surface-border border-round p-1">
+                                    <span class="block text-900 font-medium">{{cost.name}}</span>
+                                    <div class="text-900 font-medium">
+                                        <p-chart type="line" [data]="cost.data" [options]="cost.options" [plugins]="plugin"
+                                            height="11vh"  width="100%"/>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-carousel> -->
+                    </div>
+                </div>
+           </div>
+           <div class="col-12 mt-2 p-0 flex">
+                <div class="col-3 p-1">
+                    <div class="card p-1">
+                        <div class="text-center mt-2">
+                            <span class="font-medium">PRODUCTION</span>
+                        </div>
+                        <p-carousel [value]="productionGraphs"  [showNavigators]="false" [numVisible]="1" [numScroll]="1" [circular]="true"
+                            [autoplayInterval]="3000">
                             <ng-template let-product pTemplate="item">
                                 <div class="border-1 surface-border border-round p-1">
                                     <span class="block text-900 font-medium">{{product.name}}</span>
                                     <div class="text-900 font-medium text-4xl">
-                                        <p-chart type="line" [data]="product.data" [options]="product.options" [plugins]="plugin" height="130px" (click)="productionScreen()"/>
+                                        <p-chart type="line" [data]="product.data" [options]="product.options" [plugins]="plugin"
+                                            height="20vh" (click)="productionScreen()" />
                                     </div>
                                 </div>
                             </ng-template>
-                    </p-carousel>
-                <!-- </div> -->
-            </div>
-        </div>
-        <div class="col-3  p-1">
-            <div class="card p-0"  style="height: 100%;background-color: #f3ffff;border: 1px solid #b6dcff;">
-                <div class="text-center mt-2">
-                    <span class="font-medium">OPERATOR LOGS</span>
+                        </p-carousel>
+                    </div>
                 </div>
-                <div  class="mt-1 p-4" style="height: 12vh;">
-                    <div class="p-card flex justify-content-between p-2 mt-1 font-medium" *ngFor="let item of operatorLogs" style="border: 1px solid rgb(213, 210, 210);">
-                        <span>{{item.data}}</span>
-                        <div>
-                            <i class="pi pi-check mr-2" style="color: green;"></i>
-                            <i class="pi pi-times" style="color: red;"></i>
+                <div class="col-3 p-1">
+                    <div class="card p-2" style="height: 100%;">
+                        <div class="text-center">
+                            <span class="font-medium">INVENTORY</span>
+                        </div>
+                        <div class="border-1 surface-border border-round p-1">
+                            <div class="flex  justify-content-center align-items-center">
+                                <div class="flex justify-content-center align-items-center">
+                                    <div style="border: 1px solid rgb(255, 159, 64);background-color: rgba(255, 159, 64, 0.2);height: 5px;width: 15px;"></div>
+                                    <span class="ml-1 text-sm">Alloys</span>
+                                </div>
+                                <div class="flex justify-content-center align-items-center ml-3">
+                                    <div style="border: 1px solid rgb(54, 162, 235);background-color: rgba(54, 162, 235, 0.2);height: 5px;width: 15px;"></div>
+                                    <span class="ml-1 text-sm">Finished Goods</span>
+                                </div>
+                                <div class="flex justify-content-center align-items-center ml-3">
+                                    <div style="border: 1px solid rgb(153, 102, 255);background-color: rgba(153, 102, 255, 0.2);height: 5px;width: 15px;"></div>
+                                    <span class="ml-1 text-sm">Flux</span>
+                                </div>
+                            </div>
+                            <div class="text-900 font-medium text-4xl">
+                                <p-chart type="line" [data]="inventoryChartData" [options]="inventoryOptions" [plugins]="plugin" height="20vh" (click)="productionScreen()"/>
+                            </div>
+                        </div>             
+                    </div>
+                </div>
+                <div class="col-3  p-1">
+                    <div class="card p-1"  style="height: 100%;">
+                        <div class="text-center mt-2">
+                            <span class="font-medium">PERFORMANCE</span>
+                        </div>
+                        <div class="border-1 surface-border border-round p-1">
+                            <div class="text-900 font-medium text-4xl">
+                                <p-chart type="line" [data]="kpiData" [options]="kpiOptions" [plugins]="plugin" height="22vh" (click)="productionScreen()"/>
+                            </div>
+                        </div>
+                        <!-- <div class="card"> -->
+                            <!-- <p-carousel 
+                                [value]="performanceGraphs" 
+                                [numVisible]="1" 
+                                [numScroll]="1" 
+                                [circular]="true" 
+                                [showNavigators]="false" 
+                                [autoplayInterval]="3000">
+                                    <ng-template let-product pTemplate="item">
+                                        <div class="border-1 surface-border border-round p-1">
+                                            <span class="block text-900 font-medium">{{product.name}}</span>
+                                            <div class="text-900 font-medium text-4xl" *ngIf="!product.isTable">
+                                                <p-chart type="line" [data]="product.data" [options]="product.options" [plugins]="plugin" height="21vh" (click)="productionScreen()"/>
+                                            </div>
+                                            <div *ngIf="product.isTable">
+                                                <p-table [value]="product.data" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'21vh'"
+                                                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                                                        <ng-template pTemplate="header">
+                                                            <tr >
+                                                                <th >Stand</th>
+                                                                <th >Roll Dia (mm)</th>
+                                                                <th >Last Change</th>
+                                                                <th >Rolled (t)</th> 
+                                                            </tr>
+                                                        </ng-template>
+                                                        <ng-template pTemplate="body" let-rowData>
+                                                        <tr>
+                                                            <td>{{rowData.stand}} </td>
+                                                            <td> {{rowData.rolldia}}</td>
+                                                            <td> {{rowData.lastchange}} </td>   
+                                                            <td> {{rowData.tonsRolled}} </td>             
+                                                        </tr>
+                                                        </ng-template>
+                                                        <ng-template pTemplate="emptymessage">
+                                                            <tr>
+                                                                <td colspan="4">No Data found.</td>
+                                                            </tr>
+                                                        </ng-template>
+                                                </p-table>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                            </p-carousel> -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="col-3  p-1">
+                    <div class="card p-0"  style="height: 100%;background-color: #f3ffff;border: 1px solid #b6dcff;">
+                        <div class="text-center mt-2">
+                            <span class="font-medium">OPERATOR LOGS</span>
+                        </div>
+                        <div  class="mt-1 p-4" style="height: 18vh;">
+                            <div class="p-card flex justify-content-between p-2 mt-1 font-medium" *ngFor="let item of operatorLogs" style="border: 1px solid rgb(213, 210, 210);">
+                                <span>{{item.data}}</span>
+                                <div class="flex justify-content-center align-items-center">
+                                    <i class="pi pi-check mr-2" style="color: green;"></i>
+                                    <i class="pi pi-times" style="color: red;" (click)="removeOperatorLog(item)"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-content-center">
+                            <input type="text" pInputText placeholder="Enter here"   style="border-top-right-radius: 0%;border-bottom-right-radius: 0%; height: 32px;width: 80%;" [(ngModel)]="logItem" />
+                            <button class="p-button p-button-success" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%; " (click)="addLogItem()" >+</button>        
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-content-center">
-                    <input type="text" pInputText placeholder="Enter here"   style="border-top-right-radius: 0%;border-bottom-right-radius: 0%; height: 32px;width: 80%;" [(ngModel)]="logItem" />
-                    <button class="p-button p-button-success" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%; " (click)="addLogItem()" >+</button>        
+           </div>
+        </div>
+        <div class="col-2  p-0">
+            <div class="col-12 p-0">
+                <div class="card p-0 mt-1 redBorderBlink" style="height: 100%;">
+                    <!-- <div class="text-center mt-2">
+                        <span class="font-medium">ANOMALY</span>
+                    </div> -->
+                    <div class="flex justify-content-center align-items-center">
+                        <p-carousel 
+                        #anomalyCarousel
+                        [value]="anomalyData" 
+                        [numVisible]="1" 
+                        [numScroll]="1" 
+                        [circular]="true"     
+                        [showNavigators]="false"                
+                        [autoplayInterval]="4000" style="width: 100%;" (onPage)="pageChange($event)">
+                            <ng-template let-anomaly pTemplate="item">
+                               <div class="card p-1 anomalyCardBlink" style="height: 9vh;" (click)="anomalyScreen()">
+                                        <!-- <div class="text-center">
+                                            <span class="block text-900 font-medium">{{anomaly.name}}</span>
+                                        </div> -->
+                                        <div class="text-900 text-sm font-medium  mt-2">
+                                            <span>{{anomaly.data}}</span>
+                                        </div>
+                               </div>
+                            </ng-template>
+                        </p-carousel>
+                    </div>
+                    <div class="p-2">
+                        <div class="p-0 flex">
+                            <span class="mr-1 font-medium">Anomaly at {{anomalyHeading?.name}}</span><span class="mr-1">-</span>
+                            <span class="text-sm">{{anomalyHeading?.date}}</span>
+                        </div>
+                        <div class="p-0">
+                            <span class=" ml-2 font-medium" style="color: red;">{{anomalyHeading?.type}}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-3  p-1">
-            <div class="card p-0" style="height: 100%; background-color: #dbdbdb;border: 1px solid #bdbcbc;">
-                <div class="text-center mt-2">
-                    <span class="font-medium">VIDEO FEEDS</span>
+            <div class="col-12 mt-2 p-0">
+                <div class="card p-0">
+                    <div class="text-center mt-2">
+                        <span class="font-medium">ASSET MONITORING</span>
+                    </div>
+                    <div class="flex justify-content-center align-items-center">
+                        <p-carousel 
+                        [value]="AssetsData" 
+                        [numVisible]="1" 
+                        [numScroll]="1" 
+                        [circular]="true" 
+                        [showNavigators]="false"
+                        [autoplayInterval]="4000" style="width: 100%;" (onPage)="assetPageChange($event)">
+                            <ng-template let-product pTemplate="item">
+                                <div  [class]="product.borderclass">
+                                
+                                        <div class="flex font-medium ml-3 mt-3">
+                                            <div class="assetCircle blink_me mr-1" [ngStyle]="{ 'background-color': product.circleColor }">
+                                            </div>
+                                            <span>{{product.status}}</span>
+                                        </div>
+                                        <div class="font-medium text-center">
+                                            <span>{{product.name}}</span>
+                                        </div>
+                             
+                                    <div class="text-900 text-sm font-medium ml-3 mt-3 mb-2">
+                                        <span>{{product.data}}</span>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-carousel>
+                    </div>
                 </div>
-                <div class="flex justify-content-center align-items-center" style="height: 85%;">
-                    <div>
-                        <i class="pi pi-video" style="color: white;font-size: 2.5rem"></i>
+            </div>
+            <div class="col-12 mt-2 p-0">
+                <div class="card p-1" style="background-color: #dbdbdb;border: 1px solid #bdbcbc;">
+                    <div class="text-center mt-2">
+                        <span class="font-medium">VIDEO FEEDS</span>
+                    </div>
+                    <div class="flex justify-content-center align-items-center" style="height: 11vh">
+                        <div>
+                            <i class="pi pi-video" style="color: white;font-size: 2.5rem"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1014,6 +1110,76 @@
                     </ng-template>
                 </p-table>
             </div>
+            <div class="mt-2">
+                <p-table [value]="[{}]" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+                    [tableStyle]="{'min-width': '5rem'}"  selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="67vh">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th></th>
+                            <th>C(%)</th>
+                            <th>Mn(%)</th>
+                            <th>Si(%)</th>
+                            <th>B(%)</th>
+                            <th>Cr(%)</th>
+                            <th>Ti(%)</th>
+                            <th>Ni(%)</th>
+                            <th>V(%)</th>
+                            <th>Mo(%)</th>
+                            <th>S(%)</th>
+                            <th>P(%)</th>
+                            <th>Al(%)</th>
+                            <th>Ca(%)</th>
+                            <th>w(%)</th>
+                           
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr [ngStyle]="{ 'color': 'green' }">
+                          <td> Actual </td>
+                          <td> 0.160 </td>
+                          <td> 0.752 </td>  
+                          <td> 0.190 </td>  
+                          <td> 0.010</td>
+                          <td> 0.032</td>
+                          <td> 0.005</td>
+                          <td> 0.015</td>
+                          <td> 0.005</td>
+                          <td> 0.006</td>
+                          <td> 0.020</td>
+                          <td> 0.015</td>
+                          <td> 0.006</td>
+                          <td> 0.008</td>
+                          <td> 0.004</td>
+                         
+                      </tr>
+                      <tr [ngStyle]="{ 'color': 'RED' }">
+                        <td> Target </td>
+                        <td> 0.155 </td>
+                        <td> 0.748 </td>  
+                        <td> 0.186 </td>  
+                        <td> 0.000</td>
+                        <td> 0.027</td>
+                        <td> 0.001</td>
+                        <td> 0.012</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                        <td> 0.017</td>
+                        <td> 0.013</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                       
+                     </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="12">No Data found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>    
+             
+            </div>
+             
         </ng-template>
     </p-dialog>
 
@@ -1066,6 +1232,75 @@
                     </tr>
                     </ng-template>
                 </p-table>
+            </div>
+            <div class="mt-2">
+                <p-table [value]="[{}]" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+                    [tableStyle]="{'min-width': '5rem'}"  selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="67vh">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th></th>
+                            <th>C(%)</th>
+                            <th>Mn(%)</th>
+                            <th>Si(%)</th>
+                            <th>B(%)</th>
+                            <th>Cr(%)</th>
+                            <th>Ti(%)</th>
+                            <th>Ni(%)</th>
+                            <th>V(%)</th>
+                            <th>Mo(%)</th>
+                            <th>S(%)</th>
+                            <th>P(%)</th>
+                            <th>Al(%)</th>
+                            <th>Ca(%)</th>
+                            <th>w(%)</th>
+                           
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr [ngStyle]="{ 'color': 'green' }">
+                          <td> Actual </td>
+                          <td> 0.160 </td>
+                          <td> 0.752 </td>  
+                          <td> 0.190 </td>  
+                          <td> 0.010</td>
+                          <td> 0.032</td>
+                          <td> 0.005</td>
+                          <td> 0.015</td>
+                          <td> 0.005</td>
+                          <td> 0.006</td>
+                          <td> 0.020</td>
+                          <td> 0.015</td>
+                          <td> 0.006</td>
+                          <td> 0.008</td>
+                          <td> 0.004</td>
+                         
+                      </tr>
+                      <tr [ngStyle]="{ 'color': 'RED' }">
+                        <td> Target </td>
+                        <td> 0.155 </td>
+                        <td> 0.748 </td>  
+                        <td> 0.186 </td>  
+                        <td> 0.000</td>
+                        <td> 0.027</td>
+                        <td> 0.001</td>
+                        <td> 0.012</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                        <td> 0.017</td>
+                        <td> 0.013</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                       
+                     </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="12">No Data found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>    
+             
             </div>
         </ng-template>
     </p-dialog>
@@ -1165,6 +1400,75 @@
                     </ng-template>
                 </p-table>
             </div>
+            <div class="mt-2">
+                <p-table [value]="[{}]" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+                    [tableStyle]="{'min-width': '5rem'}"  selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="67vh">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th></th>
+                            <th>C(%)</th>
+                            <th>Mn(%)</th>
+                            <th>Si(%)</th>
+                            <th>B(%)</th>
+                            <th>Cr(%)</th>
+                            <th>Ti(%)</th>
+                            <th>Ni(%)</th>
+                            <th>V(%)</th>
+                            <th>Mo(%)</th>
+                            <th>S(%)</th>
+                            <th>P(%)</th>
+                            <th>Al(%)</th>
+                            <th>Ca(%)</th>
+                            <th>w(%)</th>
+                           
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr [ngStyle]="{ 'color': 'green' }">
+                          <td> Actual </td>
+                          <td> 0.160 </td>
+                          <td> 0.752 </td>  
+                          <td> 0.190 </td>  
+                          <td> 0.010</td>
+                          <td> 0.032</td>
+                          <td> 0.005</td>
+                          <td> 0.015</td>
+                          <td> 0.005</td>
+                          <td> 0.006</td>
+                          <td> 0.020</td>
+                          <td> 0.015</td>
+                          <td> 0.006</td>
+                          <td> 0.008</td>
+                          <td> 0.004</td>
+                         
+                      </tr>
+                      <tr [ngStyle]="{ 'color': 'RED' }">
+                        <td> Target </td>
+                        <td> 0.155 </td>
+                        <td> 0.748 </td>  
+                        <td> 0.186 </td>  
+                        <td> 0.000</td>
+                        <td> 0.027</td>
+                        <td> 0.001</td>
+                        <td> 0.012</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                        <td> 0.017</td>
+                        <td> 0.013</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                       
+                     </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="12">No Data found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>    
+             
+            </div>
         </ng-template>
     </p-dialog>
 
@@ -1213,6 +1517,75 @@
                     </tr>
                     </ng-template>
                 </p-table>
+            </div>
+            <div class="mt-2">
+                <p-table [value]="[{}]" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+                    [tableStyle]="{'min-width': '5rem'}"  selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="67vh">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th></th>
+                            <th>C(%)</th>
+                            <th>Mn(%)</th>
+                            <th>Si(%)</th>
+                            <th>B(%)</th>
+                            <th>Cr(%)</th>
+                            <th>Ti(%)</th>
+                            <th>Ni(%)</th>
+                            <th>V(%)</th>
+                            <th>Mo(%)</th>
+                            <th>S(%)</th>
+                            <th>P(%)</th>
+                            <th>Al(%)</th>
+                            <th>Ca(%)</th>
+                            <th>w(%)</th>
+                           
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData>
+                        <tr [ngStyle]="{ 'color': 'green' }">
+                          <td> Actual </td>
+                          <td> 0.160 </td>
+                          <td> 0.752 </td>  
+                          <td> 0.190 </td>  
+                          <td> 0.010</td>
+                          <td> 0.032</td>
+                          <td> 0.005</td>
+                          <td> 0.015</td>
+                          <td> 0.005</td>
+                          <td> 0.006</td>
+                          <td> 0.020</td>
+                          <td> 0.015</td>
+                          <td> 0.006</td>
+                          <td> 0.008</td>
+                          <td> 0.004</td>
+                         
+                      </tr>
+                      <tr [ngStyle]="{ 'color': 'RED' }">
+                        <td> Target </td>
+                        <td> 0.155 </td>
+                        <td> 0.748 </td>  
+                        <td> 0.186 </td>  
+                        <td> 0.000</td>
+                        <td> 0.027</td>
+                        <td> 0.001</td>
+                        <td> 0.012</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                        <td> 0.017</td>
+                        <td> 0.013</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                        <td> 0.000</td>
+                       
+                     </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="12">No Data found.</td>
+                        </tr>
+                    </ng-template>
+                </p-table>    
+             
             </div>
         </ng-template>
     </p-dialog>

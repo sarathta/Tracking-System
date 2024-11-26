@@ -10,7 +10,7 @@ import { OverviewScreenService } from 'src/app/services/overviewScreen.service';
   styleUrls: ['./shift-overview.component.scss']
 })
 export class ShiftOverviewComponent implements OnInit,OnDestroy{
-  @ViewChild("myCarousel") myCarousel: any;
+  @ViewChild("anomalyCarousel") anomalyCarousel: any;
   today: Date = new Date();
   plugin = [ChartDataLabels];
   operatorLogs: any[]=[{data:"Carbon content in molten iron measured at 4.1%"}];
@@ -21,6 +21,90 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   vdDetails: boolean =false;
   ccmDetails: boolean =false;
   standDetails: boolean =false;
+  anomalyHeading: any ;
+  assetPageData: any ;
+  performanceTableData: any = [{
+    stand :1,
+    rolldia : 450,
+    lastchange: '28/10/2024	',
+    tonsRolled : 6850,
+    nextchange: '06/11/2024',
+    color: 'red'
+  },
+  {
+    stand :4,
+    rolldia : 380,
+    lastchange: '28/10/2024	',
+    tonsRolled : 6850,
+    nextchange: '06/11/2024',
+    color: 'red'
+  },
+  {
+    stand :7,
+    rolldia : 452,
+    lastchange: '28/10/2024	',
+    tonsRolled : 6850,
+    nextchange: '11/11/2024',
+    color: '#ee9500'
+  },
+  {
+    stand :10,
+    rolldia : 377,
+    lastchange: '28/10/2024	',
+    tonsRolled : 6850,
+    nextchange: '15/11/2024',
+    color: '#ee9500'
+  },
+  {
+    stand :2,
+    rolldia : 387,
+    lastchange: '28/10/2024	',
+    tonsRolled : 4523,
+    nextchange: '19/11/2024',
+    color: '#ee9500'
+  },
+  {
+    stand :5,
+    rolldia : 385,
+    lastchange: '29/10/2024	',
+    tonsRolled : 4523,
+    nextchange: '19/11/2024',
+    color: 'green'
+  },
+  {
+    stand :6,
+    rolldia : 384,
+    lastchange: '29/10/2024	',
+    tonsRolled : 	4523,
+    nextchange: '21/11/2024',
+    color: 'green'
+  },
+  {
+    stand :3,
+    rolldia : 380,
+    lastchange: '29/10/2024',
+    tonsRolled : 3987,
+    nextchange: '24/11/2024',
+    color: 'green'
+  },
+  {
+    stand :9,
+    rolldia : 378,
+    lastchange: '29/10/2024',
+    tonsRolled : 3967,
+    nextchange: '28/11/2024',
+    color: 'green'
+  },
+  {
+    stand :8,
+    rolldia : 370,
+    lastchange: '29/10/2024',
+    tonsRolled : 3890,
+    nextchange: '30/11/2024',
+    color: 'green'
+  }
+]
+  banner: any[] = [{data: ' Batch #202411: 2 bars rejected due to surface cracks. Length deviation: +2.5 mm above tolerance. '},{data: 'asfafsagdsg '}]
   productionPlanData: any[]=[
     {id:1,date:"30/10/2024",so:"123188",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
       grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"MANUAL",status:'50%',color:'#90fc90'
@@ -35,24 +119,38 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   logItem: any;
   AssetsData: any[]=[
     {
-      name: 'Blast Furnace',
-      circleColor:'#02c602',
-      status: 'Healthy',
-      data: 'Healthy (Temperature: 1500°C | Pressure: 5.2 Bar)',
-      borderclass:'greenBorderBlink'
-    },
-    {
-      name: 'Rolling Mill',
+      name: 'Roll Set Availability',
       circleColor:'orange',
       status: 'Warning',
-      data: 'Vibration: 3.5 m/s²',
+      data: 'Roll Set 2A in Rolling Mill nearing critical wear levels. Current wear at 85%. Replacement scheduled in the next maintenance window.',
       borderclass:'orangeBorderBlink'
     },
     {
-      name: 'Crane',
+      name: 'Roll Set Availability',
       circleColor:'red',
-      status: 'Critical',
-      data: 'Motor Temp: 90°C, Overload Detected',
+      status: 'Alert',
+      data: 'Emergency shutdown initiated for Roll Set 6B in Tandem Mill due to overheating (120°C). Possible lubrication failure detected',
+      borderclass:'redBorderBlink'
+    },
+    {
+      name: 'Continuos Casting',
+      circleColor:'green',
+      status: 'Info',
+      data: 'Mold level sensors recalibrated for improved accuracy. Target liquid steel level: 250 mm. No deviations observed in current readings.',
+      borderclass:'greenBorderBlink'
+    },
+    {
+      name: 'Continuos Casting',
+      circleColor:'orange',
+      status: 'Warning',
+      data: 'Casting speed for Strand 4 reduced to 0.8 m/min due to detected nozzle blockage. Scheduled nozzle cleaning in the next maintenance cycle.',
+      borderclass:'orangeBorderBlink'
+    },
+    {
+      name: 'Continuos Casting',
+      circleColor:'red',
+      status: 'Alert',
+      data: 'Emergency stop triggered due to detected slag carryover from Ladle No. 8. Cleaning operation scheduled. Production delayed by 30 minutes.',
       borderclass:'redBorderBlink'
     }
   ]
@@ -98,6 +196,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
       data: '6 times per year'
     }
   ]
+
   productionGraphs: any[]=[
     {
       name:'Shift (t)',
@@ -334,7 +433,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
       name:'Day (INR)',
       data:{
         labels: [
-          "08-01",
+          // "08-01",
           "09-01",
           "10-01",
           "11-01"
@@ -343,13 +442,13 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
           {
             type: 'bar',
             data: [
-              1200,
+              // 1200,
               1250,
               1230,
               1220
             ],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderColor: 'rgb(153, 102, 255)',
             borderWidth: 1
           }
         ]
@@ -404,8 +503,8 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
       name:'Month (INR)',
       data:{
         labels: [
-          "Jul",
-          "Aug",
+          // "Jul",
+          // "Aug",
           "Sep",
           "Oct",
           "Nov"
@@ -414,14 +513,14 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
           {
             type: 'bar',
             data: [
-              35000,
-              35200,
+              // 35000,
+              // 35200,
               35300,
               35100,
               34800
             ],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderColor: 'rgb(153, 102, 255)',
             borderWidth: 1
           }
         ]
@@ -476,98 +575,38 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   
   performanceGraphs: any[]=[
     {
-      name:'Defect Rate (%)',
+      name:'',
       data:{
-        labels: [
-          "08-01",
-          "09-01",
-          "10-01",
-          "11-01"
+        labels:  [
+          "Billet Conversion(%)",
+          "Yield(%)",
+          "Missroll(%)",
+          "Random(%)",
+          "End Cut Loss(%)",
+          "Scale Loss(%)",
+          "Process Rejection(%)",
+          "Consumption(KWH)",
+          "Mill Utilization(%)"
         ],
         datasets: [
           {
-            data: [
-              20,
-              50,
+            type: 'bar',
+            label: 'Target',
+            data:  [
               30,
-              60
-            ],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgb(75, 192, 192)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options:{
-        maintainAspectRatio: false,
-        aspectRatio: 0.8,
-        plugins: {
-          datalabels:{
-            formatter: (value : any) => {
-              return Math.trunc(value);
-            },
-            font: {
-              size: 10
-            },
-            // anchor: 'end',
-            // align: 'end',
-            color: 'black',
-          },
-            legend: {
-              display: false,
-                labels: {
-                    color: 'black'
-                }
-            }
-        },
-        scales: {
-            x: {
-                stacked: false,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            },
-            y: {
-                stacked: false,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            }
-        }
-      }
-    },
-    {
-      name:'Yield-Rate (%)',
-      data:{
-        labels: [
-          "07-01",
-          "08-01",
-          "09-01",
-          "10-01",
-          "11-01"
-        ],
-        datasets: [
-          {
-            data: [
+              40,
               60,
-              70,
-              50,
-              80,
-              65
+              48,
+              65,
+              38,
+              44,
+              58,
+              63
             ],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgb(75, 192, 192)',
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderColor: 'rgb(153, 102, 255)',
             borderWidth: 1
-          }
-        ]
+          }]
       },
       options:{
         maintainAspectRatio: false,
@@ -578,14 +617,14 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
               return Math.trunc(value);
             },
             font: {
-              size: 10
+              size: 9
             },
             // anchor: 'end',
             // align: 'end',
             color: 'black',
           },
             legend: {
-              display: false,
+              // display: false,
                 labels: {
                     color: 'black'
                 }
@@ -593,7 +632,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
         },
         scales: {
             x: {
-                stacked: false,
+                stacked: true,
                 ticks: {
                     color: '#6c757d'
                 },
@@ -603,7 +642,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
                 }
             },
             y: {
-                stacked: false,
+                stacked: true,
                 ticks: {
                     color: '#6c757d'
                 },
@@ -614,46 +653,27 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
             }
         }
       }
-    }    
+    } 
   ];
 
   inventoryChartData: any ={
     labels:  [
-      "Iron Ore",
-      "Coke",
-      "Limestone",
-      "Dolomite",
-      "Scrap Steel"
+      "30 days",
+      "25 days",
+      "20 days"
+      // "Dolomite (20 days)",
+      // "Scrap Steel (22 days)"
     ],
     datasets: [
       {
         type: 'bar',
-        label: 'Quantity of Raw Materials (t)',
-        yAxisID: 'y',
+        // label: ['Alloys','Finished Goods','Flux'],
+        // yAxisID: 'y',
         data:  [
-          379.9267272949219,
-          235.97850036621094,
-          437.4613037109375,
-          411.20208740234375,
-          218.46881103515625
+          379,235,437
         ],
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgb(54, 162, 235)',
-        borderWidth: 1
-      },
-      {
-        type: 'line',
-        label: 'Days left',
-        yAxisID: 'y1',
-        data: [
-          30,
-          40,
-          30,
-          20,
-          22
-        ],
-        backgroundColor: 'orange',
-        borderColor: 'orange',
+        backgroundColor: ['rgba(255, 159, 64, 0.2)','rgba(54, 162, 235, 0.2)','rgba(153, 102, 255, 0.2)'],
+        borderColor: ['rgb(255, 159, 64)','rgb(54, 162, 235)','rgb(153, 102, 255)'],
         borderWidth: 1
       }
     ]
@@ -676,7 +696,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
         color: 'black',
       },
         legend: {
-          // display: false,
+          display: false,
             labels: {
                 color: 'black'
             }
@@ -684,7 +704,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     },
     scales: {
         x: {
-            stacked: true,
+            // stacked: true,
             ticks: {
                 color: '#6c757d'
             },
@@ -703,21 +723,87 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
                 color: '#dee2e6',
                 drawBorder: false
             }
-        },
-        y1: {
-          // stacked: true,
-          position: 'right',
-          ticks: {
-              color: '#6c757d'
-          },
-          grid: {
-              color: '#dee2e6',
-              drawBorder: false
-          }
-      }
+        }
     }
   }
   
+  kpiData: any={
+    labels:  [
+      "Billet Conversion(%)",
+      "Yield(%)",
+      "Missroll(%)",
+      "Random(%)",
+      "End Cut Loss(%)",
+      "Scale Loss(%)",
+      "Process Rejection(%)",
+      "Consumption(KWH)",
+      "Mill Utilization(%)"
+    ],
+    datasets: [
+      {
+        type: 'bar',
+        label: '',
+        data:  [
+          30,
+          40,
+          60,
+          48,
+          65,
+          38,
+          44,
+          58,
+          63
+        ],
+        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+        borderColor: 'rgb(153, 102, 255)',
+        borderWidth: 1
+      }]
+  };
+  kpiOptions: any={
+    maintainAspectRatio: false,
+    aspectRatio: 0.8,
+    plugins: {
+      datalabels:{
+        formatter: (value : any) => {
+          return Math.trunc(value);
+        },
+        font: {
+          size: 9
+        },
+        // anchor: 'end',
+        // align: 'end',
+        color: 'black',
+      },
+        legend: {
+          display: false,
+            labels: {
+                color: 'black'
+            }
+        }
+    },
+    scales: {
+        x: {
+            stacked: true,
+            ticks: {
+                color: '#6c757d'
+            },
+            grid: {
+                color: '#dee2e6',
+                drawBorder: false
+            }
+        },
+        y: {
+            stacked: true,
+            ticks: {
+                color: '#6c757d'
+            },
+            grid: {
+                color: '#dee2e6',
+                drawBorder: false
+            }
+        }
+    }
+  };
 
 
   plantName: string = 'ABC'; // Example plant name
@@ -896,6 +982,22 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.vdDetails = false;
     this.ccmDetails = false;
     this.standDetails = false;
+  }
+
+  pageChange(event : any){  
+    if(event){
+      this.anomalyHeading = this.anomalyData[event.page];  
+    }  
+  } 
+  
+  assetPageChange(event : any){ 
+    if(event){
+      this.assetPageData = this.AssetsData[event.page];  
+    }  
+  }
+
+  removeOperatorLog(data : any){   
+    this.operatorLogs.splice(this.operatorLogs.indexOf(data), 1);
   }
 
 }
