@@ -311,6 +311,118 @@
   background-size: 100% 100%;
 }
 
+.rf_empty {
+  background-image: url("../../../../assets/Icons/reheating_furnace/rf_empty.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.rf_blue{
+  background-image: url("../../../../assets/Icons/reheating_furnace/rf_blue.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.rf_green {
+  background-image: url("../../../../assets/Icons/reheating_furnace/rf_green.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.rf_orange {
+  background-image: url("../../../../assets/Icons/reheating_furnace/rf_orange.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.rf_yellow {
+  background-image: url("../../../../assets/Icons/reheating_furnace/rf_yellow.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.rf_cross {
+  background-image: url("../../../../assets/Icons/reheating_furnace/rf_cross.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.il_empty {
+  background-image: url("../../../../assets/Icons/il/il_empty.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.il_blue{
+  background-image: url("../../../../assets/Icons/il/il_blue.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.il_green {
+  background-image: url("../../../../assets/Icons/il/il_green.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.il_orange {
+  background-image: url("../../../../assets/Icons/il/il_orange.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.il_yellow {
+  background-image: url("../../../../assets/Icons/il/il_yellow.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.il_cross {
+  background-image: url("../../../../assets/Icons/il/il_cross.svg");
+  width: 110px;
+  height: 130px;
+  position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
 .standBackground_empty{
   background-color: white;
 }
@@ -420,6 +532,10 @@
 /* Add some padding inside the card container */
 .container {
   padding: 2px 16px;
+}
+
+::ng-deep .p-carousel .p-carousel-indicators {
+  padding: 1px !important;
 }
 
 @keyframes redBorderBlink {
