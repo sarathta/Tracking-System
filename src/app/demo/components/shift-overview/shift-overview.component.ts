@@ -21,6 +21,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   vdDetails: boolean =false;
   ccmDetails: boolean =false;
   standDetails: boolean =false;
+  bannerDialog: boolean =false;
   anomalyHeading: any ;
   assetPageData: any ;
   performanceTableData: any = [{
@@ -982,6 +983,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.vdDetails = false;
     this.ccmDetails = false;
     this.standDetails = false;
+    this.bannerDialog = false;
   }
 
   pageChange(event : any){  
@@ -998,6 +1000,10 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
 
   removeOperatorLog(data : any){   
     this.operatorLogs.splice(this.operatorLogs.indexOf(data), 1);
+  }
+
+  showBannerDialog(){
+    this.bannerDialog =true;
   }
 
 }

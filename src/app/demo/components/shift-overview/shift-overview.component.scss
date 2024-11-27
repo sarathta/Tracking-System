@@ -538,6 +538,10 @@
   padding: 1px !important;
 }
 
+.textNoSelect{
+  user-select: none;
+}
+
 @keyframes redBorderBlink {
   0%{border:2px solid #FF2929;}
   50%{border:2px solid #ffffff;}

@@ -32,11 +32,11 @@
         </div>
     
     </div>
-    <div class="p-card p-0 font-medium mt-2" style="border-top: 1px solid rgb(213, 210, 210);">
+    <div class="p-card p-0 font-medium mt-2" style="border-top: 1px solid rgb(213, 210, 210);" (click)="showBannerDialog()">
         <marquee direction="left" behavior="scroll" style="height: 2vh;">
-            &bull;<span style="color: rgb(237, 0, 0);">Batch #202411: 2 bars rejected due to surface cracks. Length deviation: +2.5 mm above tolerance.</span> 
-            <span style="color: rgb(255, 121, 4);margin-left: 20vh;"> <span style="color: black;">&bull;</span>WARN: Slag tap temperature dropped to 1,200°C, below threshold. Alert issued</span> 
-            <span style="color: rgb(237, 0, 0);margin-left: 20vh;"><span style="color: black;">&bull;</span>Stand1 to Stand6 Roll Dia needs to be changed on the next shift</span> 
+            &bull;<span style="color: rgb(237, 0, 0);" class="textNoSelect">Batch #202411: 2 bars rejected due to surface cracks. Length deviation: +2.5 mm above tolerance.</span> 
+            <span style="color: rgb(255, 121, 4);margin-left: 20vh;" class="textNoSelect"> <span style="color: black;">&bull;</span>WARN: Slag tap temperature dropped to 1,200°C, below threshold. Alert issued</span> 
+            <span style="color: rgb(237, 0, 0);margin-left: 20vh;" class="textNoSelect"><span style="color: black;">&bull;</span>Stand1 to Stand6 Roll Dia needs to be changed on the next shift</span> 
         </marquee>
     </div>
     <div  class="mt-1">
@@ -205,8 +205,11 @@
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
                             <tr>
-                                <td>Deviations</td>
-                                <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                                <td>Chemistry</td>
+                                <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
+                                    <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
+                                     <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
+                               </td>             
                             </tr>
                             <tr>
                                 <td>Heat No</td>
@@ -322,16 +325,19 @@
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
                             <tr>
-                                <td>Deviations</td>
-                                <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                                <td>Chemistry</td>
+                                <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
+                                    <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
+                                     <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
+                               </td>            
                             </tr>
                             <tr>
                                 <td>Heat No</td>
-                                <td class="font-medium">92339</td>              
+                                <td class="font-medium">92787</td>              
                             </tr>
                             <tr>
                                 <td>Grade</td>
-                                <td class="font-medium">SAE1018</td>              
+                                <td class="font-medium">SAE10504</td>              
                             </tr>
                             <tr>
                                 <td style="width: 7rem;">Start Time</td>
@@ -350,8 +356,8 @@
                                 <td class="font-medium">99.3</td>              
                             </tr>
                             <tr>
-                                <td>Oxygen Nm³/min</td>
-                                <td class="font-medium">67.54</td>              
+                                <td>Ladle Temp(°C)</td>
+                                <td class="font-medium">1533°C</td>              
                             </tr>
                         </ng-template>
                     </p-table>
@@ -389,16 +395,19 @@
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
                             <tr>
-                                <td>Deviations</td>
-                                <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                                <td>Chemistry</td>
+                                <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
+                                    <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
+                                     <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
+                               </td>            
                             </tr>
                             <tr>
                                 <td>Heat No</td>
-                                <td class="font-medium">92339</td>              
+                                <td class="font-medium">92775</td>              
                             </tr>
                             <tr>
                                 <td>Grade</td>
-                                <td class="font-medium">SAE1018</td>              
+                                <td class="font-medium">SAE10504</td>              
                             </tr>
                             <tr>
                                 <td style="width: 7rem;">Start Time</td>
@@ -409,16 +418,16 @@
                                 <td class="font-medium">30/10/2024 09:23</td>              
                             </tr>
                             <tr>
-                                <td>Ladle No</td>
-                                <td class="font-medium">04</td>              
+                                <td>Ar Flow(LPM)</td>
+                                <td class="font-medium">05</td>              
                             </tr>
                             <tr>
-                                <td>Weight (t)</td>
-                                <td class="font-medium">32.5</td>              
+                                <td>VD Temp(°C)</td>
+                                <td class="font-medium">1600°C</td>              
                             </tr>
                             <tr>
-                                <td>Oxygen Nm³/min</td>
-                                <td class="font-medium">15</td>              
+                                <td>Floatation Time</td>
+                                <td class="font-medium">16</td>              
                             </tr>
                         </ng-template>
                     </p-table>
@@ -493,36 +502,39 @@
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
                             <tr>
-                                <td>Deviations</td>
-                                <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                                <td>Chemistry</td>
+                                <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
+                                    <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
+                                     <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
+                               </td>              
                             </tr>
                             <tr>
                                 <td>Heat No</td>
-                                <td class="font-medium">92339</td>              
+                                <td class="font-medium">92785</td>              
                             </tr>
                             <tr>
                                 <td>Grade</td>
-                                <td class="font-medium">SAE1018</td>              
+                                <td class="font-medium">SAE4140</td>              
                             </tr>
                             <tr>
                                 <td style="width: 7rem;">Start Time</td>
-                                <td class="font-medium">30/10/2024 06:11</td>              
+                                <td class="font-medium">30/10/2024 09:45</td>              
                             </tr>
                             <tr>
                                 <td>Finish Time</td>
-                                <td class="font-medium">30/10/2024 09:23</td>              
+                                <td class="font-medium">30/10/2024 10:15</td>              
                             </tr>
                             <tr>
                                 <td>Ladle No</td>
-                                <td class="font-medium">H7</td>              
+                                <td class="font-medium">04</td>              
                             </tr>
                             <tr>
                                 <td>Weight (t)</td>
-                                <td class="font-medium">31.7</td>              
+                                <td class="font-medium">24.55</td>              
                             </tr>
                             <tr>
-                                <td>Oxygen Nm³/min</td>
-                                <td class="font-medium">300</td>              
+                                <td>Lifting Temp(°C)</td>
+                                <td class="font-medium">1582°C</td>              
                             </tr>
                         </ng-template>
                     </p-table>
@@ -549,36 +561,39 @@
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
                             <tr>
-                                <td>Deviations</td>
-                                <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                                <td>Chemistry</td>
+                                <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
+                                    <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
+                                     <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
+                               </td>              
                             </tr>
                             <tr>
                                 <td>Heat No</td>
-                                <td class="font-medium">92339</td>              
+                                <td class="font-medium">92786</td>              
                             </tr>
                             <tr>
                                 <td>Grade</td>
-                                <td class="font-medium">SAE1018</td>              
+                                <td class="font-medium">SAE4140</td>              
                             </tr>
                             <tr>
                                 <td style="width: 7rem;">Start Time</td>
-                                <td class="font-medium">30/10/2024 06:11</td>              
+                                <td class="font-medium">30/10/2024 10:30</td>              
                             </tr>
                             <tr>
                                 <td>Finish Time</td>
-                                <td class="font-medium">30/10/2024 09:23</td>              
+                                <td class="font-medium">30/10/2024 11:00</td>              
                             </tr>
                             <tr>
-                                <td>Ladle No</td>
-                                <td class="font-medium">H7</td>              
+                                <td>Furnace Capacity(tons)</td>
+                                <td class="font-medium">50 </td>              
                             </tr>
                             <tr>
-                                <td>Weight (t)</td>
-                                <td class="font-medium">31.7</td>              
+                                <td>Temperature(°C)</td>
+                                <td class="font-medium">700°C</td>              
                             </tr>
                             <tr>
-                                <td>Oxygen Nm³/min</td>
-                                <td class="font-medium">300</td>              
+                                <td>Heating Rate(°C/min)</td>
+                                <td class="font-medium">40°C/min</td>              
                             </tr>
                         </ng-template>
                     </p-table>
@@ -667,7 +682,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Heat No</td>
-                                                <td class="font-medium">92339</td>              
+                                                <td class="font-medium">92787</td>              
                                             </tr>
                                             <tr>
                                                 <td>Grade</td>
@@ -675,23 +690,23 @@
                                             </tr>
                                             <tr>
                                                 <td style="width: 7rem;">Start Time</td>
-                                                <td class="font-medium">30/10/2024 06:11</td>              
+                                                <td class="font-medium">30/10/2024 11:15</td>              
                                             </tr>
                                             <tr>
-                                                <td>Finish Time</td>
-                                                <td class="font-medium">30/10/2024 09:23</td>              
+                                                <td>End Time</td>
+                                                <td class="font-medium">30/10/2024 11:40</td>              
                                             </tr>
                                             <tr>
-                                                <td>Ladle No</td>
-                                                <td class="font-medium">H7</td>              
+                                                <td>Number of Stands</td>
+                                                <td class="font-medium">6</td>              
                                             </tr>
                                             <tr>
-                                                <td>Weight (t)</td>
-                                                <td class="font-medium">31.7</td>              
+                                                <td>Rolling Speed(m/sec)</td>
+                                                <td class="font-medium">20</td>              
                                             </tr>
                                             <tr>
-                                                <td>Oxygen Nm³/min</td>
-                                                <td class="font-medium">300</td>              
+                                                <td>Roll Diameter(mm)</td>
+                                                <td class="font-medium">1000 mm</td>              
                                             </tr>
                                         </ng-template>
                                     </p-table>
@@ -718,7 +733,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Heat No</td>
-                                                <td class="font-medium">92339</td>              
+                                                <td class="font-medium">92788</td>              
                                             </tr>
                                             <tr>
                                                 <td>Grade</td>
@@ -726,23 +741,23 @@
                                             </tr>
                                             <tr>
                                                 <td style="width: 7rem;">Start Time</td>
-                                                <td class="font-medium">30/10/2024 06:11</td>              
+                                                <td class="font-medium">30/10/2024 11:45</td>              
                                             </tr>
                                             <tr>
                                                 <td>Finish Time</td>
-                                                <td class="font-medium">30/10/2024 09:23</td>              
+                                                <td class="font-medium">30/10/2024 12:15</td>              
                                             </tr>
                                             <tr>
-                                                <td>Ladle No</td>
-                                                <td class="font-medium">H7</td>              
+                                                <td>PO Number</td>
+                                                <td class="font-medium">19242</td>              
                                             </tr>
                                             <tr>
-                                                <td>Weight (t)</td>
-                                                <td class="font-medium">31.7</td>              
+                                                <td>Finished Goods</td>
+                                                <td class="font-medium">1,000 tons</td>              
                                             </tr>
                                             <tr>
-                                                <td>Oxygen Nm³/min</td>
-                                                <td class="font-medium">300</td>              
+                                                <td>Defected Goods</td>
+                                                <td class="font-medium">5 tons</td>              
                                             </tr>
                                         </ng-template>
                                     </p-table>
@@ -769,7 +784,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Heat No</td>
-                                                <td class="font-medium">92339</td>              
+                                                <td class="font-medium">92789</td>              
                                             </tr>
                                             <tr>
                                                 <td>Grade</td>
@@ -777,23 +792,23 @@
                                             </tr>
                                             <tr>
                                                 <td style="width: 7rem;">Start Time</td>
-                                                <td class="font-medium">30/10/2024 06:11</td>              
+                                                <td class="font-medium">30/10/2024 12:15</td>              
                                             </tr>
                                             <tr>
                                                 <td>Finish Time</td>
-                                                <td class="font-medium">30/10/2024 09:23</td>              
+                                                <td class="font-medium">30/10/2024 12:45</td>              
                                             </tr>
                                             <tr>
-                                                <td>Ladle No</td>
-                                                <td class="font-medium">H7</td>              
+                                                <td>PO Number</td>
+                                                <td class="font-medium">19243</td>              
                                             </tr>
                                             <tr>
-                                                <td>Weight (t)</td>
-                                                <td class="font-medium">31.7</td>              
+                                                <td>Finished Goods</td>
+                                                <td class="font-medium">1,500 tons</td>              
                                             </tr>
                                             <tr>
-                                                <td>Oxygen Nm³/min</td>
-                                                <td class="font-medium">300</td>              
+                                                <td>Defected Goods</td>
+                                                <td class="font-medium">10 tons</td>              
                                             </tr>
                                         </ng-template>
                                     </p-table>
@@ -808,7 +823,7 @@
                             <span class="font-medium">PERFORMANCE</span>
                         </div>
                         <div>
-                            <p-table [value]="performanceTableData" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'16vh'"
+                            <p-table [value]="performanceTableData" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'15vh'"
                                 [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                                     <ng-template pTemplate="header">
                                         <tr >
@@ -1060,7 +1075,25 @@
         </div>
     </div>
 
-    <p-dialog header="BOF1" [(visible)]="bof1Details" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+
+    <p-dialog header="Comments" [(visible)]="bannerDialog" [modal]="true" showEffect="fade" [style]="{width: '41vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+        <ng-template pTemplate="content">
+           <div class="card p-2">
+             <span style="color: rgb(237, 0, 0);" class="textNoSelect">Batch #202411: 2 bars rejected due to surface cracks. Length deviation: +2.5 mm above tolerance.</span> 
+           </div>
+           <div class="card p-2">
+            <span style="color: rgb(255, 121, 4);" class="textNoSelect">WARN: Slag tap temperature dropped to 1,200°C, below threshold. Alert issued</span> 
+        </div>
+          <div class="card p-2">
+            <span style="color: rgb(237, 0, 0);" class="textNoSelect">Stand1 to Stand6 Roll Dia needs to be changed on the next shift</span> 
+        </div>
+
+             
+        </ng-template>
+    </p-dialog>
+
+
+    <p-dialog header="BOF1" [(visible)]="bof1Details" [modal]="true" showEffect="fade" [style]="{width: '41vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
         <p-header>
             <div>
                 <span>BOF-1</span>
@@ -1076,8 +1109,11 @@
                         <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                     </tr>
                     <tr>
-                        <td>Deviations</td>
-                        <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                        <td>Chemistry</td>
+                        <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
+                             <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
+                              <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
+                        </td>              
                     </tr>
                     <tr>
                         <td>Heat No</td>
@@ -1316,38 +1352,42 @@
                 <p-table [value]="[{}]" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'80vh'"
                 [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                     <ng-template pTemplate="body" let-rowData>
-                    <tr >
-                        <td style="border-top:1px solid rgb(204, 204, 204)">Person in Charge</td>
-                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
-                    </tr>
-                    <tr>
-                        <td>Heat No</td>
-                        <td class="font-medium">92339</td>              
-                    </tr>
-                    <tr>
-                        <td>Grade</td>
-                        <td class="font-medium">SAE1018</td>              
-                    </tr>
-                    <tr>
-                        <td>Start Time</td>
-                        <td class="font-medium">30/10/2024 08:30</td>              
-                    </tr>
-                    <tr>
-                        <td>Finish Time</td>
-                        <td class="font-medium">30/10/2024 08:59</td>              
-                    </tr>
-                    <tr>
-                        <td>Ladle No</td>
-                        <td class="font-medium">04</td>              
-                    </tr>
-                    <tr>
-                        <td>Weight (t)</td>
-                        <td class="font-medium">99.3</td>              
-                    </tr>
-                    <tr>
-                        <td>Oxygen Nm³/min</td>
-                        <td class="font-medium">67.54</td>              
-                    </tr>
+                        <tr >
+                            <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                            <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                        </tr>
+                        <tr>
+                            <td>Deviations</td>
+                            <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
+                        </tr>
+                        <tr>
+                            <td>Heat No</td>
+                            <td class="font-medium">92787</td>              
+                        </tr>
+                        <tr>
+                            <td>Grade</td>
+                            <td class="font-medium">SAE10504</td>              
+                        </tr>
+                        <tr>
+                            <td style="width: 7rem;">Start Time</td>
+                            <td class="font-medium">30/10/2024 08:30</td>              
+                        </tr>
+                        <tr>
+                            <td>Finish Time</td>
+                            <td class="font-medium">30/10/2024 08:59</td>              
+                        </tr>
+                        <tr>
+                            <td>Ladle No</td>
+                            <td class="font-medium">04</td>              
+                        </tr>
+                        <tr>
+                            <td>Weight (t)</td>
+                            <td class="font-medium">99.3</td>              
+                        </tr>
+                        <tr>
+                            <td>Ladle Temp(°C)</td>
+                            <td class="font-medium">1533°C</td>              
+                        </tr>
                     </ng-template>
                 </p-table>
             </div>
