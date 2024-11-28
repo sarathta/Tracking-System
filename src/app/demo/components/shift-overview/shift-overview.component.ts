@@ -11,16 +11,23 @@ import { OverviewScreenService } from 'src/app/services/overviewScreen.service';
 })
 export class ShiftOverviewComponent implements OnInit,OnDestroy{
   @ViewChild("anomalyCarousel") anomalyCarousel: any;
+  @ViewChild('videoPlayer')set mainVideoEl(el: any) {
+    this.videoPlayer = el.nativeElement;
+  };
   today: Date = new Date();
   plugin = [ChartDataLabels];
   operatorLogs: any[]=[{data:"Carbon content in molten iron measured at 4.1%"}];
   assetborder: any;
+  videoPlayer: any;
   bof1Details: boolean =false;
   bof2Details: boolean =false;
   lfDetails: boolean =false;
   vdDetails: boolean =false;
   ccmDetails: boolean =false;
+  rhfDetails: boolean =false;
   standDetails: boolean =false;
+  il1Details: boolean =false;
+  il2Details: boolean =false;
   bannerDialog: boolean =false;
   anomalyHeading: any ;
   assetPageData: any ;
@@ -673,8 +680,8 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
         data:  [
           379,235,437
         ],
-        backgroundColor: ['rgba(255, 159, 64, 0.2)','rgba(54, 162, 235, 0.2)','rgba(153, 102, 255, 0.2)'],
-        borderColor: ['rgb(255, 159, 64)','rgb(54, 162, 235)','rgb(153, 102, 255)'],
+        backgroundColor: ['rgba(153, 102, 255, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 159, 64, 0.2)'],
+        borderColor: ['rgb(153, 102, 255)','rgb(54, 162, 235)','rgb(255, 159, 64)'],
         borderWidth: 1
       }
     ]
@@ -730,15 +737,15 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   
   kpiData: any={
     labels:  [
-      "Billet Conversion(%)",
-      "Yield(%)",
-      "Missroll(%)",
-      "Random(%)",
-      "End Cut Loss(%)",
-      "Scale Loss(%)",
-      "Process Rejection(%)",
+      "Billet Conversion",
+      "Yield",
+      "Missroll",
+      "Random",
+      "End Cut Loss",
+      "Scale Loss",
+      "Process Rejection",
       "Consumption(KWH)",
-      "Mill Utilization(%)"
+      "Mill Utilization"
     ],
     datasets: [
       {
@@ -931,7 +938,10 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.lfDetails = false;
     this.vdDetails = false;
     this.ccmDetails = false;
+    this.rhfDetails = false;
     this.standDetails = false;
+    this.il1Details = false;
+    this.il2Details = false;
   }
 
   bof2DetailsShow(){
@@ -940,7 +950,10 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.lfDetails = false;
     this.vdDetails = false;
     this.ccmDetails = false;
+    this.rhfDetails = false;
     this.standDetails = false;
+    this.il1Details = false;
+    this.il2Details = false;
   }
 
   lfDetailsShow(){
@@ -950,6 +963,8 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.vdDetails = false;
     this.ccmDetails = false;
     this.standDetails = false;
+    this.il1Details = false;
+    this.il2Details = false;
   }
   vdDetailsShow(){
     this.vdDetails = !this.vdDetails;
@@ -957,7 +972,10 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.bof1Details =false;
     this.bof2Details = false ;
     this.ccmDetails = false;
+    this.rhfDetails = false;
     this.standDetails = false;
+    this.il1Details = false;
+    this.il2Details = false;
   }
   ccmDetailsShow(){
     this.ccmDetails = !this.ccmDetails;
@@ -965,7 +983,21 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.bof1Details =false;
     this.bof2Details = false ;
     this.vdDetails = false;
+    this.rhfDetails = false;
     this.standDetails = false;
+    this.il1Details = false;
+    this.il2Details = false;
+  }
+  rhfDetailsShow(){
+    this.rhfDetails = !this.rhfDetails;
+    this.ccmDetails = false;
+    this.lfDetails = false ;
+    this.bof1Details =false;
+    this.bof2Details = false ;
+    this.vdDetails = false;
+    this.standDetails = false;
+    this.il1Details = false;
+    this.il2Details = false;
   }
   standDetailsShow(){
     this.standDetails = !this.standDetails;
@@ -973,7 +1005,32 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.lfDetails = false ;
     this.bof1Details =false;
     this.bof2Details = false ;
+    this.rhfDetails = false ;
     this.vdDetails = false;
+    this.il1Details = false;
+    this.il2Details = false;
+  }
+  il1DetailsShow(){
+    this.il1Details = !this.il1Details;
+    this.ccmDetails = false;
+    this.lfDetails = false ;
+    this.bof1Details =false;
+    this.bof2Details = false ;
+    this.rhfDetails = false ;
+    this.vdDetails = false;
+    this.standDetails = false;
+    this.il2Details = false;
+  }
+  il2DetailsShow(){
+    this.il2Details = !this.il2Details;
+    this.ccmDetails = false;
+    this.lfDetails = false ;
+    this.bof1Details =false;
+    this.bof2Details = false ;
+    this.rhfDetails = false ;
+    this.vdDetails = false;
+    this.standDetails = false;
+    this.il1Details = false;
   }
 
   hideDialog(){
@@ -983,7 +1040,12 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.vdDetails = false;
     this.ccmDetails = false;
     this.standDetails = false;
+    this.rhfDetails = false;
     this.bannerDialog = false;
+  }
+
+  video() {
+    this.videoPlayer?.nativeElement.play();
   }
 
   pageChange(event : any){  
