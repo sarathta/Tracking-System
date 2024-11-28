@@ -181,88 +181,150 @@
             </div>
         </div> 
     </div>
-    <div class="p-card flex justify-content-center align-items-center mt-1 p-1" style="background-color: #f3f8ff;">
-       <div class="col-12 p-0">
-        <div class="flex justify-content-between" style="width: 100%;">
+   <div class="flex justify-content-between mt-2">
+        <div class="p-card p-1" style="background-color: #f3f8ff;">
             <div class="flex justify-content-center align-items-center">
                 <div>
                     <div [class]="'bof_'+ bofClass" (click)="dashboardScreen()"></div>
                     <div class="flex  mt-3">
                         <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec;">
-                            <span class="font-medium"> BOF</span>
+                            <span class="font-medium"> BOF-1</span>
                         </div>
                         <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
                             class="Button p-button-info" style="height: 3vh;" (click)="bof1DetailsShow()"></button>
                     </div>
                 </div>
-                <div style="width: 18rem;">
-                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                <div style="width: 17rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'172px'"
                     [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                         <ng-template pTemplate="body" let-rowData>
-                          <!-- <tr style="background-color: #90fc90;"> -->
-                            <tr>
-                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                            <tr class="text-sm">
+                                <td style="border-top:1px solid rgb(204, 204, 204)" >In Charge</td>
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Chemistry</td>
-                                <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
-                                    <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
-                                     <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
-                               </td>             
+                                <td class="font-medium">C: <span style="color: green;">0.160</span>/ <span style="color: red;">0.155</span> 
+                                    <br> Mn: <span style="color: green;">0.752</span>/ <span style="color: red;">0.748</span>
+                                    <!-- <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span> -->
+                            </td>             
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Heat No</td>
                                 <td class="font-medium">92339</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Grade</td>
                                 <td class="font-medium">SAE1018</td>              
                             </tr>
-                            <tr>
-                                <td style="width: 7rem;">Start Time</td>
+                            <tr class="text-sm">
+                                <td>Start Time</td>
                                 <td class="font-medium">30/10/2024 07:15</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Finish Time</td>
                                 <td class="font-medium">30/10/2024 07:44</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Ladle No</td>
                                 <td class="font-medium">H7</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Weight (t)</td>
                                 <td class="font-medium">31.7</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Oxygen Nm³/min</td>
                                 <td class="font-medium">1851</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Scrap Cons. (%)</td>
+                                <td class="font-medium">30</td>                
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Alloy Cons. (kg)</td>
+                                <td class="font-medium">
+                                    <span>SiMn : 584</span><br>
+                                    <span>FeSi : 185</span>
+                                </td>                  
                             </tr>
                         </ng-template>
                     </p-table>
                 </div>
             </div>
-            <!-- <div>
-                <div [class]="'bof_'+ bofClass"></div>
-                <div class="flex  mt-3">
-                    <div class="p-card text-center p-2" style="width: 80%;">
-                        <span class="font-medium"> BOF-1</span>
+        </div>
+        <div class="p-card p-1" style="background-color: #f3f8ff;">
+            <div class="flex justify-content-center align-items-center">
+                <div>
+                    <div [class]="'bof_'+ bofClass" (click)="dashboardScreen()"></div>
+                    <div class="flex  mt-3">
+                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec;">
+                            <span class="font-medium"> BOF-2</span>
+                        </div>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                            class="Button p-button-info" style="height: 3vh;" (click)="bof1DetailsShow()"></button>
                     </div>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
-                        class="Button p-button-info mt-1" style="height: 3vh;" (click)="bof1DetailsShow()"></button>
+                </div>
+                <div style="width: 17rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'172px'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                            <tr class="text-sm">
+                                <td style="border-top:1px solid rgb(204, 204, 204)" >In Charge</td>
+                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Chemistry</td>
+                                <td class="font-medium">C: <span style="color: green;">0.160</span>/ <span style="color: red;">0.155</span> 
+                                    <br> Mn: <span style="color: green;">0.752</span>/ <span style="color: red;">0.748</span>
+                                    <!-- <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span> -->
+                            </td>             
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Heat No</td>
+                                <td class="font-medium">92339</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Grade</td>
+                                <td class="font-medium">SAE1018</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Start Time</td>
+                                <td class="font-medium">30/10/2024 07:15</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Finish Time</td>
+                                <td class="font-medium">30/10/2024 07:44</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Ladle No</td>
+                                <td class="font-medium">H7</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Weight (t)</td>
+                                <td class="font-medium">31.7</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Oxygen Nm³/min</td>
+                                <td class="font-medium">1851</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Scrap Cons. (%)</td>
+                                <td class="font-medium">30</td>                
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Alloy Cons. (kg)</td>
+                                <td class="font-medium">
+                                    <span>SiMn : 584</span><br>
+                                    <span>FeSi : 185</span>
+                                </td>                  
+                            </tr>
+                        </ng-template>
+                    </p-table>
                 </div>
             </div>
-            <div>
-                <div [class]="'bof_'+ bofClass"></div>
-                <div class="flex  mt-3">
-                    <div class="p-card text-center p-2" style="width: 80%;">
-                        <span class="font-medium"> BOF-2</span>
-                    </div>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
-                        class="Button p-button-info mt-1" style="height: 3vh;" (click)="bof2DetailsShow()"></button>
-                </div>
-            </div> -->
+        </div>
+        <div class="p-card p-1" style="background-color: #f3f8ff;">
             <div class="flex justify-content-center align-items-center">
                 <div>
                     <div [class]="'lf_'+ lfClass"></div>
@@ -272,108 +334,67 @@
                         </div>
                         <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
                             class="Button p-button-info" style="height: 3vh;" (click)="lfDetailsShow()"></button>
-                            <!-- <div *ngIf="lfDetails" class="p-card p-2 DetailsCard">
-                                <div style="width: 17rem;">
-                                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'137px'"
-                                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                                        <ng-template pTemplate="body" let-rowData>
-                                        <tr >
-                                            <td style="border-top:1px solid rgb(204, 204, 204)">Person in Charge</td>
-                                            <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
-                                        </tr>
-                                        <tr>
-                                            <td>Heat No</td>
-                                            <td class="font-medium">92339</td>              
-                                        </tr>
-                                        <tr>
-                                            <td>Grade</td>
-                                            <td class="font-medium">SAE1018</td>              
-                                        </tr>
-                                        <tr>
-                                            <td>Start Time</td>
-                                            <td class="font-medium">30/10/2024 06:11</td>              
-                                        </tr>
-                                        <tr>
-                                            <td style="width: 7rem;">Finish Time</td>
-                                            <td class="font-medium" style="width: 10rem;">30/10/2024 09:23</td>              
-                                        </tr>
-                                        <tr>
-                                            <td>Ladle No</td>
-                                            <td class="font-medium">H7</td>              
-                                        </tr>
-                                        <tr>
-                                            <td>Weight (t)</td>
-                                            <td class="font-medium">31.7</td>              
-                                        </tr>
-                                        <tr>
-                                            <td>Oxygen Nm³/min</td>
-                                            <td class="font-medium">300</td>              
-                                        </tr>
-                                        </ng-template>
-                                    </p-table>
-                                </div>
-                            </div> -->
                     </div>
                 </div>
-                <div style="width: 18rem;">
-                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                <div style="width: 17rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'172px'"
                     [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                         <ng-template pTemplate="body" let-rowData>
-                          <!-- <tr style="background-color: #90fc90;"> -->
-                            <tr >
+                            <tr  class="text-sm">
                                 <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
-                            <tr>
+                            <tr  class="text-sm">
                                 <td>Chemistry</td>
-                                <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
-                                    <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
-                                     <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
-                               </td>            
+                                <td class="font-medium">C: <span style="color: green;">0.160</span>/ <span style="color: red;">0.155</span> 
+                                    <br> Mn: <span style="color: green;">0.752</span>/ <span style="color: red;">0.748</span>
+                            </td>         
                             </tr>
-                            <tr>
+                            <tr  class="text-sm">
                                 <td>Heat No</td>
                                 <td class="font-medium">92787</td>              
                             </tr>
-                            <tr>
+                            <tr  class="text-sm">
                                 <td>Grade</td>
                                 <td class="font-medium">SAE10504</td>              
                             </tr>
-                            <tr>
-                                <td style="width: 7rem;">Start Time</td>
+                            <tr  class="text-sm">
+                                <td>Start Time</td>
                                 <td class="font-medium">30/10/2024 08:30</td>              
                             </tr>
-                            <tr>
+                            <tr  class="text-sm">
                                 <td>Finish Time</td>
                                 <td class="font-medium">30/10/2024 08:59</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Ladle No</td>
                                 <td class="font-medium">04</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Weight (t)</td>
                                 <td class="font-medium">99.3</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Ladle Temp(°C)</td>
-                                <td class="font-medium">1533°C</td>              
+                                <td class="font-medium">1533</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Scrap  Cons. (%)</td>
+                                <td class="font-medium">15</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Alloy Cons. (kg)</td>
+                                <td class="font-medium">
+                                    <span>SiMn : 58</span><br>
+                                    <span>FeSi : 472</span>
+                                </td>                  
                             </tr>
                         </ng-template>
                     </p-table>
                 </div>
             </div>
-            <!-- <div> 
-                <div [class]="'lf_'+ lfClass"></div>
-                <div class="flex  mt-3">
-                    <div class="p-card text-center p-2" style="width: 80%;">
-                        <span class="font-medium"> LF</span>
-                    </div>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
-                        class="Button p-button-info mt-1" style="height: 3vh;" (click)="lfDetailsShow()"></button>
-                      
-                </div>
-            </div> -->
+        </div>
+        <div class="p-card p-1" style="background-color: #f3f8ff;">
             <div class="flex justify-content-center align-items-center">
                 <div>
                     <div [class]="'vd_'+ vdClass"></div>
@@ -385,102 +406,64 @@
                             class="Button p-button-info" style="height: 3vh;" (click)="vdDetailsShow()"></button>
                     </div>
                 </div>
-                <div style="width: 18rem;">
-                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                <div style="width: 17rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'172px'"
                     [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                         <ng-template pTemplate="body" let-rowData>
-                          <!-- <tr style="background-color: #90fc90;"> -->
-                            <tr >
+                            <tr  class="text-sm">
                                 <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
-                            <tr>
+                            <tr  class="text-sm">
                                 <td>Chemistry</td>
-                                <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
-                                    <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
-                                     <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
-                               </td>            
-                            </tr>
-                            <tr>
+                                <td class="font-medium">C: <span style="color: green;">0.160</span>/ <span style="color: red;">0.155</span> 
+                                    <br> Mn: <span style="color: green;">0.752</span>/ <span style="color: red;">0.748</span>
+                            </td>
+                            <tr class="text-sm">
                                 <td>Heat No</td>
                                 <td class="font-medium">92775</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Grade</td>
                                 <td class="font-medium">SAE10504</td>              
                             </tr>
-                            <tr>
-                                <td style="width: 7rem;">Start Time</td>
+                            <tr class="text-sm">
+                                <td>Start Time</td>
                                 <td class="font-medium">30/10/2024 09:00</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Finish Time</td>
                                 <td class="font-medium">30/10/2024 09:23</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Ar Flow(LPM)</td>
                                 <td class="font-medium">05</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>VD Temp(°C)</td>
-                                <td class="font-medium">1600°C</td>              
+                                <td class="font-medium">1600</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Floatation Time</td>
                                 <td class="font-medium">16</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Scrap  Cons. (%)</td>
+                                <td class="font-medium">3</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Alloy Cons. (kg)</td>
+                                <td class="font-medium">
+                                    <span>SiMn : 10</span><br>
+                                    <span>FeSi : 20</span>
+                                </td>                  
                             </tr>
                         </ng-template>
                     </p-table>
                 </div>
             </div>
-            <!-- <div>
-                <div [class]="'vd_'+ vdClass"></div>
-                <div class="flex  mt-3">
-                    <div class="p-card text-center p-2" style="width: 80%;">
-                        <span class="font-medium"> VD</span>
-                    </div>
-                    <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
-                        class="Button p-button-info mt-1" style="height: 3vh;" (click)="vdDetailsShow()"></button>
-                </div>
-            </div> -->
-            <!-- <div style="width: 17rem;">
-                <div class="font-medium text-center mt-2" style="height: 3vh;">
-                    <span>MELTING STATION</span>
-                </div>
-                <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'137px'"
-                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                    <ng-template pTemplate="body" let-rowData>
-                      <tr >
-                        <td style="border-top:1px solid rgb(204, 204, 204)">Heat No</td>
-                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">92339</td>              
-                    </tr>
-                    <tr>
-                        <td>Grade</td>
-                        <td class="font-medium">SAE1018</td>              
-                    </tr>
-                    <tr>
-                        <td>Start Time</td>
-                        <td class="font-medium">30/10/2024 06:11</td>              
-                    </tr>
-                    <tr>
-                        <td style="width: 7rem;">Finish Time</td>
-                        <td class="font-medium" style="width: 10rem;">30/10/2024 09:23</td>              
-                    </tr>
-                    <tr>
-                        <td>Ladle No</td>
-                        <td class="font-medium">H7</td>              
-                    </tr>
-                    <tr>
-                        <td>Weight (t)</td>
-                        <td class="font-medium">31.7</td>              
-                    </tr>
-                    <tr>
-                        <td>Oxygen Nm³/min</td>
-                        <td class="font-medium">300</td>              
-                    </tr>
-                    </ng-template>
-                </p-table>
-            </div> -->
+        </div>
+        <div class="p-card p-1" style="background-color: #f3f8ff;">
             <div class="flex justify-content-center align-items-center">
                 <div>
                     <div [class]="'ccm_'+ ccmClass"></div>
@@ -492,508 +475,536 @@
                             class="Button p-button-info" style="height: 3vh;" (click)="ccmDetailsShow()"></button>
                     </div>
                 </div>
-                <div style="width: 18rem;">
-                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                <div style="width: 17rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'172px'"
                     [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                         <ng-template pTemplate="body" let-rowData>
-                          <!-- <tr style="background-color: #90fc90;"> -->
-                            <tr >
+                            <tr  class="text-sm">
                                 <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
-                            <tr>
-                                <td>Chemistry</td>
-                                <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
-                                    <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
-                                     <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
-                               </td>              
-                            </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Heat No</td>
                                 <td class="font-medium">92785</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Grade</td>
                                 <td class="font-medium">SAE4140</td>              
                             </tr>
-                            <tr>
-                                <td style="width: 7rem;">Start Time</td>
+                            <tr class="text-sm">
+                                <td>Casting Speed(m/min)</td>
+                                <td class="font-medium">1.5</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Start Time</td>
                                 <td class="font-medium">30/10/2024 09:45</td>              
                             </tr>
-                            <tr>
-                                <td>Finish Time</td>
+                            <tr class="text-sm">
+                                <td style="width: 7rem;">Finish Time</td>
                                 <td class="font-medium">30/10/2024 10:15</td>              
                             </tr>
-                            <tr>
-                                <td>Ladle No</td>
-                                <td class="font-medium">04</td>              
+                            <tr class="text-sm">
+                                <td>Steel Temp (°C)</td>
+                                <td class="font-medium">1500</td>              
                             </tr>
-                            <tr>
-                                <td>Weight (t)</td>
-                                <td class="font-medium">24.55</td>              
+                            <tr class="text-sm">
+                                <td>Water Temp(°C)</td>
+                                <td class="font-medium">30</td>              
                             </tr>
-                            <tr>
-                                <td>Lifting Temp(°C)</td>
-                                <td class="font-medium">1582°C</td>              
+                            <tr class="text-sm">
+                                <td>Osc. Freq. Hz</td>
+                                <td class="font-medium">1.2 </td>              
                             </tr>
+                            <tr class="text-sm">
+                                <td>Mold Friction Coefficient</td>
+                                <td class="font-medium">0.15 </td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Mold Level(m)</td>
+                                <td class="font-medium">0.8 </td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Billet dest.</td>
+                                <td class="font-medium"> 150x150x6000</td>              
+                            </tr> 
+                            <tr class="text-sm">
+                                <td>Avg speed (m/min)</td>
+                                <td class="font-medium"> 1.5</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Avg steel temp over last hour (°C)</td>
+                                <td class="font-medium"> 1500</td>              
+                            </tr> 
                         </ng-template>
                     </p-table>
                 </div>
             </div>
+        </div>
+   </div>
+    <div class="flex justify-content-between mt-3">
+        <div class="p-card p-1" style="background-color: #f3f8ff;">
             <div class="flex justify-content-center align-items-center">
                 <div>
                     <div [class]="'rf_'+ vdClass"></div>
                     <div class="flex  mt-3">
                         <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
-                            <span class="font-medium">RF</span>
+                            <span class="font-medium">RHF</span>
+                        </div>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                            class="Button p-button-info" style="height: 3vh;" (click)="rhfDetailsShow()"></button>
+                    </div>
+                </div>
+                <div style="width: 17rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'172px'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                            <tr class="text-sm">
+                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Heat No</td>
+                                <td class="font-medium">92786</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Grade</td>
+                                <td class="font-medium">SAE4140</td>              
+                            </tr>
+                            <!-- <tr class="text-sm">
+                                <td >Start Time</td>
+                                <td class="font-medium">30/10/2024 10:30</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td style="width: 7rem;">Finish Time</td>
+                                <td class="font-medium">30/10/2024 11:00</td>              
+                            </tr> -->
+                            <tr class="text-sm">
+                                <td>Furnace Capacity(t)</td>
+                                <td class="font-medium">50 </td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Average Temperature(°C)</td>
+                                <td class="font-medium">1150</td>              
+                            </tr>
+                             <tr class="text-sm">
+                                <td>Maximum Temp(°C)</td>
+                                <td class="font-medium">1250</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Average Heating Time per Billet (h)</td>
+                                <td class="font-medium">2</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Production Rate Capacity (t/h)</td>
+                                <td class="font-medium">120</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Fuel Consumption Natural Gas(Nm³/h)</td>
+                                <td class="font-medium">500 </td>              
+                            </tr> 
+                            <tr class="text-sm">
+                                <td>Last Maintenance Date</td>
+                                <td class="font-medium">30/10/2024 </td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Last Maintenance Date</td>
+                                <td class="font-medium">30/10/2024 </td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Scheduled Maintenance Frequency</td>
+                                <td class="font-medium">Every three months </td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>avg. heating eff. (%)</td>
+                                <td class="font-medium">85</td>              
+                            </tr> 
+                            <tr class="text-sm">
+                                <td>Yield Rate (%)</td>
+                                <td class="font-medium">98</td>              
+                            </tr>
+                            
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+        <div class="p-card p-1" style="background-color: #f3f8ff;">
+            <div class="flex justify-content-center align-items-center">
+                <div style="width: 8rem;">
+                    <div class="card standCard ml-2" [class]="'standBackground_' + standClass">
+                        <div id="container1">
+                            <div class="circle1"></div>
+                        </div>
+                        <div></div>
+                        <div id="container">
+                            <div class="circle1"></div>
+                        </div>
+                    </div>
+                    <div class="flex  mt-3">
+                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                            <span class="font-medium">STAND</span>
                         </div>
                         <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
                             class="Button p-button-info" style="height: 3vh;" (click)="standDetailsShow()"></button>
                     </div>
                 </div>
-                <div style="width: 18rem;">
-                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
+                <div style="width: 17rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'172px'"
                     [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                         <ng-template pTemplate="body" let-rowData>
-                          <!-- <tr style="background-color: #90fc90;"> -->
-                            <tr >
+                            <tr class="text-sm">
                                 <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
                                 <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                             </tr>
-                            <tr>
-                                <td>Chemistry</td>
-                                <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
-                                    <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
-                                     <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
-                               </td>              
-                            </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Heat No</td>
-                                <td class="font-medium">92786</td>              
+                                <td class="font-medium">92787</td>              
                             </tr>
-                            <tr>
+                            <tr class="text-sm">
                                 <td>Grade</td>
-                                <td class="font-medium">SAE4140</td>              
+                                <td class="font-medium">SAE1018</td>              
                             </tr>
-                            <tr>
-                                <td style="width: 7rem;">Start Time</td>
-                                <td class="font-medium">30/10/2024 10:30</td>              
+                            <tr class="text-sm">
+                                <td>Roller Speed (m/min)</td>
+                                <td class="font-medium">5</td>              
+                            </tr> 
+                            <tr class="text-sm">
+                                <td>Roll Gap(mm)</td>
+                                <td class="font-medium">25</td>              
+                            </tr> 
+                            
+                            <tr class="text-sm">
+                                <td>Start Time</td>
+                                <td class="font-medium">30/10/2024 11:15</td>              
                             </tr>
-                            <tr>
-                                <td>Finish Time</td>
-                                <td class="font-medium">30/10/2024 11:00</td>              
+                            <tr class="text-sm">
+                                <td>End Time</td>
+                                <td class="font-medium">30/10/2024 11:40</td>              
                             </tr>
-                            <tr>
-                                <td>Furnace Capacity(tons)</td>
-                                <td class="font-medium">50 </td>              
+                            <tr class="text-sm">
+                                <td>Entry Temp (°C)</td>
+                                <td class="font-medium">1,100</td>              
+                            </tr> 
+                            <tr class="text-sm">
+                                <td>Exit Temp (°C)</td>
+                                <td class="font-medium">800</td>              
                             </tr>
-                            <tr>
-                                <td>Temperature(°C)</td>
-                                <td class="font-medium">700°C</td>              
+                            <tr class="text-sm">
+                                <td>Number of Stands</td>
+                                <td class="font-medium">6</td>              
                             </tr>
-                            <tr>
-                                <td>Heating Rate(°C/min)</td>
-                                <td class="font-medium">40°C/min</td>              
+                            <tr class="text-sm">
+                                <td>Rolling Speed(m/sec)</td>
+                                <td class="font-medium">20</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Roll Diameter(mm)</td>
+                                <td class="font-medium">1000 mm</td>              
+                            </tr> 
+                            <tr class="text-sm">
+                                <td>Production Rate (t/h)</td>
+                                <td class="font-medium">100</td>              
+                            </tr> 
+                            <tr class="text-sm">
+                                <td>Last Maintenance Date</td>
+                                <td class="font-medium">30/10/2024</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Scheduled Maintenance Freq.</td>
+                                <td class="font-medium">Every month</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Yield Rate (%)</td>
+                                <td class="font-medium">96</td>              
                             </tr>
                         </ng-template>
                     </p-table>
                 </div>
             </div>
         </div>
-        <!-- <div  class="col-12 flex justify-content-center align-items-center p-0 mt-2">
-            <div class="p-card flex justify-content-between font-medium p-2" style="background-color: #2e838d;color: white;">
-               <span>C %</span> <span class="ml-3"><span style="color: #ffc65c;">0.14</span>/<span style="color: #3ff83f;">0.15</span></span>
+        <div class="p-card p-1" style="background-color: #f3f8ff;">
+            <div class="flex justify-content-center align-items-center">
+                <div>
+                    <div [class]="'il_'+ vdClass"></div>
+                    <div class="flex  mt-3">
+                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                            <span class="font-medium"> IL-1</span>
+                        </div>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                            class="Button p-button-info" style="height: 3vh;" (click)="il1DetailsShow()"></button>
+                    </div>
+                </div>
+                <div style="width: 17rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'172px'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                            <tr class="text-sm">
+                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>PO Number</td>
+                                <td class="font-medium">19242</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Bar size (mm)</td>
+                                <td class="font-medium">380</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>No. of bars</td>
+                                <td class="font-medium">25</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Defect rate (%)</td>
+                                <td class="font-medium">10</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>PO rejected</td>
+                                <td class="font-medium">1</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Grade</td>
+                                <td class="font-medium">SAE1018</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Avg deviation in dimenstion (%)</td>
+                                <td class="font-medium">0.25</td>              
+                            </tr> 
+                            <tr class="text-sm">
+                                <td>Avg deviation in chemical composition (%)</td>
+                                <td class="font-medium">0.18</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Finished Goods (t)</td>
+                                <td class="font-medium">1000</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Defected Goods (t)</td>
+                                <td class="font-medium">5</td>              
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
             </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>Mn %</span> <span class="ml-3"><span style="color: #ffc65c;">0.73</span>/<span style="color: #3ff83f;">0.74</span></span>
+        </div>
+        <div class="p-card p-1" style="background-color: #f3f8ff;">
+            <div class="flex justify-content-center align-items-center">
+                <div>
+                    <div [class]="'il_'+ lfClass"></div>
+                    <div class="flex  mt-3">
+                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
+                            <span class="font-medium"> IL-2</span>
+                        </div>
+                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
+                            class="Button p-button-info" style="height: 3vh;" (click)="il2DetailsShow()"></button>
+                    </div>
+                </div>
+                <div style="width: 17rem;">
+                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'172px'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                            <tr class="text-sm">
+                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
+                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>PO Number</td>
+                                <td class="font-medium">19242</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Bar size (mm)</td>
+                                <td class="font-medium">380</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>No. of bars</td>
+                                <td class="font-medium">25</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Defect rate (%)</td>
+                                <td class="font-medium">10</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>PO rejected</td>
+                                <td class="font-medium">1</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Grade</td>
+                                <td class="font-medium">SAE1018</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Avg deviation in dimenstion (%)</td>
+                                <td class="font-medium">0.25</td>              
+                            </tr> 
+                            <tr class="text-sm">
+                                <td>Avg deviation in chemical composition (%)</td>
+                                <td class="font-medium">0.18</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Finished Goods (t)</td>
+                                <td class="font-medium">1,000</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Defected Goods (t)</td>
+                                <td class="font-medium">5</td>              
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
             </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>Si %</span> <span class="ml-3"><span style="color: #ffc65c;">0.18</span>/<span style="color: #3ff83f;">0.18</span></span>
+        </div>
+        <div class="p-card p-1" style="padding-bottom: 2px;">
+            <div class="text-center">
+                <span class="font-medium">Roll History</span>
             </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>B %</span> <span class="ml-3"><span style="color: #ffc65c;">0.11</span>/<span style="color: #3ff83f;">0.12</span></span>
+            <div style="width: 34vh;">
+                <p-table [value]="performanceTableData" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'14vh'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="header">
+                            <tr class="text-sm">
+                                <th >Stand</th>
+                                <th >Roll Dia (mm)</th>
+                                <th >Last Change</th>
+                                <th >Rolled (t)</th> 
+                                <th >Next change</th> 
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData>
+                        <tr [ngStyle]="{'color': rowData.color}">
+                            <td>{{rowData.stand}} </td>
+                            <td> {{rowData.rolldia}}</td>
+                            <td class="text-sm"> {{rowData.lastchange}} </td>   
+                            <td> {{rowData.tonsRolled}} </td>             
+                            <td class="text-sm"> {{rowData.nextchange}} </td>             
+                        </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="4">No Data found.</td>
+                            </tr>
+                        </ng-template>
+                </p-table>
             </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>Cr %</span> <span class="ml-3"><span style="color: #ffc65c;">0.00</span>/<span style="color: #3ff83f;">0.00</span></span>
-            </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>Ti %</span> <span class="ml-3"><span style="color: #ffc65c;">0.21</span>/<span style="color: #3ff83f;">0.24</span></span>
-            </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>Ni %</span> <span class="ml-3"><span style="color: #ffc65c;">0.57</span>/<span style="color: #3ff83f;">0.57</span></span>
-            </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>V %</span> <span class="ml-3"><span style="color: #ffc65c;">0.13</span>/<span style="color: #3ff83f;">0.12</span></span>
-            </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>Мо %</span> <span class="ml-3"><span style="color: #ffc65c;">0.11</span>/<span style="color: #3ff83f;">0.12</span></span>
-            </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>S %</span> <span class="ml-3"><span style="color: #ffc65c;">0.33</span>/<span style="color: #3ff83f;">0.34</span></span>
-            </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>P %</span> <span class="ml-3"><span style="color: #ffc65c;">0.43</span>/<span style="color: #3ff83f;">0.43</span></span>
-            </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>Al %</span> <span class="ml-3"><span style="color: #ffc65c;">0.24</span>/<span style="color: #3ff83f;">0.26</span></span>
-            </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>Ca %</span> <span class="ml-3"><span style="color: #ffc65c;">0.27</span>/<span style="color: #3ff83f;">0.28</span></span>
-            </div>
-            <div class="p-card flex justify-content-between font-medium p-2 ml-1" style="background-color: #2e838d;color: white;">
-                <span>W %</span> <span class="ml-3"><span style="color: #ffc65c;">0.44</span>/<span style="color: #3ff83f;">0.47</span></span>
-            </div>
-        </div>  -->
-       </div>
+        </div>
     </div>
-    <div class="col-12 p-0 mt-1 flex">
-        <div class="col-10 p-0">
-           <div class="col-12 p-0 flex">
-                <div class="col-9 p-1">
-                    <div class="p-card flex justify-content-center align-items-center mt-1 p-1" style="background-color: #f3f8ff; height: 100%;" >
-                        <div class="col-12 flex justify-content-between p-0">
-                            <div class="flex justify-content-center align-items-center">
-                                <div>
-                                    <div class="card standCard ml-2" [class]="'standBackground_' + standClass">
-                                        <div id="container1">
-                                            <div class="circle1"></div>
-                                        </div>
-                                        <div></div>
-                                        <div id="container">
-                                            <div class="circle1"></div>
-                                        </div>
-                                    </div>
-                                    <div class="flex  mt-3">
-                                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
-                                            <span class="font-medium">STAND</span>
-                                        </div>
-                                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
-                                            class="Button p-button-info" style="height: 3vh;" (click)="standDetailsShow()"></button>
-                                    </div>
-                                </div>
-                                <div style="width: 18rem;">
-                                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
-                                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                                        <ng-template pTemplate="body" let-rowData>
-                                          <!-- <tr style="background-color: #90fc90;"> -->
-                                            <tr >
-                                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
-                                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Heat No</td>
-                                                <td class="font-medium">92787</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Grade</td>
-                                                <td class="font-medium">SAE1018</td>              
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 7rem;">Start Time</td>
-                                                <td class="font-medium">30/10/2024 11:15</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>End Time</td>
-                                                <td class="font-medium">30/10/2024 11:40</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Number of Stands</td>
-                                                <td class="font-medium">6</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Rolling Speed(m/sec)</td>
-                                                <td class="font-medium">20</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Roll Diameter(mm)</td>
-                                                <td class="font-medium">1000 mm</td>              
-                                            </tr>
-                                        </ng-template>
-                                    </p-table>
-                                </div>
-                            </div>
-                            <div class="flex justify-content-center align-items-center">
-                                <div>
-                                    <div [class]="'il_'+ vdClass"></div>
-                                    <div class="flex  mt-3">
-                                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
-                                            <span class="font-medium"> IL-1</span>
-                                        </div>
-                                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
-                                            class="Button p-button-info" style="height: 3vh;" (click)="lfDetailsShow()"></button>
-                                    </div>
-                                </div>
-                                <div style="width: 18rem;">
-                                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
-                                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                                        <ng-template pTemplate="body" let-rowData>
-                                            <tr >
-                                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
-                                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Heat No</td>
-                                                <td class="font-medium">92788</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Grade</td>
-                                                <td class="font-medium">SAE1018</td>              
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 7rem;">Start Time</td>
-                                                <td class="font-medium">30/10/2024 11:45</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Finish Time</td>
-                                                <td class="font-medium">30/10/2024 12:15</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>PO Number</td>
-                                                <td class="font-medium">19242</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Finished Goods</td>
-                                                <td class="font-medium">1,000 tons</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Defected Goods</td>
-                                                <td class="font-medium">5 tons</td>              
-                                            </tr>
-                                        </ng-template>
-                                    </p-table>
-                                </div>
-                            </div>
-                            <div class="flex justify-content-center align-items-center">
-                                <div>
-                                    <div [class]="'il_'+ lfClass"></div>
-                                    <div class="flex  mt-3">
-                                        <div class="p-card text-center p-1" style="width: 80%;background-color: #c9dbec">
-                                            <span class="font-medium"> IL-2</span>
-                                        </div>
-                                        <button pButton pRipple icon="pi pi-eye" pTooltip="View Details" tooltipPosition="top"
-                                            class="Button p-button-info" style="height: 3vh;" (click)="lfDetailsShow()"></button>
-                                    </div>
-                                </div>
-                                <div style="width: 18rem;">
-                                    <p-table [value]="[{}]" [(selection)]="selectedData" selectionMode="single" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'171px'"
-                                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                                        <ng-template pTemplate="body" let-rowData>
-                                            <tr >
-                                                <td style="border-top:1px solid rgb(204, 204, 204)">In Charge</td>
-                                                <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Heat No</td>
-                                                <td class="font-medium">92789</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Grade</td>
-                                                <td class="font-medium">SAE1018</td>              
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 7rem;">Start Time</td>
-                                                <td class="font-medium">30/10/2024 12:15</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Finish Time</td>
-                                                <td class="font-medium">30/10/2024 12:45</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>PO Number</td>
-                                                <td class="font-medium">19243</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Finished Goods</td>
-                                                <td class="font-medium">1,500 tons</td>              
-                                            </tr>
-                                            <tr>
-                                                <td>Defected Goods</td>
-                                                <td class="font-medium">10 tons</td>              
-                                            </tr>
-                                        </ng-template>
-                                    </p-table>
-                                </div>
-                            </div>
-                        </div>
+    <div class="flex mt-2">
+        <div class="col-10 flex p-0">
+            <div class="col-3 p-1">
+                <div class="card p-1" style="height: 100%;border: 1px solid #b6dcff;">
+                    <div class="text-center mt-2">
+                        <span class="font-medium">PRODUCTION</span>
                     </div>
-                </div>
-                <div class="col-3  p-1">
-                    <div class="card mt-1 p-1" style="padding-bottom: 2px;">
-                        <div class="text-center">
-                            <span class="font-medium">PERFORMANCE</span>
-                        </div>
-                        <div>
-                            <p-table [value]="performanceTableData" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'15vh'"
-                                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                                    <ng-template pTemplate="header">
-                                        <tr >
-                                            <th >Stand</th>
-                                            <th >Roll Dia (mm)</th>
-                                            <th >Last Change</th>
-                                            <th >Rolled (t)</th> 
-                                            <th >Next change</th> 
-                                        </tr>
-                                    </ng-template>
-                                    <ng-template pTemplate="body" let-rowData>
-                                    <tr [ngStyle]="{'color': rowData.color}">
-                                        <td>{{rowData.stand}} </td>
-                                        <td> {{rowData.rolldia}}</td>
-                                        <td class="text-sm"> {{rowData.lastchange}} </td>   
-                                        <td> {{rowData.tonsRolled}} </td>             
-                                        <td class="text-sm"> {{rowData.nextchange}} </td>             
-                                    </tr>
-                                    </ng-template>
-                                    <ng-template pTemplate="emptymessage">
-                                        <tr>
-                                            <td colspan="4">No Data found.</td>
-                                        </tr>
-                                    </ng-template>
-                            </p-table>
-                        </div>
-                        <!-- <p-carousel [value]="costGraphs" [showNavigators]="false"  [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
-                            <ng-template let-cost pTemplate="item">
-                                <div class="border-1 surface-border border-round p-1">
-                                    <span class="block text-900 font-medium">{{cost.name}}</span>
-                                    <div class="text-900 font-medium">
-                                        <p-chart type="line" [data]="cost.data" [options]="cost.options" [plugins]="plugin"
-                                            height="11vh"  width="100%"/>
-                                    </div>
+                    <p-carousel [value]="productionGraphs"  [showNavigators]="false" [numVisible]="1" [numScroll]="1" [circular]="true"
+                        [autoplayInterval]="3000">
+                        <ng-template let-product pTemplate="item">
+                            <div class="p-1">
+                                <span class="block text-900 font-medium">{{product.name}}</span>
+                                <div class="text-900 font-medium text-4xl">
+                                    <p-chart type="line" [data]="product.data" [options]="product.options" [plugins]="plugin"
+                                        height="23vh" (click)="productionScreen()" />
                                 </div>
-                            </ng-template>
-                        </p-carousel> -->
-                    </div>
+                            </div>
+                        </ng-template>
+                    </p-carousel>
                 </div>
-           </div>
-           <div class="col-12 mt-2 p-0 flex">
-                <div class="col-3 p-1">
-                    <div class="card p-1">
+            </div>
+            <div class="col-3 p-1">
+               <div class="col-12 mb-2 p-0">
+                    <div class="card p-0" style="border: 1px solid #b6dcff;">
                         <div class="text-center mt-2">
-                            <span class="font-medium">PRODUCTION</span>
+                            <span class="font-medium">ASSET MONITORING</span>
                         </div>
-                        <p-carousel [value]="productionGraphs"  [showNavigators]="false" [numVisible]="1" [numScroll]="1" [circular]="true"
-                            [autoplayInterval]="3000">
-                            <ng-template let-product pTemplate="item">
-                                <div class="border-1 surface-border border-round p-1">
-                                    <span class="block text-900 font-medium">{{product.name}}</span>
-                                    <div class="text-900 font-medium text-4xl">
-                                        <p-chart type="line" [data]="product.data" [options]="product.options" [plugins]="plugin"
-                                            height="20vh" (click)="productionScreen()" />
+                        <div class="flex justify-content-center align-items-center">
+                            <p-carousel 
+                            [value]="AssetsData" 
+                            [numVisible]="1" 
+                            [numScroll]="1" 
+                            [circular]="true" 
+                            [showNavigators]="false"
+                            [autoplayInterval]="4000" style="width: 100%;" (onPage)="assetPageChange($event)">
+                                <ng-template let-product pTemplate="item">
+                                    <div  [class]="product.borderclass">
+                                    
+                                            <div class="flex font-medium ml-3 mt-2">
+                                                <div class="assetCircle blink_me mr-1" [ngStyle]="{ 'background-color': product.circleColor }">
+                                                </div>
+                                                <span>{{product.status}}</span>
+                                                <div class="font-medium text-center ml-5">
+                                                    <span>{{product.name}}</span>
+                                                </div>
+                                            </div>
+                                
+                                        <div class="text-900 text-sm font-medium ml-3 mt-2 mb-2">
+                                            <span>{{product.data}}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </ng-template>
-                        </p-carousel>
+                                </ng-template>
+                            </p-carousel>
+                        </div>
                     </div>
                 </div>
-                <div class="col-3 p-1">
-                    <div class="card p-2" style="height: 100%;">
+                <div class="col-12 p-0">
+                    <div class="card p-1" style="border: 1px solid #b6dcff;">
                         <div class="text-center">
                             <span class="font-medium">INVENTORY</span>
                         </div>
-                        <div class="border-1 surface-border border-round p-1">
+                        <!-- <div class="border-1 surface-border border-round p-1"> -->
                             <div class="flex  justify-content-center align-items-center">
                                 <div class="flex justify-content-center align-items-center">
-                                    <div style="border: 1px solid rgb(255, 159, 64);background-color: rgba(255, 159, 64, 0.2);height: 5px;width: 15px;"></div>
-                                    <span class="ml-1 text-sm">Alloys</span>
+                                    <div style="border: 1px solid rgb(153, 102, 255);background-color: rgba(153, 102, 255, 0.2);height: 5px;width: 15px;"></div>
+                                    <span class="ml-1 text-sm font-semibold">Alloys</span>
                                 </div>
                                 <div class="flex justify-content-center align-items-center ml-3">
                                     <div style="border: 1px solid rgb(54, 162, 235);background-color: rgba(54, 162, 235, 0.2);height: 5px;width: 15px;"></div>
-                                    <span class="ml-1 text-sm">Finished Goods</span>
+                                    <span class="ml-1 text-sm font-semibold">Finished Goods</span>
                                 </div>
                                 <div class="flex justify-content-center align-items-center ml-3">
-                                    <div style="border: 1px solid rgb(153, 102, 255);background-color: rgba(153, 102, 255, 0.2);height: 5px;width: 15px;"></div>
-                                    <span class="ml-1 text-sm">Flux</span>
+                                    <div style="border: 1px solid rgb(255, 159, 64);background-color: rgba(255, 159, 64, 0.2);height: 5px;width: 15px;"></div>
+                                    <span class="ml-1 text-sm font-semibold">Flux</span>
                                 </div>
                             </div>
                             <div class="text-900 font-medium text-4xl">
-                                <p-chart type="line" [data]="inventoryChartData" [options]="inventoryOptions" [plugins]="plugin" height="20vh" (click)="productionScreen()"/>
+                                <p-chart type="line" [data]="inventoryChartData" [options]="inventoryOptions" [plugins]="plugin" height="13vh" (click)="productionScreen()"/>
                             </div>
-                        </div>             
+                        <!-- </div>              -->
                     </div>
                 </div>
-                <div class="col-3  p-1">
-                    <div class="card p-1"  style="height: 100%;">
-                        <div class="text-center mt-2">
-                            <span class="font-medium">PERFORMANCE</span>
+            </div>
+            <div class="col-3 p-1">
+                <div class="card p-1"  style="height: 100%;border: 1px solid #b6dcff;">
+                    <div class="text-center mt-2">
+                        <span class="font-medium">PERFORMANCE (%)</span>
+                    </div>
+                    <!-- <div class="border-1 surface-border border-round p-1"> -->
+                        <div class="text-900 font-medium text-4xl">
+                            <p-chart type="line" [data]="kpiData" [options]="kpiOptions" [plugins]="plugin" height="26vh" (click)="productionScreen()"/>
                         </div>
-                        <div class="border-1 surface-border border-round p-1">
-                            <div class="text-900 font-medium text-4xl">
-                                <p-chart type="line" [data]="kpiData" [options]="kpiOptions" [plugins]="plugin" height="22vh" (click)="productionScreen()"/>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="col-3 p-1">
+                <div class="card p-0"  style="height: 100%;background-color: #f3ffff;border: 1px solid #b6dcff;">
+                    <div class="text-center mt-2">
+                        <span class="font-medium">OPERATOR LOGS</span>
+                    </div>
+                    <div  class="mt-1 p-4" style="height: 22vh;">
+                        <div class="p-card flex justify-content-between p-2 mt-1 font-medium" *ngFor="let item of operatorLogs" style="border: 1px solid rgb(213, 210, 210);">
+                            <span>{{item.data}}</span>
+                            <div class="flex justify-content-center align-items-center">
+                                <i class="pi pi-check mr-2" style="color: green;"></i>
+                                <i class="pi pi-times" style="color: red;" (click)="removeOperatorLog(item)"></i>
                             </div>
                         </div>
-                        <!-- <div class="card"> -->
-                            <!-- <p-carousel 
-                                [value]="performanceGraphs" 
-                                [numVisible]="1" 
-                                [numScroll]="1" 
-                                [circular]="true" 
-                                [showNavigators]="false" 
-                                [autoplayInterval]="3000">
-                                    <ng-template let-product pTemplate="item">
-                                        <div class="border-1 surface-border border-round p-1">
-                                            <span class="block text-900 font-medium">{{product.name}}</span>
-                                            <div class="text-900 font-medium text-4xl" *ngIf="!product.isTable">
-                                                <p-chart type="line" [data]="product.data" [options]="product.options" [plugins]="plugin" height="21vh" (click)="productionScreen()"/>
-                                            </div>
-                                            <div *ngIf="product.isTable">
-                                                <p-table [value]="product.data" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'21vh'"
-                                                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                                                        <ng-template pTemplate="header">
-                                                            <tr >
-                                                                <th >Stand</th>
-                                                                <th >Roll Dia (mm)</th>
-                                                                <th >Last Change</th>
-                                                                <th >Rolled (t)</th> 
-                                                            </tr>
-                                                        </ng-template>
-                                                        <ng-template pTemplate="body" let-rowData>
-                                                        <tr>
-                                                            <td>{{rowData.stand}} </td>
-                                                            <td> {{rowData.rolldia}}</td>
-                                                            <td> {{rowData.lastchange}} </td>   
-                                                            <td> {{rowData.tonsRolled}} </td>             
-                                                        </tr>
-                                                        </ng-template>
-                                                        <ng-template pTemplate="emptymessage">
-                                                            <tr>
-                                                                <td colspan="4">No Data found.</td>
-                                                            </tr>
-                                                        </ng-template>
-                                                </p-table>
-                                            </div>
-                                        </div>
-                                    </ng-template>
-                            </p-carousel> -->
-                        <!-- </div> -->
+                    </div>
+                    <div class="flex justify-content-center">
+                        <input type="text" pInputText placeholder="Enter here"   style="border-top-right-radius: 0%;border-bottom-right-radius: 0%; height: 32px;width: 80%;" [(ngModel)]="logItem" />
+                        <button class="p-button p-button-success" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%; " (click)="addLogItem()" >+</button>        
                     </div>
                 </div>
-                <div class="col-3  p-1">
-                    <div class="card p-0"  style="height: 100%;background-color: #f3ffff;border: 1px solid #b6dcff;">
-                        <div class="text-center mt-2">
-                            <span class="font-medium">OPERATOR LOGS</span>
-                        </div>
-                        <div  class="mt-1 p-4" style="height: 18vh;">
-                            <div class="p-card flex justify-content-between p-2 mt-1 font-medium" *ngFor="let item of operatorLogs" style="border: 1px solid rgb(213, 210, 210);">
-                                <span>{{item.data}}</span>
-                                <div class="flex justify-content-center align-items-center">
-                                    <i class="pi pi-check mr-2" style="color: green;"></i>
-                                    <i class="pi pi-times" style="color: red;" (click)="removeOperatorLog(item)"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-content-center">
-                            <input type="text" pInputText placeholder="Enter here"   style="border-top-right-radius: 0%;border-bottom-right-radius: 0%; height: 32px;width: 80%;" [(ngModel)]="logItem" />
-                            <button class="p-button p-button-success" style="border-top-left-radius: 0%;border-bottom-left-radius: 0%; " (click)="addLogItem()" >+</button>        
-                        </div>
-                    </div>
-                </div>
-           </div>
+            </div>
         </div>
-        <div class="col-2  p-0">
-            <div class="col-12 p-0">
-                <div class="card p-0 mt-1 redBorderBlink" style="height: 100%;">
-                    <!-- <div class="text-center mt-2">
-                        <span class="font-medium">ANOMALY</span>
-                    </div> -->
+        <div class="col-2 p-0">
+            <div class="col-12 p-1">
+                <div class="card p-0 redBorderBlink">
                     <div class="flex justify-content-center align-items-center">
                         <p-carousel 
                         #anomalyCarousel
@@ -1002,7 +1013,7 @@
                         [numScroll]="1" 
                         [circular]="true"     
                         [showNavigators]="false"                
-                        [autoplayInterval]="4000" style="width: 100%;" (onPage)="pageChange($event)">
+                        [autoplayInterval]="4000" style="width: 100%;border: 1px solid #b6dcff;" (onPage)="pageChange($event)">
                             <ng-template let-anomaly pTemplate="item">
                                <div class="card p-1 anomalyCardBlink" style="height: 9vh;" (click)="anomalyScreen()">
                                         <!-- <div class="text-center">
@@ -1026,54 +1037,27 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 mt-2 p-0">
-                <div class="card p-0">
-                    <div class="text-center mt-2">
-                        <span class="font-medium">ASSET MONITORING</span>
-                    </div>
-                    <div class="flex justify-content-center align-items-center">
-                        <p-carousel 
-                        [value]="AssetsData" 
-                        [numVisible]="1" 
-                        [numScroll]="1" 
-                        [circular]="true" 
-                        [showNavigators]="false"
-                        [autoplayInterval]="4000" style="width: 100%;" (onPage)="assetPageChange($event)">
-                            <ng-template let-product pTemplate="item">
-                                <div  [class]="product.borderclass">
-                                
-                                        <div class="flex font-medium ml-3 mt-3">
-                                            <div class="assetCircle blink_me mr-1" [ngStyle]="{ 'background-color': product.circleColor }">
-                                            </div>
-                                            <span>{{product.status}}</span>
-                                        </div>
-                                        <div class="font-medium text-center">
-                                            <span>{{product.name}}</span>
-                                        </div>
-                             
-                                    <div class="text-900 text-sm font-medium ml-3 mt-3 mb-2">
-                                        <span>{{product.data}}</span>
-                                    </div>
-                                </div>
-                            </ng-template>
-                        </p-carousel>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 mt-2 p-0">
-                <div class="card p-1" style="background-color: #dbdbdb;border: 1px solid #bdbcbc;">
-                    <div class="text-center mt-2">
+            <div class="col-12 p-1">
+                <div class="card p-1" style="background-color: #868585;border: 1px solid #ffffff;height: 100%;">
+                    <!-- <div class="text-center mt-2">
                         <span class="font-medium">VIDEO FEEDS</span>
+                    </div> -->
+                    <div class="flex justify-content-center align-items-center">
+                        <video controls class="video" (play)="video()" autoplay #videoPlayer style="width: 15vw;height:13vh;border-radius: 10px;">
+                            <source src="../../../../assets/videos/steelPlant.mp4" type="video/mp4">
+                            Your browser does not support the video.
+                          </video>
                     </div>
-                    <div class="flex justify-content-center align-items-center" style="height: 11vh">
+                    <!-- <div class="flex justify-content-center align-items-center" style="height: 11vh">
                         <div>
                             <i class="pi pi-video" style="color: white;font-size: 2.5rem"></i>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
     <p-dialog header="Comments" [(visible)]="bannerDialog" [modal]="true" showEffect="fade" [style]="{width: '41vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
@@ -1092,133 +1076,174 @@
         </ng-template>
     </p-dialog>
 
-
-    <p-dialog header="BOF1" [(visible)]="bof1Details" [modal]="true" showEffect="fade" [style]="{width: '41vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <!-- BOF-1 Dialog -->
+    <p-dialog header="BOF1" [(visible)]="bof1Details" [modal]="true" showEffect="fade" [style]="{width: '31vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
         <p-header>
             <div>
                 <span>BOF-1</span>
             </div>
         </p-header>
         <ng-template pTemplate="content">
-            <div style="width: 18vw;">
-                <p-table [value]="[{}]" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'80vh'"
-                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                    <ng-template pTemplate="body" let-rowData>
-                    <tr >
-                        <td style="border-top:1px solid rgb(204, 204, 204);">Person in Charge</td>
-                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
-                    </tr>
-                    <tr>
-                        <td>Chemistry</td>
-                        <td class="font-medium">C: <span style="color: green;">160</span>/ <span style="color: red;">155</span> 
-                             <br> Mn: <span style="color: green;">752</span>/ <span style="color: red;">748</span>
-                              <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span>
-                        </td>              
-                    </tr>
-                    <tr>
-                        <td>Heat No</td>
-                        <td class="font-medium">92339</td>              
-                    </tr>
-                    <tr>
-                        <td>Grade</td>
-                        <td class="font-medium">SAE1018</td>              
-                    </tr>
-                    <tr>
-                        <td>Start Time</td>
-                        <td class="font-medium">30/10/2024 06:11</td>              
-                    </tr>
-                    <tr>
-                        <td>Finish Time</td>
-                        <td class="font-medium">30/10/2024 06:44</td>              
-                    </tr>
-                    <tr>
-                        <td>Ladle No</td>
-                        <td class="font-medium">H7</td>              
-                    </tr>
-                    <tr>
-                        <td>Weight (t)</td>
-                        <td class="font-medium">31.7</td>              
-                    </tr>
-                    <tr>
-                        <td>Oxygen Nm³/min</td>
-                        <td class="font-medium">1851</td>              
-                    </tr>
-                    </ng-template>
-                </p-table>
-            </div>
-            <div class="mt-2">
-                <p-table [value]="[{}]" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
-                    [tableStyle]="{'min-width': '5rem'}"  selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="67vh">
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th></th>
-                            <th>C(%)</th>
-                            <th>Mn(%)</th>
-                            <th>Si(%)</th>
-                            <th>B(%)</th>
-                            <th>Cr(%)</th>
-                            <th>Ti(%)</th>
-                            <th>Ni(%)</th>
-                            <th>V(%)</th>
-                            <th>Mo(%)</th>
-                            <th>S(%)</th>
-                            <th>P(%)</th>
-                            <th>Al(%)</th>
-                            <th>Ca(%)</th>
-                            <th>w(%)</th>
-                           
+            <div class="flex">
+                <div style="width: 18vw;">
+                    <p-table [value]="[{}]" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'80vh'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                        <tr >
+                            <td style="border-top:1px solid rgb(204, 204, 204);">Person in Charge</td>
+                            <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                         </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData>
-                        <tr [ngStyle]="{ 'color': 'green' }">
-                          <td> Actual </td>
-                          <td> 0.160 </td>
-                          <td> 0.752 </td>  
-                          <td> 0.190 </td>  
-                          <td> 0.010</td>
-                          <td> 0.032</td>
-                          <td> 0.005</td>
-                          <td> 0.015</td>
-                          <td> 0.005</td>
-                          <td> 0.006</td>
-                          <td> 0.020</td>
-                          <td> 0.015</td>
-                          <td> 0.006</td>
-                          <td> 0.008</td>
-                          <td> 0.004</td>
-                         
-                      </tr>
-                      <tr [ngStyle]="{ 'color': 'RED' }">
-                        <td> Target </td>
-                        <td> 0.155 </td>
-                        <td> 0.748 </td>  
-                        <td> 0.186 </td>  
-                        <td> 0.000</td>
-                        <td> 0.027</td>
-                        <td> 0.001</td>
-                        <td> 0.012</td>
-                        <td> 0.000</td>
-                        <td> 0.000</td>
-                        <td> 0.017</td>
-                        <td> 0.013</td>
-                        <td> 0.000</td>
-                        <td> 0.000</td>
-                        <td> 0.000</td>
-                       
-                     </tr>
-                    </ng-template>
-                    <ng-template pTemplate="emptymessage">
                         <tr>
-                            <td colspan="12">No Data found.</td>
+                            <td>Chemistry</td>
+                            <td class="font-medium">C: <span style="color: green;">0.160</span>/ <span style="color: red;">0.155</span> 
+                                 <br> Mn: <span style="color: green;">0.752</span>/ <span style="color: red;">0.748</span>
+                                  <!-- <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span> -->
+                            </td>              
                         </tr>
-                    </ng-template>
-                </p-table>    
-             
-            </div>
-             
+                        <tr>
+                            <td>Heat No</td>
+                            <td class="font-medium">92339</td>              
+                        </tr>
+                        <tr>
+                            <td>Grade</td>
+                            <td class="font-medium">SAE1018</td>              
+                        </tr>
+                        <tr>
+                            <td>Start Time</td>
+                            <td class="font-medium">30/10/2024 06:11</td>              
+                        </tr>
+                        <tr>
+                            <td>Finish Time</td>
+                            <td class="font-medium">30/10/2024 06:44</td>              
+                        </tr>
+                        <tr>
+                            <td>Ladle No</td>
+                            <td class="font-medium">H7</td>              
+                        </tr>
+                        <tr>
+                            <td>Weight (t)</td>
+                            <td class="font-medium">31.7</td>              
+                        </tr>
+                        <tr>
+                            <td>Oxygen Nm³/min</td>
+                            <td class="font-medium">1851</td>              
+                        </tr>
+                        <tr>
+                            <td>Scrap Cons. (%)
+                            </td>
+                            <td class="font-medium">30</td>              
+                        </tr>
+                        <tr>
+                            <td>Alloy Cons. (kg)
+                            </td>
+                            <td class="font-medium">
+                                <span>SiMn : 584</span><br>
+                                <span>FeSi : 185</span>
+                            </td>              
+                        </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+                <div class="ml-2" style="width: 12vw;">
+                    <p-table [value]="[{}]" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+                        [tableStyle]="{'min-width': '5rem'}"  selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="80vh">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th></th>
+                                <th>Actual</th>
+                                <th>Target</th>                               
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData>
+                            <tr>
+                                <td> C (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }"> 0.160 </td>
+                                <td [ngStyle]="{ 'color': 'red' }"> 0.155 </td>
+                              </tr>
+                              <tr>
+                                <td> Mn (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }"> 0.752</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.748 </td>
+                              </tr>
+                              <tr>
+                                <td>Si (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }">  0.190</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.186 </td>
+                              </tr>
+                              <tr>
+                                <td>B (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }">  0.010</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.000 </td>
+                              </tr>
+                              <tr>
+                                <td>Cr (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }"> 0.032</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.027 </td>
+                              </tr>
+                              <tr>
+                                <td>Ti (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.005</td>
+                                <td [ngStyle]="{ 'color': 'red' }">   0.001 </td>
+                              </tr> 
+                              <tr>
+                                <td>Ni (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.015</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.012 </td>
+                              </tr>
+                              <tr>
+                                <td>V(%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.005</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.000</td>
+                              </tr>
+                              <tr>
+                                <td>Mo  (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.006</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.000</td>
+                              </tr>
+                              <tr>
+                                <td>S (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }"> 0.020</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.017</td>
+                              </tr>
+                              <tr>
+                                <td>P (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.015</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.013</td>
+                              </tr> 
+                              <tr>
+                                <td>P (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }"> 0.006</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.000</td>
+                              </tr>
+                              <tr>
+                                <td>Al (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }">  0.008</td>
+                                <td [ngStyle]="{ 'color': 'red' }"> 0.000</td>
+                              </tr> 
+                              <tr>
+                                <td>Ca (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }">  0.00</td>
+                                <td [ngStyle]="{ 'color': 'red' }"> 0.000</td>
+                              </tr> 
+                              <tr>
+                                <td>w (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.004</td>
+                                <td [ngStyle]="{ 'color': 'red' }"> 0.000</td>
+                              </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="12">No Data found.</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>    
+                 
+                </div>
+            </div>             
         </ng-template>
     </p-dialog>
 
+    <!-- BOF-2 Dialog -->
     <p-dialog header="BOF2" [(visible)]="bof2Details" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
         <p-header>
             <div>
@@ -1226,121 +1251,166 @@
             </div>
         </p-header>
         <ng-template pTemplate="content">
-            <div style="width: 18vw;">
-                <p-table [value]="[{}]" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'80vh'"
-                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
-                    <ng-template pTemplate="body" let-rowData>
-                    <tr >
-                        <td style="border-top:1px solid rgb(204, 204, 204)">Person in Charge</td>
-                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
-                    </tr>
-                    <tr>
-                        <td>Deviations</td>
-                        <td class="font-medium">C: -5%  <br> Mn: +3%  <br> Cr: -1%</td>              
-                    </tr>
-                    <tr>
-                        <td>Heat No</td>
-                        <td class="font-medium">92339</td>              
-                    </tr>
-                    <tr>
-                        <td>Grade</td>
-                        <td class="font-medium">SAE1018</td>              
-                    </tr>
-                    <tr>
-                        <td>Start Time</td>
-                        <td class="font-medium">30/10/2024 07:15</td>              
-                    </tr>
-                    <tr>
-                        <td>Finish Time</td>
-                        <td class="font-medium">30/10/2024 07:44</td>              
-                    </tr>
-                    <tr>
-                        <td>Ladle No</td>
-                        <td class="font-medium">H7</td>              
-                    </tr>
-                    <tr>
-                        <td>Weight (t)</td>
-                        <td class="font-medium">31.7</td>              
-                    </tr>
-                    <tr>
-                        <td>Oxygen Nm³/min</td>
-                        <td class="font-medium">1851</td>              
-                    </tr>
-                    </ng-template>
-                </p-table>
-            </div>
-            <div class="mt-2">
-                <p-table [value]="[{}]" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
-                    [tableStyle]="{'min-width': '5rem'}"  selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="67vh">
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th></th>
-                            <th>C(%)</th>
-                            <th>Mn(%)</th>
-                            <th>Si(%)</th>
-                            <th>B(%)</th>
-                            <th>Cr(%)</th>
-                            <th>Ti(%)</th>
-                            <th>Ni(%)</th>
-                            <th>V(%)</th>
-                            <th>Mo(%)</th>
-                            <th>S(%)</th>
-                            <th>P(%)</th>
-                            <th>Al(%)</th>
-                            <th>Ca(%)</th>
-                            <th>w(%)</th>
-                           
+            <div class="flex">
+                <div style="width: 18vw;">
+                    <p-table [value]="[{}]" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'80vh'"
+                    [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                        <ng-template pTemplate="body" let-rowData>
+                        <tr >
+                            <td style="border-top:1px solid rgb(204, 204, 204);">Person in Charge</td>
+                            <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
                         </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData>
-                        <tr [ngStyle]="{ 'color': 'green' }">
-                          <td> Actual </td>
-                          <td> 0.160 </td>
-                          <td> 0.752 </td>  
-                          <td> 0.190 </td>  
-                          <td> 0.010</td>
-                          <td> 0.032</td>
-                          <td> 0.005</td>
-                          <td> 0.015</td>
-                          <td> 0.005</td>
-                          <td> 0.006</td>
-                          <td> 0.020</td>
-                          <td> 0.015</td>
-                          <td> 0.006</td>
-                          <td> 0.008</td>
-                          <td> 0.004</td>
-                         
-                      </tr>
-                      <tr [ngStyle]="{ 'color': 'RED' }">
-                        <td> Target </td>
-                        <td> 0.155 </td>
-                        <td> 0.748 </td>  
-                        <td> 0.186 </td>  
-                        <td> 0.000</td>
-                        <td> 0.027</td>
-                        <td> 0.001</td>
-                        <td> 0.012</td>
-                        <td> 0.000</td>
-                        <td> 0.000</td>
-                        <td> 0.017</td>
-                        <td> 0.013</td>
-                        <td> 0.000</td>
-                        <td> 0.000</td>
-                        <td> 0.000</td>
-                       
-                     </tr>
-                    </ng-template>
-                    <ng-template pTemplate="emptymessage">
                         <tr>
-                            <td colspan="12">No Data found.</td>
+                            <td>Chemistry</td>
+                            <td class="font-medium">C: <span style="color: green;">0.160</span>/ <span style="color: red;">0.155</span> 
+                                 <br> Mn: <span style="color: green;">0.752</span>/ <span style="color: red;">0.748</span>
+                                  <!-- <br> Cr: <span style="color: green;">0.032</span>/ <span style="color: red;">0.027</span> -->
+                            </td>              
                         </tr>
-                    </ng-template>
-                </p-table>    
-             
-            </div>
+                        <tr>
+                            <td>Heat No</td>
+                            <td class="font-medium">92339</td>              
+                        </tr>
+                        <tr>
+                            <td>Grade</td>
+                            <td class="font-medium">SAE1018</td>              
+                        </tr>
+                        <tr>
+                            <td>Start Time</td>
+                            <td class="font-medium">30/10/2024 06:11</td>              
+                        </tr>
+                        <tr>
+                            <td>Finish Time</td>
+                            <td class="font-medium">30/10/2024 06:44</td>              
+                        </tr>
+                        <tr>
+                            <td>Ladle No</td>
+                            <td class="font-medium">H7</td>              
+                        </tr>
+                        <tr>
+                            <td>Weight (t)</td>
+                            <td class="font-medium">31.7</td>              
+                        </tr>
+                        <tr>
+                            <td>Oxygen Nm³/min</td>
+                            <td class="font-medium">1851</td>              
+                        </tr>
+                        <tr>
+                            <td>Scrap Cons. (%)
+                            </td>
+                            <td class="font-medium">30</td>              
+                        </tr>
+                        <tr>
+                            <td>Alloy Cons. (kg)
+                            </td>
+                            <td class="font-medium">
+                                <span>SiMn : 584</span><br>
+                                <span>FeSi : 185</span>
+                            </td>              
+                        </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+                <div class="ml-2" style="width: 12vw;">
+                    <p-table [value]="[{}]" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+                        [tableStyle]="{'min-width': '5rem'}"  selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="80vh">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th></th>
+                                <th>Actual</th>
+                                <th>Target</th>                               
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData>
+                            <tr>
+                                <td> C (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }"> 0.160 </td>
+                                <td [ngStyle]="{ 'color': 'red' }"> 0.155 </td>
+                              </tr>
+                              <tr>
+                                <td> Mn (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }"> 0.752</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.748 </td>
+                              </tr>
+                              <tr>
+                                <td>Si (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }">  0.190</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.186 </td>
+                              </tr>
+                              <tr>
+                                <td>B (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }">  0.010</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.000 </td>
+                              </tr>
+                              <tr>
+                                <td>Cr (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }"> 0.032</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.027 </td>
+                              </tr>
+                              <tr>
+                                <td>Ti (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.005</td>
+                                <td [ngStyle]="{ 'color': 'red' }">   0.001 </td>
+                              </tr> 
+                              <tr>
+                                <td>Ni (%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.015</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.012 </td>
+                              </tr>
+                              <tr>
+                                <td>V(%) </td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.005</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.000</td>
+                              </tr>
+                              <tr>
+                                <td>Mo  (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.006</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.000</td>
+                              </tr>
+                              <tr>
+                                <td>S (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }"> 0.020</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.017</td>
+                              </tr>
+                              <tr>
+                                <td>P (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.015</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.013</td>
+                              </tr> 
+                              <tr>
+                                <td>P (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }"> 0.006</td>
+                                <td [ngStyle]="{ 'color': 'red' }">  0.000</td>
+                              </tr>
+                              <tr>
+                                <td>Al (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }">  0.008</td>
+                                <td [ngStyle]="{ 'color': 'red' }"> 0.000</td>
+                              </tr> 
+                              <tr>
+                                <td>Ca (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }">  0.00</td>
+                                <td [ngStyle]="{ 'color': 'red' }"> 0.000</td>
+                              </tr> 
+                              <tr>
+                                <td>w (%)</td>
+                                <td  [ngStyle]="{ 'color': 'green' }">0.004</td>
+                                <td [ngStyle]="{ 'color': 'red' }"> 0.000</td>
+                              </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="12">No Data found.</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>    
+                 
+                </div>
+            </div>   
         </ng-template>
     </p-dialog>
 
+    <!-- LF Dialog  -->
     <p-dialog header="LF" [(visible)]="lfDetails" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
         <p-header>
             <div>
@@ -1394,6 +1464,7 @@
         </ng-template>
     </p-dialog>
 
+     <!-- VD Dialog  -->
     <p-dialog header="VD" [(visible)]="vdDetails" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
         <p-header>
             <div>
@@ -1512,14 +1583,15 @@
         </ng-template>
     </p-dialog>
 
-    <p-dialog header="CCM" [(visible)]="ccmDetails" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <!-- CCM Dialog  -->
+    <p-dialog header="CCM" [(visible)]="ccmDetails" [modal]="true" showEffect="fade" [style]="{width: '24vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
         <p-header>
             <div>
                 <span>Continous Casting</span>
             </div>
         </p-header>
         <ng-template pTemplate="content">
-            <div style="width: 18vw;">
+            <div style="width: 22vw;">
                 <p-table [value]="[{}]" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'80vh'"
                 [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                     <ng-template pTemplate="body" let-rowData>
@@ -1529,115 +1601,316 @@
                     </tr>
                     <tr>
                         <td>Heat No</td>
-                        <td class="font-medium">92339</td>              
+                        <td class="font-medium">92785</td>              
                     </tr>
                     <tr>
                         <td>Grade</td>
-                        <td class="font-medium">SAE1018</td>              
+                        <td class="font-medium">SAE4140</td>              
                     </tr>
                     <tr>
                         <td>Start Time</td>
-                        <td class="font-medium">30/10/2024 06:11</td>              
+                        <td class="font-medium">30/10/2024 09:45</td>              
                     </tr>
                     <tr>
                         <td>Finish Time</td>
-                        <td class="font-medium">30/10/2024 09:23</td>              
+                        <td class="font-medium">30/10/2024 10:15</td>              
                     </tr>
                     <tr>
-                        <td>Ladle No</td>
-                        <td class="font-medium">H7</td>              
+                        <td>Casting Speed (m/min)</td>
+                        <td class="font-medium">1.5</td>              
                     </tr>
                     <tr>
-                        <td>Weight (t)</td>
-                        <td class="font-medium">31.7</td>              
+                        <td>Steel Temp (°C)</td>
+                        <td class="font-medium">1500 </td>              
                     </tr>
                     <tr>
-                        <td>Oxygen Nm³/min</td>
-                        <td class="font-medium">300</td>              
+                        <td>Water Temp (°C)</td>
+                        <td class="font-medium">30</td>              
                     </tr>
+                    <tr>
+                        <td>Oscillation Frequency (Hz)</td>
+                        <td class="font-medium">1.2</td>              
+                    </tr>
+                    <tr>
+                        <td>Mold Friction Coefficient</td>
+                        <td class="font-medium">0.15</td>              
+                    </tr>
+                    <tr>
+                        <td>Chemical Composition</td>
+                        <td class="font-medium">C: <span>0.0025</span>
+                            <br> Mn: <span>0.012</span>
+                            <br> Si: <span >0.005</span>
+                            <br> P: <span >0.0003</span>
+                            <br> S: <span >0.0002</span>
+                       </td>          
+                    </tr>
+                    <tr>
+                        <td>A12Viscosity (Pa·s)</td>
+                        <td class="font-medium">0.005</td>              
+                    </tr> <tr>
+                        <td>Material Density (kg/m³)</td>
+                        <td class="font-medium">7850</td>              
+                    </tr>
+                    <tr>
+                        <td>Superheat Temperature (°C)</td>
+                        <td class="font-medium">50</td>              
+                    </tr>
+                    <tr>
+                        <td>Oscillator Stroke Length (mm)</td>
+                        <td class="font-medium">10 </td>              
+                    </tr>
+                    <tr>
+                        <td>Hydraulic Pressure (bar)</td>
+                        <td class="font-medium">50</td>              
+                    </tr>
+                    <tr>
+                        <td>Sensor Vibration Level(g)</td>
+                        <td class="font-medium">0.05 </td>              
+                    </tr>
+                    <tr>
+                        <td>Temp of Hydraulic System (°C)</td>
+                        <td class="font-medium">70</td>              
+                    </tr>
+                    <tr>
+                        <td>Total Production Volume Today (t)</td>
+                        <td class="font-medium">500</td>              
+                    </tr>
+                    <tr>
+                        <td>Yield Rate</td>
+                        <td class="font-medium">0.98</td>              
+                    </tr>
+                    <tr>
+                        <td>Avg Casting Speed Over Last Hour (m/min)</td>
+                        <td class="font-medium">1.6</td>              
+                    </tr>
+                    <tr>
+                        <td>Avg Steel Temperature Over Last Hour ( °C)</td>
+                        <td class="font-medium">1495</td>              
+                    </tr>
+                   
                     </ng-template>
                 </p-table>
-            </div>
-            <div class="mt-2">
-                <p-table [value]="[{}]" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
-                    [tableStyle]="{'min-width': '5rem'}"  selectionMode="single" [(selection)]="selectedData"  [scrollable]="true" scrollHeight="67vh">
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th></th>
-                            <th>C(%)</th>
-                            <th>Mn(%)</th>
-                            <th>Si(%)</th>
-                            <th>B(%)</th>
-                            <th>Cr(%)</th>
-                            <th>Ti(%)</th>
-                            <th>Ni(%)</th>
-                            <th>V(%)</th>
-                            <th>Mo(%)</th>
-                            <th>S(%)</th>
-                            <th>P(%)</th>
-                            <th>Al(%)</th>
-                            <th>Ca(%)</th>
-                            <th>w(%)</th>
-                           
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData>
-                        <tr [ngStyle]="{ 'color': 'green' }">
-                          <td> Actual </td>
-                          <td> 0.160 </td>
-                          <td> 0.752 </td>  
-                          <td> 0.190 </td>  
-                          <td> 0.010</td>
-                          <td> 0.032</td>
-                          <td> 0.005</td>
-                          <td> 0.015</td>
-                          <td> 0.005</td>
-                          <td> 0.006</td>
-                          <td> 0.020</td>
-                          <td> 0.015</td>
-                          <td> 0.006</td>
-                          <td> 0.008</td>
-                          <td> 0.004</td>
-                         
-                      </tr>
-                      <tr [ngStyle]="{ 'color': 'RED' }">
-                        <td> Target </td>
-                        <td> 0.155 </td>
-                        <td> 0.748 </td>  
-                        <td> 0.186 </td>  
-                        <td> 0.000</td>
-                        <td> 0.027</td>
-                        <td> 0.001</td>
-                        <td> 0.012</td>
-                        <td> 0.000</td>
-                        <td> 0.000</td>
-                        <td> 0.017</td>
-                        <td> 0.013</td>
-                        <td> 0.000</td>
-                        <td> 0.000</td>
-                        <td> 0.000</td>
-                       
-                     </tr>
-                    </ng-template>
-                    <ng-template pTemplate="emptymessage">
-                        <tr>
-                            <td colspan="12">No Data found.</td>
-                        </tr>
-                    </ng-template>
-                </p-table>    
-             
             </div>
         </ng-template>
     </p-dialog>
 
-    <p-dialog header="Stand 1 to 6" [(visible)]="standDetails" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <!-- RHF Dilaog  -->
+    <p-dialog header="RHF" [(visible)]="rhfDetails" [modal]="true" showEffect="fade" [style]="{width: '24vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+        <p-header>
+            <div>
+                <span>Reheating Furnace</span>
+            </div>
+        </p-header>
+        <ng-template pTemplate="content">
+            <div style="width: 22vw;">
+                <p-table [value]="[{}]" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'80vh'"
+                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                    <ng-template pTemplate="body" let-rowData>
+                    <tr >
+                        <td style="border-top:1px solid rgb(204, 204, 204)">Person in Charge</td>
+                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                    </tr>
+                    <tr>
+                        <td>Heat No</td>
+                        <td class="font-medium">92786</td>              
+                    </tr>
+                    <tr>
+                        <td>Grade</td>
+                        <td class="font-medium">SAE4140</td>              
+                    </tr>
+                    <tr>
+                        <td>Start Time</td>
+                        <td class="font-medium">30/10/2024 10:30</td>              
+                    </tr>
+                    <tr>
+                        <td>Finish Time</td>
+                        <td class="font-medium">30/10/2024 11:00</td>              
+                    </tr>
+                    <tr>
+                        <td>Furnace Avg Temperature (°C)</td>
+                        <td class="font-medium">1150</td>              
+                    </tr>
+                    <tr>
+                        <td>Furnace Max Temperature (°C)</td>
+                        <td class="font-medium">1250 </td>              
+                    </tr>
+                    <tr>
+                        <td>Avg Heating Time per Billet(hrs)</td>
+                        <td class="font-medium"> 2 </td>              
+                    </tr>
+                    <tr>
+                        <td>Production Rate Capacity (t/hr)</td>
+                        <td class="font-medium">120 </td>              
+                    </tr>
+                    <tr>
+                        <td>Fuel Consumption Natural Gas (Nm³/hr)</td>
+                        <td class="font-medium">500 </td>              
+                    </tr>
+                    <tr>
+                        <td>Billet Dimensions (mm)</td>
+                        <td class="font-medium"> 150 x 150 x 6000</td>          
+                    </tr>
+                    <tr>
+                        <td>Temperature Variation within Furnace (°C)</td>
+                        <td class="font-medium">±10</td>              
+                    </tr> <tr>
+                        <td>Average Scale Thickness (mm)</td>
+                        <td class="font-medium">0.5 </td>              
+                    </tr>
+                    <tr>
+                        <td>Burner Type</td>
+                        <td class="font-medium">Dual-Fuel Burner</td>              
+                    </tr>
+                    <tr>
+                        <td>Burner Efficiency (%)</td>
+                        <td class="font-medium">85</td>              
+                    </tr>
+                    <tr>
+                        <td>Average Vibration Level (g)</td>
+                        <td class="font-medium">0.05 </td>              
+                    </tr>
+                    <tr>
+                        <td>Sensor Vibration Level(acceleration)</td>
+                        <td class="font-medium">0.05 g</td>              
+                    </tr>
+                    <tr>
+                        <td>Last Maintenance Date</td>
+                        <td class="font-medium">30/10/2024</td>              
+                    </tr>
+                    <tr>
+                        <td>Scheduled Maintenance Frequency</td>
+                        <td class="font-medium">Every three months</td>              
+                    </tr>
+                    <tr>
+                        <td>Total Billets Processed Today (t)</td>
+                        <td class="font-medium">240 </td>              
+                    </tr>
+                    <tr>
+                        <td>Yield Rate(%)</td>
+                        <td class="font-medium">98</td>              
+                    </tr>
+                    <tr>
+                        <td>Average Heating Efficiency Over Last Week (%)</td>
+                        <td class="font-medium">90</td>              
+                    </tr>
+                   
+                    </ng-template>
+                </p-table>
+            </div>
+        </ng-template>
+    </p-dialog>
+
+    <!-- stand Dialog -->
+    <p-dialog header="Stand 1 to 6" [(visible)]="standDetails" [modal]="true" showEffect="fade" [style]="{width: '25vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
         <p-header>
             <div>
                 <span>Stand 1 to 6</span>
             </div>
         </p-header>
         <ng-template pTemplate="content">
-            <div style="width: 18vw;">
+            <div style="width: 23vw;">
+                <p-table [value]="[{}]" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'81vh'"
+                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                    <ng-template pTemplate="body" let-rowData>
+                    <tr >
+                        <td style="border-top:1px solid rgb(204, 204, 204)">Person in Charge</td>
+                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                    </tr>
+                    <tr>
+                        <td>Heat No</td>
+                        <td class="font-medium">92787</td>              
+                    </tr>
+                    <tr>
+                        <td>Grade</td>
+                        <td class="font-medium">SAE4140</td>              
+                    </tr>
+                    <tr>
+                        <td style="width:18rem">Start Time</td>
+                        <td class="font-medium">30/10/2024 11:15</td>              
+                    </tr>
+                    <tr>
+                        <td>Finish Time</td>
+                        <td class="font-medium">30/10/2024 11:40</td>              
+                    </tr>
+                    <tr>
+                        <td>Roller Speed(m/min)</td>
+                        <td class="font-medium">5</td>              
+                    </tr>
+                    <tr>
+                        <td>Roll Gap(mm)</td>
+                        <td class="font-medium">25</td>              
+                    </tr>
+                    <tr>
+                        <td>Entry Temperature(°C)</td>
+                        <td class="font-medium">1100</td>              
+                    </tr>
+                    <tr>
+                        <td>Exit Temperature(°C)</td>
+                        <td class="font-medium">800 </td>              
+                    </tr>
+                    <tr>
+                        <td>Production Rate (t/hr)</td>
+                        <td class="font-medium">100</td>              
+                    </tr>
+                    <tr>
+                        <td>Material Initial Diameter(mm)</td>
+                        <td class="font-medium">20</td>          
+                    </tr>
+                    <tr>
+                        <td>Material Final Diameter(mm)</td>
+                        <td class="font-medium">12</td>              
+                    </tr> <tr>
+                        <td>Length of Material(mm)</td>
+                        <td class="font-medium">12000</td>              
+                    </tr>
+                    <tr>
+                        <td>Roller Diameter(mm)</td>
+                        <td class="font-medium">350</td>              
+                    </tr>
+                    <tr>
+                        <td>Wear Rates(mm)</td>
+                        <td class="font-medium">0.15 </td>              
+                    </tr>
+                    <tr>
+                        <td>Vibration Levels(g)</td>
+                        <td class="font-medium">0.03</td>              
+                    </tr>
+                   
+                    <tr>
+                        <td>Last Maintenance Date</td>
+                        <td class="font-medium">30/10/2024</td>              
+                    </tr>
+                    <tr>
+                        <td>Scheduled Maintenance Frequency</td>
+                        <td class="font-medium">Every three months</td>              
+                    </tr>
+                    <tr>
+                        <td>Total Production(t) </td>
+                        <td class="font-medium">200</td>              
+                    </tr>
+                    <tr>
+                        <td>Yield Rate(%)</td>
+                        <td class="font-medium">96 </td>              
+                    </tr>
+                    <tr>
+                        <td>Average Production Rate Over Last Hour(t/hr)</td>
+                        <td class="font-medium">110</td>              
+                    </tr>                   
+                    </ng-template>
+                </p-table>
+            </div>
+        </ng-template>
+    </p-dialog>
+
+    <!-- IL-1 Dialog -->
+    <p-dialog header="IL-1" [(visible)]="il1Details" [modal]="true" showEffect="fade" [style]="{width: '23vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+        <p-header>
+            <div>
+                <span>Inspection Line-1</span>
+            </div>
+        </p-header>
+        <ng-template pTemplate="content">
+            <div style="width: 21vw;">
                 <p-table [value]="[{}]" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'80vh'"
                 [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                     <ng-template pTemplate="body" let-rowData>
@@ -1647,31 +1920,207 @@
                     </tr>
                     <tr>
                         <td>Heat No</td>
-                        <td class="font-medium">92339</td>              
+                        <td class="font-medium">92788</td>              
                     </tr>
                     <tr>
                         <td>Grade</td>
-                        <td class="font-medium">SAE1018</td>              
+                        <td class="font-medium">SAE4140</td>              
                     </tr>
                     <tr>
                         <td>Start Time</td>
-                        <td class="font-medium">30/10/2024 06:11</td>              
+                        <td class="font-medium">30/10/2024 11:45</td>              
                     </tr>
                     <tr>
                         <td>Finish Time</td>
-                        <td class="font-medium">30/10/2024 09:23</td>              
+                        <td class="font-medium">30/10/2024 12:15</td>              
                     </tr>
                     <tr>
-                        <td>Ladle No</td>
-                        <td class="font-medium">H7</td>              
+                        <td>Bar size(mm)</td>
+                        <td class="font-medium">380</td>              
                     </tr>
                     <tr>
-                        <td>Weight (t)</td>
-                        <td class="font-medium">31.7</td>              
+                        <td>No. of bars</td>
+                        <td class="font-medium">25</td>              
                     </tr>
                     <tr>
-                        <td>Oxygen Nm³/min</td>
-                        <td class="font-medium">300</td>              
+                        <td>Defect rate(%)</td>
+                        <td class="font-medium">10</td>              
+                    </tr>
+                    <tr>
+                        <td>POs rejected(°C)</td>
+                        <td class="font-medium">1</td>              
+                    </tr>
+                    <tr>
+                        <td>Avg deviation in dimenstion(%)</td>
+                        <td class="font-medium">0.25</td>              
+                    </tr>
+                    <tr>
+                        <td>Avg deviation in chemical composition(%)</td>
+                        <td class="font-medium">0.18</td>          
+                    </tr>
+                    <tr>
+                        <td>Surface defects(type)</td>
+                        <td class="font-medium">Pitting</td>              
+                    </tr> <tr>
+                        <td>Internal defects(type)</td>
+                        <td class="font-medium">Small void</td>              
+                    </tr>
+                    <tr>
+                        <td>Detection method</td>
+                        <td class="font-medium">Ultrasonic Testing</td>              
+                    </tr>
+                    <tr>
+                        <td>Measured diameters</td>
+                        <td class="font-medium">20.05</td>              
+                    </tr>
+                    <tr>
+                        <td>Specified diameter</td>
+                        <td class="font-medium">20</td>              
+                    </tr>
+                   
+                    <tr>
+                        <td>Length</td>
+                        <td class="font-medium">12</td>              
+                    </tr>
+                    <tr>
+                        <td>Specified length</td>
+                        <td class="font-medium">12</td>              
+                    </tr>
+                    <tr>
+                        <td>Total bars produced</td>
+                        <td class="font-medium">500</td>              
+                    </tr>
+                    <tr>
+                        <td>Bars passed inspection(%)</td>
+                        <td class="font-medium">80 </td>              
+                    </tr>
+                    <tr>
+                        <td>Average throughput (m/min)</td>
+                        <td class="font-medium">30</td>              
+                    </tr>
+                    <tr>
+                        <td>Chemical composition(%)</td>
+                        <td class="font-medium">C: <span>0.25</span>
+                            <br> Mn: <span>1.50</span>
+                            <br> Si: <span >0.15</span>
+                       </td>            
+                    </tr>
+                    <tr>
+                        <td>Yield strength(MPs)</td>
+                        <td class="font-medium">450 </td>              
+                    </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </ng-template>
+    </p-dialog>
+
+    <!-- IL-2 Dialog  -->
+    <p-dialog header="IL-2" [(visible)]="il2Details" [modal]="true" showEffect="fade" [style]="{width: '23vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+        <p-header>
+            <div>
+                <span>Inspection Line-2</span>
+            </div>
+        </p-header>
+        <ng-template pTemplate="content">
+            <div style="width: 21vw;">
+                <p-table [value]="[{}]" [rows]="3" [loading]="loading" [scrollable]="true" [scrollHeight]="'80vh'"
+                [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                    <ng-template pTemplate="body" let-rowData>
+                    <tr >
+                        <td style="border-top:1px solid rgb(204, 204, 204)">Person in Charge</td>
+                        <td style="border-top:1px solid rgb(204, 204, 204)" class="font-medium">Abcd</td>              
+                    </tr>
+                    <tr>
+                        <td>Heat No</td>
+                        <td class="font-medium">92789</td>              
+                    </tr>
+                    <tr>
+                        <td>Grade</td>
+                        <td class="font-medium">SAE4140</td>              
+                    </tr>
+                    <tr>
+                        <td>Start Time</td>
+                        <td class="font-medium">30/10/2024 12:15</td>              
+                    </tr>
+                    <tr>
+                        <td>Finish Time</td>
+                        <td class="font-medium">30/10/2024 12:45</td>              
+                    </tr>
+                    <tr>
+                        <td>Bar size(mm)</td>
+                        <td class="font-medium">385</td>              
+                    </tr>
+                    <tr>
+                        <td>No. of bars</td>
+                        <td class="font-medium">30</td>              
+                    </tr>
+                    <tr>
+                        <td>Defect rate(%)</td>
+                        <td class="font-medium">11</td>              
+                    </tr>
+                    <tr>
+                        <td>POs rejected(°C)</td>
+                        <td class="font-medium">2</td>              
+                    </tr>
+                    <tr>
+                        <td>Avg deviation in dimenstion(%)</td>
+                        <td class="font-medium">0.30</td>              
+                    </tr>
+                    <tr>
+                        <td>Avg deviation in chemical composition(%)</td>
+                        <td class="font-medium">0.20</td>          
+                    </tr>
+                    <tr>
+                        <td>Surface defects(type)</td>
+                        <td class="font-medium">Cracks</td>              
+                    </tr> <tr>
+                        <td>Internal defects(type)</td>
+                        <td class="font-medium">None</td>              
+                    </tr>
+                    <tr>
+                        <td>Detection method</td>
+                        <td class="font-medium">Visual Inspection</td>              
+                    </tr>
+                    <tr>
+                        <td>Measured diameters</td>
+                        <td class="font-medium">19.95</td>              
+                    </tr>
+                    <tr>
+                        <td>Specified diameter</td>
+                        <td class="font-medium">20</td>              
+                    </tr>
+                   
+                    <tr>
+                        <td>Length</td>
+                        <td class="font-medium">11.50</td>              
+                    </tr>
+                    <tr>
+                        <td>Specified length</td>
+                        <td class="font-medium">12</td>              
+                    </tr>
+                    <tr>
+                        <td>Total bars produced</td>
+                        <td class="font-medium">600</td>              
+                    </tr>
+                    <tr>
+                        <td>Bars passed inspection(%)</td>
+                        <td class="font-medium">85 </td>              
+                    </tr>
+                    <tr>
+                        <td>Average throughput (m/min)</td>
+                        <td class="font-medium">32</td>              
+                    </tr>
+                    <tr>
+                        <td>Chemical composition(%)</td>
+                        <td class="font-medium">C: <span>0.30</span>
+                            <br> Mn: <span>1.50</span>
+                            <br> Si: <span >0.10</span>
+                       </td>            
+                    </tr>
+                    <tr>
+                        <td>Yield strength(MPs)</td>
+                        <td class="font-medium">460</td>              
                     </tr>
                     </ng-template>
                 </p-table>
@@ -1681,5 +2130,3 @@
        
        
        
-    <!-- </div> -->
-</div>
