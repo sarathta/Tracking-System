@@ -13,6 +13,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   @ViewChild("anomalyCarousel") anomalyCarousel: any;
   @ViewChild('videoPlayer')set mainVideoEl(el: any) {
     this.videoPlayer = el.nativeElement;
+    this.videoPlayer.muted = true;  
   };
   today: Date = new Date();
   plugin = [ChartDataLabels];
