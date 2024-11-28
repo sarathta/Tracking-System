@@ -14,6 +14,7 @@ export class ContinousCasterDialogComponent {
       this.hideDialog();
     }
   }
+  loading:any;
 
   @Input() set inpCCMData(data: number) {
     if (data) {

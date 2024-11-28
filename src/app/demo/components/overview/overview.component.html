@@ -536,31 +536,112 @@
     </ng-template>
 </p-dialog>
 
-<p-dialog header="IL" [(visible)]="dialogIL" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+<p-dialog header="IL" [(visible)]="dialogIL" [modal]="true" showEffect="fade" [style]="{width: '24vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
     <p-header>
         <div>
-            <span>{{dialogILHeader}}</span>
+            <span>Inspection Line-1</span>
         </div>
     </p-header>
     <ng-template pTemplate="content">
-        <div class="text-center">
-            <span>IL Details</span>
+        <div style="width: 21vw;">
+            <p-table [value]="[{}]" [rows]="3"  [scrollable]="true" [scrollHeight]="'80vh'"
+            [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
+                <ng-template pTemplate="body" let-rowData>
+               
+                <tr>
+                    <td>Heat No</td>
+                    <td class="font-medium">92788</td>              
+                </tr>
+                <tr>
+                    <td>Grade</td>
+                    <td class="font-medium">SAE4140</td>              
+                </tr>
+                <tr>
+                    <td>Start Time</td>
+                    <td class="font-medium">30/10/2024 11:45</td>              
+                </tr>
+                <tr>
+                    <td>Finish Time</td>
+                    <td class="font-medium">30/10/2024 12:15</td>              
+                </tr>
+                <tr>
+                    <td>Bar size(mm)</td>
+                    <td class="font-medium">380</td>              
+                </tr>
+                <tr>
+                    <td>No. of bars</td>
+                    <td class="font-medium">25</td>              
+                </tr>
+                <tr>
+                    <td>Defect rate(%)</td>
+                    <td class="font-medium">10</td>              
+                </tr>
+                <tr>
+                    <td>POs rejected(°C)</td>
+                    <td class="font-medium">1</td>              
+                </tr>
+                <tr>
+                    <td>Avg deviation in dimenstion(%)</td>
+                    <td class="font-medium">0.25</td>              
+                </tr>
+                <tr>
+                    <td>Avg deviation in chemical composition(%)</td>
+                    <td class="font-medium">0.18</td>          
+                </tr>
+                <tr>
+                    <td>Surface defects(type)</td>
+                    <td class="font-medium">Pitting</td>              
+                </tr> <tr>
+                    <td>Internal defects(type)</td>
+                    <td class="font-medium">Small void</td>              
+                </tr>
+                <tr>
+                    <td>Detection method</td>
+                    <td class="font-medium">Ultrasonic Testing</td>              
+                </tr>
+                <tr>
+                    <td>Measured diameters</td>
+                    <td class="font-medium">20.05</td>              
+                </tr>
+                <tr>
+                    <td>Specified diameter</td>
+                    <td class="font-medium">20</td>              
+                </tr>
+               
+                <tr>
+                    <td>Length</td>
+                    <td class="font-medium">12</td>              
+                </tr>
+                <tr>
+                    <td>Specified length</td>
+                    <td class="font-medium">12</td>              
+                </tr>
+                <tr>
+                    <td>Total bars produced</td>
+                    <td class="font-medium">500</td>              
+                </tr>
+                <tr>
+                    <td>Bars passed inspection(%)</td>
+                    <td class="font-medium">80 </td>              
+                </tr>
+                <tr>
+                    <td>Average throughput (m/min)</td>
+                    <td class="font-medium">30</td>              
+                </tr>
+                <tr>
+                    <td>Chemical composition(%)</td>
+                    <td class="font-medium">C: <span>0.25</span>
+                        <br> Mn: <span>1.50</span>
+                        <br> Si: <span >0.15</span>
+                   </td>            
+                </tr>
+                <tr>
+                    <td>Yield strength(MPs)</td>
+                    <td class="font-medium">450 </td>              
+                </tr>
+                </ng-template>
+            </p-table>
         </div>
-        <!-- <div>
-            PO : <span class="font-medium">11186106</span> 
-        </div>
-        <div class="mt-2">
-            No. of bars : <span class="font-medium">10</span> 
-        </div>
-        <div class="mt-2">
-            SteelGrade : <span class="font-medium"></span> 
-        </div>
-        <div class="mt-2">
-            Heat No : <span class="font-medium"></span> 
-        </div>
-        <div class="mt-2">
-            Sequence : <span class="font-medium"></span> 
-        </div> -->
     </ng-template>
 </p-dialog>
 
@@ -638,37 +719,107 @@
     </ng-template>
 </p-dialog>
 
-<p-dialog header="rfDetails" [(visible)]="dialogRF" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+<p-dialog header="rfDetails" [(visible)]="dialogRF" [modal]="true" showEffect="fade" [style]="{width: '24vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
     <p-header>
         <div>
             <span>Reheating Furnace</span>
         </div>
     </p-header>
     <ng-template pTemplate="content">
-        <div><span>Po :</span><span class="font-medium ml2">{{rfData?.WorkOrder}}</span></div>
-       <!-- <div><span>Billets :</span> <div *ngFor="let item of rfBillets"><span class="font-medium ml-2">{{item.BilletId}}</span></div></div> -->
-       <div class="card">
-            <p-table [value]="rfBillets" dataKey="id" 
-            [rowHover]="true" styleClass="p-datatable-gridlines p-datatable-striped" [scrollable]="true" [scrollHeight]="'21vh'"  responsiveLayout="scroll">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th>
-                            Billet ID
-                        </th>
-                </ng-template>
+        <div style="width: 22vw;">
+            <p-table [value]="[{}]" [rows]="3"  [scrollable]="true" [scrollHeight]="'80vh'"
+            [rowHover]="true" styleClass="p-datatable-sm p-datatable-gridlines " [paginator]="false" responsiveLayout="scroll">
                 <ng-template pTemplate="body" let-rowData>
-                    <tr [pSelectableRow]="rowData">
-                        <td> {{rowData.BilletId}} </td>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="emptymessage">
-                    <tr>
-                        <td colspan="2">No Data found.</td>
-                    </tr>
+               
+                <tr>
+                    <td>Heat No</td>
+                    <td class="font-medium">92786</td>              
+                </tr>
+                <tr>
+                    <td>Grade</td>
+                    <td class="font-medium">SAE4140</td>              
+                </tr>
+                <tr>
+                    <td>Start Time</td>
+                    <td class="font-medium">30/10/2024 10:30</td>              
+                </tr>
+                <tr>
+                    <td>Finish Time</td>
+                    <td class="font-medium">30/10/2024 11:00</td>              
+                </tr>
+                <tr>
+                    <td>Furnace Avg Temperature (°C)</td>
+                    <td class="font-medium">1150</td>              
+                </tr>
+                <tr>
+                    <td>Furnace Max Temperature (°C)</td>
+                    <td class="font-medium">1250 </td>              
+                </tr>
+                <tr>
+                    <td>Avg Heating Time per Billet(hrs)</td>
+                    <td class="font-medium"> 2 </td>              
+                </tr>
+                <tr>
+                    <td>Production Rate Capacity (t/hr)</td>
+                    <td class="font-medium">120 </td>              
+                </tr>
+                <tr>
+                    <td>Fuel Consumption Natural Gas (Nm³/hr)</td>
+                    <td class="font-medium">500 </td>              
+                </tr>
+                <tr>
+                    <td>Billet Dimensions (mm)</td>
+                    <td class="font-medium"> 150 x 150 x 6000</td>          
+                </tr>
+                <tr>
+                    <td>Temperature Variation within Furnace (°C)</td>
+                    <td class="font-medium">±10</td>              
+                </tr> <tr>
+                    <td>Average Scale Thickness (mm)</td>
+                    <td class="font-medium">0.5 </td>              
+                </tr>
+                <tr>
+                    <td>Burner Type</td>
+                    <td class="font-medium">Dual-Fuel Burner</td>              
+                </tr>
+                <tr>
+                    <td>Burner Efficiency (%)</td>
+                    <td class="font-medium">85</td>              
+                </tr>
+                <tr>
+                    <td>Average Vibration Level (g)</td>
+                    <td class="font-medium">0.05 </td>              
+                </tr>
+                <tr>
+                    <td>Sensor Vibration Level(acceleration)</td>
+                    <td class="font-medium">0.05 g</td>              
+                </tr>
+                <tr>
+                    <td>Last Maintenance Date</td>
+                    <td class="font-medium">30/10/2024</td>              
+                </tr>
+                <tr>
+                    <td>Scheduled Maintenance Frequency</td>
+                    <td class="font-medium">Every three months</td>              
+                </tr>
+                <tr>
+                    <td>Total Billets Processed Today (t)</td>
+                    <td class="font-medium">240 </td>              
+                </tr>
+                <tr>
+                    <td>Yield Rate(%)</td>
+                    <td class="font-medium">98</td>              
+                </tr>
+                <tr>
+                    <td>Average Heating Efficiency Over Last Week (%)</td>
+                    <td class="font-medium">90</td>              
+                </tr>
+               
                 </ng-template>
             </p-table>
         </div>
     </ng-template>
+     
 </p-dialog>
 
 <p-dialog header="yardBundleDetails" [(visible)]="dialogbundleYard" [modal]="true" showEffect="fade" [style]="{width: '20vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
