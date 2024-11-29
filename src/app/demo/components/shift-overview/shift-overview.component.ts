@@ -745,7 +745,6 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
       "End Cut Loss",
       "Scale Loss",
       "Process Rejection",
-      "Consumption(KWH)",
       "Mill Utilization"
     ],
     datasets: [
@@ -760,7 +759,6 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
           65,
           38,
           44,
-          58,
           63
         ],
         backgroundColor: 'rgba(153, 102, 255, 0.2)',
