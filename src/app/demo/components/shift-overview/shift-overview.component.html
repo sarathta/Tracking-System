@@ -525,7 +525,7 @@
                             </tr>
                             <tr class="text-sm">
                                 <td>Billet dest.</td>
-                                <td class="font-medium"> 150x150x6000</td>              
+                                <td class="font-medium"> RHF</td>              
                             </tr> 
                             <tr class="text-sm">
                                 <td>Avg speed (m/min)</td>
@@ -612,7 +612,7 @@
                             </tr>
                             <tr class="text-sm">
                                 <td>Scheduled Maintenance Frequency</td>
-                                <td class="font-medium">Every three months </td>              
+                                <td class="font-medium">01-01-25/<br>30-10-24</td>              
                             </tr>
                             <tr class="text-sm">
                                 <td>avg. heating eff. (%)</td>
@@ -711,11 +711,19 @@
                             </tr>
                             <tr class="text-sm">
                                 <td>Scheduled Maintenance Freq.</td>
-                                <td class="font-medium">Every month</td>              
+                                <td class="font-medium">01-01-25/<br>30-10-24</td>              
                             </tr>
                             <tr class="text-sm">
-                                <td>Yield Rate (%)</td>
-                                <td class="font-medium">96</td>              
+                                <td>Bar Destination</td>
+                                <td class="font-medium">IL1</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>No. oF Cobbles In Current Shift</td>
+                                <td class="font-medium">3</td>              
+                            </tr>
+                            <tr class="text-sm">
+                                <td>Total Bars Rejected</td>
+                                <td class="font-medium">2</td>              
                             </tr>
                         </ng-template>
                     </p-table>
@@ -1632,6 +1640,10 @@
                         <td class="font-medium">1.2</td>              
                     </tr>
                     <tr>
+                        <td>Billet dest.</td>
+                        <td class="font-medium">RHF</td>              
+                    </tr>
+                    <tr>
                         <td>Mold Friction Coefficient</td>
                         <td class="font-medium">0.15</td>              
                     </tr>
@@ -1779,7 +1791,7 @@
                     </tr>
                     <tr>
                         <td>Scheduled Maintenance Frequency</td>
-                        <td class="font-medium">Every three months</td>              
+                        <td class="font-medium">01-01-25/<br>30-10-24</td>              
                     </tr>
                     <tr>
                         <td>Total Billets Processed Today (t)</td>
@@ -1801,7 +1813,7 @@
     </p-dialog>
 
     <!-- stand Dialog -->
-    <p-dialog header="Stand 1 to 6" [(visible)]="standDetails" [modal]="true" showEffect="fade" [style]="{width: '25vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
+    <p-dialog header="Stand 1 to 6" [(visible)]="standDetails" [modal]="true" showEffect="fade" [style]="{width: '26vw'}" styleClass="p-fluid" [breakpoints]="{'960px': '75vw'}" (onHide)="hideDialog()">
         <p-header>
             <div>
                 <span>Stand 1 to 6</span>
@@ -1882,7 +1894,19 @@
                     </tr>
                     <tr>
                         <td>Scheduled Maintenance Frequency</td>
-                        <td class="font-medium">Every three months</td>              
+                        <td class="font-medium">01-01-25/30-10-24</td>              
+                    </tr>
+                    <tr >
+                        <td>Bar Destination</td>
+                        <td class="font-medium">IL1</td>              
+                    </tr>
+                    <tr >
+                        <td>No. oF Cobbles In Current Shift</td>
+                        <td class="font-medium">3</td>              
+                    </tr>
+                    <tr >
+                        <td>Total Bars Rejected</td>
+                        <td class="font-medium">2</td>              
                     </tr>
                     <tr>
                         <td>Total Production(t) </td>
