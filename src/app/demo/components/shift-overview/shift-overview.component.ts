@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import  ChartDataLabels  from 'chartjs-plugin-datalabels';
 import { OverviewScreenService } from 'src/app/services/overviewScreen.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-shift-overview',
@@ -32,6 +33,102 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   bannerDialog: boolean =false;
   anomalyHeading: any ;
   assetPageData: any ;
+  timeInterval: any;
+  statusInterval: any;
+  notificationData: any;
+  inputPo: any;
+  dialogRF: boolean=false;
+  statusData: any;
+  rolls:any;
+  coolingbed:any;
+  coldShear:any;
+  rack:any;
+  straightener:any;
+  udt:any;
+  bundle:any;
+  goodbars:any;
+  trashbars:any;
+  correctedbars:any;
+  coolingbedstatus:any;
+  customer:any;
+  grade:any;
+  estimateddate:any;
+  ponumber:any;
+  heatno:any;
+  noofbillets:any;
+  size:any;
+  orderqtymt:any;
+  isOverview: boolean = false;
+  timelineData: any[]= [
+    {
+      title: "BOF",
+      Date: "",
+      status: "",
+      desc: null
+    },
+    {
+      title: "Ladle Furnace",
+      Date: "",
+      status: "",
+      desc: null
+    },
+    {
+      title: "Vaccum Degassing ",
+      Date: "",
+      status: "",
+      desc: null
+    },
+    {
+      title: "Continous Caster",
+      Date: "",
+      status: "",
+      desc: null
+    },
+    {
+      title: "Billet Yard",
+      Date: "",
+      status: "",
+      desc: null
+    },
+    {
+      title: "Reheating Furnace",
+      Date: "",
+      status: "",
+      desc: null
+    },
+    {
+      title: "Rolling Mill",
+      Date: "",
+      status: "",
+      desc: null
+    },
+    {
+      title: "Cooling Bed",
+      Date: "",
+      status: "",
+      desc: null
+    },
+    {
+      title: "Cold Shear",
+      Date: "",
+      status: "",
+      desc: null
+    },
+    {
+      title: "Rack Area",
+      Date: "",
+      status: "",
+      desc: null
+    },
+    {
+      title: "Yard",
+      Date: "",
+      status: "",
+      desc: null
+    }
+  ];
+  statusColors = [{name:"Not reached",color :"#607D8B"},{name:"Under progress",color :"orange"},{name:"Completed",color :"#99e200"}]
+
   performanceTableData: any = [{
     stand :1,
     rolldia : 450,
@@ -832,7 +929,8 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   constructor(
     private layoutService: LayoutService,
     public router: Router,
-    private overviewScreenService: OverviewScreenService
+    private overviewScreenService: OverviewScreenService,
+    private http: HttpClient
   ) { }
 
   
@@ -912,6 +1010,64 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     }
   }
 
+  showrfDialog(){
+    this.getStatusData();   
+    this.dialogRF = true;
+  }
+
+  getStatusData(){
+      this.statusInterval = setInterval(() => {
+        this.http.get('http://127.0.0.1:8000/po_search?po='+ this.inputPo).subscribe(((res: any)=>{
+            this.statusData= res;
+ 
+            this.customer = this.statusData.Customer;
+ 
+            this.grade = this.statusData.Grade;
+ 
+            this.estimateddate = this.statusData.Estimated_Date;
+ 
+            this.ponumber = this.statusData.PO_NUMBER;
+ 
+            this.heatno = this.statusData.Heat_no;
+ 
+            this.noofbillets = this.statusData.No_of_billets;
+ 
+            this.size = this.statusData.Size_mm;
+ 
+            this.orderqtymt = this.statusData.Order_Qty_MT;
+ 
+            this.rolls = this.statusData.rolling;
+ 
+            this.coolingbed = this.statusData.cooling_bed;
+ 
+            this.coolingbedstatus = this.statusData.cooling_bed_status;
+ 
+            this.coldShear = this.statusData.cold_shear;
+ 
+            this.rack = this.statusData.rack;
+ 
+            this.straightener = this.statusData.str;
+ 
+            this.udt = this.statusData.udt;
+ 
+            this.bundle= this.statusData.bundle;
+ 
+            this.goodbars =this.statusData.good_bars;
+           
+            this.trashbars =this.statusData.trash_bars;
+                     
+            this.correctedbars = this.statusData.corrected_bars;
+            this.timelineData = this.statusData.timeline;
+            this.timelineData.map((result: any)=>{
+                const statColor = this.statusColors.find(item=> item.name == result.status);
+                if(statColor){
+                    result.color = statColor.color;
+                }
+            });                
+        }));
+     }, 8000);
+  }
+
   productionScreen(){
     this.router.navigate(['/TrackingSystem/overview/production']);
   }  
@@ -922,6 +1078,34 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
 
   dashboardScreen(){
     this.router.navigate(['/TrackingSystem/overview/dashboard']);
+  }
+  
+  bof1Screen(){
+    this.router.navigate(['/TrackingSystem/overview/bof1']);
+  }
+
+  bof2Screen(){
+    this.router.navigate(['/TrackingSystem/overview/bof2']);
+  }
+  
+  lfScreen(){
+    this.router.navigate(['/TrackingSystem/overview/ladle']);
+  }
+
+  vdScreen(){
+    this.router.navigate(['/TrackingSystem/overview/vd']);
+  }
+  
+  ccmScreen(){
+    this.router.navigate(['/TrackingSystem/overview/ccm']);
+  } 
+  
+  planScreen(){
+    this.router.navigate(['/TrackingSystem/overview/planning']);
+  }
+  
+  consumptionScreen(){
+    this.router.navigate(['/TrackingSystem/overview/consumption']);
   }
 
   addLogItem(){
@@ -1041,6 +1225,9 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.standDetails = false;
     this.rhfDetails = false;
     this.bannerDialog = false;
+    this.inputPo = null;
+    this.dialogRF= false;
+    clearInterval(this.statusInterval);
   }
 
   video() {
