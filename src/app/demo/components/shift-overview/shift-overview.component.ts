@@ -59,6 +59,10 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   size:any;
   orderqtymt:any;
   isOverview: boolean = false;
+  productionData: any;
+  productionInterval:any;
+  
+
   timelineData: any[]= [
     {
       title: "BOF",
@@ -211,17 +215,21 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   }
 ]
   banner: any[] = [{data: ' Batch #202411: 2 bars rejected due to surface cracks. Length deviation: +2.5 mm above tolerance. '},{data: 'asfafsagdsg '}]
-  productionPlanData: any[]=[
-    {id:1,date:"30/10/2024",so:"123188",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
-      grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"MANUAL",status:'50%',color:'#90fc90'
-    },
-    {id:2,date:"30/10/2024",so:"123189",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
-      grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"IL-2",status:'0%',color:'#ffffb7'
-    },
-    {id:3,date:"30/10/2024",so:"123189",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
-      grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"IL-2",status:'0%',color:'#ffffb7'
-    }
-  ]; 
+
+  productionPlanData: any;
+
+  // productionPlanData: any[]=[
+  //   {id:1,date:"30/10/2024",so:"123188",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
+  //     grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"MANUAL",status:'50%',color:'#90fc90'
+  //   },
+  //   {id:2,date:"30/10/2024",so:"123189",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
+  //     grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"IL-2",status:'0%',color:'#ffffb7'
+  //   },
+  //   {id:3,date:"30/10/2024",so:"123189",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
+  //     grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"IL-2",status:'0%',color:'#ffffb7'
+  //   }
+  // ];
+
   logItem: any;
   AssetsData: any[]=[
     {
@@ -935,6 +943,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
 
   
   ngOnInit(): void {
+    this.getproductiondata();
     this.overviewScreenService.sendData(1);
     this.layoutService.onMenuToggle();
     let i =0;
@@ -1067,7 +1076,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
         }));
      }, 8000);
   }
-
+  
   productionScreen(){
     this.router.navigate(['/TrackingSystem/overview/production']);
   }  
@@ -1252,6 +1261,12 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
 
   showBannerDialog(){
     this.bannerDialog =true;
+  }
+
+  getproductiondata() {
+    this.http.get('http://127.0.0.1:8000/production_plan').subscribe((res => {
+      this.productionPlanData = res;
+    }));
   }
 
 }
