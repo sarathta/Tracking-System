@@ -192,7 +192,7 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
       }
 
       getStatusData(){
-        // this.statusInterval = setInterval(() => {
+        this.statusInterval = setInterval(() => {
             this.http.get('http://127.0.0.1:8000/po_search?po='+ this.inputPo).subscribe((res=>{
                 this.statusData= res;
     
@@ -241,7 +241,7 @@ export class AppTopBarComponent implements OnInit,OnDestroy {
                     } 
                 });                
             }));
-        // }, 8000);
+        }, 8000);
       }
       
 

@@ -4,6 +4,7 @@ import { filter, Subscription } from 'rxjs';
 import { LayoutService } from "./service/app.layout.service";
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppTopBarComponent } from './app.topbar.component';
+import { OverviewScreenService } from '../services/overviewScreen.service';
 
 @Component({
     selector: 'app-layout',
@@ -17,11 +18,18 @@ export class AppLayoutComponent implements OnDestroy {
 
     profileMenuOutsideClickListener: any;
 
+    isOverview: boolean = false;
+
     @ViewChild(AppSidebarComponent) appSidebar!: AppSidebarComponent;
 
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+    constructor(public layoutService: LayoutService,
+        public renderer: Renderer2,
+        public router: Router,
+        public overviewScreenService: OverviewScreenService
+
+        ) {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -55,6 +63,15 @@ export class AppLayoutComponent implements OnDestroy {
                 this.hideMenu();
                 this.hideProfileMenu();
             });
+        
+        this.overviewScreenService.overviewData.subscribe((data: any)=>{
+            if(data==1){
+                this.isOverview = true;
+            }
+            else{
+                this.isOverview = false;
+            }
+        })
     }
 
     hideMenu() {
