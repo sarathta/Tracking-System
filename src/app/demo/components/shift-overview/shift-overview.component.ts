@@ -61,6 +61,12 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   isOverview: boolean = false;
   productionData: any;
   productionInterval:any;
+  inventoryChartData : any;
+  inventoryOptions: any;
+  inventoryValues: any;
+  kpiData :any;
+  kpiOptions :any;
+  kpiValues :any;
   
 
   timelineData: any[]= [
@@ -770,152 +776,152 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     } 
   ];
 
-  inventoryChartData: any ={
-    labels:  [
-      "30 days",
-      "25 days",
-      "20 days"
-      // "Dolomite (20 days)",
-      // "Scrap Steel (22 days)"
-    ],
-    datasets: [
-      {
-        type: 'bar',
-        // label: ['Alloys','Finished Goods','Flux'],
-        // yAxisID: 'y',
-        data:  [
-          379,235,437
-        ],
-        backgroundColor: ['rgba(153, 102, 255, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 159, 64, 0.2)'],
-        borderColor: ['rgb(153, 102, 255)','rgb(54, 162, 235)','rgb(255, 159, 64)'],
-        borderWidth: 1
-      }
-    ]
-  }
+  // inventoryChartData: any ={
+  //   labels:  [
+  //     "30 days",
+  //     "25 days",
+  //     "20 days"
+  //     // "Dolomite (20 days)",
+  //     // "Scrap Steel (22 days)"
+  //   ],
+  //   datasets: [
+  //     {
+  //       type: 'bar',
+  //       // label: ['Alloys','Finished Goods','Flux'],
+  //       // yAxisID: 'y',
+  //       data:  [
+  //         379,235,437
+  //       ],
+  //       backgroundColor: ['rgba(153, 102, 255, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 159, 64, 0.2)'],
+  //       borderColor: ['rgb(153, 102, 255)','rgb(54, 162, 235)','rgb(255, 159, 64)'],
+  //       borderWidth: 1
+  //     }
+  //   ]
+  // }
 
-  inventoryOptions: any ={
-    // indexAxis: 'y',
-    maintainAspectRatio: false,
-    aspectRatio: 0.8,
-    plugins: {
-      datalabels:{
-        formatter: (value : any) => {
-          return Math.trunc(value);
-        },
-        font: {
-          size: 10
-        },
-        // anchor: 'end',
-        // align: 'end',
-        color: 'black',
-      },
-        legend: {
-          display: false,
-            labels: {
-                color: 'black'
-            }
-        }
-    },
-    scales: {
-        x: {
-            // stacked: true,
-            ticks: {
-                color: '#6c757d'
-            },
-            grid: {
-                color: '#dee2e6',
-                drawBorder: false
-            }
-        },
-        y: {
-            // stacked: true,
-            position: 'left',
-            ticks: {
-                color: '#6c757d'
-            },
-            grid: {
-                color: '#dee2e6',
-                drawBorder: false
-            }
-        }
-    }
-  }
+  // inventoryOptions: any ={
+  //   // indexAxis: 'y',
+  //   maintainAspectRatio: false,
+  //   aspectRatio: 0.8,
+  //   plugins: {
+  //     datalabels:{
+  //       formatter: (value : any) => {
+  //         return Math.trunc(value);
+  //       },
+  //       font: {
+  //         size: 10
+  //       },
+  //       // anchor: 'end',
+  //       // align: 'end',
+  //       color: 'black',
+  //     },
+  //       legend: {
+  //         display: false,
+  //           labels: {
+  //               color: 'black'
+  //           }
+  //       }
+  //   },
+  //   scales: {
+  //       x: {
+  //           // stacked: true,
+  //           ticks: {
+  //               color: '#6c757d'
+  //           },
+  //           grid: {
+  //               color: '#dee2e6',
+  //               drawBorder: false
+  //           }
+  //       },
+  //       y: {
+  //           // stacked: true,
+  //           position: 'left',
+  //           ticks: {
+  //               color: '#6c757d'
+  //           },
+  //           grid: {
+  //               color: '#dee2e6',
+  //               drawBorder: false
+  //           }
+  //       }
+  //   }
+  // }
   
-  kpiData: any={
-    labels:  [
-      "Billet Conversion",
-      "Yield",
-      "Missroll",
-      "Random",
-      "End Cut Loss",
-      "Scale Loss",
-      "Process Rejection",
-      "Mill Utilization"
-    ],
-    datasets: [
-      {
-        type: 'bar',
-        label: '',
-        data:  [
-          30,
-          40,
-          60,
-          48,
-          65,
-          38,
-          44,
-          63
-        ],
-        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-        borderColor: 'rgb(153, 102, 255)',
-        borderWidth: 1
-      }]
-  };
-  kpiOptions: any={
-    maintainAspectRatio: false,
-    aspectRatio: 0.8,
-    plugins: {
-      datalabels:{
-        formatter: (value : any) => {
-          return Math.trunc(value);
-        },
-        font: {
-          size: 9
-        },
-        // anchor: 'end',
-        // align: 'end',
-        color: 'black',
-      },
-        legend: {
-          display: false,
-            labels: {
-                color: 'black'
-            }
-        }
-    },
-    scales: {
-        x: {
-            stacked: true,
-            ticks: {
-                color: '#6c757d'
-            },
-            grid: {
-                color: '#dee2e6',
-                drawBorder: false
-            }
-        },
-        y: {
-            stacked: true,
-            ticks: {
-                color: '#6c757d'
-            },
-            grid: {
-                color: '#dee2e6',
-                drawBorder: false
-            }
-        }
-    }
-  };
+  // kpiData: any={
+  //   labels:  [
+  //     "Billet Conversion",
+  //     "Yield",
+  //     "Missroll",
+  //     "Random",
+  //     "End Cut Loss",
+  //     "Scale Loss",
+  //     "Process Rejection",
+  //     "Mill Utilization"
+  //   ],
+  //   datasets: [
+  //     {
+  //       type: 'bar',
+  //       label: '',
+  //       data:  [
+  //         30,
+  //         40,
+  //         60,
+  //         48,
+  //         65,
+  //         38,
+  //         44,
+  //         63
+  //       ],
+  //       backgroundColor: 'rgba(153, 102, 255, 0.2)',
+  //       borderColor: 'rgb(153, 102, 255)',
+  //       borderWidth: 1
+  //     }]
+  // };
+  // kpiOptions: any={
+  //   maintainAspectRatio: false,
+  //   aspectRatio: 0.8,
+  //   plugins: {
+  //     datalabels:{
+  //       formatter: (value : any) => {
+  //         return Math.trunc(value);
+  //       },
+  //       font: {
+  //         size: 9
+  //       },
+  //       // anchor: 'end',
+  //       // align: 'end',
+  //       color: 'black',
+  //     },
+  //       legend: {
+  //         display: false,
+  //           labels: {
+  //               color: 'black'
+  //           }
+  //       }
+  //   },
+  //   scales: {
+  //       x: {
+  //           stacked: true,
+  //           ticks: {
+  //               color: '#6c757d'
+  //           },
+  //           grid: {
+  //               color: '#dee2e6',
+  //               drawBorder: false
+  //           }
+  //       },
+  //       y: {
+  //           stacked: true,
+  //           ticks: {
+  //               color: '#6c757d'
+  //           },
+  //           grid: {
+  //               color: '#dee2e6',
+  //               drawBorder: false
+  //           }
+  //       }
+  //   }
+  // };
 
 
   plantName: string = 'ABC'; // Example plant name
@@ -930,9 +936,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   vdClass: any;
   ccmClass: any;
   standClass: any;
- 
 
-  
 
   constructor(
     private layoutService: LayoutService,
@@ -943,6 +947,8 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
 
   
   ngOnInit(): void {
+    this.getkpiData()
+    this.getinventoryChartData();
     this.getproductiondata();
     this.overviewScreenService.sendData(1);
     this.layoutService.onMenuToggle();
@@ -1239,9 +1245,9 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     clearInterval(this.statusInterval);
   }
 
-  video() {
-    this.videoPlayer?.nativeElement.play();
-  }
+  // video() {
+  //   this.videoPlayer?.nativeElement.play();
+  // }
 
   pageChange(event : any){  
     if(event){
@@ -1269,4 +1275,146 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     }));
   }
 
+  getinventoryChartData(){
+    this.http.get('http://127.0.0.1:8000/inventory').subscribe(res=>{
+      this.inventoryValues = res;
+      this.bindinventoryChartData()
+    });
+  }
+
+  bindinventoryChartData(){
+    let inventoryChartDatas: any = this.inventoryValues[0].value;
+    let inventoryLabels: any =  this.inventoryValues[0].days;
+
+    this.inventoryChartData = {
+      labels: inventoryLabels,
+      datasets: [
+          {
+              data: inventoryChartDatas,
+              backgroundColor: ['rgba(153, 102, 255, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 159, 64, 0.2)'],
+              borderWidth: 1
+          }
+      ]
+    };
+
+    this.inventoryOptions = {
+         // indexAxis: 'y',
+            maintainAspectRatio: false,
+            aspectRatio: 0.8,
+            plugins: {
+              datalabels:{
+                formatter: (value : any) => {
+                  return Math.trunc(value);
+                },
+                font: {
+                  size: 10
+                },
+                // anchor: 'end',
+                // align: 'end',
+                color: 'black',
+              },
+                legend: {
+                  display: false,
+                    labels: {
+                        color: 'black'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    // stacked: true,
+                    ticks: {
+                        color: '#6c757d'
+                    },
+                    grid: {
+                        color: '#dee2e6',
+                        drawBorder: false
+                    }
+                },
+                y: {
+                    // stacked: true,
+                    position: 'left',
+                    ticks: {
+                        color: '#6c757d'
+                    },
+                    grid: {
+                        color: '#dee2e6',
+                        drawBorder: false
+                    }
+                }
+            }
+    }
+  }
+
+  getkpiData(){
+    this.http.get('http://127.0.0.1:8000/performance').subscribe(res=>{
+      this.kpiValues = res;
+      this.kpiChartData()
+    });
+  }
+
+  kpiChartData() {
+    let kpiDatas: any = this.kpiValues[0].data;
+    let kpiLabels: any = this.kpiValues[0].labels;
+
+    this.kpiData = {
+      labels: kpiLabels,
+      datasets: [
+        {
+          data: kpiDatas,
+          backgroundColor: 'rgba(153, 102, 255, 0.2)',
+          borderColor: 'rgb(153, 102, 255)',
+          borderWidth: 1
+        }
+      ]
+    };
+
+    this.kpiOptions = {
+      // indexAxis: 'y',
+      maintainAspectRatio: false,
+      aspectRatio: 0.8,
+      plugins: {
+        datalabels: {
+          formatter: (value: any) => {
+            return Math.trunc(value);
+          },
+          font: {
+            size: 9
+          },
+          // anchor: 'end',
+          // align: 'end',
+          color: 'black',
+        },
+        legend: {
+          display: false,
+          labels: {
+            color: 'black'
+          }
+        }
+      },
+      scales: {
+        x: {
+          stacked: true,
+          ticks: {
+            color: '#6c757d'
+          },
+          grid: {
+            color: '#dee2e6',
+            drawBorder: false
+          }
+        },
+        y: {
+          stacked: true,
+          ticks: {
+            color: '#6c757d'
+          },
+          grid: {
+            color: '#dee2e6',
+            drawBorder: false
+          }
+        }
+      }
+    }
+
+  }
 }
