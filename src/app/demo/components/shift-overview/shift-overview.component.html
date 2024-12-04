@@ -985,7 +985,7 @@
                                  </div>
                              </div>
                              <div class="text-900 font-medium text-4xl">
-                                 <p-chart type="line" [data]="inventoryChartData" [options]="inventoryOptions" [plugins]="plugin" height="15vh" (click)="productionScreen()"/>
+                                 <p-chart type="bar" [data]="inventoryChartData" [options]="inventoryOptions" [plugins]="plugin" height="15vh" (click)="productionScreen()"/>
                              </div>
                      </div>
                  </div>
@@ -996,7 +996,7 @@
                         <span class="font-medium">PERFORMANCE (%)</span>
                     </div>
                         <div class="text-900 font-medium text-4xl">
-                            <p-chart type="line" [data]="kpiData" [options]="kpiOptions" [plugins]="plugin" height="29vh" (click)="productionScreen()"/>
+                            <p-chart type="bar" [data]="kpiData" [options]="kpiOptions" [plugins]="plugin" height="29vh" (click)="productionScreen()"/>
                         </div>
                 </div>
             </div>
@@ -1047,7 +1047,7 @@
                 <div class="p-0">
                     <div class="card p-1" style="background-color: #868585;border: 1px solid #ffffff;">
                         <div class="flex justify-content-center align-items-center">
-                            <video class="video" (play)="video()" controls autoplay #videoPlayer
+                            <video class="video" controls autoplay #videoPlayer
                                 style="width: 19vw;height:16vh;border-radius: 10px;">
                                 <source src="../../../../assets/videos/steelPlant.mp4" type="video/mp4">
                                 Your browser does not support the video.
