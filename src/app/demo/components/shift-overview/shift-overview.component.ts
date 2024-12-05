@@ -18,7 +18,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   };
   today: Date = new Date();
   plugin = [ChartDataLabels];
-  operatorLogs: any[]=[{data:"Carbon content in molten iron measured at 4.1%"}];
+  operatorLogs: any;
   assetborder: any;
   videoPlayer: any;
   bof1Details: boolean =false;
@@ -67,6 +67,10 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   kpiData :any;
   kpiOptions :any;
   kpiValues :any;
+  bannerData :any;
+  shiftProdValues :any;
+  dayProdValues :any;
+  monthProdValues :any;
   
 
   timelineData: any[]= [
@@ -138,796 +142,46 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     }
   ];
   statusColors = [{name:"Not reached",color :"#607D8B"},{name:"Under progress",color :"orange"},{name:"Completed",color :"#99e200"}]
-
-  performanceTableData: any = [{
-    stand :1,
-    rolldia : 450,
-    lastchange: '28/10/2024	',
-    tonsRolled : 6850,
-    nextchange: '06/11/2024',
-    color: 'red'
-  },
-  {
-    stand :4,
-    rolldia : 380,
-    lastchange: '28/10/2024	',
-    tonsRolled : 6850,
-    nextchange: '06/11/2024',
-    color: 'red'
-  },
-  {
-    stand :7,
-    rolldia : 452,
-    lastchange: '28/10/2024	',
-    tonsRolled : 6850,
-    nextchange: '11/11/2024',
-    color: '#ee9500'
-  },
-  {
-    stand :10,
-    rolldia : 377,
-    lastchange: '28/10/2024	',
-    tonsRolled : 6850,
-    nextchange: '15/11/2024',
-    color: '#ee9500'
-  },
-  {
-    stand :2,
-    rolldia : 387,
-    lastchange: '28/10/2024	',
-    tonsRolled : 4523,
-    nextchange: '19/11/2024',
-    color: '#ee9500'
-  },
-  {
-    stand :5,
-    rolldia : 385,
-    lastchange: '29/10/2024	',
-    tonsRolled : 4523,
-    nextchange: '19/11/2024',
-    color: 'green'
-  },
-  {
-    stand :6,
-    rolldia : 384,
-    lastchange: '29/10/2024	',
-    tonsRolled : 	4523,
-    nextchange: '21/11/2024',
-    color: 'green'
-  },
-  {
-    stand :3,
-    rolldia : 380,
-    lastchange: '29/10/2024',
-    tonsRolled : 3987,
-    nextchange: '24/11/2024',
-    color: 'green'
-  },
-  {
-    stand :9,
-    rolldia : 378,
-    lastchange: '29/10/2024',
-    tonsRolled : 3967,
-    nextchange: '28/11/2024',
-    color: 'green'
-  },
-  {
-    stand :8,
-    rolldia : 370,
-    lastchange: '29/10/2024',
-    tonsRolled : 3890,
-    nextchange: '30/11/2024',
-    color: 'green'
-  }
-]
-  banner: any[] = [{data: ' Batch #202411: 2 bars rejected due to surface cracks. Length deviation: +2.5 mm above tolerance. '},{data: 'asfafsagdsg '}]
-
   productionPlanData: any;
+  productionStatusData: any = {
+    productionActual: 0,
+    productionPlan: 0,
+    yieldActual: 0,
+    yieldPlan: 0,
+    delayActual:0,
+    delayPlan:0,
+    shiftTeam:'',
+    shiftCrew:'',
+    powerConsumptionPerTon:'',
+    powerConsumptionMonthly:''
+  };
 
-  // productionPlanData: any[]=[
-  //   {id:1,date:"30/10/2024",so:"123188",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
-  //     grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"MANUAL",status:'50%',color:'#90fc90'
-  //   },
-  //   {id:2,date:"30/10/2024",so:"123189",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
-  //     grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"IL-2",status:'0%',color:'#ffffb7'
-  //   },
-  //   {id:3,date:"30/10/2024",so:"123189",lineItem:20,product:"BAR",customer:"ABCD",po:"193054",heatNo:92339,noOfBillets:9,
-  //     grade: "SAE1018",classification:"VD",size: 38,orderQty:15,tas:"3759",rev:0,length:6000,inspected:"IL-2",status:'0%',color:'#ffffb7'
-  //   }
-  // ];
-
+  equipmentsData:  any;
+  bof1Data: any;
+  bof2Data: any;
+  lfData: any;
+  vdData: any;
+  ccmData: any;
+  rhfData: any;
+  standData: any;
+  il1Data: any;
+  il2Data: any;
+  rollHistoryData: any[]=[];
+  chemistryData: any[]=[];
   logItem: any;
-  AssetsData: any[]=[
+  assetsData: any[]=[
     {
-      name: 'Roll Set Availability',
-      circleColor:'orange',
-      status: 'Warning',
-      data: 'Roll Set 2A in Rolling Mill nearing critical wear levels. Current wear at 85%. Replacement scheduled in the next maintenance window.',
-      borderclass:'orangeBorderBlink'
-    },
-    {
-      name: 'Roll Set Availability',
-      circleColor:'red',
-      status: 'Alert',
-      data: 'Emergency shutdown initiated for Roll Set 6B in Tandem Mill due to overheating (120°C). Possible lubrication failure detected',
-      borderclass:'redBorderBlink'
-    },
-    {
-      name: 'Continuos Casting',
-      circleColor:'green',
-      status: 'Info',
-      data: 'Mold level sensors recalibrated for improved accuracy. Target liquid steel level: 250 mm. No deviations observed in current readings.',
-      borderclass:'greenBorderBlink'
-    },
-    {
-      name: 'Continuos Casting',
-      circleColor:'orange',
-      status: 'Warning',
-      data: 'Casting speed for Strand 4 reduced to 0.8 m/min due to detected nozzle blockage. Scheduled nozzle cleaning in the next maintenance cycle.',
-      borderclass:'orangeBorderBlink'
-    },
-    {
-      name: 'Continuos Casting',
-      circleColor:'red',
-      status: 'Alert',
-      data: 'Emergency stop triggered due to detected slag carryover from Ladle No. 8. Cleaning operation scheduled. Production delayed by 30 minutes.',
-      borderclass:'redBorderBlink'
-    }
-  ]
-  
-  anomalyData: any[]=[
-    {
-      name: 'STAND1',
-      date: '06/05/24 19:05:46',
-      type: 'Shrinkage',
-      data: 'Shrinkage was observed in billet ID 167890 during casting in Ladle Refining Furnace (LRF), attributed to a lower-than-optimal pouring temperature of 1,480°C.'
-    },
-    {
-      name: 'STAND2',
-      date: '06/05/24 19:05:24',
-      type: 'Cobble',
-      data: 'Cobble occurred before Stand 6 for billet ID 155605 due to improper alignment, resulting in excessive tension during rolling.'
-    },
-    {
-      name: 'STAND1',
-      date: '06/05/24 19:05:12',
-      type: 'Wavy edges',
-      data: 'Wavy edges were noted in bar ID 234890 post Stand 5, due to uneven roll gap and temperature variations along the edges.'
-    },
-    {
-      name: 'STAND6',
-      date: '06/05/24 19:05:44',
-      type: 'Cobble',
-      data: 'Cobble occurred before Stand 6 for billet ID 155605 due to improper alignment, resulting in excessive tension during rolling.'
-    }
-  ]
-
-  inventoryData: any[]=[
-    {
-      name: 'Stock',
-      data: '10,000 tons of iron ore, 5,000 tons of coal'
-    },
-    {
-      name: 'Finished Goods',
-      data: '1,000 tons of steel coils.'
-    },
-    {
-      name: 'Turnover Ratio',
-      data: '6 times per year'
-    }
-  ]
-
-  productionGraphs: any[]=[
-    {
-      name:'Shift (t)',
-      data:{
-        labels:  [
-          "10-31",
-          "11-01",
-          "11-02",
-          "11-03",
-          "11-04"
-        ],
-        datasets: [
-          {
-            type: 'bar',
-            label: 'Day',
-            data:  [
-              379.9267272949219,
-              235.97850036621094,
-              437.4613037109375,
-              411.20208740234375,
-              218.46881103515625
-            ],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgb(75, 192, 192)',
-            borderWidth: 1
-          },
-          {
-            type: 'bar',
-            label: 'Night',
-            data: [
-              482.6735534667969,
-              534.0357666015625,
-              507.3982849121094,
-              493.1502990722656,
-              0
-            ],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgb(54, 162, 235)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options:{
-        indexAxis: 'y',
-        maintainAspectRatio: false,
-        aspectRatio: 0.8,
-        plugins: {
-          datalabels:{
-            formatter: (value : any) => {
-              return Math.trunc(value);
-            },
-            font: {
-              size: 10
-            },
-            // anchor: 'end',
-            // align: 'end',
-            color: 'black',
-          },
-            legend: {
-              // display: false,
-                labels: {
-                    color: 'black'
-                }
-            }
-        },
-        scales: {
-            x: {
-                stacked: true,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            },
-            y: {
-                stacked: true,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            }
-        }
-      }
-    },
-    {
-      name:'Day (t)',
-      data:{
-        labels: [
-          "10-31",
-          "11-01",
-          "11-02",
-          "11-03",
-          "11-04"
-        ],
-        datasets: [
-          {
-            type: 'bar',
-            data: [
-              862.6002807617188,
-              770.0142211914062,
-              944.8595581054688,
-              904.3523559570312,
-              218.46881103515625
-            ],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgb(75, 192, 192)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options:{
-        maintainAspectRatio: false,
-        aspectRatio: 0.8,
-        plugins: {
-          datalabels:{
-            formatter: (value : any) => {
-              return Math.trunc(value);
-            },
-            font: {
-              size: 10
-            },
-            // anchor: 'end',
-            // align: 'end',
-            color: 'black',
-          },
-            legend: {
-              display: false,
-                labels: {
-                    color: 'black'
-                }
-            }
-        },
-        scales: {
-            x: {
-                stacked: true,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            },
-            y: {
-                stacked: true,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            }
-        }
-      }
-    },
-    {
-      name:'Month (t)',
-      data:{
-        labels: [
-          "09-01",
-          "10-01",
-          "11-01"
-        ],
-        datasets: [
-          {
-            type: 'bar',
-            data: [
-              10562.2451171875,
-              21227.66796875,
-              2568.842041015625
-            ],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgb(75, 192, 192)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options:{
-        maintainAspectRatio: false,
-        aspectRatio: 0.8,
-        plugins: {
-          datalabels:{
-            formatter: (value : any) => {
-              return Math.trunc(value);
-            },
-            font: {
-              size: 10
-            },
-            // anchor: 'end',
-            // align: 'end',
-            color: 'black',
-          },
-            legend: {
-              display: false,
-                labels: {
-                    color: 'black'
-                }
-            }
-        },
-        scales: {
-            x: {
-                stacked: true,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            },
-            y: {
-                stacked: true,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            }
-        }
-      }
+      name: "",
+      color: 1,
+      status: "",
+      data : "",
+      circleColor: '',
+      borderclass:''
     }
   ];
-  
-  costGraphs: any[]=[
-    {
-      name:'Day (INR)',
-      data:{
-        labels: [
-          // "08-01",
-          "09-01",
-          "10-01",
-          "11-01"
-        ],
-        datasets: [
-          {
-            type: 'bar',
-            data: [
-              // 1200,
-              1250,
-              1230,
-              1220
-            ],
-            backgroundColor: 'rgba(153, 102, 255, 0.2)',
-            borderColor: 'rgb(153, 102, 255)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options:{
-        maintainAspectRatio: false,
-        aspectRatio: 0.8,
-        plugins: {
-          datalabels:{
-            formatter: (value : any) => {
-              return Math.trunc(value);
-            },
-            font: {
-              size: 10
-            },
-            // anchor: 'end',
-            // align: 'end',
-            color: 'black',
-          },
-            legend: {
-              display: false,
-                labels: {
-                    color: 'black'
-                }
-            }
-        },
-        scales: {
-            x: {
-                stacked: false,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            },
-            y: {
-                stacked: false,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            }
-        }
-      }
-    },
-    {
-      name:'Month (INR)',
-      data:{
-        labels: [
-          // "Jul",
-          // "Aug",
-          "Sep",
-          "Oct",
-          "Nov"
-        ],
-        datasets: [
-          {
-            type: 'bar',
-            data: [
-              // 35000,
-              // 35200,
-              35300,
-              35100,
-              34800
-            ],
-            backgroundColor: 'rgba(153, 102, 255, 0.2)',
-            borderColor: 'rgb(153, 102, 255)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options:{
-        maintainAspectRatio: false,
-        aspectRatio: 0.8,
-        plugins: {
-          datalabels:{
-            formatter: (value : any) => {
-              return Math.trunc(value);
-            },
-            font: {
-              size: 10
-            },
-            // anchor: 'end',
-            // align: 'end',
-            color: 'black',
-          },
-            legend: {
-              display: false,
-                labels: {
-                    color: 'black'
-                }
-            }
-        },
-        scales: {
-            x: {
-                stacked: false,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            },
-            y: {
-                stacked: false,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            }
-        }
-      }
-    }    
-  ];
-  
-  performanceGraphs: any[]=[
-    {
-      name:'',
-      data:{
-        labels:  [
-          "Billet Conversion(%)",
-          "Yield(%)",
-          "Missroll(%)",
-          "Random(%)",
-          "End Cut Loss(%)",
-          "Scale Loss(%)",
-          "Process Rejection(%)",
-          "Consumption(KWH)",
-          "Mill Utilization(%)"
-        ],
-        datasets: [
-          {
-            type: 'bar',
-            label: 'Target',
-            data:  [
-              30,
-              40,
-              60,
-              48,
-              65,
-              38,
-              44,
-              58,
-              63
-            ],
-            backgroundColor: 'rgba(153, 102, 255, 0.2)',
-            borderColor: 'rgb(153, 102, 255)',
-            borderWidth: 1
-          }]
-      },
-      options:{
-        maintainAspectRatio: false,
-        aspectRatio: 0.8,
-        plugins: {
-          datalabels:{
-            formatter: (value : any) => {
-              return Math.trunc(value);
-            },
-            font: {
-              size: 9
-            },
-            // anchor: 'end',
-            // align: 'end',
-            color: 'black',
-          },
-            legend: {
-              // display: false,
-                labels: {
-                    color: 'black'
-                }
-            }
-        },
-        scales: {
-            x: {
-                stacked: true,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            },
-            y: {
-                stacked: true,
-                ticks: {
-                    color: '#6c757d'
-                },
-                grid: {
-                    color: '#dee2e6',
-                    drawBorder: false
-                }
-            }
-        }
-      }
-    } 
-  ];
 
-  // inventoryChartData: any ={
-  //   labels:  [
-  //     "30 days",
-  //     "25 days",
-  //     "20 days"
-  //     // "Dolomite (20 days)",
-  //     // "Scrap Steel (22 days)"
-  //   ],
-  //   datasets: [
-  //     {
-  //       type: 'bar',
-  //       // label: ['Alloys','Finished Goods','Flux'],
-  //       // yAxisID: 'y',
-  //       data:  [
-  //         379,235,437
-  //       ],
-  //       backgroundColor: ['rgba(153, 102, 255, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 159, 64, 0.2)'],
-  //       borderColor: ['rgb(153, 102, 255)','rgb(54, 162, 235)','rgb(255, 159, 64)'],
-  //       borderWidth: 1
-  //     }
-  //   ]
-  // }
-
-  // inventoryOptions: any ={
-  //   // indexAxis: 'y',
-  //   maintainAspectRatio: false,
-  //   aspectRatio: 0.8,
-  //   plugins: {
-  //     datalabels:{
-  //       formatter: (value : any) => {
-  //         return Math.trunc(value);
-  //       },
-  //       font: {
-  //         size: 10
-  //       },
-  //       // anchor: 'end',
-  //       // align: 'end',
-  //       color: 'black',
-  //     },
-  //       legend: {
-  //         display: false,
-  //           labels: {
-  //               color: 'black'
-  //           }
-  //       }
-  //   },
-  //   scales: {
-  //       x: {
-  //           // stacked: true,
-  //           ticks: {
-  //               color: '#6c757d'
-  //           },
-  //           grid: {
-  //               color: '#dee2e6',
-  //               drawBorder: false
-  //           }
-  //       },
-  //       y: {
-  //           // stacked: true,
-  //           position: 'left',
-  //           ticks: {
-  //               color: '#6c757d'
-  //           },
-  //           grid: {
-  //               color: '#dee2e6',
-  //               drawBorder: false
-  //           }
-  //       }
-  //   }
-  // }
-  
-  // kpiData: any={
-  //   labels:  [
-  //     "Billet Conversion",
-  //     "Yield",
-  //     "Missroll",
-  //     "Random",
-  //     "End Cut Loss",
-  //     "Scale Loss",
-  //     "Process Rejection",
-  //     "Mill Utilization"
-  //   ],
-  //   datasets: [
-  //     {
-  //       type: 'bar',
-  //       label: '',
-  //       data:  [
-  //         30,
-  //         40,
-  //         60,
-  //         48,
-  //         65,
-  //         38,
-  //         44,
-  //         63
-  //       ],
-  //       backgroundColor: 'rgba(153, 102, 255, 0.2)',
-  //       borderColor: 'rgb(153, 102, 255)',
-  //       borderWidth: 1
-  //     }]
-  // };
-  // kpiOptions: any={
-  //   maintainAspectRatio: false,
-  //   aspectRatio: 0.8,
-  //   plugins: {
-  //     datalabels:{
-  //       formatter: (value : any) => {
-  //         return Math.trunc(value);
-  //       },
-  //       font: {
-  //         size: 9
-  //       },
-  //       // anchor: 'end',
-  //       // align: 'end',
-  //       color: 'black',
-  //     },
-  //       legend: {
-  //         display: false,
-  //           labels: {
-  //               color: 'black'
-  //           }
-  //       }
-  //   },
-  //   scales: {
-  //       x: {
-  //           stacked: true,
-  //           ticks: {
-  //               color: '#6c757d'
-  //           },
-  //           grid: {
-  //               color: '#dee2e6',
-  //               drawBorder: false
-  //           }
-  //       },
-  //       y: {
-  //           stacked: true,
-  //           ticks: {
-  //               color: '#6c757d'
-  //           },
-  //           grid: {
-  //               color: '#dee2e6',
-  //               drawBorder: false
-  //           }
-  //       }
-  //   }
-  // };
-
-
-  plantName: string = 'ABC'; // Example plant name
-  currentDateTime: string = ''; // To hold current timestamp
-  shiftOverview: string = ''; // Shift information
-  private timer: any;
+  anomalyData: any[]=[];
+  productionGraphs: any;  
   selectedData: any;
   loading: boolean =false;
   tracking: any;
@@ -947,9 +201,17 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
 
   
   ngOnInit(): void {
-    this.getkpiData()
+    this.initProdChart();
+    this.getkpiData();
     this.getinventoryChartData();
-    this.getproductiondata();
+    this.getProductionPlandata();
+    this.getProductionStatusdata();
+    this.getEquipmentsdata();
+    this.getAssetsData();
+    this.getAnomalyData();
+    this.getBannerData();
+    this.getOperatorLogData();
+    this.getProductionGraphData();
     this.overviewScreenService.sendData(1);
     this.layoutService.onMenuToggle();
     let i =0;
@@ -1013,16 +275,222 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
       }
       i++;
     }, 1000);
-    this.timer = setInterval(() => {
-      this.today = new Date();
-    }, 1000);
   }
    
   ngOnDestroy(): void {
     this.overviewScreenService.sendData(0);
-    if (this.timer) {
-      clearInterval(this.timer); // Clean up timer
+    if (this.tracking) {
+      clearInterval(this.tracking);
     }
+  }
+
+  initProdChart(){
+    this.productionGraphs = [
+      {
+        name:'Shift (t)',
+        data:{
+          labels:  [
+            
+          ],
+          datasets: [
+            {
+              type: 'bar',
+              label: 'Day',
+              data:  [
+                
+              ],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgb(75, 192, 192)',
+              borderWidth: 1
+            },
+            {
+              type: 'bar',
+              label: 'Night',
+              data: [
+               
+              ],
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgb(54, 162, 235)',
+              borderWidth: 1
+            }
+          ]
+        },
+        options:{
+          indexAxis: 'y',
+          maintainAspectRatio: false,
+          aspectRatio: 0.8,
+          plugins: {
+            datalabels:{
+              formatter: (value : any) => {
+                return Math.trunc(value);
+              },
+              font: {
+                size: 10
+              },
+              // anchor: 'end',
+              // align: 'end',
+              color: 'black',
+            },
+              legend: {
+                // display: false,
+                  labels: {
+                      color: 'black'
+                  }
+              }
+          },
+          scales: {
+              x: {
+                  stacked: true,
+                  ticks: {
+                      color: '#6c757d'
+                  },
+                  grid: {
+                      color: '#dee2e6',
+                      drawBorder: false
+                  }
+              },
+              y: {
+                  stacked: true,
+                  ticks: {
+                      color: '#6c757d'
+                  },
+                  grid: {
+                      color: '#dee2e6',
+                      drawBorder: false
+                  }
+              }
+          }
+        }
+      },
+      {
+        name:'Day (t)',
+        data:{
+          labels: [
+           
+          ],
+          datasets: [
+            {
+              type: 'bar',
+              data: [
+               
+              ],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgb(75, 192, 192)',
+              borderWidth: 1
+            }
+          ]
+        },
+        options:{
+          maintainAspectRatio: false,
+          aspectRatio: 0.8,
+          plugins: {
+            datalabels:{
+              formatter: (value : any) => {
+                return Math.trunc(value);
+              },
+              font: {
+                size: 10
+              },
+              // anchor: 'end',
+              // align: 'end',
+              color: 'black',
+            },
+              legend: {
+                display: false,
+                  labels: {
+                      color: 'black'
+                  }
+              }
+          },
+          scales: {
+              x: {
+                  stacked: true,
+                  ticks: {
+                      color: '#6c757d'
+                  },
+                  grid: {
+                      color: '#dee2e6',
+                      drawBorder: false
+                  }
+              },
+              y: {
+                  stacked: true,
+                  ticks: {
+                      color: '#6c757d'
+                  },
+                  grid: {
+                      color: '#dee2e6',
+                      drawBorder: false
+                  }
+              }
+          }
+        }
+      },
+      {
+        name:'Month (t)',
+        data:{
+          labels: [
+            
+          ],
+          datasets: [
+            {
+              type: 'bar',
+              data: [
+                
+              ],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgb(75, 192, 192)',
+              borderWidth: 1
+            }
+          ]
+        },
+        options:{
+          maintainAspectRatio: false,
+          aspectRatio: 0.8,
+          plugins: {
+            datalabels:{
+              formatter: (value : any) => {
+                return Math.trunc(value);
+              },
+              font: {
+                size: 10
+              },
+              // anchor: 'end',
+              // align: 'end',
+              color: 'black',
+            },
+              legend: {
+                display: false,
+                  labels: {
+                      color: 'black'
+                  }
+              }
+          },
+          scales: {
+              x: {
+                  stacked: true,
+                  ticks: {
+                      color: '#6c757d'
+                  },
+                  grid: {
+                      color: '#dee2e6',
+                      drawBorder: false
+                  }
+              },
+              y: {
+                  stacked: true,
+                  ticks: {
+                      color: '#6c757d'
+                  },
+                  grid: {
+                      color: '#dee2e6',
+                      drawBorder: false
+                  }
+              }
+          }
+        }
+      }
+    ];
   }
 
   showrfDialog(){
@@ -1121,13 +589,6 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   
   consumptionScreen(){
     this.router.navigate(['/TrackingSystem/overview/consumption']);
-  }
-
-  addLogItem(){
-    if(this.logItem){
-        this.operatorLogs.push({data: this.logItem});
-        this.logItem= null;
-    }
   }
 
   bof1DetailsShow(){
@@ -1257,22 +718,303 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
   
   assetPageChange(event : any){ 
     if(event){
-      this.assetPageData = this.AssetsData[event.page];  
+      this.assetPageData = this.assetsData[event.page];  
     }  
-  }
-
-  removeOperatorLog(data : any){   
-    this.operatorLogs.splice(this.operatorLogs.indexOf(data), 1);
   }
 
   showBannerDialog(){
     this.bannerDialog =true;
   }
 
-  getproductiondata() {
-    this.http.get('http://127.0.0.1:8000/production_plan').subscribe((res => {
+  getProductionPlandata() {
+    this.http.get('http://127.0.0.1:8000/production_plan').subscribe(res => {
       this.productionPlanData = res;
-    }));
+    });
+  }
+
+  getProductionStatusdata() {
+    this.http.get('http://127.0.0.1:8000/production_status').subscribe((res: any) => {
+      this.productionStatusData = res[0];
+    });
+  }
+  
+  getEquipmentsdata() {
+    this.rollHistoryData = [];
+    this.http.get('http://127.0.0.1:8000/get_equip').subscribe(res => {
+      this.equipmentsData = res;
+      this.rollHistoryData = [...this.equipmentsData.roll_history];      
+      this.chemistryData = [...this.equipmentsData.chemistry];      
+      this.bof1Data = this.equipmentsData.bof;
+      this.lfData = this.equipmentsData.lf;
+      this.vdData = this.equipmentsData.vd;
+      this.ccmData = this.equipmentsData.ccm;
+      this.rhfData = this.equipmentsData.rhf;
+      this.standData = this.equipmentsData.rolls;
+      this.il1Data = this.equipmentsData.il;
+    });
+  }
+
+  getAssetsData() {
+    this.http.get('http://127.0.0.1:8000/monitor').subscribe((res: any) => {      
+      this.assetsData = res;
+      this.assetsData.map((result : any)=>{
+        switch(result.color){
+          case 0 : result.circleColor = 'green';
+                  result.borderclass = 'greenBorderBlink';
+                  break;
+          case 1 : result.circleColor = 'orange';
+                   result.borderclass = 'orangeBorderBlink';
+                   break;
+          case 2 : result.circleColor = 'red';
+                   result.borderclass = 'redBorderBlink';
+                   break;
+          default: break;
+        }
+      }); 
+    });
+    
+  }
+
+  getAnomalyData() {
+    this.http.get('http://127.0.0.1:8000/roll_set').subscribe((res: any) => {      
+      this.anomalyData = res;
+    });    
+  }
+
+  getBannerData() {
+    this.http.get('http://127.0.0.1:8000/banner').subscribe((res: any) => {      
+      this.bannerData = res;
+    });    
+  }
+
+  getOperatorLogData() {
+    this.http.get('http://127.0.0.1:8000/operator_logs').subscribe((res: any) => {      
+      this.operatorLogs = res;
+    });    
+  }
+
+  getProductionGraphData() {
+    this.productionGraphs = [];
+    this.http.get('http://127.0.0.1:8000/production').subscribe((res:any)=>{
+      this.shiftProdValues = res.shift;
+      this.dayProdValues = res.daily;
+      this.monthProdValues = res.month;
+      this.productionGraphs=[
+        {
+          name:'Shift (t)',
+          data:{
+            labels: this.shiftProdValues.time,
+            datasets: [
+              {
+                type: 'bar',
+                label: 'Day',
+                data:  this.shiftProdValues.shift2,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgb(75, 192, 192)',
+                borderWidth: 1
+              },
+              {
+                type: 'bar',
+                label: 'Night',
+                data: this.shiftProdValues.shift3,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgb(54, 162, 235)',
+                borderWidth: 1
+              }
+            ]
+          },
+          options:{
+            indexAxis: 'y',
+            maintainAspectRatio: false,
+            aspectRatio: 0.8,
+            plugins: {
+              datalabels:{
+                formatter: (value : any) => {
+                  return Math.trunc(value);
+                },
+                font: {
+                  size: 10
+                },
+                // anchor: 'end',
+                // align: 'end',
+                color: 'black',
+              },
+                legend: {
+                  // display: false,
+                    labels: {
+                        color: 'black'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    ticks: {
+                        color: '#6c757d'
+                    },
+                    grid: {
+                        color: '#dee2e6',
+                        drawBorder: false
+                    }
+                },
+                y: {
+                    stacked: true,
+                    ticks: {
+                        color: '#6c757d'
+                    },
+                    grid: {
+                        color: '#dee2e6',
+                        drawBorder: false
+                    }
+                }
+            }
+          }
+        },
+        {
+          name:'Day (t)',
+          data:{
+            labels:  this.dayProdValues.time,
+            datasets: [
+              {
+                type: 'bar',
+                data: this.dayProdValues.value,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgb(75, 192, 192)',
+                borderWidth: 1
+              }
+            ]
+          },
+          options:{
+            maintainAspectRatio: false,
+            aspectRatio: 0.8,
+            plugins: {
+              datalabels:{
+                formatter: (value : any) => {
+                  return Math.trunc(value);
+                },
+                font: {
+                  size: 10
+                },
+                // anchor: 'end',
+                // align: 'end',
+                color: 'black',
+              },
+                legend: {
+                  display: false,
+                    labels: {
+                        color: 'black'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    ticks: {
+                        color: '#6c757d'
+                    },
+                    grid: {
+                        color: '#dee2e6',
+                        drawBorder: false
+                    }
+                },
+                y: {
+                    stacked: true,
+                    ticks: {
+                        color: '#6c757d'
+                    },
+                    grid: {
+                        color: '#dee2e6',
+                        drawBorder: false
+                    }
+                }
+            }
+          }
+        },
+        {
+          name:'Month (t)',
+          data:{
+            labels: this.monthProdValues.time,
+            datasets: [
+              {
+                type: 'bar',
+                data: this.monthProdValues.value,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgb(75, 192, 192)',
+                borderWidth: 1
+              }
+            ]
+          },
+          options:{
+            maintainAspectRatio: false,
+            aspectRatio: 0.8,
+            plugins: {
+              datalabels:{
+                formatter: (value : any) => {
+                  return Math.trunc(value);
+                },
+                font: {
+                  size: 10
+                },
+                // anchor: 'end',
+                // align: 'end',
+                color: 'black',
+              },
+                legend: {
+                  display: false,
+                    labels: {
+                        color: 'black'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    ticks: {
+                        color: '#6c757d'
+                    },
+                    grid: {
+                        color: '#dee2e6',
+                        drawBorder: false
+                    }
+                },
+                y: {
+                    stacked: true,
+                    ticks: {
+                        color: '#6c757d'
+                    },
+                    grid: {
+                        color: '#dee2e6',
+                        drawBorder: false
+                    }
+                }
+            }
+          }
+        }
+      ];
+    });
+  }
+
+  addLogItem(){
+    // if(this.logItem){
+    //     this.operatorLogs.push({data: this.logItem});
+    //     this.logItem= null;
+    // }
+    if(this.logItem){
+      let option ={ log : this.logItem};
+      this.http.post('http://127.0.0.1:8000/add_operator_log',option).subscribe((res: any) => {
+        console.log(res);     
+        this.logItem = null;
+        this.getOperatorLogData();      
+     });
+    }
+  }
+
+  removeOperatorLog(data : any){   
+    // this.operatorLogs.splice(this.operatorLogs.indexOf(data), 1);
+    this.http.delete('http://127.0.0.1:8000/delete_operator_log/' + data._id).subscribe((res: any) => {      
+       console.log(res);     
+       this.getOperatorLogData();      
+    });
   }
 
   getinventoryChartData(){
@@ -1292,6 +1034,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
           {
               data: inventoryChartDatas,
               backgroundColor: ['rgba(153, 102, 255, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 159, 64, 0.2)'],
+              borderColor: ['rgb(153, 102, 255)','rgb(54, 162, 235)','rgb(255, 159, 64)'],
               borderWidth: 1
           }
       ]
