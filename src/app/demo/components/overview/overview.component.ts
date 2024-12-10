@@ -187,7 +187,7 @@ constructor(
  ){}
 
 ngOnInit(): void {
-  this.layoutService.onMenuToggle();
+  this.layoutService.hideMenu();
    this.startInterval();
   
 }

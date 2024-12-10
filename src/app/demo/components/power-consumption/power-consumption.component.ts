@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import  ChartDataLabels  from 'chartjs-plugin-datalabels';
-import { LayoutService } from 'src/app/layout/service/app.layout.service';
 interface City {
     name: string;
     code: string;}
@@ -56,11 +55,9 @@ export class PowerConsumptionComponent implements OnInit{
 
   constructor(
     private http : HttpClient,
-    private layoutService: LayoutService,
   ){}
 
   ngOnInit(): void {
-    this.layoutService.onMenuToggle();
     this.initShiftChart();
     this.initDayChart();
     this.initMonthChart();
