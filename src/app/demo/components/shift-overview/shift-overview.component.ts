@@ -213,7 +213,7 @@ export class ShiftOverviewComponent implements OnInit,OnDestroy{
     this.getOperatorLogData();
     this.getProductionGraphData();
     this.overviewScreenService.sendData(1);
-    this.layoutService.onMenuToggle();
+    this.layoutService.hideMenu();
     let i =0;
     this.tracking = setInterval(() => {
       if(i<=5){

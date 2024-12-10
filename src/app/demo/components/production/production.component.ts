@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import  ChartDataLabels  from 'chartjs-plugin-datalabels';
-import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @Component({
   selector: 'app-production',
@@ -85,12 +84,10 @@ export class ProductionComponent implements OnInit{
 
   constructor(
     private http : HttpClient,
-    private layoutService: LayoutService,
   ){}
 
 
   ngOnInit(): void {
-    this.layoutService.onMenuToggle();
     this.initChart();
     this.getPeakDemandData();
     this.getShiftProdData();

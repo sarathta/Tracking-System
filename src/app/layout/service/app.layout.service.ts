@@ -50,6 +50,12 @@ export class LayoutService {
 
     overlayOpen$ = this.overlayOpen.asObservable();
 
+    hideMenu(){
+        this.state.staticMenuDesktopInactive = true;
+        this.state.overlayMenuActive = false;
+        this.state.staticMenuMobileActive =false;
+    }
+
     onMenuToggle() {
         if (this.isOverlay()) {
             this.state.overlayMenuActive = !this.state.overlayMenuActive;

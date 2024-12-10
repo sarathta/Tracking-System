@@ -10,9 +10,12 @@ import { Bof1Service } from 'src/app/services/bof1.service';
 export class Bof1Component implements OnInit{
   
     islogSheet:boolean= false;
+    
+    constructor(
+    ){}
      
    ngOnInit(): void {
-     
+
    }
   
 
